@@ -1,9 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  FaHtml5, FaCss3Alt, FaSass, FaJs, FaReact, FaGit, 
-  FaFigma, FaGlobe, FaDatabase, FaMobile
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaSass,
+  FaJs,
+  FaReact,
+  FaGit,
+  FaFigma,
+  FaGlobe,
+  FaMobile,
 } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiFirebase } from "react-icons/si";
 import SkillItem from "../ui/SkillItem";
@@ -22,9 +29,24 @@ export default function Skills() {
     { name: "UI Design (Figma)", level: 85, icon: FaFigma, color: "#F24E1E" },
     { name: "Git", level: 70, icon: FaGit, color: "#F05032" },
     { name: "Firebase", level: 50, icon: SiFirebase, color: "#FFCA28" },
-    { name: "Em andamento: TypeScript", level: 40, icon: SiTypescript, color: "#3178C6" },
-    { name: "Em andamento: Inglês", level: 35, icon: FaGlobe, color: "#4CAF50" },
-    { name: "Planejado: React Native", level: 10, icon: FaMobile, color: "#61DAFB" },
+    {
+      name: "Em andamento: TypeScript",
+      level: 40,
+      icon: SiTypescript,
+      color: "#3178C6",
+    },
+    {
+      name: "Em andamento: Inglês",
+      level: 35,
+      icon: FaGlobe,
+      color: "#4CAF50",
+    },
+    {
+      name: "Planejado: React Native",
+      level: 10,
+      icon: FaMobile,
+      color: "#61DAFB",
+    },
   ];
 
   return (
@@ -37,11 +59,13 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Minhas Habilidades</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Minhas Habilidades
+          </h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
           <p className="max-w-2xl mx-auto text-lg text-secondary">
-            Combinando experiência em design com desenvolvimento front-end para criar
-            interfaces funcionais e visualmente atraentes.
+            Combinando experiência em design com desenvolvimento front-end para
+            criar interfaces funcionais e visualmente atraentes.
           </p>
         </motion.div>
 
@@ -52,9 +76,11 @@ export default function Skills() {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-6 border-b pb-2">Desenvolvimento Front-End</h3>
+            <h3 className="text-2xl font-semibold mb-6 border-b pb-2">
+              Desenvolvimento Front-End
+            </h3>
             {frontendSkills.map((skill) => (
-              <SkillItem 
+              <SkillItem
                 key={skill.name}
                 name={skill.name}
                 level={skill.level}
@@ -70,9 +96,11 @@ export default function Skills() {
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-6 border-b pb-2">Outras Competências</h3>
+            <h3 className="text-2xl font-semibold mb-6 border-b pb-2">
+              Outras Competências
+            </h3>
             {otherSkills.map((skill) => (
-              <SkillItem 
+              <SkillItem
                 key={skill.name}
                 name={skill.name}
                 level={skill.level}
