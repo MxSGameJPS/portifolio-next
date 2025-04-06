@@ -8,6 +8,28 @@ import ProjectCard from "../ui/ProjectCard";
 const projects = [
   {
     id: 1,
+    title: "MaisDireito Advogados",
+    description:
+      "Site institucional para escritório de advocacia com layout moderno e responsivo.",
+    imageSrc: "/projects/advogados.png",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://sistema-advogados.vercel.app",
+    githubUrl: "https://github.com/MxSGameJPS/sistema-advogados",
+    category: "web",
+  },
+  {
+    id: 2,
+    title: "MXSFLIX",
+    description:
+      "Clone da Netflix com integração à API do TheMovieDB, listando filmes por categorias.",
+    imageSrc: "/projects/mxsflix.png",
+    technologies: ["Next.js", "React", "CSS Modules", "API Integration"],
+    liveUrl: "https://mxsflix.vercel.app",
+    githubUrl: "https://github.com/MxSGameJPS/mxsflix",
+    category: "web",
+  },
+  {
+    id: 3,
     title: "Barbearia Pavanello",
     description:
       "Site completo para barbearia com agendamento de serviços, venda de produtos e área administrativa.",
@@ -18,7 +40,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 2,
+    id: 4,
     title: "Academia Fitness",
     description:
       "Aplicação web para gerenciamento de academia com área para administradores e alunos.",
@@ -35,7 +57,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 3,
+    id: 5,
     title: "Receitas do Meu Brasil",
     description:
       "Site que celebra a culinária brasileira com receitas típicas de cada região.",
@@ -46,7 +68,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 4,
+    id: 6,
     title: "DJ Moisés PS",
     description:
       "Site para um DJ profissional, com galeria de fotos, agenda de eventos e contato.",
@@ -57,7 +79,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 5,
+    id: 7,
     title: "Confraria Chopp & Grill",
     description:
       "Redesign moderno para um restaurante tradicional, com menu interativo e informações de contato.",
@@ -68,7 +90,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 6,
+    id: 8,
     title: "Canal do TF",
     description:
       "Portal de notícias e vídeos relacionados ao Botafogo, com áreas públicas e administrativas.",
@@ -82,11 +104,17 @@ const projects = [
 
 export default function Projects() {
   const [filter, setFilter] = useState("all");
+  const [showAll, setShowAll] = useState(false);
 
   const filteredProjects =
     filter === "all"
       ? projects
       : projects.filter((project) => project.category === filter);
+
+  // Limita os projetos mostrados a 6 quando showAll for falso
+  const displayedProjects = showAll
+    ? filteredProjects
+    : filteredProjects.slice(0, 6);
 
   return (
     <section id="projetos" className="py-20 bg-[#f1f3f5] dark:bg-[#343a40]">
@@ -140,7 +168,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
               title={project.title}
@@ -169,6 +197,28 @@ export default function Projects() {
             </motion.div>
           )}
         </div>
+
+        {!showAll && filteredProjects.length > 6 && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
+            >
+              Ver mais
+            </button>
+          </div>
+        )}
+
+        {showAll && filteredProjects.length > 6 && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAll(false)}
+              className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            >
+              Ver menos
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
