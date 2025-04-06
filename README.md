@@ -24,6 +24,30 @@ Este é meu site pessoal e portfólio de trabalho, onde apresento minhas habilid
 - ✅ Seções de Sobre, Habilidades, Projetos e Contato
 - ✅ Portfólio de projetos
 
+## 💼 Projetos
+
+### MaisDireito Advogados
+
+![MaisDireito Advogados](/public/projects/advogados.png)
+
+Site institucional para escritório de advocacia com layout moderno e responsivo.
+
+🔗 **Demo:** [sistema-advogados.vercel.app](https://sistema-advogados.vercel.app)
+
+**Tecnologias:** Next.js, React, Tailwind CSS, Framer Motion
+
+---
+
+### MXSFLIX
+
+![MXSFLIX](/public/projects/mxsflix.png)
+
+Clone da Netflix com integração à API do TheMovieDB, listando filmes por categorias.
+
+🔗 **Demo:** [mxsflix.vercel.app](https://mxsflix.vercel.app)
+
+**Tecnologias:** Next.js, React, CSS Modules, API Integration
+
 ## 📬 Contato
 
 - 📧 Email: mxsgamejps@gmail.com
