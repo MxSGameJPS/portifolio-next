@@ -57,10 +57,11 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 variant="outline"
                 className="flex gap-2 items-center"
-              >
+              >              
                 <FaGithub />
                 GitHub
               </Button>
+              <Button href="https://curriculo-alpha-green.vercel.app">Currículo</Button>
             </div>
           </motion.div>
 
