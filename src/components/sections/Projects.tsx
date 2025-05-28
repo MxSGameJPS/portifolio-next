@@ -8,6 +8,24 @@ import ProjectCard from "../ui/ProjectCard";
 const projects = [
   {
     id: 1,
+    title: "Ai To Love",
+    description:
+      "AI to Love é uma plataforma inovadora de relacionamento virtual que oferece companheiros personalizados alimentados por inteligência artificial.",
+    imageSrc: "/projects/aitolove.png",
+    technologies: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "TypeScript",
+      "API Rest",
+    ],
+    liveUrl: "https://www.aitolove.app",
+    githubUrl: "https://github.com/MxSGameJPS/ai2love.git",
+    category: "web",
+  },
+  {
+    id: 2,
     title: "MaisDireito Advogados",
     description:
       "Site institucional para escritório de advocacia com layout moderno e responsivo.",
@@ -18,7 +36,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 2,
+    id: 3,
     title: "MXSFLIX",
     description:
       "Clone da Netflix com integração à API do TheMovieDB, listando filmes por categorias.",
@@ -29,7 +47,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 3,
+    id: 4,
     title: "Barbearia Pavanello",
     description:
       "Site completo para barbearia com agendamento de serviços, venda de produtos e área administrativa.",
@@ -40,7 +58,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 4,
+    id: 5,
     title: "Academia Fitness",
     description:
       "Aplicação web para gerenciamento de academia com área para administradores e alunos.",
@@ -57,7 +75,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 5,
+    id: 6,
     title: "Receitas do Meu Brasil",
     description:
       "Site que celebra a culinária brasileira com receitas típicas de cada região.",
@@ -68,7 +86,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 6,
+    id: 7,
     title: "DJ Moisés PS",
     description:
       "Site para um DJ profissional, com galeria de fotos, agenda de eventos e contato.",
@@ -79,7 +97,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 7,
+    id: 8,
     title: "Confraria Chopp & Grill",
     description:
       "Redesign moderno para um restaurante tradicional, com menu interativo e informações de contato.",
@@ -90,7 +108,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 8,
+    id: 9,
     title: "Canal do TF",
     description:
       "Portal de notícias e vídeos relacionados ao Botafogo, com áreas públicas e administrativas.",
@@ -127,13 +145,13 @@ export default function Projects() {
           className="mb-12 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">Meus Projetos</h2>
-          <div className="mx-auto mb-8 w-24 h-1 bg-primary"></div>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-secondary">
+          <div className="w-24 h-1 mx-auto mb-8 bg-primary"></div>
+          <p className="max-w-2xl mx-auto mb-8 text-lg text-secondary">
             Conheça alguns dos projetos que desenvolvi, combinando design
             atraente com funcionalidades práticas.
           </p>
 
-          <div className="flex flex-wrap gap-3 justify-center mb-10">
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
             <button
               onClick={() => setFilter("all")}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -167,7 +185,7 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {displayedProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -183,7 +201,7 @@ export default function Projects() {
 
           {filter === "mobile" && (
             <motion.div
-              className="col-span-full py-10 text-center"
+              className="py-10 text-center col-span-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -202,7 +220,7 @@ export default function Projects() {
           <div className="mt-12 text-center">
             <button
               onClick={() => setShowAll(true)}
-              className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
+              className="px-6 py-3 text-white transition-colors rounded-md bg-primary hover:bg-primary/90"
             >
               Ver mais
             </button>
@@ -213,7 +231,7 @@ export default function Projects() {
           <div className="mt-12 text-center">
             <button
               onClick={() => setShowAll(false)}
-              className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="px-6 py-3 text-gray-800 transition-colors bg-gray-200 rounded-md dark:bg-gray-700 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600"
             >
               Ver menos
             </button>
