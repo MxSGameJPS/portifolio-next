@@ -18,26 +18,26 @@ import SkillItem from "../ui/SkillItem";
 export default function Skills() {
   const frontendSkills = [
     { name: "HTML", level: 95, icon: FaHtml5, color: "#E34F26" },
-    { name: "CSS", level: 90, icon: FaCss3Alt, color: "#1572B6" },
-    { name: "SASS", level: 85, icon: FaSass, color: "#CC6699" },
-    { name: "JavaScript", level: 80, icon: FaJs, color: "#F7DF1E" },
-    { name: "React", level: 75, icon: FaReact, color: "#61DAFB" },
-    { name: "Next.js", level: 60, icon: SiNextdotjs, color: "#000000" },
+    { name: "CSS", level: 95, icon: FaCss3Alt, color: "#1572B6" },
+    { name: "React", level: 95, icon: FaReact, color: "#61DAFB" },
+    { name: "SASS", level: 90, icon: FaSass, color: "#CC6699" },
+    { name: "JavaScript", level: 85, icon: FaJs, color: "#F7DF1E" },
+    { name: "Next.js", level: 70, icon: SiNextdotjs, color: "#000000" },
   ];
 
   const otherSkills = [
-    { name: "UI Design (Figma)", level: 85, icon: FaFigma, color: "#F24E1E" },
-    { name: "Git", level: 70, icon: FaGit, color: "#F05032" },
-    { name: "Firebase", level: 50, icon: SiFirebase, color: "#FFCA28" },
+    { name: "UI Design (Figma)", level: 95, icon: FaFigma, color: "#F24E1E" },
+    { name: "Git", level: 80, icon: FaGit, color: "#F05032" },
     {
       name: "Em andamento: TypeScript",
-      level: 40,
+      level: 60,
       icon: SiTypescript,
       color: "#3178C6",
     },
+    { name: "Firebase", level: 50, icon: SiFirebase, color: "#FFCA28" },
     {
       name: "Em andamento: Inglês",
-      level: 35,
+      level: 25,
       icon: FaGlobe,
       color: "#4CAF50",
     },
@@ -51,32 +51,32 @@ export default function Skills() {
 
   return (
     <section id="habilidades" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="mb-12 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Minhas Habilidades
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+          <div className="w-24 h-1 mx-auto mb-8 bg-primary"></div>
           <p className="max-w-2xl mx-auto text-lg text-secondary">
             Combinando experiência em design com desenvolvimento front-end para
             criar interfaces funcionais e visualmente atraentes.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-6 border-b pb-2">
+            <h3 className="pb-2 mb-6 text-2xl font-semibold border-b">
               Desenvolvimento Front-End
             </h3>
             {frontendSkills.map((skill) => (
@@ -96,7 +96,7 @@ export default function Skills() {
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-6 border-b pb-2">
+            <h3 className="pb-2 mb-6 text-2xl font-semibold border-b">
               Outras Competências
             </h3>
             {otherSkills.map((skill) => (
