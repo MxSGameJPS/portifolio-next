@@ -79,7 +79,7 @@ export default function Hero() {
               <span className="animate-blink">|</span>
             </h2>
             <p className="max-w-xl mb-8 text-lg">
-              Ex-UI Designer que virou Desenvolvedor Front-End, apaixonado por
+              Ex-UI Designer que virou Desenvolvedor FullStack, apaixonado por
               criar experiências digitais que unem beleza e funcionalidade.
             </p>
 

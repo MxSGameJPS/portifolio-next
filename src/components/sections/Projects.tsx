@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../ui/ProjectCard";
+import ParticlesBackground from "../ui/ParticlesBackground";
 
 // Dados dos projetos
 const projects = [
@@ -127,7 +128,7 @@ const projects = [
     technologies: ["React Native", "Expo", "Expo Router"],
     liveUrl: "/projects/fokusapp.mp4",
     githubUrl: "https://github.com/MxSGameJPS/fokus-app",
-    category: "mobile",    
+    category: "mobile",
   },
 ];
 
@@ -146,7 +147,11 @@ export default function Projects() {
     : filteredProjects.slice(0, 6);
 
   return (
-    <section id="projetos" className="py-20 bg-[#f1f3f5] dark:bg-[#343a40]">
+    <section
+      id="projetos"
+      className="relative py-20 bg-[#f1f3f5] dark:bg-[#343a40]"
+    >
+      <ParticlesBackground />
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -191,7 +196,7 @@ export default function Projects() {
                   : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
               }`}
             >
-              Mobile 
+              Mobile
             </button>
           </div>
         </motion.div>
