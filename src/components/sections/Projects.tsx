@@ -118,6 +118,17 @@ const projects = [
     githubUrl: "https://github.com/MxSGameJPS/canal-tf",
     category: "web",
   },
+  {
+    id: 10,
+    title: "Fokus APP",
+    description:
+      "App Android para gerenciamento de tarefas, com funcionalidades de criação, edição e exclusão, estilo Pomodoro.",
+    imageSrc: "/projects/fokus-app.png", // Substitua pelo caminho correto
+    technologies: ["React Native", "Expo", "Expo Router"],
+    liveUrl: "/projects/fokusapp.mp4",
+    githubUrl: "https://github.com/MxSGameJPS/fokus-app",
+    category: "mobile",    
+  },
 ];
 
 export default function Projects() {
@@ -180,7 +191,7 @@ export default function Projects() {
                   : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
               }`}
             >
-              Mobile (Em breve)
+              Mobile 
             </button>
           </div>
         </motion.div>

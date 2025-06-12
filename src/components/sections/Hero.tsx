@@ -9,27 +9,61 @@ import Image from "next/image";
 export default function Hero() {
   const [typedText, setTypedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const fullText = "Desenvolvedor Front-End";
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const texts = [
+    "Desenvolvedor Front-End",
+    "React Developer",
+    "React Native Developer",
+    "C# Developer",
+  ];
+
   const typingSpeed = 100;
+  const deletingSpeed = 50;
+  const pauseTime = 1500;
 
   useEffect(() => {
-    if (currentIndex < fullText.length) {
-      const timeout = setTimeout(() => {
-        setTypedText((prevText) => prevText + fullText[currentIndex]);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, typingSpeed);
+    const currentFullText = texts[currentTextIndex];
 
-      return () => clearTimeout(timeout);
+    if (!isDeleting && currentIndex === currentFullText.length) {
+      // Texto completamente digitado, pausa antes de começar a apagar
+      setTimeout(() => setIsDeleting(true), pauseTime);
+      return;
     }
-  }, [currentIndex]);
+
+    if (isDeleting && currentIndex === 0) {
+      // Texto completamente apagado, muda para o próximo texto
+      setIsDeleting(false);
+      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
+      return;
+    }
+
+    const timeout = setTimeout(
+      () => {
+        if (isDeleting) {
+          // Apagando texto
+          setTypedText((prevText) => prevText.slice(0, -1));
+          setCurrentIndex((prevIndex) => prevIndex - 1);
+        } else {
+          // Digitando texto
+          setTypedText((prevText) => prevText + currentFullText[currentIndex]);
+          setCurrentIndex((prevIndex) => prevIndex + 1);
+        }
+      },
+      isDeleting ? deletingSpeed : typingSpeed
+    );
+
+    return () => clearTimeout(timeout);
+  }, [currentIndex, currentTextIndex, isDeleting, texts]);
 
   return (
     <section
       id="home"
-      className="flex justify-center items-center pt-20 pb-10 min-h-screen"
+      className="flex items-center justify-center min-h-screen pt-20 pb-10"
     >
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col gap-10 justify-between items-center md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
           <motion.div
             className="md:w-1/2"
             initial={{ opacity: 0, y: 20 }}
@@ -40,11 +74,11 @@ export default function Hero() {
             <h1 className="mb-4 text-4xl font-bold md:text-6xl">
               Saulo Pavanello
             </h1>
-            <h2 className="mb-6 h-8 text-2xl font-medium md:text-3xl text-secondary">
+            <h2 className="mb-6 min-h-[2.5rem] md:min-h-[3rem] text-2xl font-medium md:text-3xl text-secondary">
               {typedText}
               <span className="animate-blink">|</span>
             </h2>
-            <p className="mb-8 max-w-xl text-lg">
+            <p className="max-w-xl mb-8 text-lg">
               Ex-UI Designer que virou Desenvolvedor Front-End, apaixonado por
               criar experiências digitais que unem beleza e funcionalidade.
             </p>
@@ -56,12 +90,14 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="outline"
-                className="flex gap-2 items-center"
-              >              
+                className="flex items-center gap-2"
+              >
                 <FaGithub />
                 GitHub
               </Button>
-              <Button href="https://curriculo-alpha-green.vercel.app">Currículo</Button>
+              <Button href="https://curriculo-alpha-green.vercel.app">
+                Currículo
+              </Button>
             </div>
           </motion.div>
 
@@ -72,8 +108,8 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="relative mx-auto w-72 h-72 md:w-96 md:h-96">
-              <div className="p-1 w-full h-full bg-gradient-to-r rounded-full from-primary to-accent">
-                <div className="overflow-hidden relative w-full h-full bg-white rounded-full dark:bg-gray-800">
+              <div className="w-full h-full p-1 rounded-full bg-gradient-to-r from-primary to-accent">
+                <div className="relative w-full h-full overflow-hidden bg-white rounded-full dark:bg-gray-800">
                   <Image
                     src="/profile.jpeg"
                     alt="Foto de Saulo Pavanello"
@@ -95,7 +131,7 @@ export default function Hero() {
         >
           <a
             href="#sobre"
-            className="p-2 text-2xl rounded-full border border-gray-300 transition-colors animate-bounce hover:border-primary hover:text-primary"
+            className="p-2 text-2xl transition-colors border border-gray-300 rounded-full animate-bounce hover:border-primary hover:text-primary"
             aria-label="Rolar para baixo"
           >
             <FaArrowDown />
