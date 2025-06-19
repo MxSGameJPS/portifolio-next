@@ -16,8 +16,8 @@ export default function Contact() {
           className="mb-12 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">Entre em Contato</h2>
-          <div className="mx-auto mb-8 w-24 h-1 bg-primary"></div>
-          <p className="mx-auto max-w-2xl text-lg text-secondary">
+          <div className="w-24 h-1 mx-auto mb-8 bg-primary"></div>
+          <p className="max-w-2xl mx-auto text-lg text-secondary">
             Estou disponível para projetos freelance e oportunidades de trabalho. 
             Vamos conversar sobre como posso ajudar em seu próximo projeto!
           </p>
@@ -45,11 +45,13 @@ export default function Contact() {
                 <div>
                   <h4 className="mb-1 font-medium">Email</h4>
                   <a 
-                    href="mailto:contato@saulopavanello.com" 
+                    href="mailto:saulopavanello@saulopavanello.com" 
                     className="transition-colors text-secondary hover:text-primary"
                   >
                     devmobile@saulopavanello.com.br
+                    
                     frontend@saulopavanello.com.br
+                    
                     backend@saulopavanello.com.br
                   </a>
                 </div>

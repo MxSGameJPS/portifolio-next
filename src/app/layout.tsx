@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`antialiased bg-[#f8f9fa]`}
+        className={`antialiased bg-[#000000]`}
         style={{
           fontFamily: `${inter.style.fontFamily}, ${jetBrainsMono.style.fontFamily}`,
         }}

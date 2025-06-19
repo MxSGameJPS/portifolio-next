@@ -22,7 +22,7 @@ export default function Skills() {
     { name: "React", level: 95, icon: FaReact, color: "#61DAFB" },
     { name: "SASS", level: 90, icon: FaSass, color: "#CC6699" },
     { name: "JavaScript", level: 85, icon: FaJs, color: "#F7DF1E" },
-    { name: "Next.js", level: 70, icon: SiNextdotjs, color: "#000000" },
+    { name: "Next.js", level: 70, icon: SiNextdotjs, color: "#fafafa" },
   ];
 
   const otherSkills = [

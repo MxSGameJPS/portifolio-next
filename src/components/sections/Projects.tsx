@@ -149,7 +149,7 @@ export default function Projects() {
   return (
     <section
       id="projetos"
-      className="relative py-20 bg-[#f1f3f5] dark:bg-[#343a40]"
+      className="relative py-20 dark:bg-[#64646446]"
     >
       <ParticlesBackground />
       <div className="container px-4 mx-auto">
