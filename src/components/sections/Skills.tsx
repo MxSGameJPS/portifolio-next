@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import {
   FaHtml5,
@@ -11,8 +12,10 @@ import {
   FaFigma,
   FaGlobe,
   FaMobile,
+  FaNodeJs,
 } from "react-icons/fa";
-import { SiNextdotjs, SiTypescript, SiFirebase } from "react-icons/si";
+import { SiNextdotjs, SiTypescript, SiFirebase, SiUnity, SiLua } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
 import SkillItem from "../ui/SkillItem";
 
 export default function Skills() {
@@ -23,30 +26,25 @@ export default function Skills() {
     { name: "SASS", level: 90, icon: FaSass, color: "#CC6699" },
     { name: "JavaScript", level: 85, icon: FaJs, color: "#F7DF1E" },
     { name: "Next.js", level: 70, icon: SiNextdotjs, color: "#fafafa" },
+    { name: "TypeScript", level: 60, icon: SiTypescript, color: "#3178C6" },
+  ];
+
+  const backendSkills = [
+    { name: "Node.js", level: 50, icon: FaNodeJs, color: "#339933" },
+    { name: "C#", level: 15, icon: TbBrandCSharp, color: "#239120" },
+    { name: "Firebase", level: 50, icon: SiFirebase, color: "#FFCA28" },
+  ];
+
+  const mobileGameSkills = [
+    { name: "React Native", level: 60, icon: FaMobile, color: "#61DAFB" },
+    { name: "Unity", level: 5, icon: SiUnity, color: "#FFFFFF" },
+    { name: "Preparação Lua", level: 1, icon: SiLua, color: "#2C2D72" },
   ];
 
   const otherSkills = [
     { name: "UI Design (Figma)", level: 95, icon: FaFigma, color: "#F24E1E" },
     { name: "Git", level: 80, icon: FaGit, color: "#F05032" },
-    {
-      name: "Em andamento: TypeScript",
-      level: 60,
-      icon: SiTypescript,
-      color: "#3178C6",
-    },
-    { name: "Firebase", level: 50, icon: SiFirebase, color: "#FFCA28" },
-    {
-      name: "Em andamento: Inglês",
-      level: 25,
-      icon: FaGlobe,
-      color: "#4CAF50",
-    },
-    {
-      name: "Planejado: React Native",
-      level: 10,
-      icon: FaMobile,
-      color: "#61DAFB",
-    },
+    { name: "Em andamento: Inglês", level: 25, icon: FaGlobe, color: "#4CAF50" },
   ];
 
   return (
@@ -64,22 +62,35 @@ export default function Skills() {
           </h2>
           <div className="w-24 h-1 mx-auto mb-8 bg-primary"></div>
           <p className="max-w-2xl mx-auto text-lg text-secondary">
-            Combinando experiência em design com desenvolvimento front-end para
-            criar interfaces funcionais e visualmente atraentes.
+            Combinando experiência em design com desenvolvimento em diversas áreas para
+            criar soluções completas e visualmente atraentes.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="pb-2 mb-6 text-2xl font-semibold border-b">
+            <h3 className="p-2 mb-6 text-2xl font-bold border-t border-b" >
               Desenvolvimento Front-End
             </h3>
             {frontendSkills.map((skill) => (
+              <SkillItem
+                key={skill.name}
+                name={skill.name}
+                level={skill.level}
+                icon={skill.icon}
+                color={skill.color}
+              />
+            ))}
+            
+            <h3 className="p-2 mt-12 mb-6 text-2xl font-bold border-t border-b">
+              Desenvolvimento Mobile & Games
+            </h3>
+            {mobileGameSkills.map((skill) => (
               <SkillItem
                 key={skill.name}
                 name={skill.name}
@@ -96,7 +107,20 @@ export default function Skills() {
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="pb-2 mb-6 text-2xl font-semibold border-b">
+            <h3 className="p-2 mb-6 text-2xl font-bold border-t border-b">
+              Desenvolvimento Back-End
+            </h3>
+            {backendSkills.map((skill) => (
+              <SkillItem
+                key={skill.name}
+                name={skill.name}
+                level={skill.level}
+                icon={skill.icon}
+                color={skill.color}
+              />
+            ))}
+            
+            <h3 className="p-2 mt-12 mb-6 text-2xl font-bold border-b border-t">
               Outras Competências
             </h3>
             {otherSkills.map((skill) => (

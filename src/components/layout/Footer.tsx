@@ -13,7 +13,7 @@ export default function Footer() {
               Saulo Pavanello
             </h3>
             <p className="max-w-md mb-4 text-secondary">
-              Desenvolvedor Front-End criando experiências digitais que unem
+              Desenvolvedor Fullstack e Mobile criando experiências digitais que unem
               beleza e funcionalidade.
             </p>
           </div>
