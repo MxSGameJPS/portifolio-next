@@ -48,7 +48,9 @@ export default function Contact() {
                     href="mailto:contato@saulopavanello.com" 
                     className="transition-colors text-secondary hover:text-primary"
                   >
-                    mxsgamejps@gmail.com
+                    devmobile@saulopavanello.com.br
+                    frontend@saulopavanello.com.br
+                    backend@saulopavanello.com.br
                   </a>
                 </div>
               </div>
