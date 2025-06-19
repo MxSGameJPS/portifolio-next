@@ -4,6 +4,11 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import emailjs from "@emailjs/browser";
 import Button from "./Button";
 
+// Inicializa o EmailJS (adicionar no topo do componente)
+emailjs.init({
+  publicKey: "EngK1wpE0VaiNJqtv", // Sua chave completa aqui
+});
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -29,22 +34,17 @@ export default function ContactForm() {
     setError("");
 
     try {
-      // Credenciais do EmailJS
+      // Atualize com o ID correto do seu template
       const serviceId = "service_46sy6hh";
-      const templateId = "template_vcl4exq";
-      const publicKey = "EngK1wpE0VaiNJqtv";
+      const templateId = "template_oobriie"; // SUBSTITUA pelo ID correto que você encontrar no dashboard
 
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        },
-        publicKey
-      );
+      // Versão 4.x usa esta sintaxe
+      await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      });
 
       setSuccess(true);
       setFormData({
@@ -55,6 +55,10 @@ export default function ContactForm() {
       });
     } catch (err) {
       console.error("Erro ao enviar mensagem:", err);
+      // Log mais detalhado do erro
+      if (err instanceof Error) {
+        console.error("Detalhes do erro:", err.message);
+      }
       setError(
         "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente."
       );
@@ -88,7 +92,7 @@ export default function ContactForm() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="px-4 py-2 w-full bg-white rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
           </div>
@@ -103,7 +107,7 @@ export default function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="px-4 py-2 w-full bg-white rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
           </div>
@@ -117,7 +121,7 @@ export default function ContactForm() {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              className="px-4 py-2 w-full bg-white rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               required
             >
               <option value="">Selecione um assunto</option>
@@ -140,7 +144,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className="px-4 py-2 w-full bg-white rounded-md border border-gray-300 resize-none dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md resize-none dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
           </div>

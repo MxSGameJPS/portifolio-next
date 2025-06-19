@@ -1,7 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
 import ContactForm from "../ui/ContactForm";
 
 export default function Contact() {
@@ -15,11 +20,14 @@ export default function Contact() {
           viewport={{ once: true }}
           className="mb-12 text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">Entre em Contato</h2>
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            Entre em Contato
+          </h2>
           <div className="w-24 h-1 mx-auto mb-8 bg-primary"></div>
           <p className="max-w-2xl mx-auto text-lg text-secondary">
-            Estou disponível para projetos freelance e oportunidades de trabalho. 
-            Vamos conversar sobre como posso ajudar em seu próximo projeto!
+            Estou disponível para projetos freelance e oportunidades de
+            trabalho. Vamos conversar sobre como posso ajudar em seu próximo
+            projeto!
           </p>
         </motion.div>
 
@@ -30,11 +38,13 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="mb-6 text-2xl font-semibold">Vamos Trabalhar Juntos</h3>
+            <h3 className="mb-6 text-2xl font-semibold">
+              Vamos Trabalhar Juntos
+            </h3>
             <p className="mb-8 text-lg">
-              Seja para um projeto web, um redesign de interface ou uma
-              parceria de longo prazo, estou pronto para trazer minha experiência
-              em design e desenvolvimento para o seu negócio.
+              Seja para um projeto web, um redesign de interface ou uma parceria
+              de longo prazo, estou pronto para trazer minha experiência em
+              design e desenvolvimento para o seu negócio.
             </p>
 
             <div className="space-y-6">
@@ -44,16 +54,26 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-medium">Email</h4>
-                  <a 
-                    href="mailto:saulopavanello@saulopavanello.com" 
-                    className="transition-colors text-secondary hover:text-primary"
-                  >
-                    devmobile@saulopavanello.com.br
-                    
-                    frontend@saulopavanello.com.br
-                    
-                    backend@saulopavanello.com.br
-                  </a>
+                  <div className="flex flex-col space-y-1">
+                    <a
+                      href="mailto:devmobile@saulopavanello.com.br"
+                      className="transition-colors text-secondary hover:text-primary"
+                    >
+                      devmobile@saulopavanello.com.br
+                    </a>
+                    <a
+                      href="mailto:frontend@saulopavanello.com.br"
+                      className="transition-colors text-secondary hover:text-primary"
+                    >
+                      frontend@saulopavanello.com.br
+                    </a>
+                    <a
+                      href="mailto:backend@saulopavanello.com.br"
+                      className="transition-colors text-secondary hover:text-primary"
+                    >
+                      backend@saulopavanello.com.br
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -64,7 +84,9 @@ export default function Contact() {
                 <div>
                   <h4 className="mb-1 font-medium">Localização</h4>
                   <p className="text-secondary">Dois Irmãos, RS, Brasil</p>
-                  <p className="text-sm text-secondary">(Em preparação para Portugal em 2025)</p>
+                  <p className="text-sm text-secondary">
+                    (Em preparação para Portugal em 2025)
+                  </p>
                 </div>
               </div>
 
@@ -74,9 +96,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-medium">GitHub</h4>
-                  <a 
-                    href="https://github.com/MxSGameJPS" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/MxSGameJPS"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors text-secondary hover:text-primary"
                   >
@@ -91,9 +113,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-medium">LinkedIn</h4>
-                  <a 
-                    href="https://www.linkedin.com/in/saulopavanello/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.linkedin.com/in/saulopavanello/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors text-secondary hover:text-primary"
                   >

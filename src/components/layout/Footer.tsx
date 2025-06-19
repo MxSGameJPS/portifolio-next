@@ -7,12 +7,12 @@ export default function Footer() {
   return (
     <footer className="bg-[#f1f3f5] dark:bg-[#343a40] py-10">
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col justify-between items-center mb-8 md:flex-row">
+        <div className="flex flex-col items-center justify-between mb-8 md:flex-row">
           <div className="mb-6 md:mb-0">
             <h3 className="mb-2 text-xl font-bold text-gradient">
               Saulo Pavanello
             </h3>
-            <p className="mb-4 max-w-md text-secondary">
+            <p className="max-w-md mb-4 text-secondary">
               Desenvolvedor Front-End criando experiências digitais que unem
               beleza e funcionalidade.
             </p>
@@ -53,7 +53,7 @@ export default function Footer() {
                 href="mailto:contato@saulopavanello.com"
                 className="transition-colors hover:text-primary"
               >
-                contato@saulopavanello.com
+                saulopavanello@saulopavanello.com
               </a>
             </p>
           </div>
