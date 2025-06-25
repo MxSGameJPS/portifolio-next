@@ -40,7 +40,7 @@ export default function About() {
             </p>
             <p className="mb-4 text-lg">
               Baseado em Dois Irmãos, RS, estou me preparando pra ser nômade
-              digital em Portugal até o final de 2025, levando minha família e
+              digital em Portugal até o final de 2026, levando minha família e
               minha vontade de fazer a diferença.
             </p>
             <p className="mb-6 text-lg">
@@ -97,7 +97,7 @@ export default function About() {
               <h4 className="mb-2 text-xl font-semibold">Aspirante Nômade</h4>
               <p>
                 Em preparação para trabalhar remotamente a partir de Portugal em
-                2025.
+                2026.
               </p>
             </div>
           </motion.div>

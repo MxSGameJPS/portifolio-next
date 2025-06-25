@@ -15,7 +15,6 @@ const projects = [
     imageSrc: "/projects/aitolove.png",
     technologies: [
       "Next.js",
-      "React",
       "Tailwind CSS",
       "Framer Motion",
       "TypeScript",
@@ -27,6 +26,22 @@ const projects = [
   },
   {
     id: 2,
+    title: "Rafael Richard Psicólogo",
+    description:
+      "Site profissional para psicólogo, com agendamento de consultas e informações sobre serviços.",
+    imageSrc: "/projects/rafael.png",
+    technologies: [
+      "React",
+      "Styled-Components",
+      "Formspree",
+      "React Icons",
+    ],
+    liveUrl: "https://www.rafaelrichardpsico.com/",
+    githubUrl: "https://github.com/MxSGameJPS/rafael-psicologo.git",
+    category: "web",
+  },
+  {
+    id: 3,
     title: "MaisDireito Advogados",
     description:
       "Site institucional para escritório de advocacia com layout moderno e responsivo.",
@@ -37,7 +52,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 3,
+    id: 4,
     title: "MXSFLIX",
     description:
       "Clone da Netflix com integração à API do TheMovieDB, listando filmes por categorias.",
@@ -48,7 +63,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 4,
+    id: 5,
     title: "Barbearia Pavanello",
     description:
       "Site completo para barbearia com agendamento de serviços, venda de produtos e área administrativa.",
@@ -59,7 +74,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 5,
+    id: 6,
     title: "Academia Fitness",
     description:
       "Aplicação web para gerenciamento de academia com área para administradores e alunos.",
@@ -76,7 +91,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 6,
+    id: 7,
     title: "Receitas do Meu Brasil",
     description:
       "Site que celebra a culinária brasileira com receitas típicas de cada região.",
@@ -87,7 +102,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 7,
+    id: 8,
     title: "DJ Moisés PS",
     description:
       "Site para um DJ profissional, com galeria de fotos, agenda de eventos e contato.",
@@ -98,7 +113,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 8,
+    id: 9,
     title: "Confraria Chopp & Grill",
     description:
       "Redesign moderno para um restaurante tradicional, com menu interativo e informações de contato.",
@@ -109,7 +124,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 9,
+    id: 10,
     title: "Canal do TF",
     description:
       "Portal de notícias e vídeos relacionados ao Botafogo, com áreas públicas e administrativas.",
@@ -120,7 +135,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 10,
+    id: 11,
     title: "Fokus APP",
     description:
       "App Android para gerenciamento de tarefas, com funcionalidades de criação, edição e exclusão, estilo Pomodoro.",
