@@ -2,18 +2,16 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Defina as variáveis do modo dark como padrão */
 :root {
-  --background: #5e5e5e;
-  --foreground: #212529;
+  --background: #212529;
+  --foreground: #f8f9fa;
   --primary: #0d6efd;
   --primary-dark: #0a58ca;
-  --secondary: #6c757d;
+  --secondary: #ffffff;
   --accent: #fd7e14;
-  --success: #198754;
-}
+  --success: #20c997;
 
-/* Remova ou substitua esta parte */
-/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -21,31 +19,23 @@
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-success: var(--success);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
-
-/* Adicione estas variáveis diretamente na raiz */
-:root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-dark: var(--primary-dark);
-  --color-secondary: rgb(255, 255, 255);
-  --color-accent: var(--accent);
-  --color-success: var(--success);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #212529;
-    --foreground: #202020;
-    --primary: #0d6efd;
-    --primary-dark: #0a58ca;
-    --secondary: #ffffff;
-    --accent: #fd7e14;
-    --success: #20c997;
-  }
+/* Forçar fundo escuro nos campos de formulário */
+input,
+textarea,
+select {
+  background-color: #23272f !important;
+  color: #f8f9fa !important;
+  border-color: #444 !important;
+}
+
+/* Forçar fundo escuro nos cards */
+.card-fix,
+.bg-white,
+.dark\:bg-gray-800 {
+  background-color: #23272f !important;
+  color: #f8f9fa !important;
 }
 
 * {
@@ -54,8 +44,7 @@
 
 body {
   background: var(--background);
-  color: rgb(255, 255, 255);
-  /* A referência às fontes Geist precisa ser ajustada também */
+  color: var(--foreground);
 }
 
 section {
