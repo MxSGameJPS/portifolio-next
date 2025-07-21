@@ -26,13 +26,11 @@ const Contact = dynamic(() => import("@/components/sections/Contact"), {
 export default function Home() {
   return (
     <main>
-      <Header />
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
-      <Footer />
     </main>
   );
 }
