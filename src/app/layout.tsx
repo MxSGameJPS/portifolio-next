@@ -7,10 +7,53 @@ const inter = Inter({ subsets: ["latin"] });
 const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Saulo Pavanello | Desenvolvedor Front-End",
+  metadataBase: new URL("https://www.saulopavanello.com.br"),
+  title:
+    "Desenvolvedor Front-End | Saulo Pavanello - React, Next.js e React Native",
   description:
-    "Portfólio de Saulo Pavanello, Desenvolvedor Front-End especializado em React e Next.js",
+    "Portfólio de Saulo Pavanello, desenvolvedor front-end especialista em React, Next.js, criação de sites e interfaces responsivas para negócios digitais.",
+  keywords: [
+    "desenvolvedor front-end",
+    "portfólio dev",
+    "React",
+    "Next.js",
+    "sites modernos",
+    "UI/UX",
+    "freelancer web",
+    "Saulo Pavanello",
+    "React Native",
+    "Aplicativo Android",
+  ],
+  robots: "index, follow",
+  openGraph: {
+    title: "Saulo Pavanello | Desenvolvedor Front-End",
+    description: "Criação de sites modernos com React e Next.js.",
+    url: "https://www.saulopavanello.com.br",
+    siteName: "Saulo Pavanello",
+    type: "website",
+    locale: "pt_BR",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Saulo Pavanello - Desenvolvedor Front-End",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Saulo Pavanello | Desenvolvedor Front-End",
+    description: "Criação de sites modernos e responsivos com React e Next.js.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://www.saulopavanello.com.br",
+  },
 };
+
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 export default function RootLayout({
   children,
@@ -19,13 +62,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta httpEquiv="Content-Language" content="pt-br" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body
         className={`antialiased bg-[#000000]`}
         style={{
           fontFamily: `${inter.style.fontFamily}, ${jetBrainsMono.style.fontFamily}`,
         }}
       >
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

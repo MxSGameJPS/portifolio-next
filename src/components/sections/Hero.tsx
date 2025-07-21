@@ -99,6 +99,16 @@ export default function Hero() {
                 Currículo
               </Button>
             </div>
+            <div className="w-full mt-6">
+              <Button
+                href="https://wa.me/5551993392983?text=Olá! Gostaria de solicitar um orçamento."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-full max-w-[420px] py-4 text-lg font-bold"
+              >
+                Solicitar orçamento via WhatsApp
+              </Button>
+            </div>
           </motion.div>
 
           <motion.div
