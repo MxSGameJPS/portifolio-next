@@ -30,12 +30,7 @@ const projects = [
     description:
       "Site profissional para psicólogo, com agendamento de consultas e informações sobre serviços.",
     imageSrc: "/projects/rafael.png",
-    technologies: [
-      "React",
-      "Styled-Components",
-      "Formspree",
-      "React Icons",
-    ],
+    technologies: ["React", "Styled-Components", "Formspree", "React Icons"],
     liveUrl: "https://www.rafaelrichardpsico.com/",
     githubUrl: "https://github.com/MxSGameJPS/rafael-psicologo.git",
     category: "web",
@@ -145,6 +140,27 @@ const projects = [
     githubUrl: "https://github.com/MxSGameJPS/fokus-app",
     category: "mobile",
   },
+  {
+    id: 12,
+    title: "Vida Leve",
+    description:
+      "Um aplicativo React Native com Expo para ajudá-lo a manter uma rotina saudável, funcionando 100% offline.",
+    imageSrc: "/projects/vidaleve/Group1.png", // Substitua pelo caminho correto
+    images: [
+      "/projects/vidaleve/Group1.png",
+      "/projects/vidaleve/Group2.png",
+      "/projects/vidaleve/Group3.png",
+      "/projects/vidaleve/Group4.png",
+      "/projects/vidaleve/Group5.png",
+      "/projects/vidaleve/Group6.png",
+      "/projects/vidaleve/Group7.png",
+      "/projects/vidaleve/Group8.png",
+    ],
+    technologies: ["React Native", "Expo", "Expo Router"],
+    liveUrl: "",
+    githubUrl: "https://github.com/MxSGameJPS/vida-leve",
+    category: "mobile",
+  },
 ];
 
 export default function Projects() {
@@ -162,10 +178,7 @@ export default function Projects() {
     : filteredProjects.slice(0, 6);
 
   return (
-    <section
-      id="projetos"
-      className="relative py-20 dark:bg-[#64646446]"
-    >
+    <section id="projetos" className="relative py-20 dark:bg-[#64646446]">
       <ParticlesBackground />
       <div className="container px-4 mx-auto">
         <motion.div
@@ -227,6 +240,7 @@ export default function Projects() {
               liveUrl={project.liveUrl}
               githubUrl={project.githubUrl}
               index={index}
+              images={project.images}
             />
           ))}
 

@@ -12,7 +12,10 @@ interface ProjectCardProps {
   liveUrl: string;
   githubUrl: string;
   index: number;
+  images?: string[]; // Permite passar imagens para projetos específicos
 }
+
+import ImageModal from "./ImageModal"; // Importe o componente do modal de imagens
 
 export default function ProjectCard({
   title,
@@ -22,11 +25,15 @@ export default function ProjectCard({
   liveUrl,
   githubUrl,
   index,
+  images,
 }: ProjectCardProps) {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [showImages, setShowImages] = useState(false);
 
   const handleProjectClick = () => {
-    if (liveUrl.endsWith(".mp4")) {
+    if (images && images.length > 0) {
+      setShowImages(true);
+    } else if (liveUrl.endsWith(".mp4")) {
       setIsVideoPlaying(true);
     } else {
       window.open(liveUrl, "_blank");
@@ -71,7 +78,11 @@ export default function ProjectCard({
               onClick={handleProjectClick}
               className="flex-1 px-4 py-2 text-sm font-medium text-white transition-colors rounded-md bg-primary hover:bg-primary/90"
             >
-              {liveUrl.endsWith(".mp4") ? "Ver vídeo" : "Ver projeto"}
+              {images && images.length > 0
+                ? "Ver imagens"
+                : liveUrl.endsWith(".mp4")
+                ? "Ver vídeo"
+                : "Ver projeto"}
             </button>
             <a
               href={githubUrl}
@@ -125,6 +136,10 @@ export default function ProjectCard({
             </div>
           </div>
         </div>
+      )}
+
+      {showImages && images && (
+        <ImageModal images={images} onClose={() => setShowImages(false)} />
       )}
     </>
   );
