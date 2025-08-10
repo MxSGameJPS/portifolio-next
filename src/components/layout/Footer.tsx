@@ -13,8 +13,8 @@ export default function Footer() {
               Saulo Pavanello
             </h3>
             <p className="max-w-md mb-4 text-secondary">
-              Desenvolvedor Fullstack e Mobile criando experiências digitais que unem
-              beleza e funcionalidade.
+              Desenvolvedor Fullstack e Mobile criando experiências digitais que
+              unem beleza e funcionalidade.
             </p>
           </div>
 
@@ -78,6 +78,20 @@ export default function Footer() {
             ))}
           </div>
         </div>
+      </div>
+      {/* Bloco de divulgação E-goi */}
+      <div className="flex justify-center mt-8">
+        <a
+          target="_blank"
+          href="https://www.e-goi.com/br/email-marketing-gratis/?utm_medium=referral&utm_campaign=plano-5001&utm_content=rodape.site"
+          rel="noopener"
+        >
+          <img
+            src="https://eg-e-goi-com.b-cdn.net/5001/footer-5001-pt-br.png"
+            alt="Rodapé E-goi"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+        </a>
       </div>
     </footer>
   );
