@@ -15,7 +15,7 @@ export default function Contact() {
       id="contato"
       className="py-20 bg-gradient-to-b from-[#000000] via-[#4D0000] to-[#000000] text-[#F5F5F5]"
     >
-      <div className="container px-4 mx-auto">
+      <div className="container max-w-full px-2 mx-auto overflow-x-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,13 +34,13 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:gap-10 md:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-[#000000]/80 rounded-2xl p-8 shadow-lg border border-[#B8860B]/40"
+            className="bg-[#000000]/80 rounded-2xl p-4 md:p-8 shadow-lg border border-[#B8860B]/40 w-full box-border"
           >
             <h3 className="mb-6 text-2xl font-semibold text-[#F5F5F5]">
               Vamos Trabalhar Juntos
@@ -51,7 +51,7 @@ export default function Contact() {
               design e desenvolvimento para o seu negócio.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-6 md:space-y-7">
               <div className="flex items-start">
                 <div className="p-3 mr-4 rounded-lg bg-[#B8860B]/20">
                   <FaEnvelope className="text-xl text-[#B8860B]" />
@@ -137,7 +137,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="bg-[#000000]/80 rounded-2xl p-8 shadow-lg border border-[#C0C0C0]/40"
+            className="bg-[#000000]/80 rounded-2xl p-5 md:p-8 shadow-lg border border-[#C0C0C0]/40 w-full box-border"
           >
             <ContactForm />
           </motion.div>
