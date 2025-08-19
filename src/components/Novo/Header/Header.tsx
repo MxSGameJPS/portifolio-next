@@ -18,7 +18,7 @@ const Header = () => {
             }}
             style={{ display: "inline-block" }}
           >
-            <Image src="/logos/Logo1.png" alt="Logo" width={120} height={48} />
+            <Image src="/logos/logo1.png" alt="Logo" width={120} height={48} />
           </a>
         </Link>
       </div>
