@@ -1,22 +1,25 @@
 import dynamic from "next/dynamic";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import ParticlesBackground from "@/components/ui/ParticlesBackground";
 
 // Importação dinâmica dos componentes com suspense
-const Hero = dynamic(() => import("@/components/sections/Hero"), {
+const Hero = dynamic(() => import("@/components/Novo/Hero/Hero"), {
   ssr: true,
 });
 
-const About = dynamic(() => import("@/components/sections/About"), {
+const About = dynamic(() => import("@/components/Novo/About/About"), {
   ssr: true,
 });
 
-const Skills = dynamic(() => import("@/components/sections/Skills"), {
+// const Skills = dynamic(() => import("@/components/sections/Skills"), {
+//   ssr: true,
+// });
+
+const Staks = dynamic(() => import("@/components/Novo/Staks/Staks"), {
   ssr: true,
 });
 
-const Projects = dynamic(() => import("@/components/sections/Projects"), {
-  ssr: true,
+const Projects = dynamic(() => import("@/components/Novo/Projetos/Projects"), {
+  ssr: false,
 });
 
 const Contact = dynamic(() => import("@/components/sections/Contact"), {
@@ -25,12 +28,18 @@ const Contact = dynamic(() => import("@/components/sections/Contact"), {
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+    <main
+      style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}
+    >
+      <ParticlesBackground />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <Hero />
+        <About />
+        <Staks />
+        {/* <Skills /> */}
+        <Projects />
+        <Contact />
+      </div>
     </main>
   );
 }

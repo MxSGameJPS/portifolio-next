@@ -5,14 +5,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#f1f3f5] dark:bg-[#343a40] py-10">
+    <footer className="py-10 bg-gradient-to-b from-[#000000] via-[#4D0000] to-[#000000] text-[#F5F5F5] border-t border-[#B8860B]/30">
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center justify-between mb-8 md:flex-row">
           <div className="mb-6 md:mb-0">
-            <h3 className="mb-2 text-xl font-bold text-gradient">
+            <h3 className="mb-2 text-xl font-bold bg-gradient-to-r from-[#B8860B] via-[#C0C0C0] to-[#B8860B] bg-clip-text text-transparent">
               Saulo Pavanello
             </h3>
-            <p className="max-w-md mb-4 text-secondary">
+            <p className="max-w-md mb-4 text-[#C0C0C0]">
               Desenvolvedor Fullstack e Mobile criando experiências digitais que
               unem beleza e funcionalidade.
             </p>
@@ -24,7 +24,7 @@ export default function Footer() {
                 href="https://github.com/MxSGameJPS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl transition-colors hover:text-primary"
+                className="text-2xl transition-colors text-[#C0C0C0] hover:text-[#B8860B]"
                 aria-label="GitHub"
               >
                 <FaGithub />
@@ -33,7 +33,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/saulopavanello/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl transition-colors hover:text-primary"
+                className="text-2xl transition-colors text-[#C0C0C0] hover:text-[#B8860B]"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin />
@@ -42,16 +42,16 @@ export default function Footer() {
                 href="https://www.instagram.com/mxsgamejps/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl transition-colors hover:text-primary"
+                className="text-2xl transition-colors text-[#C0C0C0] hover:text-[#B8860B]"
                 aria-label="Instagram"
               >
                 <FaInstagram />
               </a>
             </div>
-            <p className="text-sm text-secondary">
+            <p className="text-sm text-[#C0C0C0]">
               <a
                 href="mailto:contato@saulopavanello.com"
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-[#B8860B]"
               >
                 saulopavanello@saulopavanello.com
               </a>
@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 text-sm text-center border-t border-gray-200 dark:border-gray-700 text-secondary">
+        <div className="pt-6 text-sm text-center border-t border-[#B8860B]/30 text-[#C0C0C0]">
           <p>© {currentYear} Saulo Pavanello. Todos os direitos reservados.</p>
           <div className="flex justify-center mt-2 space-x-4">
             {[
@@ -71,7 +71,7 @@ export default function Footer() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-[#B8860B]"
               >
                 {link.name}
               </Link>

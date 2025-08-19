@@ -1,0 +1,91 @@
+.staksSection {
+  width: 100vw;
+  padding: 2.5rem 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.staksCarousel {
+  display: flex;
+  gap: 3rem;
+  animation: moveStaks 300s linear infinite;
+  min-width: max-content;
+}
+
+@keyframes moveStaks {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.stakItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+  margin: 0 1rem;
+}
+
+.stakLogo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 8px #00000055);
+}
+
+.stakLabel {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+.stakBar {
+  width: 80px;
+  height: 10px;
+  border-radius: 6px;
+  background: #23232e;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.stakBarFill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #4d0000 10%, #b8860b 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.stakPercent {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .staksCarousel {
+    gap: 1.5rem;
+  }
+  .stakItem {
+    min-width: 80px;
+  }
+  .stakLogo {
+    width: 40px;
+    height: 40px;
+  }
+  .stakBar {
+    width: 60px;
+    height: 8px;
+  }
+}

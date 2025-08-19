@@ -28,7 +28,7 @@ export default function ParticlesBackground() {
             },
           },
           color: {
-            value: "#da2cfd", // Cor roxa (pode ajustar para combinar com seu tema)
+            value: "#4D0000", // Cor roxa (pode ajustar para combinar com seu tema)
           },
           shape: {
             type: "circle",
@@ -56,7 +56,7 @@ export default function ParticlesBackground() {
           links: {
             enable: true,
             distance: 100,
-            color: "#2f0fa3",
+            color: "#4D0000",
             opacity: 0.5,
             width: 1,
           },
