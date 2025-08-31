@@ -1,0 +1,217 @@
+.comparacaoSection {
+  width: 100%;
+  padding: 80px 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #4d0000 0%, #000000 100%);
+
+  @media (max-width: 680px) {
+    padding: 16px 12px;
+  }
+}
+.titulo {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #f5f5f5;
+  text-align: center;
+
+  @media (max-width: 680px) {
+    font-size: 2.5rem;
+  }
+}
+.titulo .azul {
+  color: #c0c0c0;
+}
+.titulo .impressiona {
+  color: #b8860b;
+}
+.subtitulo {
+  font-size: 1.5rem;
+  color: #c0c0c0;
+  margin-bottom: 32px;
+  text-align: center;
+
+  @media (max-width: 680px) {
+    font-size: 1rem;
+  }
+}
+.botaoTeste {
+  background: linear-gradient(90deg, #b8860b 0%, #c0c0c0 100%);
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 16px 0 rgba(63, 198, 224, 0.15);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 680px) {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+}
+.botaoTeste:hover {
+  background: linear-gradient(90deg, #c0c0c0 0%, #b8860b 100%);
+}
+.comparacaoCards {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+
+  @media (max-width: 680px) {
+    padding: 12px 16px;
+    font-size: 1rem;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}
+.card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1.5px solid #c0c0c0;
+  border-radius: 18px;
+  padding: 24px 28px;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 16px 0 rgba(77, 0, 0, 0.08);
+  transition: border 0.2s, box-shadow 0.2s;
+
+  @media (max-width: 680px) {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  @media (max-width: 680px) {
+    font-size: 1rem;
+    gap: 8px;
+  }
+}
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #c0c0c0;
+
+  @media (max-width: 680px) {
+    font-size: 1rem;
+  }
+}
+.cardCheck {
+  color: #b8860b;
+  font-size: 1.2rem;
+
+  @media (max-width: 680px) {
+    font-size: 1rem;
+    text-align: center;
+    margin-left: 54px;
+  }
+}
+.cardTime {
+  font-size: 1.1rem;
+  color: #c0c0c0;
+
+  @media (max-width: 680px) {
+    font-size: 1rem;
+    text-align: end;
+  }
+}
+.cardBar {
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  margin: 12px 0;
+  background: #222;
+  overflow: hidden;
+
+  @media (max-width: 680px) {
+    height: 6px;
+  }
+}
+.cardBarInner {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s;
+
+  @media (max-width: 680px) {
+    height: 4px;
+  }
+}
+.cardBarInner.nxhost {
+  background: linear-gradient(90deg, #3ec6e0 0%, #4f8cff 100%);
+}
+.cardBarInner.a {
+  background: linear-gradient(90deg, #b8860b 0%, #c0c0c0 100%);
+}
+.cardBarInner.b {
+  background: linear-gradient(90deg, #ff5e69 0%, #b16cea 100%);
+}
+.cardScore {
+  font-size: 1rem;
+  color: #c0c0c0;
+  margin-top: 2px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.cardPercent {
+  font-size: 0.95rem;
+  color: #c0c0c0;
+  margin-bottom: 2px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.destaque {
+  background: rgba(62, 198, 224, 0.12);
+  border: 1.5px solid #b8860b;
+  border-radius: 18px;
+  padding: 18px 24px;
+  color: #f5f5f5;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  box-shadow: 0 2px 16px 0 rgba(63, 198, 224, 0.08);
+
+  @media (max-width: 680px) {
+    padding: 8px 10px;
+    font-size: 1rem;
+
+  }
+}
+.destaque span {
+  font-size: 1.3rem;
+
+  @media (max-width: 680px) {
+    font-size: 1rem;
+  }
+}
+.destaqueTexto {
+  font-size: 1rem;
+  color: #c0c0c0;
+  margin-top: 18px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}

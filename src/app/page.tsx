@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
+import Formulario from "@/componentsPromocao/Formulario/form";
+import Header from './../components/Novo/Header/Header';
 
 // Importação dinâmica dos componentes com suspense
 const Hero = dynamic(() => import("@/components/Novo/Hero/Hero"), {
@@ -33,12 +35,13 @@ export default function Home() {
     >
       <ParticlesBackground />
       <div style={{ position: "relative", zIndex: 1 }}>
+        <Header />
         <Hero />
         <About />
         <Staks />
         {/* <Skills /> */}
         <Projects />
-        <Contact />
+        <Formulario />
       </div>
     </main>
   );

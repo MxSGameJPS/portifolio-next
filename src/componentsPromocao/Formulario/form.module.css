@@ -1,0 +1,273 @@
+.cardWhatsapp {
+  background: #16383f;
+  border: 1.5px solid #25d366;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 24px;
+  color: #f5f5f5;
+  box-shadow: 0 2px 8px 0 rgba(37, 211, 102, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 500px;
+
+  @media (max-width: 680px) {
+    max-width: 100%;
+  }
+}
+.cardWhatsappTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f5f5f5;
+  margin-bottom: 4px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.cardWhatsappText {
+  font-size: 1rem;
+  color: #c0c0c0;
+  margin-bottom: 8px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.cardWhatsappBtn {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-top: 6px;
+  box-shadow: 0 2px 8px 0 rgba(37, 211, 102, 0.12);
+  transition: background 0.2s;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.cardWhatsappBtn:hover {
+  background: #128c7e;
+}
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  margin-right: 12px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+
+  @media (max-width: 680px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+.formularioSection {
+  width: 100%;
+  padding: 80px 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #4d0000 0%, #000000 100%);
+
+  @media (max-width: 680px) {
+    padding: 16px 12px;
+  }
+}
+.titulo {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #f5f5f5;
+  text-align: center;
+
+  @media (max-width: 680px) {
+    font-size: 2.5rem;
+  }
+}
+.titulo .azul {
+  color: #b8860b;
+}
+.subtitulo {
+  font-size: 1.5rem;
+  color: #c0c0c0;
+  margin-bottom: 32px;
+  text-align: center;
+
+  @media (max-width: 680px) {
+    font-size: 1.5rem;
+  }
+}
+.container {
+  display: flex;
+  gap: 48px;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+.info {
+  flex: 1;
+  background: none;
+  color: #f5f5f5;
+  font-size: 1.1rem;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.infoTitulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #f5f5f5;
+}
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.infoLabel {
+  font-weight: 500;
+  color: #b8860b;
+}
+.infoValor {
+  color: #f5f5f5;
+}
+.infoObs {
+  font-size: 0.95rem;
+  color: #b8860b;
+  margin-bottom: 8px;
+}
+.form {
+  flex: 1;
+  background: #121824;
+  border: 1.5px solid #b8860b;
+  border-radius: 16px;
+  padding: 28px 22px;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  box-shadow: 0 2px 16px 0 rgba(62, 198, 224, 0.08);
+  min-width: 340px;
+  max-width: 520px;
+
+  @media (max-width: 680px) {
+    max-width: 100%;
+  }
+}
+.inputGroup {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+  }
+}
+.input {
+  background: #222;
+  border: 1.5px solid #b8860b;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #f5f5f5;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 0;
+  transition: border 0.2s;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.input:focus {
+  outline: none;
+  border-color: #b8860b;
+}
+.textarea {
+  background: #222;
+  border: 1.5px solid #b8860b;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #f5f5f5;
+  font-size: 1rem;
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  transition: border 0.2s;
+}
+.textarea:focus {
+  outline: none;
+  border-color: #b8860b;
+}
+.botoes {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  justify-content: center;
+}
+.botao {
+  background: linear-gradient(90deg, #b8860b 0%, #c0c0c0 100%);
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 16px 0 rgba(63, 198, 224, 0.15);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.botao:hover {
+  background: linear-gradient(90deg, #c0c0c0 0%, #b8860b 100%);
+}
+.botaoWhatsapp {
+  background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 16px 0 rgba(37, 211, 102, 0.15);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 680px) {
+    font-size: 0.9rem;
+  }
+}
+.botaoWhatsapp:hover {
+  background: linear-gradient(90deg, #128c7e 0%, #25d366 100%);
+}
