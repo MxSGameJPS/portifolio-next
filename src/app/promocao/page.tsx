@@ -1,4 +1,3 @@
-
 import Header from "@/componentsPromocao/Header/Header";
 import Hero from "@/componentsPromocao/Hero/hero";
 import Servicos from "@/componentsPromocao/Servicos/servicos";
@@ -7,6 +6,7 @@ import Testemunhos from "@/componentsPromocao/Testemunhos/testemunho";
 import Formulario from "@/componentsPromocao/Formulario/form";
 import Script from "next/script";
 
+export default function PromocaoPage() {
   return (
     <>
       <Script id="facebook-pixel" strategy="afterInteractive">
@@ -23,15 +23,11 @@ import Script from "next/script";
           fbq('track', 'PageView');
         `}
       </Script>
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=868773593828810&ev=PageView&noscript=1"
-          alt="facebook-pixel"
-        />
-      </noscript>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `<noscript><img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=868773593828810&ev=PageView&noscript=1' /></noscript>`,
+        }}
+      />
       <Header />
       <Hero />
       <Servicos />
@@ -39,6 +35,5 @@ import Script from "next/script";
       <Testemunhos />
       <Formulario />
     </>
-  );
   );
 }
