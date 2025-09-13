@@ -24,6 +24,7 @@ export default function Header() {
   const navLinks = [
     { name: "Início", href: "#home" },
     { name: "Sobre", href: "#sobre" },
+    { name: "Certificações", href: "/certificacoes" },
     { name: "Habilidades", href: "#habilidades" },
     { name: "Projetos", href: "#projetos" },
     { name: "Contato", href: "#contato" },
@@ -37,18 +38,18 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container flex items-center justify-between px-4 py-4 mx-auto">
         <Link href="#home" className="text-2xl font-bold text-gradient">
           Saulo Pavanello
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden space-x-8 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="font-medium hover:text-primary transition-colors"
+              className="font-medium transition-colors hover:text-primary"
             >
               {link.name}
             </Link>
@@ -57,7 +58,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          className="text-2xl md:hidden"
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
@@ -67,13 +68,13 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md shadow-md">
-          <nav className="container mx-auto px-4 py-6 flex flex-col space-y-4">
+        <div className="shadow-md md:hidden bg-background/95 backdrop-blur-md">
+          <nav className="container flex flex-col px-4 py-6 mx-auto space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-medium hover:text-primary transition-colors py-2"
+                className="py-2 font-medium transition-colors hover:text-primary"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}

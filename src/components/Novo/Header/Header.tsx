@@ -40,6 +40,24 @@ const Header = () => {
         <button
           className={styles.link}
           onClick={() => {
+            // Tenta rolar para sección de certificações na página atual
+            const el = document.querySelector(
+              "section[class*='certificacoesSection']"
+            );
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+              window.location.hash = "#certificacoes";
+              return;
+            }
+            // Caso não exista, navega para a rota
+            window.location.href = "/certificacoes";
+          }}
+        >
+          Certificações
+        </button>
+        <button
+          className={styles.link}
+          onClick={() => {
             window.location.hash = "#projetos";
             let attempts = 0;
             const maxAttempts = 30;

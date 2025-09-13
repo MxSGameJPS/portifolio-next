@@ -27,7 +27,27 @@ const Header = () => {
         >
           Sobre
         </button>
-        <a className={styles.link} href="https://www.saulopavanello.com.br/#projetos">
+        <button
+          className={styles.link}
+          onClick={() => {
+            // Tenta encontrar a seção de certificações na página atual
+            const el = document.querySelector(
+              "section[class*='certificacoesSection']"
+            );
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+              return;
+            }
+            // Se não existir na página atual, navega para a rota /certificacoes
+            window.location.href = "/certificacoes";
+          }}
+        >
+          Certificações
+        </button>
+        <a
+          className={styles.link}
+          href="https://www.saulopavanello.com.br/#projetos"
+        >
           Projetos
         </a>
         <button
