@@ -5,6 +5,17 @@ import styles from "./projects.module.css";
 
 const projects = [
   {
+    id: 3,
+    title: "NextPath",
+    description:
+      "Desenvolvi esta plataforma para ajudar a comunidade iniciante a aprender NEXT.JS de forma divertida e eficaz",
+    imageSrc: "/projects/nextpath.png",
+    technologies: ["Next.js", "React", "Node.js", "PostgreSQL"],
+    liveUrl: "https://nextpath-eight.vercel.app/",
+    githubUrl: "https://github.com/MxSGameJPS/nextpath.git",
+    category: "web",
+  },
+  {
     id: 1,
     title: "Ai To Love",
     description:
@@ -22,6 +33,17 @@ const projects = [
     category: "web",
   },
   {
+    id: 8,
+    title: "FreeControl",
+    description:
+      "Plataforma desenvolvida para auxiliar e apoiar desenvolvedores na organização e conclusão de estudos e projetos",
+    imageSrc: "/projects/freecontrol.png",
+    technologies: ["Next", "React", "PostgreSQL", "JWT - Auth"],
+    liveUrl: "https://freela-control.vercel.app/",
+    githubUrl: "https://github.com/MxSGameJPS/freela-control.git",
+    category: "web",
+  },
+  {
     id: 2,
     title: "Rafael Richard Psicólogo",
     description:
@@ -33,7 +55,7 @@ const projects = [
     category: "web",
   },
   {
-    id: 3,
+    id: 10,
     title: "MaisDireito Advogados",
     description:
       "Site institucional para escritório de advocacia com layout moderno e responsivo.",
@@ -94,39 +116,6 @@ const projects = [
     category: "web",
   },
   {
-    id: 8,
-    title: "DJ Moisés PS",
-    description:
-      "Site para um DJ profissional, com galeria de fotos, agenda de eventos e contato.",
-    imageSrc: "/projects/dj.png",
-    technologies: ["Vite", "React", "CSS Modules"],
-    liveUrl: "https://www.djmoisesps.com.br/",
-    githubUrl: "https://github.com/MxSGameJPS/dj-moises",
-    category: "web",
-  },
-  {
-    id: 9,
-    title: "Confraria Chopp & Grill",
-    description:
-      "Redesign moderno para um restaurante tradicional, com menu interativo e informações de contato.",
-    imageSrc: "/projects/confraria.png",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    liveUrl: "https://confraria-chop-grill.vercel.app/",
-    githubUrl: "https://github.com/MxSGameJPS/confraria",
-    category: "web",
-  },
-  {
-    id: 10,
-    title: "Canal do TF",
-    description:
-      "Portal de notícias e vídeos relacionados ao Botafogo, com áreas públicas e administrativas.",
-    imageSrc: "/projects/canal.png",
-    technologies: ["React", "React Router", "Styled Components", "Axios"],
-    liveUrl: "https://canal-do-tf.vercel.app/",
-    githubUrl: "https://github.com/MxSGameJPS/canal-tf",
-    category: "web",
-  },
-  {
     id: 11,
     title: "Fokus APP",
     description:
@@ -161,85 +150,109 @@ const projects = [
 ];
 
 const Projects: React.FC = () => {
-  const [groupIndex, setGroupIndex] = useState(0);
-  const projectsPerPage = 4;
-  const totalGroups = Math.ceil(projects.length / projectsPerPage);
-
-  const handlePrev = () => {
-    setGroupIndex((prev) => (prev === 0 ? totalGroups - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setGroupIndex((prev) => (prev === totalGroups - 1 ? 0 : prev + 1));
-  };
-
-  const startIdx = groupIndex * projectsPerPage;
-  const currentProjects = projects.slice(startIdx, startIdx + projectsPerPage);
+  // novo layout: 3 projetos em destaque full-width + grid com até 8 projetos em 4 colunas
+  const featuredProjects = projects.slice(0, 3);
+  const otherProjects = projects.slice(3, 11); // pegamos até 8 projetos para 2 linhas de 4
 
   return (
     <section className={styles.projectsSection} id="projetos">
       <h2 className={styles.title}>Projetos</h2>
-      <div className={styles.storiesContainer}>
-        <button className={styles.arrow} onClick={handlePrev}>
-          &lt;
-        </button>
-        <div className={styles.storiesGroup}>
-          {currentProjects.map((project) => (
-            <div key={project.id} className={styles.storyCard}>
-              <img
-                src={project.imageSrc}
-                alt={project.title}
-                className={styles.storyImage}
-              />
-              <div className={styles.storyContent}>
-                <h3 className={styles.storyTitle}>{project.title}</h3>
-                <p className={styles.storyDescription}>{project.description}</p>
-                <div className={styles.techList}>
-                  {project.technologies.map((tech) => (
-                    <span key={tech} className={styles.techItem}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className={styles.links}>
-                  {project.liveUrl && project.liveUrl.startsWith("http") && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.linkButton}
-                    >
-                      Ver Projeto
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.linkButton}
-                    >
-                      GitHub
-                    </a>
-                  )}
-                </div>
+
+      <div className={styles.featuredGroup}>
+        {featuredProjects.map((project) => (
+          <article key={project.id} className={styles.featuredFull}>
+            <img
+              src={project.imageSrc}
+              alt={project.title}
+              className={styles.featuredImage}
+            />
+            <div className={styles.featuredContent}>
+              {project.category === "mobile" && (
+                <span className={styles.mobileTag}>MOBILE</span>
+              )}
+              <h3 className={styles.featuredTitle}>{project.title}</h3>
+              <p className={styles.featuredDescription}>
+                {project.description}
+              </p>
+              <div className={styles.projectTags}>
+                {project.technologies?.slice(0, 4).map((t) => (
+                  <span key={t} className={styles.tag}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <div className={styles.projectFooter}>
+                {project.liveUrl && project.liveUrl.startsWith("http") && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.ctaButton}
+                  >
+                    Live
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.ctaOutline}
+                  >
+                    Code
+                  </a>
+                )}
               </div>
             </div>
-          ))}
-        </div>
-        <button className={styles.arrow} onClick={handleNext}>
-          &gt;
-        </button>
+          </article>
+        ))}
       </div>
-      <div className={styles.storiesIndicators}>
-        {Array.from({ length: totalGroups }).map((_, idx) => (
-          <span
-            key={idx}
-            className={
-              idx === groupIndex ? styles.activeIndicator : styles.indicator
-            }
-            onClick={() => setGroupIndex(idx)}
-          />
+
+      <div className={styles.gridFour}>
+        {otherProjects.map((project) => (
+          <div key={project.id} className={styles.smallCard}>
+            <img
+              src={project.imageSrc}
+              alt={project.title}
+              className={styles.smallImage}
+            />
+            <div className={styles.smallContent}>
+              {project.category === "mobile" && (
+                <span className={styles.mobileTag}>MOBILE</span>
+              )}
+              <h4 className={styles.smallTitle}>{project.title}</h4>
+              <p className={styles.smallDesc}>{project.description}</p>
+              <div className={styles.projectTags}>
+                {project.technologies?.slice(0, 4).map((t) => (
+                  <span key={t} className={styles.tag}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <div className={styles.smallLinks}>
+                {project.liveUrl && project.liveUrl.startsWith("http") && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.smallLink}
+                  >
+                    Ver
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.smallLink}
+                  >
+                    Código
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </section>

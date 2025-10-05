@@ -40,7 +40,7 @@ const Formulario = () => {
             <div>
               <span className={styles.infoLabel}>Email</span>
               <br />
-              <span className={styles.infoValor}>nx3designer@gmail.com</span>
+              <span className={styles.infoValor}>saulopavanello@saulopavanello.com.br</span>
               <br />
               <span className={styles.infoObs} style={{ color: "#3ec6e0" }}>
                 Resposta em até 4 horas

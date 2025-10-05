@@ -1,3 +1,7 @@
+/* projects.module.css
+   Versao corrigida: removido aninhamento inválido e blocos não fechados.
+*/
+
 .projectsSection {
   width: 100%;
   margin: 0 auto;
@@ -16,16 +20,352 @@
   letter-spacing: 2px;
 }
 
+/* Layout principal: coluna esquerda (destaques) + grade direita (pequenos cards) */
+.projectsLayout {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2rem;
+  align-items: start;
+  padding: 0 1rem;
+}
+
+/* Grupo de destaques full-width */
+.featuredGroup {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0 1rem;
+  margin: 0 auto 2rem auto;
+}
+
+.featuredFull {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 17, 17, 0.9),
+    rgba(29, 12, 34, 0.6)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+  /* borda sutil + leve blur de fundo para separar do plano de fundo */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.45),
+    rgba(20, 10, 20, 0.35)
+  );
+  backdrop-filter: blur(4px) saturate(110%);
+  -webkit-backdrop-filter: blur(4px) saturate(110%);
+  overflow: hidden;
+  position: relative;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+/* imagem maior apenas para os destaques */
+.featuredFull .featuredImage {
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 240ms ease, filter 240ms ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* Grid com 4 colunas para os demais projetos */
+.gridFour {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.gridFour .smallCard {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.gridFour .smallImage {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+  transition: transform 220ms ease, filter 220ms ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* Responsividade para gridFour e featuredFull */
+@media (max-width: 1024px) {
+  .gridFour {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featuredFull {
+    gap: 0.8rem;
+  }
+  .featuredFull .featuredImage {
+    width: 260px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gridFour {
+    grid-template-columns: 1fr;
+  }
+  .featuredFull {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .featuredFull .featuredImage {
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+  }
+  .featuredContent {
+    padding-top: 0.5rem;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.featuredCard {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 17, 17, 0.9),
+    rgba(29, 12, 34, 0.6)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 0.85rem;
+  display: flex;
+  gap: 1rem;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.featuredImage {
+  width: 220px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.featuredContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #e6e6e6;
+}
+
+.featuredTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.featuredDescription {
+  font-size: 0.95rem;
+  color: #cfcfcf;
+  margin: 0.15rem 0 0.35rem 0;
+  line-height: 1.35;
+  /* fallback + vendor prefix para compatibilidade */
+  line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.projectTags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* badge para identificar projetos mobile */
+.mobileTag {
+  display: inline-block;
+  background: linear-gradient(90deg, #7a3fb2, #a84fae);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.35rem;
+}
+
+.gridFour .mobileTag {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.45rem;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e9e9e9;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.projectFooter {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.ctaButton {
+  background: linear-gradient(90deg, #6f4aa5, #a14c7c);
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ctaOutline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #eaeaea;
+  padding: 0.35rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.smallGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.smallCard {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(8, 8, 8, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  overflow: hidden; /* garante que a imagem ampliada não vaze */
+  position: relative;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+/* hover effects */
+.featuredFull:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+.featuredFull:hover .featuredImage {
+  transform: scale(1.06);
+  filter: brightness(0.95) saturate(1.05);
+}
+.smallCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+}
+.smallCard:hover .smallImage {
+  transform: scale(1.04);
+  filter: brightness(0.96);
+}
+
+.smallImage {
+  width: 84px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.smallContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.smallTitle {
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 0;
+}
+
+.smallDesc {
+  font-size: 0.82rem;
+  color: #cfcfcf;
+  margin: 0;
+  /* fallback + vendor prefix */
+  line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.smallLinks {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.smallLink {
+  display: inline-block;
+  font-size: 0.88rem;
+  color: #eaeaea;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.32rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+  transition: background 0.14s ease, transform 0.12s ease, color 0.14s ease;
+}
+
+.smallLink:hover {
+  background: linear-gradient(90deg, #6f4aa5, #a14c7c);
+  color: #fff;
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
 .storiesContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   width: 100%;
-
-  @media (max-width: 600px) {
-    gap: 1rem;
-  }
 }
 
 .arrow {
@@ -179,11 +519,15 @@
     font-size: 1.3rem;
     margin-bottom: 1rem;
   }
-  .storiesContainer {
+  .projectsLayout {
+    display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+    padding: 0;
+  }
+  .leftColumn,
+  .rightColumn {
     width: 100%;
-    align-items: stretch;
   }
   .arrow {
     font-size: 1.5rem;
