@@ -74,7 +74,7 @@ export default function RootLayout({
           fontFamily: `${inter.style.fontFamily}, ${jetBrainsMono.style.fontFamily}`,
         }}
       >
-        
+       
         <main>{children}</main>
         <Footer />
         {/* 100% privacy-first analytics */}

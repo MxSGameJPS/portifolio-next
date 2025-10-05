@@ -22,6 +22,7 @@ const Header = () => {
           </a>
         </Link>
       </div>
+
       <nav className={styles.nav}>
         <button
           className={styles.link}
@@ -37,10 +38,11 @@ const Header = () => {
         >
           Sobre
         </button>
+
         <button
           className={styles.link}
           onClick={() => {
-            // Tenta rolar para sección de certificações na página atual
+            // Tenta rolar para seção de certificações na página atual
             const el = document.querySelector(
               "section[class*='certificacoesSection']"
             );
@@ -55,6 +57,7 @@ const Header = () => {
         >
           Certificações
         </button>
+
         <button
           className={styles.link}
           onClick={() => {
@@ -80,12 +83,12 @@ const Header = () => {
         >
           Projetos
         </button>
+
         <button
           className={styles.button}
           onClick={() => {
-            window.location.hash = "#contato";
-            const el = document.getElementById("contato");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
+            // Navega para a rota /contato que contém o formulário.
+            window.location.href = "/contato";
           }}
         >
           Vamos conversar
