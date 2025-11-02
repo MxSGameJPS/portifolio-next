@@ -60,3 +60,24 @@
     background-position: 40% 10%;
   }
 }
+
+@media (max-width: 600px) {
+
+  .heroSection {
+    background: linear-gradient(180deg, #000000 40%, #4d0000 100%);
+    background-size: 200% 200%;
+    animation: oceanGradient 10s ease-in-out infinite;
+    min-height: 50vh;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+  .subtitle {
+    font-size: 1.5rem;
+  }
+  .content {
+    margin: 10rem auto;
+    padding: 0.5rem 1rem;
+  }
+}

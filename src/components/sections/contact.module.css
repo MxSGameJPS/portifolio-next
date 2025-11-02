@@ -1,0 +1,180 @@
+/* contact.module.css - estilos para o componente Contact.tsx */
+
+.section {
+  /* Variáveis locais (CSS Modules não permite seletores puros como :root) */
+  --bg-1: #000000;
+  --bg-2: #4d0000;
+  --accent: #b8860b;
+  --muted: #c0c0c0;
+  --text: #f5f5f5;
+
+  padding: 5rem 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-1) 0%,
+    var(--bg-2) 50%,
+    var(--bg-1) 100%
+  );
+  color: var(--text);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  overflow-x: hidden;
+}
+
+.heading {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 0.75rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.divider {
+  width: 6rem;
+  height: 0.35rem;
+  margin: 0.5rem auto 1.5rem;
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.description {
+  max-width: 42rem;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+
+.cardLeft {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(184, 134, 11, 0.18);
+  box-sizing: border-box;
+}
+
+.cardTitle {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cardText {
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.iconBox {
+  padding: 0.65rem;
+  margin-right: 0.75rem;
+  border-radius: 0.6rem;
+  background: rgba(184, 134, 11, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.iconBoxAlt {
+  padding: 0.65rem;
+  margin-right: 0.75rem;
+  border-radius: 0.6rem;
+  background: rgba(192, 192, 192, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconAlt {
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+.infoTitle {
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.infoText {
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+.smallText {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.infoStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.link {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+.link:hover {
+  color: var(--accent);
+}
+
+.formCard {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(192, 192, 192, 0.12);
+  box-sizing: border-box;
+}
+
+@media (max-width: 780px) {
+  .title {
+    font-size: 1rem;
+  }
+  .description {
+    font-size: 0.7rem;
+  }
+  .cardLeft {
+    padding: 0.875rem;
+  }
+  .formCard {
+    padding: 0.875rem;
+  }
+
+
+}
