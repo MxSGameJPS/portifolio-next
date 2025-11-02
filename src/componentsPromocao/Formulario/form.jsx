@@ -91,7 +91,7 @@ const Formulario = () => {
                   fontSize: "0.98rem",
                 }}
               >
-                Nome *
+                Nome
               </label>
               <input
                 className={styles.input}
@@ -111,7 +111,7 @@ const Formulario = () => {
                   fontSize: "0.98rem",
                 }}
               >
-                Email *
+                Email
               </label>
               <input
                 className={styles.input}
@@ -133,7 +133,7 @@ const Formulario = () => {
                   fontSize: "0.98rem",
                 }}
               >
-                Telefone/WhatsApp *
+                Telefone/WhatsApp
               </label>
               <input
                 className={styles.input}
