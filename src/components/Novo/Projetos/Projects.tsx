@@ -1,97 +1,84 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import styles from "./projects.module.css";
 
-const projects = [
+// TIPO DO PROJETO
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  imageSrc: string;
+  technologies: string[];
+  liveUrl?: string;
+  githubUrl: string;
+  tags?: string[];
+}
+
+// DADOS DOS PROJETOS
+const allProjects: Project[] = [
+  // --- FullStack ---
   {
     id: 3,
     title: "NextPath",
+    tags: ["Destaque"],
     description:
-      "Desenvolvi esta plataforma para ajudar a comunidade iniciante a aprender NEXT.JS de forma divertida e eficaz",
+      "Plataforma para aprender NEXT.JS de forma divertida e eficaz, com gamificação e comunidade.",
     imageSrc: "/projects/nextpath.png",
     technologies: ["Next.js", "React", "Node.js", "PostgreSQL"],
     liveUrl: "https://nextpath-eight.vercel.app/",
     githubUrl: "https://github.com/MxSGameJPS/nextpath.git",
-    category: "web",
   },
   {
     id: 1,
     title: "Ai To Love",
+    tags: ["Projeto Contratado"],
     description:
-      "AI to Love é uma plataforma inovadora de relacionamento virtual que oferece companheiros personalizados alimentados por inteligência artificial.",
+      "Plataforma de relacionamento virtual com companheiros personalizados via inteligência artificial.",
     imageSrc: "/projects/aitolove.png",
-    technologies: [
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "TypeScript",
-      "API Rest",
-    ],
+    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "API Rest"],
     liveUrl: "https://www.aitolove.app",
     githubUrl: "https://github.com/MxSGameJPS/ai2love.git",
-    category: "web",
+  },
+  {
+    id: 20,
+    title: "Smile Pet Shop",
+    tags: ["Projeto Contratado"],
+    description:
+      "Loja Virtual para Pet Shop com sistema de gerenciamento de estoque e vendas, gerenciamento de clientes e funcionários, sistema de pagamento e envio de e-mails.",
+    imageSrc: "/projects/smilepet.png",
+    technologies: ["Next.js", "PostgreSQL", "Node.js", "API Rest", "JWT Auth", "React.js"],
+    liveUrl: "https://www.smilepetshop.com.br/",
+    githubUrl: "https://github.com/MxSGameJPS/smilepetshop.git",
   },
   {
     id: 8,
     title: "FreeControl",
+    tags: ["Projeto Pessoal"],
     description:
-      "Plataforma desenvolvida para auxiliar e apoiar desenvolvedores na organização e conclusão de estudos e projetos",
+      "Ferramenta para auxiliar devs na organização de estudos e controle de projetos freelancer.",
     imageSrc: "/projects/freecontrol.png",
     technologies: ["Next", "React", "PostgreSQL", "JWT - Auth"],
     liveUrl: "https://freela-control.vercel.app/",
     githubUrl: "https://github.com/MxSGameJPS/freela-control.git",
-    category: "web",
-  },
-  {
-    id: 2,
-    title: "Rafael Richard Psicólogo",
-    description:
-      "Site profissional para psicólogo, com agendamento de consultas e informações sobre serviços.",
-    imageSrc: "/projects/rafael.png",
-    technologies: ["React", "Styled-Components", "Formspree", "React Icons"],
-    liveUrl: "https://www.rafaelrichardpsico.com/",
-    githubUrl: "https://github.com/MxSGameJPS/rafael-psicologo.git",
-    category: "web",
   },
   {
     id: 10,
     title: "MaisDireito Advogados",
+    tags: ["Projeto Pessoal"],
     description:
-      "Site institucional para escritório de advocacia com layout moderno e responsivo.",
+      "Site institucional completo para escritório de advocacia com CMS personalizado.",
     imageSrc: "/projects/advogados.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://sistema-advogados.vercel.app",
     githubUrl: "https://github.com/MxSGameJPS/sistema-advogados",
-    category: "web",
-  },
-  {
-    id: 4,
-    title: "MXSFLIX",
-    description:
-      "Clone da Netflix com integração à API do TheMovieDB, listando filmes por categorias.",
-    imageSrc: "/projects/mxsflix.png",
-    technologies: ["Next.js", "React", "CSS Modules", "API Integration"],
-    liveUrl: "https://mxsflix.vercel.app",
-    githubUrl: "https://github.com/MxSGameJPS/mxsflix",
-    category: "web",
-  },
-  {
-    id: 5,
-    title: "Barbearia Pavanello",
-    description:
-      "Site completo para barbearia com agendamento de serviços, venda de produtos e área administrativa.",
-    imageSrc: "/projects/barbearia.png",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Cookies"],
-    liveUrl: "https://barbearia-three-teal.vercel.app/",
-    githubUrl: "https://github.com/MxSGameJPS/barbearia",
-    category: "web",
   },
   {
     id: 6,
     title: "Academia Fitness",
+    tags: ["Projeto Pessoal"],
     description:
-      "Aplicação web para gerenciamento de academia com área para administradores e alunos.",
+      "Sistema de gerenciamento para academia com dashboard de alunos e controle de treinos.",
     imageSrc: "/projects/academia.png",
     technologies: [
       "React",
@@ -102,158 +89,223 @@ const projects = [
     ],
     liveUrl: "https://academia-fitness.vercel.app",
     githubUrl: "https://github.com/MxSGameJPS/academia-fitness",
-    category: "web",
+  },
+
+  // --- Front-End ---
+  {
+    id: 2,
+    title: "Rafael Richard",
+    tags: ["Projeto Contratado"],
+    description:
+      "Landing page profissional para psicólogo com agendamento integrado e blog.",
+    imageSrc: "/projects/rafael.png",
+    technologies: ["React", "Styled-Components", "Formspree", "React Icons"],
+    liveUrl: "https://www.rafaelrichardpsico.com/",
+    githubUrl: "https://github.com/MxSGameJPS/rafael-psicologo.git",
   },
   {
     id: 7,
-    title: "Receitas do Meu Brasil",
+    title: "Receitas do Brasil",
+    tags: ["Projeto Pessoal"],
     description:
-      "Site que celebra a culinária brasileira com receitas típicas de cada região.",
+      "Explore a culinária brasileira com receitas típicas separadas por regiões.",
     imageSrc: "/projects/receitas.png",
-    technologies: ["React", "Styled Components", "React Router", "React Icons"],
+    technologies: ["React", "Styled Components", "React Router"],
     liveUrl: "https://receitasdomeubrasil.vercel.app/",
     githubUrl: "https://github.com/MxSGameJPS/receitas-brasil",
-    category: "web",
   },
+  {
+    id: 17,
+    title: "Lughs Word",
+    tags: ["Projeto Contratado"],
+    description:
+      "Site desenvolvido em React para o lançamento de um novo jogo para Desktop e Mobile.",
+    imageSrc: "/projects/lughs.png",
+    technologies: ["React", "Styled Components", "React Router", "Parallax"],
+    liveUrl: "https://lughs.vercel.app/",
+    githubUrl: "https://github.com/MxSGameJPS/lughs",
+  },
+  {
+    id: 18,
+    title: "Gleice Torres Massoterapeuta",
+    tags: ["Projeto Contratado"],
+    description:
+      "Site desenvolvido em React para o lançamento de um novo jogo para Desktop e Mobile.",
+    imageSrc: "/projects/gleicetorres.png",
+    technologies: ["React", "Styled Components", "React Router", "Parallax"],
+    liveUrl: "https://gleicetorres.vercel.app/",
+    githubUrl: "https://github.com/MxSGameJPS/gleicetorres",
+  },
+
+  // --- Mobile ---
   {
     id: 11,
     title: "Fokus APP",
+    tags: ["Projeto Acadêmico"],
     description:
-      "App Android para gerenciamento de tarefas, com funcionalidades de criação, edição e exclusão, estilo Pomodoro.",
+      "App de produtividade com técnica Pomodoro para gerenciamento de foco e tarefas.",
     imageSrc: "/projects/fokus-app.png",
     technologies: ["React Native", "Expo", "Expo Router"],
-    liveUrl: "/projects/fokusapp.mp4",
     githubUrl: "https://github.com/MxSGameJPS/fokus-app",
-    category: "mobile",
   },
   {
     id: 12,
     title: "Vida Leve",
+    tags: ["Projeto Acadêmico"],
     description:
-      "Um aplicativo React Native com Expo para ajudá-lo a manter uma rotina saudável, funcionando 100% offline.",
+      "Aplicativo auxiliar para rotinas saudáveis, funcionando 100% offline.",
     imageSrc: "/projects/vidaleve/Group1.png",
-    images: [
-      "/projects/vidaleve/Group1.png",
-      "/projects/vidaleve/Group2.png",
-      "/projects/vidaleve/Group3.png",
-      "/projects/vidaleve/Group4.png",
-      "/projects/vidaleve/Group5.png",
-      "/projects/vidaleve/Group6.png",
-      "/projects/vidaleve/Group7.png",
-      "/projects/vidaleve/Group8.png",
-    ],
     technologies: ["React Native", "Expo", "Expo Router"],
-    liveUrl: "",
     githubUrl: "https://github.com/MxSGameJPS/vida-leve",
-    category: "mobile",
   },
 ];
 
-const Projects: React.FC = () => {
-  // novo layout: 3 projetos em destaque full-width + grid com até 8 projetos em 4 colunas
-  const featuredProjects = projects.slice(0, 3);
-  const otherProjects = projects.slice(3, 11); // pegamos até 8 projetos para 2 linhas de 4
+// Categorizando os projetos e filtrando undefined
+const projectsFullStack = [3, 1, 8, 10, 6, 20]
+  .map((id) => allProjects.find((p) => p.id === id))
+  .filter((p): p is Project => p !== undefined);
 
+const projectsFrontEnd = [2, 7, 17, 18]
+  .map((id) => allProjects.find((p) => p.id === id))
+  .filter((p): p is Project => p !== undefined);
+
+const projectsMobile = [11, 12]
+  .map((id) => allProjects.find((p) => p.id === id))
+  .filter((p): p is Project => p !== undefined);
+
+// Componente Cartão Individual
+const ProjectCard = ({
+  project,
+  isMobile = false,
+}: {
+  project: Project;
+  isMobile?: boolean;
+}) => {
   return (
-    <section className={styles.projectsSection} id="projetos">
-      <h2 className={styles.title}>Projetos</h2>
+    <div className={styles.projectCard}>
+      {isMobile && <span className={styles.mobileBadge}>APP</span>}
 
-      <div className={styles.featuredGroup}>
-        {featuredProjects.map((project) => (
-          <article key={project.id} className={styles.featuredFull}>
-            <img
-              src={project.imageSrc}
-              alt={project.title}
-              className={styles.featuredImage}
-            />
-            <div className={styles.featuredContent}>
-              {project.category === "mobile" && (
-                <span className={styles.mobileTag}>MOBILE</span>
-              )}
-              <h3 className={styles.featuredTitle}>{project.title}</h3>
-              <p className={styles.featuredDescription}>
-                {project.description}
-              </p>
-              <div className={styles.projectTags}>
-                {project.technologies?.slice(0, 4).map((t) => (
-                  <span key={t} className={styles.tag}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className={styles.projectFooter}>
-                {project.liveUrl && project.liveUrl.startsWith("http") && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.ctaButton}
-                  >
-                    Live
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.ctaOutline}
-                  >
-                    Code
-                  </a>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
+      {/* Container de Tags (Badges) */}
+      {project.tags && project.tags.length > 0 && (
+        <div className={styles.badgesContainer}>
+          {project.tags.map((tag, index) => (
+            <span key={index} className={styles.projectBadge}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className={styles.cardImageWrapper}>
+        <img
+          src={project.imageSrc}
+          alt={project.title}
+          className={styles.cardImage}
+        />
       </div>
 
-      <div className={styles.gridFour}>
-        {otherProjects.map((project) => (
-          <div key={project.id} className={styles.smallCard}>
-            <img
-              src={project.imageSrc}
-              alt={project.title}
-              className={styles.smallImage}
-            />
-            <div className={styles.smallContent}>
-              {project.category === "mobile" && (
-                <span className={styles.mobileTag}>MOBILE</span>
-              )}
-              <h4 className={styles.smallTitle}>{project.title}</h4>
-              <p className={styles.smallDesc}>{project.description}</p>
-              <div className={styles.projectTags}>
-                {project.technologies?.slice(0, 4).map((t) => (
-                  <span key={t} className={styles.tag}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className={styles.smallLinks}>
-                {project.liveUrl && project.liveUrl.startsWith("http") && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.smallLink}
-                  >
-                    Ver
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.smallLink}
-                  >
-                    Código
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
+      <div className={styles.cardContent}>
+        <h3 className={styles.cardTitle}>{project.title}</h3>
+        <p className={styles.cardDescription}>{project.description}</p>
+
+        <div className={styles.techTags}>
+          {project.technologies.slice(0, 4).map((tech) => (
+            <span key={tech} className={styles.techTag}>
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className={styles.cardActions}>
+          {project.liveUrl && project.liveUrl.startsWith("http") && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btnLive}
+            >
+              Ver Projeto
+            </a>
+          )}
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.btnCode}
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Componente Grid Estático
+const ProjectGrid = ({
+  items,
+  isMobile = false,
+}: {
+  items: Project[];
+  isMobile?: boolean;
+}) => {
+  return (
+    <div className={styles.staticGrid}>
+      {items.map((project) => (
+        <ProjectCard key={project.id} project={project} isMobile={isMobile} />
+      ))}
+    </div>
+  );
+};
+
+// Componente Carrossel
+const ProjectCarousel = ({
+  items,
+  isMobile = false,
+}: {
+  items: Project[];
+  isMobile?: boolean;
+}) => {
+  // Duplicamos os items para criar o efeito de "loop infinito" perfeito
+  const displayItems =
+    items.length < 5
+      ? [...items, ...items, ...items, ...items]
+      : [...items, ...items];
+
+  return (
+    <div className={styles.carouselContainer}>
+      <div className={styles.carouselTrack}>
+        {displayItems.map((project, index) => (
+          <ProjectCard
+            key={`${project.id}-${index}`}
+            project={project}
+            isMobile={isMobile}
+          />
         ))}
+      </div>
+    </div>
+  );
+};
+
+const Projects: React.FC = () => {
+  return (
+    <section className={styles.projectsSection} id="projetos">
+      {/* FULLSTACK SECTION - Mantemos Carrossel pois tem 5 items */}
+      <div>
+        <h2 className={styles.categoryTitle}>Projetos FullStack</h2>
+        <ProjectCarousel items={projectsFullStack} />
+      </div>
+
+      {/* FRONTEND SECTION - Grid Estático */}
+      <div>
+        <h2 className={styles.categoryTitle}>Projetos Front-End</h2>
+        <ProjectGrid items={projectsFrontEnd} />
+      </div>
+
+      {/* MOBILE SECTION - Grid Estático */}
+      <div>
+        <h2 className={styles.categoryTitle}>Projetos Mobile</h2>
+        <ProjectGrid items={projectsMobile} isMobile={true} />
       </div>
     </section>
   );
