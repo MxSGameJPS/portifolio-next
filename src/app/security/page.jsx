@@ -15,7 +15,7 @@ import {
   PiBugBold,
   PiFingerprintBold,
   PiEyeClosedBold,
-  PiFileSearchBold,
+  PiFileMagnifyingGlassBold,
   PiWallBold,
   PiCloudBold,
   PiUserFocusBold,
@@ -81,7 +81,7 @@ export default function SecurityPage() {
       text: "Prevenção de prejuízos financeiros causados por vazamentos",
     },
     {
-      icon: <PiFileSearchBold />,
+      icon: <PiFileMagnifyingGlassBold />,
       text: "Conformidade legal para evitar multas pesadas",
     },
   ];
