@@ -1,4 +1,5 @@
 import Header from "../components/Header/Header";
+import ScrollReveal from "../components/ScrollReveal/ScrollReveal";
 import Hero from "../components/Hero/Hero";
 import Companies from "../components/Companies/Companies";
 import PortfolioSection from "../components/PortfolioSection/PortfolioSection";
@@ -14,11 +15,21 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         <Hero />
-        <Companies />
-        <PortfolioSection />
-        <Solutions />
-        <Testimonials />
-        <Contact />
+        <ScrollReveal>
+          <Companies />
+        </ScrollReveal>
+        <ScrollReveal>
+          <PortfolioSection />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Solutions />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Testimonials />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Contact />
+        </ScrollReveal>
       </main>
       <Footer />
     </div>
