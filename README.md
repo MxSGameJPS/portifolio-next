@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio Saulo Pavanello
 
-## Getting Started
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://saulopavanello.com.br)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saulopavanello/)
 
-First, run the development server:
+## 📋 Sobre
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Este é meu site pessoal e portfólio profissional, desenvolvido para apresentar minhas competências como **Engenheiro de Software FullStack**. Aqui centralizo meus projetos, experiência em desenvolvimento Web e Mobile, e minha visão estratégica de negócio aliada à tecnologia.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌐 **Site:** [saulopavanello.com.br](https://saulopavanello.com.br)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ Tecnologias Utilizadas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS Modules](https://img.shields.io/badge/CSS_Modules-000000?style=for-the-badge&logo=css-modules&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
-## Learn More
+## 🚀 Características
 
-To learn more about Next.js, take a look at the following resources:
+- ✅ **Design Premium:** Layout exclusivo seguindo identidade visual corporativa (Deep Navy & Tech Blue).
+- ✅ **Responsividade Total:** Adaptável para Desktop, Tablet e Mobile.
+- ✅ **Showcase de Projetos:** Sistema de portfólio com filtros e páginas de detalhes dinâmicas.
+- ✅ **Componentização:** Arquitetura modular e reutilizável com React.
+- ✅ **Performance:** Otimizado com Next.js 16 e imagens de última geração.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💼 Projetos em Destaque
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Smile Pet Shop
 
-## Deploy on Vercel
+![Smile Pet Shop](/public/Projetos/SmilePetShop.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Plataforma de comércio eletrônico B2B/B2C robusta para nicho de Pet Shop, com integrações fiscais e de pagamento.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔗 **Demo:** [www.smilepetshop.com.br](https://www.smilepetshop.com.br/)
+
+**Tecnologias:** React 19, Next.js, PostgreSQL, Mercado Pago SDK.
+
+---
+
+### Ai2Love
+
+![Ai2Love](/public/Projetos/Ai2Love.png)
+
+Plataforma SaaS de relacionamento virtual impulsionada por IA, com chat em tempo real e avatares personalizados.
+
+🔗 **Demo:** [ai2love.vercel.app](https://ai2love.vercel.app/)
+
+**Tecnologias:** Next.js 14, TypeScript, SignalR (WebSockets), Framer Motion.
+
+---
+
+### Fogão do Meu Coração (Mobile)
+
+![FDMC App](/public/Projetos/FDMCAPP.png)
+
+Ecossistema digital para torcedores, agregando notícias, tabelas e interatividade em uma experiência nativa.
+
+🔗 **Play Store:** [Baixar App](https://play.google.com/store/apps/details?id=com.mxsgamejps.fogaodomeucoracao)
+
+**Tecnologias:** React Native, Expo, Firebase, TypeScript.
+
+## 📬 Contato
+
+- 📧 Email: contato@saulopavanello.com.br
+- 🔗 LinkedIn: [/in/saulopavanello/](https://www.linkedin.com/in/saulopavanello/)
+- 💻 GitHub: [github.com/MxSGameJPS](https://github.com/MxSGameJPS)
+- 📱 WhatsApp: [+55 51 99339-2983](https://wa.me/5551993392983)
+
+---
+
+Desenvolvido por Saulo Pavanello © 2025

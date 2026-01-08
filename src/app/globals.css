@@ -1,13 +1,28 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* New Clean Palette */
+  --tech-blue: #00a8e8;
+  --deep-navy: #0a2342;
+  --soft-gold: #cfaa6c;
+  --pure-white: #ffffff;
+  --cool-grey: #f4f6f8;
+  --text-grey: #333f48;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Semantic Mappings */
+  --background: var(--pure-white);
+  --foreground: var(--text-grey);
+
+  --primary: var(--tech-blue);
+  --secondary: var(--deep-navy);
+  --accent: var(--soft-gold);
+  --surface-alt: var(--cool-grey);
+
+  /* Helpers for compatibility if needed */
+  --primary-blue: var(--tech-blue);
+  --primary-blue-glow: rgba(0, 168, 232, 0.5);
+
+  /* Typography */
+  --font-heading: var(--font-geist-sans), "Montserrat", sans-serif;
+  --font-body: var(--font-geist-sans), "Inter", sans-serif;
 }
 
 html,
@@ -19,7 +34,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -33,10 +48,16 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
