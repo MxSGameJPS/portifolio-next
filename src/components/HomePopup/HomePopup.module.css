@@ -1,0 +1,89 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+  padding: 1rem;
+}
+
+.overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popupContent {
+  position: relative;
+  background: transparent;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px; /* Smooth corners for the image wrapper */
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: transform 0.3s ease-out;
+}
+
+.overlay.visible .popupContent {
+  transform: scale(1);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  /* Maintain aspect ratio or fixed height if needed, but auto is safer for varying content */
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.popupImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.ctaLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
