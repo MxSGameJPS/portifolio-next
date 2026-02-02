@@ -11,6 +11,7 @@ const ChevronDown = () => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
   >
     <path
       d="M6 9L12 15L18 9"
@@ -88,7 +89,7 @@ export default function Header() {
                   <h4 className={styles.dropdownTitle}>Design & Estratégia</h4>
                   <Link href="/ui-ux" className={styles.dropdownLink}>
                     UI/UX Design
-                  </Link>                  
+                  </Link>
                 </div>
               </div>
             </li>

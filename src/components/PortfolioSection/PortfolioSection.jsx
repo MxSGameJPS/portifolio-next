@@ -9,17 +9,17 @@ export default function PortfolioSection() {
   const [activeTab, setActiveTab] = useState("web"); // 'web', 'backend', 'mobile'
 
   const projectsWeb = data.portfolio.filter(
-    (p) => p.importance === "1" && p.tag === "Web"
+    (p) => p.importance === "1" && p.tag === "Web",
   );
 
   const projectsBackend = data.portfolio.filter(
     (p) =>
       p.importance === "1" &&
-      (p.tag === "Api - BackEnd" || p.tag === "API - BackEnd")
+      (p.tag === "Api - BackEnd" || p.tag === "API - BackEnd"),
   );
 
   const projectsMobile = data.portfolio.filter(
-    (p) => p.importance === "1" && p.tag === "Mobile"
+    (p) => p.importance === "1" && p.tag === "Mobile",
   );
 
   let displayedProjects = [];
@@ -38,12 +38,20 @@ export default function PortfolioSection() {
         mercado e experiência abrangente.
       </p>
 
-      <div className={styles.tabs}>
+      <div
+        className={styles.tabs}
+        role="tablist"
+        aria-label="Categorias de projetos"
+      >
         <button
           className={`${styles.tabButton} ${
             activeTab === "web" ? styles.activeTab : ""
           }`}
           onClick={() => setActiveTab("web")}
+          role="tab"
+          aria-selected={activeTab === "web"}
+          aria-controls="web-projects-panel"
+          id="web-tab"
         >
           Projetos de Front-End
         </button>
@@ -52,6 +60,10 @@ export default function PortfolioSection() {
             activeTab === "backend" ? styles.activeTab : ""
           }`}
           onClick={() => setActiveTab("backend")}
+          role="tab"
+          aria-selected={activeTab === "backend"}
+          aria-controls="backend-projects-panel"
+          id="backend-tab"
         >
           Projetos de Back-End
         </button>
@@ -60,12 +72,21 @@ export default function PortfolioSection() {
             activeTab === "mobile" ? styles.activeTab : ""
           }`}
           onClick={() => setActiveTab("mobile")}
+          role="tab"
+          aria-selected={activeTab === "mobile"}
+          aria-controls="mobile-projects-panel"
+          id="mobile-tab"
         >
           Projetos Mobile (App)
         </button>
       </div>
 
-      <div className={styles.grid}>
+      <div
+        className={styles.grid}
+        role="tabpanel"
+        id={`${activeTab}-projects-panel`}
+        aria-labelledby={`${activeTab}-tab`}
+      >
         {displayedProjects.map((project, index) => (
           <Link
             href={`/portfolio/${project.id}`}
