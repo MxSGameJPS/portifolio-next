@@ -14,11 +14,14 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL("https://saulopavanello.com.br"),
   title: {
-    default: "Saulo Pavanello | Engenheiro de Software FullStack",
+    default: "Saulo Pavanello | Desenvolvimento de Sites e Apps",
     template: "%s | Saulo Pavanello",
   },
+  alternates: {
+    canonical: "./",
+  },
   description:
-    "Desenvolvedor FullStack Especialista (React, Next.js, Node.js). Transformo ideias complexas em soluções digitais de alta performance para o seu negócio.",
+    "Especialista em Desenvolvimento de Sites, Criação de Apps e Sistemas Web. Transformo ideias em software de alta performance. React, Next.js e Node.js.",
   keywords: [
     "Desenvolvedor FullStack",
     "React",
