@@ -42,9 +42,9 @@ export default function Footer() {
         {/* Left Column: Web & BackEnd */}
         <div className={styles.column}>
           <div>
-            <h4 className={`${styles.groupTitle} ${styles.highlightTitle}`}>
+            <p className={`${styles.groupTitle} ${styles.highlightTitle}`}>
               {webCategory?.title || "Desenvolvimento Web"}
-            </h4>
+            </p>
             <ul className={styles.linkList}>
               {webCategory?.items.map((item, idx) => (
                 <li key={idx}>
@@ -57,9 +57,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className={`${styles.groupTitle} ${styles.highlightTitle}`}>
+            <p className={`${styles.groupTitle} ${styles.highlightTitle}`}>
               {backendCategory?.title || "BackEnd"}
-            </h4>
+            </p>
             <ul className={styles.linkList}>
               {backendCategory?.items.slice(0, 4).map((item, idx) => (
                 <li key={idx}>
@@ -130,9 +130,9 @@ export default function Footer() {
         {/* Right Column: Mobile & Others */}
         <div className={styles.column}>
           <div>
-            <h4 className={`${styles.groupTitle} ${styles.highlightTitle}`}>
+            <p className={`${styles.groupTitle} ${styles.highlightTitle}`}>
               {mobileCategory?.title || "Mobile"}
-            </h4>
+            </p>
             <ul className={styles.linkList}>
               {mobileCategory?.items.map((item, idx) => (
                 <li key={idx}>
@@ -145,9 +145,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className={`${styles.groupTitle} ${styles.highlightTitle}`}>
+            <p className={`${styles.groupTitle} ${styles.highlightTitle}`}>
               Mais
-            </h4>
+            </p>
             <ul className={styles.linkList}>
               <li>
                 <Link href="/portfolio" className={styles.linkItem}>
