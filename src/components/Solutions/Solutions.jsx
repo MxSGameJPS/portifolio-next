@@ -45,7 +45,12 @@ export default function Solutions() {
 
         <div className={styles.layout}>
           {/* MENU ESQUERDO */}
-          <div className={styles.menuContainer}>
+          <div
+            className={styles.menuContainer}
+            role="tablist"
+            aria-orientation="vertical"
+            aria-label="Categorias de soluções"
+          >
             {data.map((category) => (
               <div
                 key={category.id}
@@ -53,13 +58,16 @@ export default function Solutions() {
                   expandedCategory === category.id ? styles.active : ""
                 }`}
               >
-                <div
+                <button
                   className={`${styles.categoryHeader} ${
                     expandedCategory === category.id
                       ? styles.categoryHeaderActive
                       : ""
                   }`}
                   onClick={() => toggleCategory(category.id)}
+                  aria-expanded={expandedCategory === category.id}
+                  aria-controls={`group-${category.id}`}
+                  style={{ width: "100%", border: "none", background: "none" }}
                 >
                   <span>
                     {category.number}. {category.title}
@@ -69,16 +77,19 @@ export default function Solutions() {
                       expandedCategory === category.id ? styles.rotated : ""
                     }`}
                     size={14}
+                    aria-hidden="true"
                   />
-                </div>
+                </button>
 
                 <ul
+                  id={`group-${category.id}`}
                   className={`${styles.itemList} ${
                     expandedCategory === category.id ? styles.open : ""
                   }`}
+                  role="list"
                 >
                   {category.items.map((item, index) => (
-                    <li key={index}>
+                    <li key={index} role="presentation">
                       <button
                         className={`${styles.itemButton} ${
                           selectedItem === item ? styles.activeItem : ""
@@ -87,6 +98,9 @@ export default function Solutions() {
                           e.stopPropagation();
                           handleItemClick(item);
                         }}
+                        role="tab"
+                        aria-selected={selectedItem === item}
+                        aria-controls="solution-content-panel"
                       >
                         {item.name}
                       </button>
@@ -98,7 +112,11 @@ export default function Solutions() {
           </div>
 
           {/* CONTEÚDO DIREITO */}
-          <div className={styles.contentPanel}>
+          <div
+            className={styles.contentPanel}
+            role="tabpanel"
+            id="solution-content-panel"
+          >
             {selectedItem && (
               <>
                 <h3 className={styles.contentTitle}>{selectedItem.title}</h3>
@@ -119,13 +137,13 @@ export default function Solutions() {
                 <div className={styles.featureList}>
                   {selectedItem.features.map((feature, idx) => (
                     <div key={idx} className={styles.featureItem}>
-                      <span className={styles.featureDot}>•</span>
+                      <span className={styles.featureDot} aria-hidden="true">
+                        •
+                      </span>
                       {feature}
                     </div>
                   ))}
                 </div>
-
-                
               </>
             )}
           </div>
