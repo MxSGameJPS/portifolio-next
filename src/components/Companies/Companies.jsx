@@ -16,7 +16,7 @@ const companies = [
 export default function Companies() {
   return (
     <section className={styles.companiesSection}>
-      <h3 className={styles.title}>Empresas que confiaram no meu trabalho</h3>
+      <h2 className={styles.title}>Empresas que confiaram no meu trabalho</h2>
 
       <div className={styles.slider}>
         <div className={styles.slideTrack}>
