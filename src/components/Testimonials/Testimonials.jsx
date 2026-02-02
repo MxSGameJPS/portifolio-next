@@ -45,14 +45,14 @@ export default function Testimonials() {
             onClick={prevSlide}
             aria-label="Anterior"
           >
-            <FaChevronLeft size={24} />
+            <FaChevronLeft size={24} aria-hidden="true" />
           </button>
           <button
             className={styles.navButton}
             onClick={nextSlide}
             aria-label="Próximo"
           >
-            <FaChevronRight size={24} />
+            <FaChevronRight size={24} aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -78,7 +78,10 @@ export default function Testimonials() {
                     isActive ? styles.activeCard : styles.inactiveCard
                   }`}
                 >
-                  <FaQuoteLeft className={styles.quoteIcon} />
+                  <FaQuoteLeft
+                    className={styles.quoteIcon}
+                    aria-hidden="true"
+                  />
 
                   <div className={styles.logoContainer}>
                     <Image
