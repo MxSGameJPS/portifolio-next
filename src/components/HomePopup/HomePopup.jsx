@@ -67,6 +67,7 @@ export default function HomePopup() {
               height={600}
               className={styles.popupImage}
               priority
+              unoptimized
             />
           </Link>
         </div>
