@@ -77,9 +77,37 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Saulo Pavanello",
+    url: "https://saulopavanello.com.br",
+    jobTitle: "Engenheiro de Software FullStack",
+    sameAs: [
+      "https://github.com/MxSGameJPS",
+      "https://www.linkedin.com/in/saulo-pavanello",
+      "https://www.instagram.com/saulopavanello",
+    ],
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "React Native",
+      "System Architecture",
+      "SEO",
+    ],
+    image: "https://saulopavanello.com.br/Hero.png",
+    description:
+      "Desenvolvedor FullStack Especialista. Transformo ideias complexas em soluções digitais de alta performance.",
+  };
+
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>
