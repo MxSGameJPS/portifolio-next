@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 import styles from "./HomePopup.module.css";
+import popupImg from "../../../public/popup.png";
 
 export default function HomePopup() {
   const [isVisible, setIsVisible] = useState(false);
@@ -61,13 +62,11 @@ export default function HomePopup() {
             onClick={handleClose}
           >
             <Image
-              src="/popup.png"
+              src={popupImg}
               alt="Promoção exclusiva do mês"
-              width={600}
-              height={600}
               className={styles.popupImage}
               priority
-              unoptimized
+              placeholder="blur"
             />
           </Link>
         </div>
