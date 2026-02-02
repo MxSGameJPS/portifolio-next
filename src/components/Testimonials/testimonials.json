@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "company": "AI2Love",
+    "logo": "/Empresas/AI2Love-logo.svg",
+    "person": "David Rodrigues",
+    "role": "CTO",
+    "text": "A capacidade técnica e a visão inovadora entregues superaram nossas expectativas. A integração de IA no nosso fluxo de trabalho foi implementada com maestria, resultando em uma eficiência nunca vista antes."
+  },
+  {
+    "id": 2,
+    "company": "GeekZ",
+    "logo": "/Empresas/Logos_GeekZ_vertical.png",
+    "person": "Carlos Eduardo",
+    "role": "Head de Produto",
+    "text": "Profissional extremamente competente e ágil. Transformou nossa plataforma de e-commerce em uma experiência fluida e moderna, exatamente como nosso público exigente precisava. Recomendo fortemente!"
+  },
+  {
+    "id": 3,
+    "company": "Moises",
+    "logo": "/Empresas/Moises com fone (1).png",
+    "person": "DJ Moises",
+    "role": "Fundador",
+    "text": "Parceria incrível! O comprometimento com o prazo e a qualidade do código foram diferenciais. Senti que meu projeto foi tratado com a mesma importância que eu dou a ele. Excelente trabalho."
+  },
+  {
+    "id": 4,
+    "company": "Rafael Consultoria",
+    "logo": "/Empresas/Rafael.png",
+    "person": "Rafael Richard",
+    "role": "Diretor Executivo",
+    "text": "Desde o primeiro contato até a entrega final, a comunicação foi clara e o desenvolvimento impecável. As soluções propostas otimizaram nossos processos internos de forma surpreendente."
+  }
+]

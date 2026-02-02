@@ -1,0 +1,98 @@
+.companiesSection {
+  width: 100%;
+  padding: 4rem 0;
+  background-color: var(--pure-white); /* Continuação do fundo branco */
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Separação sutil */
+
+
+  @media (max-width: 768px) {
+    .slideTrack {
+      gap: 3rem;
+    }
+    .companyLogo {
+      height: 30px;
+    }
+  }
+}
+
+.title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text-grey);
+  margin-bottom: 3rem;
+  font-weight: 500;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  
+}
+
+.slideTrack {
+  display: flex;
+  align-items: center;
+  gap: 8rem; /* Espaço entre logos */
+  width: max-content;
+  animation: scroll 40s linear infinite;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    gap: 3rem;
+  }
+}
+
+.companyLogo {
+  height: 60px; /* Altura padrão para alinhar todos */
+  width: auto;
+  object-fit: contain;
+  /* Estilo Greyscale para uniformidade */
+  filter: grayscale(100%) opacity(0.6);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    height: 30px;
+  }
+}
+
+.companyLogo:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.1);
+
+  @media (max-width: 768px) {
+    transform: scale(1);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(-100% / 3)
+    ); /* Move exatamente 1 terço (1 set completo) */
+  }
+}
+
+/* Pause on Hover (Opcional, mas legal para UX) */
+.slideTrack:hover {
+  animation-play-state: paused;
+}
+
+

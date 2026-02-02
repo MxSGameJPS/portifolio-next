@@ -1,0 +1,305 @@
+/* Page Wrapper */
+.pageWrapper {
+  background-color: var(--pure-white);
+  min-height: 100vh;
+  color: var(--deep-navy);
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Intro Section */
+.introSection {
+  background: linear-gradient(95deg, var(--deep-navy) 0%, #003972fd 100%);
+  color: #fff;
+  padding: 8rem 1.5rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.introSection::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 168, 232, 0.15) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.introContent {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.introTextColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.introTitle {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.introText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+  text-align: justify;
+}
+
+.highlight {
+  color: var(--tech-blue);
+  font-weight: 700;
+}
+
+/* Icons Grid in Intro (Visual representation) */
+.introIcons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.floatingIcon {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.floatingIcon:hover {
+  color: var(--tech-blue);
+  transform: translateY(-10px);
+  opacity: 1;
+}
+
+/* Content List Section (ZigZag) */
+.contentList {
+  padding: 6rem 1.5rem;
+  background-color: var(--pure-white);
+  color: var(--text-grey);
+}
+
+.contentBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6rem;
+  margin-bottom: 8rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contentBlock:last-child {
+  margin-bottom: 0;
+}
+
+.contentBlock:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.textColumn {
+  flex: 1;
+}
+
+.blockTitle {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.blockText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #555;
+  font-weight: 400;
+  text-align: left;
+}
+
+/* Tech Grid for each block */
+.techGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.techItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #f0f0f0;
+}
+
+.techItem:hover {
+  transform: translateY(-5px);
+  border-color: var(--tech-blue);
+}
+
+.techIcon {
+  font-size: 3rem;
+  color: var(--deep-navy);
+}
+
+.techName {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Header for the section */
+.pageTitleWrapper {
+  text-align: center;
+  margin-bottom: 5rem;
+  padding-top: 4rem;
+}
+
+.pageTitle {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 1rem;
+}
+
+.pageSubtitle {
+  font-family: var(--font-body, sans-serif);
+  font-size: 1.1rem;
+  color: var(--tech-blue);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .introSection {
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  .introContent {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .introIcons {
+    display: none; /* Hide decorative floating icons on mobile content to save space */
+  }
+
+  .introTitle {
+    font-size: 2.2rem;
+    padding: 0 1rem;
+    line-height: 1.2;
+  }
+
+  .introText {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  /* Reduce spacing between Intro and Content */
+  .contentList {
+    padding: 3rem 1rem;
+  }
+
+  .pageTitleWrapper {
+    margin-bottom: 2.5rem;
+    padding-top: 1rem;
+  }
+
+  .pageTitle {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pageSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .contentBlock {
+    flex-direction: column !important;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .textColumn {
+    text-align: center;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blockText {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .blockTitle {
+    justify-content: center;
+    font-family: var(--font-heading, sans-serif);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .techGrid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .techItem {
+    padding: 1rem;
+  }
+}

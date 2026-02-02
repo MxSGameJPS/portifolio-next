@@ -1,0 +1,95 @@
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Formato padrão de tela */
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--tech-blue); /* Cor da paleta */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center; /* Centraliza Verticalmente */
+  justify-content: flex-start; /* Alinha à esquerda */
+  padding-left: 3rem; /* Espaço da esquerda */
+
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+  }
+}
+
+/* Borda Interna */
+.overlay::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  border: 2px solid var(--pure-white);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease 0.1s; /* Delay leve para efeito sequencial */
+
+  @media (max-width: 768px) {
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+}
+
+.title {
+  color: var(--pure-white); /* Contraste com o Tech Blue */
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s ease 0.15s;
+  z-index: 2;
+  position: relative;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+/* Hover States */
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+.card:hover .overlay {
+  opacity: 0.9;
+}
+
+.card:hover .overlay::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card:hover .title {
+  opacity: 1;
+  transform: translateX(0);
+}
