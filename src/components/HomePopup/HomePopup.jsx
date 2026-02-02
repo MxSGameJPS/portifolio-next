@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 import styles from "./HomePopup.module.css";
-import popupImg from "../../../public/popup.png";
+import popupImg from "../../assets/popup.png";
 
 export default function HomePopup() {
   const [isVisible, setIsVisible] = useState(false);
