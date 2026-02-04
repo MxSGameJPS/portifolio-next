@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Desenvolvimento de Apps iOS (iPhone) | Saulo Pavanello",
+  title: "Desenvolvimento de Apps iOS (iPhone)",
   description:
     "Especialista em desenvolvimento de apps iOS (iPhone/iPad). Soluções nativas em Swift de alta performance para a Apple App Store.",
   openGraph: {

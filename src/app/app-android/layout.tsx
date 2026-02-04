@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Desenvolvimento de Apps Android | Saulo Pavanello",
+  title: "Desenvolvimento de Apps Android",
   description:
     "Criação de aplicativos Android nativos e híbridos. Coloque sua empresa na Google Play com apps de alta performance.",
   openGraph: {

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Desenvolvimento de Web Apps & Sistemas | Saulo Pavanello",
+  title: "Desenvolvimento de Web Apps & Sistemas",
   description:
     "Criação de Web Apps e Sistemas Personalizados com React, Next.js e Node.js. Soluções escaláveis e de alta performance para o seu negócio.",
   openGraph: {
