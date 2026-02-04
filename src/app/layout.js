@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL("https://saulopavanello.com.br"),
   title: {
-    default: "Saulo Pavanello | Desenvolvimento de Sites e Apps",
+    default: "Desenvolvimento de Sites e Apps",
     template: "%s | Saulo Pavanello",
   },
   alternates: {
