@@ -36,6 +36,11 @@ export const metadata = {
   authors: [{ name: "Saulo Pavanello" }],
   creator: "Saulo Pavanello",
   publisher: "Saulo Pavanello",
+  verification: {
+    other: {
+      "msvalidate.01": "8276A0BE06EB4F455FC55062BF0C023A",
+    },
+  },
   robots: {
     index: true,
     follow: true,
