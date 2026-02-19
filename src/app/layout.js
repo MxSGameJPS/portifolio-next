@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Script from "next/script";
+import { SimpleAnalytics } from "@simpleanalytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -113,18 +113,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Script
-          strategy="afterInteractive"
-          src="https://scripts.simpleanalyticscdn.com/latest.js"
-        />
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://queue.simpleanalyticscdn.com/noscript.gif"
-            alt=""
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </noscript>
+        <SimpleAnalytics />
 
         <script
           type="application/ld+json"
