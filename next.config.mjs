@@ -17,4 +17,6 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+import withSimpleAnalytics from "@simpleanalytics/next/plugin";
+
+export default withSimpleAnalytics(nextConfig);
