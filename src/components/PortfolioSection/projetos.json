@@ -7,7 +7,7 @@
       "category": "E-commerce / B2B & B2C",
       "image": "/Projetos/SmilePetShop.png",
       "importance": "1",
-      "deploy_link": "https://www.smilepetshop.com.br/",
+      "deploy_link": "https://smilepetshop.vercel.app/",
       "repo_link": "https://github.com/MxSGameJPS/smilepetshop",
       "repo_link_API": "https://github.com/MxSGameJPS/apismilepet",
       "description": "Uma plataforma de comércio eletrônico robusta desenvolvida sob medida para o nicho de Pet Shop. O projeto vai além de uma simples loja virtual, integrando fluxos complexos de venda para Varejo (B2C) e Atacado (B2B), com gestão completa via painel administrativo e conexão em tempo real com sistemas externos.",
