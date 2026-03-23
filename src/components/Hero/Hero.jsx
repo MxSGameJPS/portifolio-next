@@ -28,6 +28,7 @@ export default function Hero() {
             className={styles.heroImage}
             priority
             quality={100}
+            fetchPriority="high"
           />
         </div>
       </div>

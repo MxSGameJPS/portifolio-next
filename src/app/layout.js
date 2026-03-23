@@ -113,6 +113,12 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="pt-BR">
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://scripts.simpleanalyticscdn.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://scripts.simpleanalyticscdn.com" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <SimpleAnalytics />
         <Script
