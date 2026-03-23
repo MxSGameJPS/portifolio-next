@@ -25,8 +25,13 @@
     "typescript": "^5.9.3"
   },
   "browserslist": [
-    "defaults",
-    "last 2 versions",
+    "chrome >= 97",
+    "edge >= 97",
+    "firefox >= 104",
+    "safari >= 15.4",
+    "ios_saf >= 15.4",
+    "opera >= 83",
+    "samsung >= 18",
     "not dead"
   ]
 }

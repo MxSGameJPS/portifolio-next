@@ -15,7 +15,7 @@ export default function ScrollReveal({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: delay, ease: "easeOut" }}
       className={className}
-      style={{ width }}
+      style={{ width, willChange: "opacity, transform" }}
     >
       {children}
     </motion.div>
