@@ -91,6 +91,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
+                aria-label="Instagram"
               >
                 <FaInstagram />
               </a>
@@ -99,6 +100,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
+                aria-label="YouTube"
               >
                 <FaYoutube />
               </a>
@@ -107,6 +109,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
+                aria-label="LinkedIn"
               >
                 <FaLinkedin />
               </a>
@@ -115,6 +118,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
+                aria-label="WhatsApp"
               >
                 <FaWhatsapp />
               </a>

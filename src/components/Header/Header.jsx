@@ -123,7 +123,12 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className={styles.mobileToggle} onClick={toggleMenu}>
+        <button
+          className={styles.mobileToggle}
+          onClick={toggleMenu}
+          aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isMobileMenuOpen}
+        >
           <span
             className={`${styles.bar} ${
               isMobileMenuOpen ? styles.barActive : ""
@@ -139,7 +144,7 @@ export default function Header() {
               isMobileMenuOpen ? styles.barActive : ""
             }`}
           ></span>
-        </div>
+        </button>
       </div>
     </header>
   );
