@@ -221,34 +221,48 @@
     },
     {
       "id": 7,
-      "name": "DJ Moisés - Official Website",
+      "name": "SocialJurídico",
       "tag": "Web",
-      "category": "Landing Page Artística / Entretenimento",
-      "image": "/Projetos/djmoises.png",
-      "importance": "2",
-      "deploy_link": "https://dj-moises.vercel.app/",
-      "repo_link": "https://github.com/MxSGameJPS/dj-moises",
-      "description": "Mais do que um site, uma extensão da pista de dança. Combinando estética vibrante com performance técnica, o site serve como hub central para agenda de shows, press kit e streaming de sets.",
+      "category": "LegalTech / SaaS / IA",
+      "image": "/Projetos/socialjuridico.png",
+      "importance": "1",
+      "deploy_link": "https://socialjuridico.com.br/",
+      "repo_link": "https://github.com/MxSGameJPS/socialjuridico",
+      "description": "Um ecossistema digital de alta performance desenhado para conectar clientes e advogados através de Inteligência Artificial Generativa. O projeto foi arquitetado como uma aplicação Enterprise-Grade, com foco rigoroso em Segurança de Dados (LGPD), escalabilidade e conformidade jurídica.",
       "sections": [
         {
-          "title": "Responsividade & Visual (UI/UX)",
-          "content": "Utilizando React 19 e Mantine, a interface é polida e altamente responsiva. O design utiliza um sistema de cores dinâmico (styled-components) que reflete a identidade visual noturna do DJ."
+          "title": "Segurança de Identidade e Padrão Enterprise",
+          "content": "A plataforma utiliza autenticação robusta via Supabase SSR, garantindo que a validação de tokens ocorra exclusivamente no servidor. Esta abordagem elimina vulnerabilidades críticas como o Identity Spoofing, oferecendo sessões auditáveis, rastreáveis e à prova de falsificação."
         },
         {
-          "title": "Exclusividade: Arquitetura Moderna SPA",
-          "content": "SPA que elimina recarregamentos desnecessários. Roteamento Ágil com React Router v7 e Design System Consistente unindo Mantine UI com customizações CSS-in-JS."
+          "title": "Conformidade LGPD e Proteção de Dados (RBAC/RLS)",
+          "content": "Implementação de controle de acesso baseado em papéis (RBAC) verificado no servidor, combinado com Row Level Security (RLS) diretamente no banco de dados. Esse isolamento garante que advogados e clientes acessem apenas os seus próprios registros, atendendo integralmente aos requisitos de segurança e sigilo da Lei nº 13.709/2018."
         },
         {
-          "title": "Performance: Alta Fidelidade e Velocidade",
-          "content": "Estruturado sobre o Vite para máxima velocidade. A arquitetura modular garante que apenas o código necessário seja carregado."
+          "title": "Inteligência Artificial Ética e Segura",
+          "content": "O sistema conta com um Redator Jurídico IA otimizado para o ordenamento jurídico brasileiro. Para garantir a privacidade, um protocolo de anonimização intercepta e neutraliza dados sensíveis (PII) antes de qualquer transmissão para APIs externas como OpenAI e Gemini."
+        },
+        {
+          "title": "Gestão Financeira Imutável e Auditável",
+          "content": "A lógica de gestão de saldos e créditos é processada no backend através de Server Actions e integração com Stripe Webhooks. Todas as transações são imutáveis, auditáveis e validadas pelo servidor a partir de eventos criptograficamente assinados, garantindo integridade total contra manipulações."
+        },
+        {
+          "title": "Infraestrutura Escalável e Modernizada",
+          "content": "Migração de armazenamento Base64 para Supabase Storage, utilizando buckets otimizados com entrega via CDN e URLs assinadas para performance superior. O projeto utiliza uma arquitetura Standalone com suporte a deploy em containers Docker e ambientes isolados, protegida por headers HTTP de segurança como CSP, HSTS e X-Frame-Options."
         }
       ],
       "tech_stack": [
-        "Core: React 19 + Vite",
-        "UI Framework: @mantine/core",
-        "Estilização: styled-components",
-        "Navegação: React Router v7",
-        "Ícones: React Icons"
+        "Framework: Next.js 16.1.6 (App Router + Standalone)",
+        "Frontend: React 19.2.3",
+        "Estilização: Tailwind CSS 3.4",
+        "Banco de Dados: PostgreSQL (Supabase)",
+        "Autenticação: Supabase SSR Auth",
+        "Storage: Supabase Storage (CDN + RLS)",
+        "Pagamentos: Stripe API (Webhooks)",
+        "IA: OpenAI (GPT-4o) & Google Gemini (Flash 1.5/2.0)",
+        "E-mail: Resend API",
+        "Segurança: RBAC, RLS e Security Headers (CSP/HSTS)",
+        "Infraestrutura: Docker Ready & Standalone Deploy"
       ]
     },
     {
@@ -476,34 +490,40 @@
     },
     {
       "id": 15,
-      "name": "Rafael Psicologia",
+      "name": "Alma Zen Spa",
       "tag": "Web",
-      "category": "Saúde Mental / Landing Page Profissional",
-      "image": "",
-      "importance": "",
-      "deploy_link": "",
-      "repo_link": "",
-      "description": "Espaço digital de acolhimento desenhado para transmitir calma, segurança e profissionalismo, encorajando o visitante a buscar ajuda.",
+      "category": "Landing Page / Bem-Estar",
+      "image": "/Projetos/AlmaZenSpa.png",
+      "importance": "2",
+      "deploy_link": "https://almazenbemestar.com.br/",
+      "repo_link": "https://github.com/MxSGameJPS/almazen_spa",
+      "description": "Uma Landing Page oficial desenvolvida para o Alma Zen Spa, focada em proporcionar uma experiência de bem-estar digital fluida e intuitiva. O projeto prioriza alta performance, conversão de agendamentos e otimização avançada para motores de busca (SEO).",
       "sections": [
         {
-          "title": "Arquitetura Orientada a Componentes",
-          "content": "Estrutura modular baseada em features para manutenção simplificada."
+          "title": "Navegação Inteligente e UX",
+          "content": "A plataforma conta com um sistema de descoberta por categorias projetado para elevar a experiência do usuário (UX). A interface foi construída para ser totalmente responsiva, adaptando-se perfeitamente a smartphones, tablets e desktops."
         },
         {
-          "title": "UX para Conversão",
-          "content": "Jornada otimizada com CTAs claros e formulário integrado via Formspree."
+          "title": "Agendamento Dinâmico via WhatsApp",
+          "content": "Implementação de um sistema de agendamento que gera mensagens personalizadas automaticamente com base no serviço ou plano selecionado pelo cliente, facilitando a conversão direta pelo WhatsApp."
         },
         {
-          "title": "Performance e SEO",
-          "content": "Construído com Vite 6 e React 19 para performance excepcional e experiência visual estável."
+          "title": "Tabelas Interativas e Yoga",
+          "content": "O site apresenta seções dedicadas a aulas de Yoga com tabelas de preços interativas, permitindo que o usuário visualize facilmente opções de aulas simples ou combos promocionais integrados com massagem."
+        },
+        {
+          "title": "SEO de Alto Nível e Performance",
+          "content": "Foco total em visibilidade orgânica através da implementação de Schema.org (JSON-LD) para DaySpa, Meta Tags otimizadas para redes sociais e uso de imagens em formato WebP para garantir carregamento ultra-rápido."
         }
       ],
       "tech_stack": [
-        "Core: React 19 + Vite 6.3",
-        "Estilização: Styled Components",
-        "Formulários: Formspree React",
-        "Componentes: React Icons",
-        "Organização: Modular (Feature-based)"
+        "Framework: Next.js (App Router)",
+        "Frontend: React",
+        "Estilização: CSS Modules",
+        "Ícones: Lucide React / SVGs",
+        "Imagens: WebP (Otimizadas)",
+        "SEO: Schema.org & JSON-LD",
+        "Deploy: Vercel"
       ]
     },
     {

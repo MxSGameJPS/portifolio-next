@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
+  images: {
+    qualities: [100, 75],
+  },
   async headers() {
     return [
       {
@@ -19,4 +22,6 @@ const nextConfig = {
 
 import withSimpleAnalytics from "@simpleanalytics/next/plugin";
 
-export default withSimpleAnalytics(nextConfig);
+export default withSimpleAnalytics(nextConfig, {
+  hostname: "saulopavanello.com.br",
+});

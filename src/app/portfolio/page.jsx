@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import styles from "./page.module.css";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import Link from "next/link";
-import projetosData from "../../components/PortfolioSection/projetos.json";
+import projetosData from "../../components/PortfolioSection/projetosData.json";
 
 export default function PortfolioPage() {
   const [filter, setFilter] = useState("TODOS");

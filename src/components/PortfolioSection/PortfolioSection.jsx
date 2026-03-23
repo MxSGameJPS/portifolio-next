@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import styles from "./portfolioSection.module.css";
 import Link from "next/link";
-import data from "./projetos.json";
+import data from "./projetosData.json";
 
 export default function PortfolioSection() {
   const [activeTab, setActiveTab] = useState("web"); // 'web', 'backend', 'mobile'

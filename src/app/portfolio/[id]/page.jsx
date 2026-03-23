@@ -14,7 +14,7 @@ import {
   PiStarBold,
   PiRocketLaunchBold,
 } from "react-icons/pi";
-import projetosData from "../../../components/PortfolioSection/projetos.json";
+import projetosData from "../../../components/PortfolioSection/projetosData.json";
 
 export default function ProjectDetailsPage() {
   const params = useParams();
