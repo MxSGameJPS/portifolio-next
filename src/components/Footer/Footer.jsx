@@ -87,7 +87,7 @@ export default function Footer() {
             <p className={styles.socialTitle}>SIGA-NOS</p>
             <div className={styles.socialIcons}>
               <a
-                href="https://www.instagram.com/mxsgamejps/"
+                href="https://www.instagram.com/saulopavanello.tech/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}

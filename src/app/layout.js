@@ -24,6 +24,8 @@ export const metadata = {
   },
   description:
     "Especialista em Desenvolvimento de Sites, Criação de Apps e Sistemas Web. Transformo ideias em software de alta performance. React, Next.js e Node.js.",
+  applicationName: "Saulo Pavanello",
+  category: "technology",
   keywords: [
     "Desenvolvedor FullStack",
     "React",
@@ -32,12 +34,15 @@ export const metadata = {
     "Engenheiro de Software",
     "Criação de Sites",
     "Aplicativos Mobile",
+    "Desenvolvimento de Software sob Demanda",
     "Saulo Pavanello",
     "Portfólio",
   ],
-  authors: [{ name: "Saulo Pavanello" }],
+  authors: [{ name: "Saulo Pavanello", url: "https://saulopavanello.com.br" }],
   creator: "Saulo Pavanello",
   publisher: "Saulo Pavanello",
+  formatDetection: { telephone: false, email: false, address: false },
+  manifest: "/manifest.webmanifest",
   verification: {
     other: {
       "msvalidate.01": "8276A0BE06EB4F455FC55062BF0C023A",
@@ -86,29 +91,129 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: "#0a2342",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
+  const SITE = "https://saulopavanello.com.br";
+  const sameAs = [
+    "https://github.com/MxSGameJPS",
+    "https://www.linkedin.com/in/saulo-pavanello",
+    "https://www.instagram.com/saulopavanello",
+  ];
+
+  // Connected @graph: search engines and AI summarizers resolve the @id links,
+  // building one entity model (person + site + service + real reviews).
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Saulo Pavanello",
-    url: "https://saulopavanello.com.br",
-    jobTitle: "Engenheiro de Software FullStack",
-    sameAs: [
-      "https://github.com/MxSGameJPS",
-      "https://www.linkedin.com/in/saulo-pavanello",
-      "https://www.instagram.com/saulopavanello",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${SITE}/#person`,
+        name: "Saulo Pavanello",
+        url: SITE,
+        jobTitle: "Engenheiro de Software FullStack",
+        sameAs,
+        knowsAbout: [
+          "React",
+          "Next.js",
+          "Node.js",
+          "React Native",
+          "System Architecture",
+          "SEO",
+        ],
+        image: `${SITE}/Hero.png`,
+        description:
+          "Desenvolvedor FullStack Especialista. Transformo ideias complexas em soluções digitais de alta performance.",
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE}/#website`,
+        url: SITE,
+        name: "Saulo Pavanello — Desenvolvimento de Sites e Apps",
+        inLanguage: "pt-BR",
+        publisher: { "@id": `${SITE}/#person` },
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${SITE}/#service`,
+        name: "Saulo Pavanello — Desenvolvimento de Software",
+        url: SITE,
+        image: `${SITE}/Hero.png`,
+        description:
+          "Desenvolvimento de sites, aplicativos mobile, APIs e sistemas web sob medida com React, Next.js e Node.js.",
+        founder: { "@id": `${SITE}/#person` },
+        provider: { "@id": `${SITE}/#person` },
+        priceRange: "$$",
+        sameAs,
+        areaServed: { "@type": "Country", name: "Brasil" },
+        serviceType: [
+          "Desenvolvimento Web",
+          "Desenvolvimento Mobile",
+          "Desenvolvimento BackEnd",
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Soluções de Desenvolvimento",
+          itemListElement: [
+            {
+              "@type": "OfferCatalog",
+              name: "Desenvolvimento Web",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Criação de Sites Institucionais" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Pages de Alta Conversão" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "E-Commerce & Lojas Virtuais" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dashboards & Business Intelligence" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Desenvolvimento Mobile",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos Android Nativos" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos iOS Nativos" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Desenvolvimento BackEnd",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "APIs RESTful & GraphQL" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Modelagem e Gestão de Banco de Dados" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Integração de Sistemas e Automação" } },
+              ],
+            },
+          ],
+        },
+        review: [
+          {
+            "@type": "Review",
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            author: { "@type": "Person", name: "David Rodrigues" },
+            reviewBody:
+              "A capacidade técnica e a visão inovadora superaram nossas expectativas. A integração de IA no nosso fluxo foi implementada com maestria.",
+          },
+          {
+            "@type": "Review",
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            author: { "@type": "Person", name: "Carlos Eduardo" },
+            reviewBody:
+              "Profissional extremamente competente e ágil. Transformou nossa plataforma de e-commerce em uma experiência fluida e moderna.",
+          },
+          {
+            "@type": "Review",
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            author: { "@type": "Person", name: "Rafael Richard" },
+            reviewBody:
+              "Comunicação clara e desenvolvimento impecável do primeiro contato à entrega. As soluções otimizaram nossos processos internos.",
+          },
+        ],
+      },
     ],
-    knowsAbout: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "React Native",
-      "System Architecture",
-      "SEO",
-    ],
-    image: "https://saulopavanello.com.br/Hero.png",
-    description:
-      "Desenvolvedor FullStack Especialista. Transformo ideias complexas em soluções digitais de alta performance.",
   };
 
   return (

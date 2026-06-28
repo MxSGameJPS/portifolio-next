@@ -16,13 +16,24 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Using FormSubmit.co for a fast, no-backend implementation that works immediately
-  // The user can replace the email in the action URL if they want to use a specific backend later.
-  // Using the requested email: contato@saulopavanello.com.br
-  const handleSubmit = (e) => {
-    // If we want to use the native HTML form submission, we don't preventDefault.
-    // However, for SPA feel, we might want fetch. But FormSubmit is easiest as a standard form action.
-    // Let's use the standard form action for robustness without ANY code setup.
+  // Form posts natively to FormSubmit.co (no backend needed). We do NOT preventDefault —
+  // the native submit/redirect proceeds. gtag events use sendBeacon, so they survive the
+  // navigation and still reach Google Ads / Analytics.
+  const handleSubmit = () => {
+    if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+    // GA4 standard lead event (shows up in Analytics funnels)
+    window.gtag("event", "generate_lead", {
+      event_category: "contato",
+      event_label: "form_orcamento",
+    });
+
+    // Google Ads conversion. IMPORTANT (Saulo): troque XXXXXXXXX pelo "Rótulo de conversão"
+    // da sua ação de conversão "Lead" no Google Ads (Ferramentas > Conversões).
+    // Formato final: "AW-17926381242/AbC-D_efG"
+    window.gtag("event", "conversion", {
+      send_to: "AW-17926381242/XXXXXXXXX",
+    });
   };
 
   return (
@@ -63,13 +74,14 @@ export default function Contact() {
             action="https://formsubmit.co/contato@saulopavanello.com.br"
             method="POST"
             className={styles.form}
+            onSubmit={handleSubmit}
           >
             {/* Configurações do FormSubmit */}
             <input type="hidden" name="_captcha" value="false" />
             <input
               type="hidden"
               name="_next"
-              value="http://saulopavanello.com.br?success=true"
+              value="https://saulopavanello.com.br?success=true"
             />
             <input type="hidden" name="_template" value="table" />
             <input

@@ -1,151 +1,224 @@
 "use client";
 import { useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+} from "framer-motion";
 import styles from "./solutions.module.css";
 import data from "./solutions.json";
 import { FaChevronDown } from "react-icons/fa";
-import { PiArrowUpRightBold } from "react-icons/pi";
+import { PiCheckBold, PiArrowUpRightBold } from "react-icons/pi";
+
+// Tracks intent when a visitor asks for a specific solution
+function trackSolutionCta(label) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  window.gtag("event", "cta_click", {
+    event_category: "solucoes",
+    event_label: label,
+  });
+}
 
 export default function Solutions() {
-  // Estado para controlar qual categoria está expandida
-  const [expandedCategory, setExpandedCategory] = useState("web"); // Começa com web aberto
+  const reduce = useReducedMotion();
 
-  // Estado para controlar qual item específico está selecionado para exibição
-  // Inicializa com o primeiro item da categoria 'web' para evitar efeito na montagem
+  // Which category accordion is expanded (one open at a time)
+  const [expandedCategory, setExpandedCategory] = useState("web");
+
+  // Which item is shown in the right-hand content panel
   const [selectedItem, setSelectedItem] = useState(() => {
     const category = data.find((c) => c.id === "web");
     return category?.items?.[0] || null;
   });
 
   const toggleCategory = (id) => {
-    if (expandedCategory === id) {
-      // Se clicar no que já está aberto, não fecha, apenas mantem (estilo accordion unico)
-      return;
-    }
+    if (expandedCategory === id) return; // single-accordion: clicking open does nothing
     setExpandedCategory(id);
-
-    // Ao trocar de categoria, seleciona automaticamente o primeiro item dela
     const category = data.find((c) => c.id === id);
     if (category && category.items.length > 0) {
       setSelectedItem(category.items[0]);
     }
   };
 
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
+  const handleItemClick = (item) => setSelectedItem(item);
+
+  // Stagger the feature rows as the panel swaps in
+  const panelContainer = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.05, delayChildren: 0.08 } },
+  };
+  const panelItem = {
+    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 14 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
     <section className={styles.section} id="solucoes">
       <div className={styles.container}>
-        <div className={styles.header}>
+        <header className={styles.header}>
+          <span className={styles.eyebrow}>O que entregamos</span>
           <h2 className={styles.mainTitle}>
-            Nossas Soluções<span className={styles.dot}>.</span>
+            Soluções sob medida<span className={styles.dot}>.</span>
           </h2>
-        </div>
+          <p className={styles.subtitle}>
+            Escolha uma frente e veja exatamente como resolvo o problema — do
+            protótipo ao deploy em produção.
+          </p>
+        </header>
 
         <div className={styles.layout}>
-          {/* MENU ESQUERDO */}
+          {/* MENU ESQUERDO — rail de categorias */}
           <div
             className={styles.menuContainer}
             role="tablist"
             aria-orientation="vertical"
             aria-label="Categorias de soluções"
           >
-            {data.map((category) => (
-              <div
-                key={category.id}
-                className={`${styles.categoryGroup} ${
-                  expandedCategory === category.id ? styles.active : ""
-                }`}
-              >
-                <button
-                  className={`${styles.categoryHeader} ${
-                    expandedCategory === category.id
-                      ? styles.categoryHeaderActive
-                      : ""
-                  }`}
-                  onClick={() => toggleCategory(category.id)}
-                  aria-expanded={expandedCategory === category.id}
-                  aria-controls={`group-${category.id}`}
-                  style={{ width: "100%", border: "none", background: "none" }}
-                >
-                  <span>
-                    {category.number}. {category.title}
-                  </span>
-                  <FaChevronDown
-                    className={`${styles.arrowIcon} ${
-                      expandedCategory === category.id ? styles.rotated : ""
+            {data.map((category) => {
+              const isOpen = expandedCategory === category.id;
+              return (
+                <div key={category.id} className={styles.categoryGroup}>
+                  <button
+                    className={`${styles.categoryHeader} ${
+                      isOpen ? styles.categoryHeaderActive : ""
                     }`}
-                    size={14}
-                    aria-hidden="true"
-                  />
-                </button>
+                    onClick={() => toggleCategory(category.id)}
+                    aria-expanded={isOpen}
+                    aria-controls={`group-${category.id}`}
+                  >
+                    <span className={styles.categoryNumber}>
+                      {category.number}
+                    </span>
+                    <span className={styles.categoryTitle}>
+                      {category.title}
+                    </span>
+                    <FaChevronDown
+                      className={`${styles.arrowIcon} ${
+                        isOpen ? styles.rotated : ""
+                      }`}
+                      size={13}
+                      aria-hidden="true"
+                    />
+                  </button>
 
-                <ul
-                  id={`group-${category.id}`}
-                  className={`${styles.itemList} ${
-                    expandedCategory === category.id ? styles.open : ""
-                  }`}
-                  role="list"
-                >
-                  {category.items.map((item, index) => (
-                    <li key={index} role="presentation">
-                      <button
-                        className={`${styles.itemButton} ${
-                          selectedItem === item ? styles.activeItem : ""
-                        }`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleItemClick(item);
-                        }}
-                        role="tab"
-                        aria-selected={selectedItem === item}
-                        aria-controls="solution-content-panel"
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.ul
+                        id={`group-${category.id}`}
+                        className={styles.itemList}
+                        role="list"
+                        initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                        animate={
+                          reduce
+                            ? { opacity: 1 }
+                            : { height: "auto", opacity: 1 }
+                        }
+                        exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       >
-                        {item.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                        {category.items.map((item, index) => {
+                          const active = selectedItem === item;
+                          return (
+                            <li key={index} role="presentation">
+                              <button
+                                className={`${styles.itemButton} ${
+                                  active ? styles.activeItem : ""
+                                }`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleItemClick(item);
+                                }}
+                                role="tab"
+                                aria-selected={active}
+                                aria-controls="solution-content-panel"
+                              >
+                                {active && (
+                                  <motion.span
+                                    layoutId="solIndicator"
+                                    className={styles.itemIndicator}
+                                    transition={{
+                                      type: "spring",
+                                      stiffness: 420,
+                                      damping: 32,
+                                    }}
+                                  />
+                                )}
+                                {item.name}
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
 
-          {/* CONTEÚDO DIREITO */}
+          {/* CONTEÚDO DIREITO — painel animado */}
           <div
             className={styles.contentPanel}
             role="tabpanel"
             id="solution-content-panel"
           >
-            {selectedItem && (
-              <>
-                <h3 className={styles.contentTitle}>{selectedItem.title}</h3>
+            <AnimatePresence mode="wait">
+              {selectedItem && (
+                <motion.div
+                  key={selectedItem.title}
+                  variants={panelContainer}
+                  initial="hidden"
+                  animate="show"
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
+                >
+                  <motion.h3 variants={panelItem} className={styles.contentTitle}>
+                    {selectedItem.title}
+                  </motion.h3>
 
-                {/* Divisor Decorativo */}
-                <div className={styles.dividerContainer}>
-                  ---{" "}
-                  <span style={{ margin: "0 10px", fontSize: "1.5rem" }}>
-                    ✦
-                  </span>{" "}
-                  ---
-                </div>
+                  <motion.p variants={panelItem} className={styles.quote}>
+                    <span className={styles.quoteMark} aria-hidden="true">
+                      &ldquo;
+                    </span>
+                    {selectedItem.quote.replace(/[“”"]/g, "")}
+                  </motion.p>
 
-                <p className={styles.quote}>{selectedItem.quote}</p>
+                  <motion.p
+                    variants={panelItem}
+                    className={styles.description}
+                  >
+                    {selectedItem.description}
+                  </motion.p>
 
-                <p className={styles.description}>{selectedItem.description}</p>
+                  <motion.div
+                    variants={panelItem}
+                    className={styles.featureList}
+                  >
+                    {selectedItem.features.map((feature, idx) => (
+                      <div key={idx} className={styles.featureItem}>
+                        <span className={styles.featureCheck} aria-hidden="true">
+                          <PiCheckBold size={12} />
+                        </span>
+                        {feature}
+                      </div>
+                    ))}
+                  </motion.div>
 
-                <div className={styles.featureList}>
-                  {selectedItem.features.map((feature, idx) => (
-                    <div key={idx} className={styles.featureItem}>
-                      <span className={styles.featureDot} aria-hidden="true">
-                        •
-                      </span>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
+                  <motion.a
+                    variants={panelItem}
+                    href="#contato"
+                    className={styles.ctaButton}
+                    onClick={() => trackSolutionCta(selectedItem.title)}
+                  >
+                    Quero esta solução
+                    <PiArrowUpRightBold size={16} aria-hidden="true" />
+                  </motion.a>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>

@@ -794,6 +794,89 @@
         "Components: Swiper JS + Embla Carousel",
         "QA: React Testing Library"
       ]
+    },
+    {
+      "id": 24,
+      "name": "API Social Jurídico",
+      "tag": "API - BackEnd",
+      "category": "LegalTech / API Processual / SaaS",
+      "image": "/Projetos/apisocialjuridico.png",
+      "importance": "1",
+      "deploy_link": "https://n8n.socialjuridico.com.br/docs",
+      "repo_link": "https://github.com/MxSGameJPS/apisocialjuridico",
+      "description": "API processual de alta escala — uma 'busca viva' no estilo Escavador que integra DataJud e DJEN (CNJ) para consulta pública de processos por OAB, CPF/CNPJ e parte. Entrega dossiês, inteligência jurídica, monitoramento de processos para plataformas e uma API comercial multi-tenant com emissão de chaves e cobrança por uso. O resumo por IA (Gemini) é opt-in, com governança rígida de custo.",
+      "sections": [
+        {
+          "title": "Busca Viva Processual (DataJud + DJEN)",
+          "content": "Agrega as fontes oficiais do CNJ — DataJud e DJEN — em uma camada de busca pública estilo Escavador, com índice full-text, alertas e detecção de similaridade entre processos. Permite consulta robusta por número de OAB com enriquecimento de detalhes sob demanda."
+        },
+        {
+          "title": "Resolvedor de Identidade CPF/CNPJ",
+          "content": "CPF/CNPJ não são campos públicos pesquisáveis no DJEN/DataJud. A API implementa uma camada local de resolução de identidade por hash do documento, permitindo cadastrar, vincular e listar processos por CPF/CNPJ sem expor o dado sensível."
+        },
+        {
+          "title": "Monitoramento para Plataformas e Webhooks",
+          "content": "Monitoramentos OAB/CNJ executáveis sob demanda, com fila de eventos e entrega confiável via outbox worker. Plataformas parceiras recebem notificações de movimentação processual de forma assíncrona e auditável."
+        },
+        {
+          "title": "API Comercial Multi-tenant",
+          "content": "Camada comercial com planos, cadastro de clientes, emissão de API Keys (sj_live_*) e medição de uso para billing. A autenticação comercial (x-commercial-api-key) é isolada da chave de administração interna, garantindo separação de privilégios."
+        },
+        {
+          "title": "IA com Governança de Custo",
+          "content": "Por segurança financeira, a API nunca gera resumo por IA automaticamente. O resumo é opt-in por payload (gerar_resumo), com rate limit por minuto e provedor plugável (Gemini ou nenhum), evitando gasto descontrolado em buscas e importações em massa."
+        }
+      ],
+      "tech_stack": [
+        "Runtime: Node.js (ESM)",
+        "Framework: Fastify 5",
+        "Validação: Zod",
+        "Banco de Dados: PostgreSQL (Supabase)",
+        "Documentação: OpenAPI / Swagger UI",
+        "Jobs: node-cron + Workers (outbox)",
+        "Integrações: DataJud e DJEN (CNJ)",
+        "IA: Google Gemini (opt-in)",
+        "Auth: API Keys (admin + comercial)"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Validação OAB (KYC Jurídico)",
+      "tag": "API - BackEnd",
+      "category": "KYC / Verificação de Identidade / IA",
+      "image": "/Projetos/validacao-oab.png",
+      "importance": "1",
+      "deploy_link": "https://validacao.socialjuridico.com.br",
+      "repo_link": "https://github.com/MxSGameJPS/validacaooab",
+      "description": "API de verificação automática de identidade e registro na OAB. Substitui o fluxo manual de ~5 dias por uma verificação na hora do cadastro: lê a carteira da OAB (CNA física ou digital) com o Gemini 2.5 Flash, confere nome/OAB/UF, aplica um filtro facial por selfie e devolve o veredito ao app principal via webhook assinado. Possui banco, storage e tela de captura próprios, independentes do app principal.",
+      "sections": [
+        {
+          "title": "Verificação Documental com IA (Gemini 2.5 Flash)",
+          "content": "Extrai e valida a Carteira Nacional do Advogado (imagem ou PDF, física ou digital) com IA, comparando nome, número de OAB e UF com os dados informados. Classifica o resultado em VERIFIED, MANUAL_REVIEW ou ERROR, sendo o documento o critério decisivo."
+        },
+        {
+          "title": "Sessões Escopadas e Seguras",
+          "content": "A sessão de captura é criada server-to-server com x-api-key e expira em 30 minutos. A tela hospedada faz o envio de uso único, escopado à sessão, sem nunca expor chaves secretas no navegador do advogado."
+        },
+        {
+          "title": "Filtro Facial (Liveness Leve)",
+          "content": "Selfie capturada em moldura oval, no estilo de abertura de conta em banco. O filtro facial é permissivo: só bloqueia em caso de incompatibilidade clara, evitando falsos negativos enquanto barra fraudes óbvias."
+        },
+        {
+          "title": "Webhook Assinado (HMAC-SHA256)",
+          "content": "Ao concluir a análise, a API notifica o app principal via callback_url com assinatura HMAC-SHA256 no header x-signature. O consumidor valida a assinatura antes de confiar no payload, garantindo integridade ponta a ponta com banco e storage isolados."
+        }
+      ],
+      "tech_stack": [
+        "Framework: Next.js 16",
+        "Frontend: React 19",
+        "IA: Google Gemini 2.5 Flash (@google/genai)",
+        "IA: OpenAI SDK",
+        "Banco de Dados: PostgreSQL (Supabase)",
+        "Storage: Supabase Storage (privado)",
+        "Segurança: Webhook HMAC-SHA256",
+        "Auth: API Key server-to-server"
+      ]
     }
   ]
 }

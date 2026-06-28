@@ -1,82 +1,73 @@
+/* ============ Companies — trust marquee ============ */
 .companiesSection {
   width: 100%;
-  padding: 4rem 0;
-  background-color: var(--pure-white); /* Continuação do fundo branco */
+  padding: 4.5rem 0;
+  background-color: var(--pure-white);
   overflow: hidden;
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Separação sutil */
-
-
-  @media (max-width: 768px) {
-    .slideTrack {
-      gap: 3rem;
-    }
-    .companyLogo {
-      height: 30px;
-    }
-  }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .title {
   text-align: center;
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 0.95rem;
   color: var(--text-grey);
-  margin-bottom: 3rem;
-  font-weight: 500;
-  opacity: 0.8;
-  letter-spacing: 0.05em;
+  margin: 0 0 3rem;
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
 }
 
+/* viewport with soft fade on both edges */
 .slider {
   display: flex;
   width: 100%;
   overflow: hidden;
   position: relative;
-
-  
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
 }
 
 .slideTrack {
   display: flex;
   align-items: center;
-  gap: 8rem; /* Espaço entre logos */
+  gap: 8rem;
   width: max-content;
   animation: scroll 40s linear infinite;
-  padding: 0 2rem;
+  padding: 0 4rem;
+}
 
-  @media (max-width: 768px) {
-    gap: 3rem;
-  }
+.slideTrack:hover {
+  animation-play-state: paused;
 }
 
 .companyLogo {
-  height: 60px; /* Altura padrão para alinhar todos */
+  height: 56px;
   width: auto;
   object-fit: contain;
-  /* Estilo Greyscale para uniformidade */
-  filter: grayscale(100%) opacity(0.6);
-  transition: all 0.3s ease;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    height: 30px;
-  }
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
 .companyLogo:hover {
-  filter: grayscale(0%) opacity(1);
-  transform: scale(1.1);
-
-  @media (max-width: 768px) {
-    transform: scale(1);
-  }
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 @keyframes scroll {
@@ -84,15 +75,42 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(
-      calc(-100% / 3)
-    ); /* Move exatamente 1 terço (1 set completo) */
+    /* track = 4 copies (2 sets of the doubled list); move exactly half for a seamless loop */
+    transform: translateX(-50%);
   }
 }
 
-/* Pause on Hover (Opcional, mas legal para UX) */
-.slideTrack:hover {
-  animation-play-state: paused;
+/* ============ Responsive ============ */
+@media (max-width: 768px) {
+  .companiesSection {
+    padding: 3rem 0;
+  }
+
+  .title {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .slideTrack {
+    gap: 3.5rem;
+    padding: 0 2rem;
+  }
+
+  .companyLogo {
+    height: 34px;
+  }
+
+  .companyLogo:hover {
+    transform: scale(1);
+  }
 }
 
-
+@media (prefers-reduced-motion: reduce) {
+  .slideTrack {
+    animation: none;
+    /* center the static set instead of leaving it left-shifted */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+}

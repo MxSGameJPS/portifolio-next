@@ -1,324 +1,335 @@
-.section {
-  padding: 6rem 1.5rem;
-  background-color: var(--pure-white); /* Fundo branco limpo */
-  color: var(--deep-navy);
+/* ============================================================
+   Solutions — premium command-rail + animated content panel
+   Flat selectors (no native nesting) by deliberate standard.
+   ============================================================ */
 
-  @media (max-width: 768px) {
-    padding: 4rem 1.5rem;
-  }
+.section {
+  padding: 7rem 1.5rem;
+  background-color: var(--pure-white);
+  color: var(--deep-navy);
 }
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-  }
 }
 
+/* --- Header --- */
 .header {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
+  max-width: 640px;
+}
 
-  @media (max-width: 768px) {
-    margin-bottom: 2rem;
-  }
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--soft-gold);
+  margin-bottom: 0.85rem;
 }
 
 .mainTitle {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--deep-navy);
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
 }
 
 .dot {
-  color: var(--tech-blue); /* Branding color */
+  color: var(--tech-blue);
 }
 
-/* Layout Grid: Menu Esquerdo (40%) + Conteúdo Direito (60%) */
+.subtitle {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-grey);
+}
+
+/* --- Layout grid --- */
 .layout {
   display: grid;
-  grid-template-columns: 350px 1fr;
-  gap: 4rem;
+  grid-template-columns: 340px 1fr;
+  gap: 3rem;
   align-items: start;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
 }
 
-
-
-/* --- Menu Esquerdo (Accordion) --- */
+/* --- Left rail (accordion) --- */
 .menuContainer {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-
-  @media (max-width: 768px) {
-    gap: 1rem;
-  }
+  gap: 0.75rem;
+  position: sticky;
+  top: 2rem;
 }
 
 .categoryGroup {
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-/* Estado Ativo do Grupo (Borda ou Sombra) */
-.categoryGroup.active {
-  /* Pode adicionar um destaque sutil se desejar, mas o destaque principal é o botão header */
 }
 
 .categoryHeader {
   width: 100%;
-  padding: 1rem 1.5rem;
-  background-color: transparent;
-  border: 1px solid #e0e0e0;
-  border-radius: 50px; /* Borda arredondada igual referência */
+  padding: 1rem 1.25rem;
+  background-color: var(--cool-grey);
+  border: 1px solid transparent;
+  border-radius: 14px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.85rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, transform 0.15s ease;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: var(--deep-navy);
-  text-transform: uppercase;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
+  text-align: left;
 }
 
 .categoryHeader:hover {
-  border-color: #017ef3;
-  color: #000;
+  border-color: rgba(0, 168, 232, 0.4);
 }
 
-/* Header Ativo (Fundo Verde/Azul com Texto Escuro) */
-.categoryHeaderActive {
-  background-color: #bef264; /* Verde Limão da Ref */
-  /* background-color: var(--tech-blue);  Se preferir o azul da marca, troque aqui */
-  border-color: #bef264;
-  color: #000;
+.categoryHeader:focus-visible {
+  outline: 2px solid var(--tech-blue);
+  outline-offset: 2px;
 }
 
-/* Sobrescrevendo a cor para manter branding se usuário preferir, 
-   mas vou deixar o verde da ref comentado e usar um tom tech para manter consistência */
 .categoryHeaderActive {
-  background-color: var(--tech-blue);
-  border-color: var(--tech-blue);
+  background-color: var(--deep-navy);
+  border-color: var(--deep-navy);
   color: var(--pure-white);
 }
 
-.arrowIcon {
-  transition: transform 0.3s ease;
+.categoryNumber {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--soft-gold);
+  min-width: 1.5rem;
 }
 
-.arrowIcon.rotated {
+.categoryTitle {
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+.arrowIcon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+}
+
+.rotated {
   transform: rotate(180deg);
 }
 
 .itemList {
   list-style: none;
-  padding: 1rem 1rem 1rem 2rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  /* Animação de abrir */
-  max-height: 0;
-  opacity: 0;
+  gap: 0.15rem;
   overflow: hidden;
-  transition: all 0.4s ease-in-out;
-
- 
-}
-
-.itemList.open {
-  max-height: 500px; /* Valor arbitrário suficiente */
-  opacity: 1;
 }
 
 .itemButton {
+  position: relative;
+  width: 100%;
   background: none;
   border: none;
   text-align: left;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-grey);
   cursor: pointer;
-  padding: 0.5rem;
-  transition: color 0.2s ease, padding-left 0.2s ease;
-  position: relative;
+  padding: 0.6rem 0.75rem 0.6rem 1.4rem;
+  border-radius: 10px;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .itemButton:hover {
-  color: var(--tech-blue);
-  padding-left: 0.75rem;
+  color: var(--deep-navy);
+  background-color: var(--cool-grey);
 }
 
-.itemButton.activeItem {
+.itemButton:focus-visible {
+  outline: 2px solid var(--tech-blue);
+  outline-offset: 1px;
+}
+
+.activeItem {
   color: var(--tech-blue);
   font-weight: 700;
-  padding-left: 0.75rem;
 }
 
-.itemButton.activeItem::before {
-  content: "•";
+/* sliding pill that follows the active item (layoutId) */
+.itemIndicator {
   position: absolute;
   left: 0;
-  color: var(--tech-blue);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.1rem;
+  border-radius: 4px;
+  background: linear-gradient(var(--tech-blue), var(--soft-gold));
 }
 
-/* --- Conteúdo Direito --- */
+/* --- Right content panel --- */
 .contentPanel {
-  background-color: transparent;
-  border-radius: 8px;
-  border: 1px solid #00a8e8;
-  padding: 1.5rem;
-  margin-top: 1rem;
-  animation: fadeIn 0.5s ease;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  position: relative;
+  background-color: var(--pure-white);
+  border-radius: 20px;
+  border: 1px solid rgba(10, 35, 66, 0.1);
+  box-shadow: 0 24px 60px -32px rgba(10, 35, 66, 0.35);
+  padding: 2.5rem;
+  min-height: 420px;
 }
 
 .contentTitle {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
   font-weight: 800;
-  margin-bottom: 2rem;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
   color: var(--deep-navy);
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-}
-
-.dividerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-  color: var(--text-grey);
-  opacity: 0.5;
-  
-
-  @media (max-width: 768px) {
-    margin-bottom: 1rem;
-  }
 }
 
 .quote {
+  position: relative;
   font-style: italic;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
+  line-height: 1.45;
   color: var(--deep-navy);
   margin-bottom: 1.5rem;
-  border-left: 4px solid var(--tech-blue);
-  padding-left: 1rem;
-  
+  padding-left: 2.25rem;
+}
 
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
+.quoteMark {
+  position: absolute;
+  left: 0;
+  top: -0.35rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--soft-gold);
 }
 
 .description {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.75;
   color: var(--text-grey);
   margin-bottom: 2rem;
-  text-align: justify;
-  border-left: 4px solid #00a8e8;
-  padding-left: 1rem;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
 }
 
 .featureList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #00a8e8;
-  padding-bottom: 1rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  gap: 0.85rem 1.5rem;
+  margin-bottom: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(10, 35, 66, 0.1);
 }
 
 .featureItem {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
   font-size: 0.95rem;
   color: var(--deep-navy);
   font-weight: 500;
-
-  @media (max-width: 768px) {
-    font-size: 0.8rem;
-  }
 }
 
-.featureDot {
-  color: #bef264; /* Mantendo o verde da ref para os bullets ou usando tech-blue */
+.featureCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background-color: rgba(0, 168, 232, 0.12);
   color: var(--tech-blue);
-  font-size: 1.5rem;
-  line-height: 0;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
 }
 
 .ctaButton {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #000;
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 4px;
+  background-color: var(--deep-navy);
+  color: var(--pure-white);
+  padding: 0.85rem 1.75rem;
+  border-radius: 50px;
+  font-family: var(--font-heading);
   font-weight: 700;
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  border: 1px solid #000;
-
-  @media (max-width: 768px) {
-    font-size: 0.8rem;
-  }
+  font-size: 0.95rem;
+  transition: background-color 0.25s ease, transform 0.2s ease,
+    box-shadow 0.25s ease;
 }
 
 .ctaButton:hover {
-  background-color: transparent;
-  color: #000;
+  background-color: var(--tech-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -10px rgba(0, 168, 232, 0.6);
+}
+
+.ctaButton:focus-visible {
+  outline: 2px solid var(--soft-gold);
+  outline-offset: 2px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 880px) {
+  .section {
+    padding: 4.5rem 1.25rem;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .menuContainer {
+    position: static;
+  }
+
+  .contentPanel {
+    padding: 1.75rem;
+    min-height: 0;
+  }
+
+  .featureList {
+    grid-template-columns: 1fr;
+  }
+
+  .quote {
+    font-size: 1.05rem;
+  }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .ctaButton,
+  .categoryHeader,
+  .arrowIcon,
+  .itemButton {
+    transition: none;
+  }
+
+  .ctaButton:hover {
+    transform: none;
+  }
 }
