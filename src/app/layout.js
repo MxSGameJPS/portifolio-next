@@ -147,11 +147,10 @@ export default function RootLayout({ children }) {
         description:
           "Desenvolvimento de sites, aplicativos mobile, APIs e sistemas web sob medida com React, Next.js e Node.js.",
         founder: { "@id": `${SITE}/#person` },
-        provider: { "@id": `${SITE}/#person` },
         priceRange: "$$",
         sameAs,
         areaServed: { "@type": "Country", name: "Brasil" },
-        serviceType: [
+        knowsAbout: [
           "Desenvolvimento Web",
           "Desenvolvimento Mobile",
           "Desenvolvimento BackEnd",
