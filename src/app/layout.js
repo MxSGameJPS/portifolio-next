@@ -189,29 +189,6 @@ export default function RootLayout({ children }) {
             },
           ],
         },
-        review: [
-          {
-            "@type": "Review",
-            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-            author: { "@type": "Person", name: "David Rodrigues" },
-            reviewBody:
-              "A capacidade técnica e a visão inovadora superaram nossas expectativas. A integração de IA no nosso fluxo foi implementada com maestria.",
-          },
-          {
-            "@type": "Review",
-            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-            author: { "@type": "Person", name: "Carlos Eduardo" },
-            reviewBody:
-              "Profissional extremamente competente e ágil. Transformou nossa plataforma de e-commerce em uma experiência fluida e moderna.",
-          },
-          {
-            "@type": "Review",
-            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-            author: { "@type": "Person", name: "Rafael Richard" },
-            reviewBody:
-              "Comunicação clara e desenvolvimento impecável do primeiro contato à entrega. As soluções otimizaram nossos processos internos.",
-          },
-        ],
       },
     ],
   };
