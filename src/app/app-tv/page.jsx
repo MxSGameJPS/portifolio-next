@@ -1,402 +1,163 @@
 "use client";
 
-import { useState } from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Contact from "../../components/Contact/Contact";
-import styles from "./page.module.css";
-import Image from "next/image";
+import ServicePage from "../_services/ServicePage";
+import { faqItems } from "./data";
 import {
-  PiArrowUpRightBold,
-  PiCaretDownBold,
   PiTelevisionBold,
-  PiFilmStripBold,
-  PiGameControllerBold,
-  PiWifiHighBold,
-  PiMonitorBold,
-  PiSpeakerHighBold,
-  PiDesktopTowerBold,
-  PiCodeBold,
-  PiDevicesBold,
-  PiRocketLaunchBold,
-  PiHouseBold,
+  PiPlayCircleBold,
+  PiCpuBold,
+  PiLockKeyBold,
+  PiPlugsBold,
+  PiDeviceMobileBold,
 } from "react-icons/pi";
 
+const features = [
+  {
+    title: "Navegação pelo controle",
+    description:
+      "Interface pensada para o controle remoto, com foco e seleção sempre claros, fácil de usar do sofá.",
+  },
+  {
+    title: "App de streaming (VOD)",
+    description:
+      "Catálogo de vídeos, player, categorias e continuar assistindo — a experiência que o público já conhece.",
+  },
+  {
+    title: "Login e assinatura",
+    description:
+      "Login na TV (inclusive por código exibido na tela) e integração com assinatura e pagamento.",
+  },
+  {
+    title: "Tela grande valorizada",
+    description:
+      "Layout e imagens pensados para impressionar na tela grande, não um app de celular apenas esticado.",
+  },
+  {
+    title: "Android TV e Apple TV",
+    description:
+      "Publicação nas lojas das principais plataformas de TV, conforme o alcance do seu público.",
+  },
+  {
+    title: "Integrado ao seu conteúdo",
+    description:
+      "Conecta com o seu catálogo, CMS ou API para o conteúdo aparecer sempre atualizado, sem republicar.",
+  },
+];
+
+const benefits = [
+  {
+    icon: <PiTelevisionBold />,
+    text: "A maior tela da casa: seu conteúdo no centro da sala, com o destaque da tela grande.",
+  },
+  {
+    icon: <PiPlayCircleBold />,
+    text: "Experiência de streaming: catálogo e player no padrão que o público já sabe usar.",
+  },
+  {
+    icon: <PiPlugsBold />,
+    text: "Sempre atualizado: integrado ao seu catálogo, mostra conteúdo novo sem republicar o app.",
+  },
+];
+
+const differentials = [
+  {
+    icon: <PiTelevisionBold />,
+    title: "Feito para TV",
+    text: "Navegação por controle e foco visível, não um app de celular esticado para a tela grande.",
+  },
+  {
+    icon: <PiPlayCircleBold />,
+    title: "Player robusto",
+    text: "Reprodução de vídeo fluida, com categorias, continuar assistindo e boa experiência de busca.",
+  },
+  {
+    icon: <PiCpuBold />,
+    title: "Base moderna",
+    text: "React Native for TV ou plataformas nativas, conforme o melhor caminho para o seu caso.",
+  },
+  {
+    icon: <PiLockKeyBold />,
+    title: "Login na tela",
+    text: "Login por código exibido na TV e integração com assinatura e pagamento, sem digitação difícil.",
+  },
+  {
+    icon: <PiPlugsBold />,
+    title: "Integra seu catálogo",
+    text: "Conteúdo puxado do seu CMS ou API, sempre atualizado sem precisar reenviar o app.",
+  },
+  {
+    icon: <PiDeviceMobileBold />,
+    title: "Alinhado ao seu app",
+    text: "Mesma identidade e lógica do seu app de celular, adaptadas para a experiência de TV.",
+  },
+];
+
+const methodSteps = [
+  {
+    title: "Conteúdo & Plataformas",
+    description:
+      "Definimos o conteúdo, o objetivo do app e em quais plataformas de TV vale a pena estar.",
+  },
+  {
+    title: "Design para TV",
+    description:
+      "Crio a navegação pensada para o controle remoto, com foco e seleção claros na tela grande.",
+  },
+  {
+    title: "Desenvolvimento",
+    description:
+      "Construo o app com o catálogo, a navegação e a identidade da sua marca adaptadas à TV.",
+  },
+  {
+    title: "Player & Login",
+    description:
+      "Implemento o player de vídeo, o login na tela e a integração com assinatura e pagamento.",
+  },
+  {
+    title: "Testes na TV",
+    description:
+      "Testo em aparelhos e sistemas de TV para garantir navegação e reprodução fluidas de verdade.",
+  },
+  {
+    title: "Publicação nas lojas",
+    description:
+      "Envio o app para as lojas da Android TV e da Apple TV e ajusto o que for necessário até aprovar.",
+  },
+];
+
+const trust = [
+  { value: "Android & Apple TV", label: "tela grande" },
+  { value: "Streaming", label: "catálogo + player" },
+  { value: "2+ anos", label: "de experiência" },
+];
+
 export default function AppTvPage() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const toggleFeature = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
-  const features = [
-    {
-      title: "Desenvolvimento para Smart TVs",
-      description:
-        "Criamos aplicativos nativos e híbridos para as principais plataformas do mercado: Tizen (Samsung), WebOS (LG) e Android TV (TCL, Philips, Sony).",
-    },
-    {
-      title: "Apple TV (tvOS)",
-      description:
-        "Apps premium para o ecossistema Apple, aproveitando o poder do hardware da Apple TV para experiências fluidas e integradas com iPhone e iPad.",
-    },
-    {
-      title: "Streaming & VOD",
-      description:
-        "Plataformas completas de vídeo sob demanda (Netflix-like), com player personalizado, DRM (proteção de conteúdo) e suporte a 4K HDR.",
-    },
-    {
-      title: "Navegação por Controle Remoto",
-      description:
-        "Interface desenhada especificamente para interação via D-Pad (controle remoto), garantindo foco visível e usabilidade intuitiva a 3 metros de distância.",
-    },
-    {
-      title: "Jogos para TV",
-      description:
-        "Experiências interativas e casuais adaptadas para a sala de estar, com suporte a controles Bluetooth e integração com smartphones.",
-    },
-    {
-      title: "Sinalização Digital (Digital Signage)",
-      description:
-        "Apps para telas corporativas, menus digitais de restaurantes e painéis de publicidade, gerenciados remotamente.",
-    },
-    {
-      title: "Chromecast & AirPlay",
-      description:
-        "Implementação de protocolos de transmissão para permitir que seus usuários enviem conteúdo do celular direto para a TV com um toque.",
-    },
-  ];
-
-  const benefits = [
-    {
-      icon: <PiHouseBold />,
-      text: "Presença no centro do lar: a sala de estar do seu cliente",
-    },
-    {
-      icon: <PiFilmStripBold />,
-      text: "Aumente o tempo de consumo de conteúdo com a tela grande",
-    },
-    {
-      icon: <PiWifiHighBold />,
-      text: "Alcance milhões de TVs conectadas sem depender de set-top boxes",
-    },
-  ];
-
-  const differentials = [
-    {
-      icon: <PiMonitorBold />,
-      title: "10-foot Experience",
-      text: "Dominamos a UX para TV. Sabemos que o usuário não toca na tela e está sentado longe. Fontes legíveis e foco claro são nossa prioridade.",
-    },
-    {
-      icon: <PiCodeBold />,
-      title: "Performance Máxima",
-      text: "Smart TVs têm processadores limitados. Nossos apps são otimizados para rodar liso, sem travar, mesmo em modelos mais antigos.",
-    },
-    {
-      icon: <PiDevicesBold />,
-      title: "Multi-Plataforma",
-      text: "Desenvolvemos com frameworks que permitem reaproveitar código entre Samsung, LG e Android TV, reduzindo custo e tempo.",
-    },
-    {
-      icon: <PiSpeakerHighBold />,
-      title: "Imersão Sonora",
-      text: "Integração com sistemas de som Dolby e interações sonoras que guiam o usuário pela navegação.",
-    },
-    {
-      icon: <PiDesktopTowerBold />,
-      title: "Homologação",
-      text: "Cuidamos do chato e complexo processo de aprovação nas lojas da Samsung, LG, Roku e Apple, que é muito mais rígido que no celular.",
-    },
-    {
-      icon: <PiGameControllerBold />,
-      title: "Interatividade",
-      text: "Criamos 'second screen experiences', onde o app da TV conversa em tempo real com o app do celular do usuário.",
-    },
-  ];
-
-  const methodSteps = [
-    {
-      title: "Prototipagem em TV",
-      description:
-        "Testamos a navegação e legibilidade desde o wireframe, simulando a distância real de uso.",
-    },
-    {
-      title: "Desenvolvimento",
-      description:
-        "Codificação utilizando TV Application Layer (TAL), React Native TV ou Swift, dependendo do alvo.",
-    },
-    {
-      title: "Teste em Dispositivos Reais",
-      description:
-        "Não usamos apenas emuladores. Testamos seu app em TVs Samsung, LG e Android reais para garantir compatibilidade.",
-    },
-    {
-      title: "DRM & Segurança",
-      description:
-        "Implementação de travas de segurança para proteger seu conteúdo de vídeo contra pirataria.",
-    },
-    {
-      title: "Certificação",
-      description:
-        "Submissão técnica para as lojas (Store QA), ajustando detalhes exigidos pelos fabricantes (checklist de compliance).",
-    },
-    {
-      title: "Lançamento",
-      description:
-        "Monitoramento de métricas específicas de TV e atualização remota (OTA).",
-    },
-  ];
-
-  const faqItems = [
-    {
-      question: "Desenvolver para TV é igual para celular?",
-      answer:
-        "Não. A interação muda totalmente (toque vs controle remoto), a distância do olho é maior e o hardware é mais fraco. Exige design específico.",
-    },
-    {
-      question: "Preciso fazer um app para cada marca?",
-      answer:
-        "Idealmente sim, para performance nativa. Mas usamos tecnologias híbridas que cobrem 90% do código comum entre Samsung (Tizen), LG (WebOS) e Android.",
-    },
-    {
-      question: "Quanto tempo demora a aprovação?",
-      answer:
-        "É mais demorado que Apple/Google Play. A Samsung e LG testam manualmente cada app. Pode levar de 2 a 4 semanas para ser aprovado.",
-    },
-    {
-      question: "Dá para vender produtos na TV?",
-      answer:
-        "Sim, mas a digitação de dados de cartão é ruim na TV. O ideal é usar QR Code na tela para finalizar a compra no celular (T-Commerce).",
-    },
-    {
-      question: "Vocês fazem app para Roku?",
-      answer:
-        "Sim, desenvolvemos também para Roku TV usando a linguagem própria deles (BrightScript).",
-    },
-  ];
-
   return (
-    <div className={styles.pageWrapper}>
-      <Header />
-
-      <main>
-        {/* HERO SECTION */}
-        <section className={styles.heroSection}>
-          <div className={styles.container}>
-            {/* Left: Image */}
-            <div className={styles.imageContainer}>
-              <Image
-                src="/CriacaoDeSites/app-tv.png" // Placeholder image path
-                alt="Desenvolvimento de Apps para Smart TV"
-                width={500}
-                height={500}
-                className={styles.heroImage}
-                priority
-              />
-            </div>
-
-            {/* Right: Content */}
-            <div className={styles.content}>
-              <h1 className={styles.headline}>APPS PARA SMART TV</h1>
-              <h2 className={styles.subHeadline}>
-                Leve sua marca para a tela grande e conquiste a sala de estar
-                dos seus clientes.
-              </h2>
-              <p className={styles.description}>
-                O consumo de streaming e apps em TVs explodiu. Desenvolvemos
-                experiências imersivas e intuitivas para Samsung Tizen, LG
-                WebOS, Android TV e Apple TV, conectando seu conteúdo ao
-                dispositivo mais nobre da casa.
-              </p>
-
-              <a href="#contato" className={styles.ctaButton}>
-                CRIAR MEU APP DE TV <PiArrowUpRightBold />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* INFO SECTION */}
-        <section className={styles.infoSection}>
-          <div className={styles.infoContainer}>
-            {/* Left: Quote Card */}
-            <div className={styles.quoteCard}>
-              <span className={styles.quoteIcon}>“</span>
-              <p className={styles.quoteText}>
-                A TV deixou de ser apenas um receptor de sinal para se tornar um
-                hub de entretenimento e serviços. Estar nela é ocupar o espaço
-                mais valioso da atenção familiar.
-              </p>
-            </div>
-
-            {/* Right: Detailed Text */}
-            <div className={styles.infoContent}>
-              <p className={styles.infoParagraph}>
-                Criar para TV (o conceito de Lean-back experience) é diferente
-                de criar para celular. O usuário está relaxado no sofá,
-                controlando tudo com um controle remoto simples. A interface
-                precisa ser fluida, visual e direta.
-              </p>
-              <p className={styles.infoParagraph}>
-                Nós cuidamos da fragmentação do mercado. Garantimos que seu
-                aplicativo funcione perfeitamente tanto na TV mais moderna 4K
-                quanto naquele modelo de 3 anos atrás que ainda é muito popular.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES SECTION */}
-        <section className={styles.featuresSection}>
-          <div className={styles.featuresContainer}>
-            <h2 className={styles.featuresTitle}>
-              EXPERIÊNCIA BIG SCREEN<span>.</span>
-            </h2>
-
-            <div className={styles.featuresList}>
-              {features.map((feature, index) => {
-                const isOpen = openIndex === index;
-                return (
-                  <div key={index} className={styles.featureWrapper}>
-                    <div
-                      className={`${styles.featureItem} ${
-                        isOpen ? styles.active : ""
-                      }`}
-                      onClick={() => toggleFeature(index)}
-                    >
-                      <span className={styles.featureText}>
-                        {feature.title}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.featureIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.featureDescription} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.descText}>{feature.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* BENEFITS SECTION */}
-        <section className={styles.benefitsSection}>
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
-                <div className={styles.iconWrapper}>
-                  <div className={styles.benefitIcon}>{benefit.icon}</div>
-                </div>
-                <p className={styles.benefitText}>{benefit.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.centeredCtaContainer}>
-            <a href="#contato" className={styles.ctaButton}>
-              QUERO UM PROJETO PARA TV <PiArrowUpRightBold />
-            </a>
-          </div>
-        </section>
-
-        {/* DIFFERENTIALS SECTION */}
-        <section className={styles.differentialsSection}>
-          <div className={styles.differentialsContainer}>
-            <h2 className={styles.differentialsTitle}>
-              ALTA PERFORMANCE<span>.</span>
-            </h2>
-
-            <div className={styles.diffGrid}>
-              {differentials.map((diff, index) => (
-                <div key={index} className={styles.diffCard}>
-                  <div className={styles.diffIcon}>{diff.icon}</div>
-                  <h3 className={styles.diffTitle}>{diff.title}</h3>
-                  <p className={styles.diffText}>{diff.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* METHOD SECTION */}
-        <section className={styles.methodSection}>
-          <div className={styles.methodContainer}>
-            <h2 className={styles.methodTitle}>
-              DESENVOLVIMENTO DEDICADO<span>.</span>
-            </h2>
-            <span className={styles.methodSubtitle}>FLUXO E CERTIFICAÇÃO</span>
-
-            <div className={styles.timeline}>
-              {methodSteps.map((step, index) => (
-                <div key={index} className={styles.timelineItem}>
-                  <div className={styles.timelineNumber}>{index + 1}</div>
-                  <div className={styles.timelineContent}>
-                    <h3 className={styles.stepTitle}>{step.title}</h3>
-                    <p className={styles.stepDesc}>{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ SECTION */}
-        <section className={styles.faqSection}>
-          <div className={styles.faqContainer}>
-            <h2 className={styles.faqTitle}>
-              PERGUNTAS FREQUENTES<span>.</span>
-            </h2>
-
-            <div className={styles.faqList}>
-              {faqItems.map((item, index) => {
-                const isOpen = openFaqIndex === index;
-                return (
-                  <div key={index} className={styles.faqItem}>
-                    <div
-                      className={styles.faqQuestion}
-                      onClick={() => toggleFaq(index)}
-                    >
-                      <span className={styles.questionText}>
-                        {item.question}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.faqIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.faqAnswer} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.answerText}>{item.answer}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <ServicePage
+      eyebrow="Apps para Smart TV"
+      headline="Seu conteúdo na tela grande da sala"
+      subheadline="Um app de TV — Android TV e Apple TV — com navegação pensada para o controle e experiência de tela grande."
+      description="Desenvolvo apps para Smart TV (Android TV e Apple TV), inclusive apps de streaming com catálogo, player e login. Navegação feita para o controle remoto, tela grande e publicação nas lojas das TVs."
+      heroImage={{ src: "/CriacaoDeSites/app-tv.png", alt: "Desenvolvimento de Apps para Smart TV" }}
+      ctaPrimary="Quero meu app de TV"
+      ctaNote="Consultoria gratuita · resposta em até 24h · sem compromisso"
+      trust={trust}
+      quote="A TV voltou para o centro da sala — agora conectada. Um app próprio coloca o seu conteúdo na maior tela da casa."
+      infoParagraphs={[
+        "A Smart TV virou uma plataforma como o celular, mas com regras próprias: tela grande, controle remoto e navegação por foco. Desenho o app pensando nesse contexto, para ser fácil de usar do sofá.",
+        "Faço desde apps de streaming (catálogo, player, categorias e login) até apps institucionais e de conteúdo, publicados na loja da Android TV e da Apple TV, com a mesma identidade da sua marca.",
+      ]}
+      featuresHeading="O que o app de TV tem"
+      features={features}
+      benefits={benefits}
+      ctaMid="Quero um orçamento"
+      diffHeading="Diferenciais do app de TV"
+      differentials={differentials}
+      methodHeading="Da ideia à tela da sala"
+      methodSubtitle="App de TV no ar"
+      methodSteps={methodSteps}
+      faqHeading="Dúvidas sobre apps de TV"
+      faqItems={faqItems}
+    />
   );
 }

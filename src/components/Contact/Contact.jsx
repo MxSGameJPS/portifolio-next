@@ -10,6 +10,7 @@ export default function Contact() {
     email: "",
     telefone: "",
     empresa: "",
+    mensagem: "",
   });
 
   const handleChange = (e) => {
@@ -67,7 +68,8 @@ export default function Contact() {
         {/* Right Side: Form */}
         <div className={styles.formCard}>
           <p className={styles.formTitle}>
-            Preencha seus dados e aguarde o contato de um especialista.
+            Conte um pouco sobre o seu projeto. Eu respondo em até 24h — a
+            primeira conversa é gratuita e sem compromisso.
           </p>
 
           <form
@@ -95,6 +97,7 @@ export default function Contact() {
                 type="text"
                 name="nome"
                 placeholder="Nome"
+                aria-label="Nome"
                 required
                 className={styles.input}
                 value={formData.nome}
@@ -107,6 +110,7 @@ export default function Contact() {
                 type="email"
                 name="email"
                 placeholder="E-mail"
+                aria-label="E-mail"
                 required
                 className={styles.input}
                 value={formData.email}
@@ -118,7 +122,8 @@ export default function Contact() {
               <input
                 type="tel"
                 name="telefone"
-                placeholder="Telefone"
+                placeholder="Telefone / WhatsApp"
+                aria-label="Telefone ou WhatsApp"
                 required
                 className={styles.input}
                 value={formData.telefone}
@@ -130,9 +135,22 @@ export default function Contact() {
               <input
                 type="text"
                 name="empresa"
-                placeholder="Empresa"
+                placeholder="Empresa (opcional)"
+                aria-label="Empresa (opcional)"
                 className={styles.input}
                 value={formData.empresa}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <textarea
+                name="mensagem"
+                placeholder="Conte sobre o seu projeto (opcional)"
+                aria-label="Sobre o seu projeto"
+                rows={4}
+                className={styles.textarea}
+                value={formData.mensagem}
                 onChange={handleChange}
               />
             </div>

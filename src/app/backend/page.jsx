@@ -1,415 +1,165 @@
 "use client";
 
-import { useState } from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Contact from "../../components/Contact/Contact";
-import styles from "./page.module.css";
-import Image from "next/image";
+import ServicePage from "../_services/ServicePage";
+import { faqItems } from "./data";
 import {
-  PiArrowUpRightBold,
-  PiCaretDownBold,
-  PiRocketLaunchBold,
-  PiShieldCheckBold,
-  PiMagnifyingGlassBold,
   PiCpuBold,
   PiDatabaseBold,
   PiLockKeyBold,
-  PiCodeBold,
   PiPlugsBold,
-  PiChartBarBold,
-  PiCloudArrowUpBold,
-  PiHardDrivesBold,
-  PiGraphBold,
+  PiFileTextBold,
+  PiGitBranchBold,
+  PiGaugeBold,
+  PiShieldCheckBold,
 } from "react-icons/pi";
 
+const features = [
+  {
+    title: "Guarda e organiza seus dados",
+    description:
+      "Banco de dados bem modelado (PostgreSQL) para a informação ficar íntegra e a consulta ser rápida, mesmo com muito dado acumulado.",
+  },
+  {
+    title: "Login e permissões",
+    description:
+      "Quem entra e o que cada um pode ver e fazer. Controle de acesso por papel, para cada pessoa enxergar apenas o que é dela.",
+  },
+  {
+    title: "Regras do seu negócio",
+    description:
+      "A lógica que torna o seu sistema único — cálculo, fluxo, validação — programada do jeito exato que a sua operação funciona.",
+  },
+  {
+    title: "Automação e processamento",
+    description:
+      "Tarefas rodando em segundo plano: e-mails, relatórios, filas e rotinas agendadas, sem travar a tela do usuário.",
+  },
+  {
+    title: "Segurança de dados",
+    description:
+      "Senha criptografada, validação de entrada e defesa contra ataques comuns para proteger você e os seus clientes.",
+  },
+  {
+    title: "Pronto para escalar",
+    description:
+      "Arquitetura que aguenta o crescimento de uso sem cair e sem exigir reescrever o sistema do zero.",
+  },
+];
+
+const benefits = [
+  {
+    icon: <PiDatabaseBold />,
+    text: "Dados seguros e organizados: informação íntegra, protegida e fácil de consultar.",
+  },
+  {
+    icon: <PiLockKeyBold />,
+    text: "Acesso controlado: cada usuário vê só o que pode, com permissões verificadas no servidor.",
+  },
+  {
+    icon: <PiGaugeBold />,
+    text: "Aguenta o crescimento: nasce pronto para mais usuários e mais funções.",
+  },
+];
+
+const differentials = [
+  {
+    icon: <PiCpuBold />,
+    title: "Node.js moderno",
+    text: "Backend em Node com Fastify ou Express: leve, rápido e fácil de evoluir com o tempo.",
+  },
+  {
+    icon: <PiDatabaseBold />,
+    title: "Modelagem sólida",
+    text: "Estrutura de banco pensada para performance e integridade, não improvisada no meio do caminho.",
+  },
+  {
+    icon: <PiLockKeyBold />,
+    title: "Segurança por padrão",
+    text: "JWT, criptografia, controle de acesso por papel e validação com Zod desde a primeira linha.",
+  },
+  {
+    icon: <PiPlugsBold />,
+    title: "Integra com tudo",
+    text: "Conversa com meios de pagamento, ERP, CRM e outras APIs sem gambiarra nem retrabalho.",
+  },
+  {
+    icon: <PiFileTextBold />,
+    title: "Código documentado",
+    text: "Organizado e documentado, para a manutenção não depender de uma única pessoa.",
+  },
+  {
+    icon: <PiGitBranchBold />,
+    title: "Preparado para escalar",
+    text: "Serverless, cache e filas para o sistema crescer sem retrabalho e sem cair no pico.",
+  },
+];
+
+const methodSteps = [
+  {
+    title: "Entendimento & Regras",
+    description:
+      "Mapeio como sua operação funciona e quais regras o sistema precisa aplicar. É a base de tudo que vem depois.",
+  },
+  {
+    title: "Modelagem de dados",
+    description:
+      "Desenho a estrutura do banco para a informação ficar íntegra, sem duplicidade e com consulta rápida.",
+  },
+  {
+    title: "Desenvolvimento",
+    description:
+      "Programo as regras de negócio, o login, as permissões e as automações que sustentam o seu produto.",
+  },
+  {
+    title: "Segurança & Testes",
+    description:
+      "Aplico criptografia, controle de acesso e validação, e testo os fluxos críticos com dados inesperados.",
+  },
+  {
+    title: "Documentação",
+    description:
+      "Deixo o código organizado e documentado, para qualquer desenvolvedor dar manutenção depois.",
+  },
+  {
+    title: "Deploy & Monitoramento",
+    description:
+      "Publico em ambiente seguro e acompanho o funcionamento, ajustando performance conforme o uso cresce.",
+  },
+];
+
+const trust = [
+  { value: "Node & PostgreSQL", label: "base sólida" },
+  { value: "Escalável", label: "cresce com você" },
+  { value: "2+ anos", label: "de experiência" },
+];
+
 export default function BackendPage() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const toggleFeature = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
-  const features = [
-    {
-      title: "APIs REST & GraphQL",
-      description:
-        "Desenvolvemos interfaces de comunicação robustas e padronizadas para que seus sistemas troquem dados de forma eficiente e segura.",
-    },
-    {
-      title: "Arquitetura de Microservices",
-      description:
-        "Dividimos sistemas monolíticos complexos em serviços pequenos e independentes, facilitando a escalabilidade e manutenção.",
-    },
-    {
-      title: "Banco de Dados Otimizado",
-      description:
-        "Modelagem e administração de bancos SQL (PostgreSQL, MySQL) e NoSQL (MongoDB) focados em performance e integridade dos dados.",
-    },
-    {
-      title: "Autenticação Segura (OAuth2/JWT)",
-      description:
-        "Implementamos sistemas de login modernos com criptografia de ponta para proteger as identidades e acessos dos seus usuários.",
-    },
-    {
-      title: "Processamento em Background",
-      description:
-        "Filas de tarefas (RabbitMQ, Redis) para processar envios de e-mails, relatórios pesados e integrações sem travar a navegação do usuário.",
-    },
-    {
-      title: "Integrações Cloud (AWS/Azure)",
-      description:
-        "Configuração de infraestrutura em nuvem, garantindo que seu sistema esteja sempre online, com backups automáticos e escalabilidade elástica.",
-    },
-    {
-      title: "Webhooks e Automações",
-      description:
-        "Seu sistema reagindo em tempo real a eventos externos, como pagamentos aprovados ou novos leads cadastrados.",
-    },
-  ];
-
-  const benefits = [
-    {
-      icon: <PiHardDrivesBold />,
-      text: "Estabilidade para suportar milhares de acessos simultâneos",
-    },
-    {
-      icon: <PiShieldCheckBold />,
-      text: "Segurança de dados sensíveis e proteção contra ataques",
-    },
-    {
-      icon: <PiGraphBold />,
-      text: "Alta performance com tempos de resposta mínimos",
-    },
-  ];
-
-  const differentials = [
-    {
-      icon: <PiCodeBold />,
-      title: "Node.js & TypeScript",
-      text: "Utilizamos tecnologias modernas que permitem alto throughput (vazão de dados), ideais para aplicações em tempo real.",
-    },
-    {
-      icon: <PiDatabaseBold />,
-      title: "Clean Architecture",
-      text: "Código organizado e desacoplado. Isso significa que é fácil adicionar novas funcionalidades sem quebrar o que já existe.",
-    },
-    {
-      icon: <PiLockKeyBold />,
-      title: "Security First",
-      text: "Desenvolvimento orientado a segurança desde a primeira linha de código, prevenindo vulnerabilidades como SQL Injection e XSS.",
-    },
-    {
-      icon: <PiCloudArrowUpBold />,
-      title: "DevOps & CI/CD",
-      text: "Automação total do processo de deploy. Aprovou a feature? Em minutos ela está em produção sem derrubar o sistema.",
-    },
-    {
-      icon: <PiCpuBold />,
-      title: "Testes Automatizados",
-      text: "Cobertura de testes unitários e de integração (TDD) para garantir que cada função do sistema comporte-se como esperado.",
-    },
-    {
-      icon: <PiPlugsBold />,
-      title: "API Gateway",
-      text: "Centralização do tráfego para gerenciar requisições, aplicar limites (Rate Limiting) e monitorar o uso da sua API.",
-    },
-  ];
-
-  const methodSteps = [
-    {
-      title: "System Design",
-      description:
-        "Desenhamos a arquitetura do sistema, definindo como os componentes vão interagir para garantir escalabilidade.",
-    },
-    {
-      title: "Modelagem de Dados",
-      description:
-        "Estruturamos o banco de dados para representar fielmente as regras do seu negócio de forma performática.",
-    },
-    {
-      title: "Desenvolvimento da API",
-      description:
-        "Codificamos as rotas e regras de negócio utilizando as melhores práticas (SOLID, DRY) em Node.js ou Go.",
-    },
-    {
-      title: "Camada de Segurança",
-      description:
-        "Implementamos middlewares de validação, criptografia e controle de acesso para blindar a aplicação.",
-    },
-    {
-      title: "Testes de Carga",
-      description:
-        "Simulamos milhares de acessos simultâneos para identificar gargalos e otimizar a infraestrutura antes do lançamento.",
-    },
-    {
-      title: "Deploy na Nuvem",
-      description:
-        "Configuramos os servidores (Docker/Kubernetes) e colocamos a aplicação no ar com monitoramento ativo (Logs/Metrics).",
-    },
-    {
-      title: "Documentação",
-      description:
-        "Entregamos uma documentação técnica completa (Swagger/OpenAPI) para que outros desenvolvedores possam integrar ao sistema.",
-    },
-  ];
-
-  const faqItems = [
-    {
-      question: "O que é Backend exatamente?",
-      answer:
-        "Backend é o 'motor' invisível do software. É onde ficam as regras de negócio, o banco de dados, os cálculos e a segurança. Sem ele, o site é apenas uma casca vazia.",
-    },
-    {
-      question: "Por que Node.js e não PHP ou Java?",
-      answer:
-        "Node.js oferece uma performance excepcional para aplicações web modernas, permitindo lidar com muitas conexões simultâneas de forma leve e rápida.",
-    },
-    {
-      question: "Vocês cuidam do servidor (Hospedagem)?",
-      answer:
-        "Sim. Configuramos e gerenciamos servidores na AWS, Google Cloud ou DigitalOcean, garantindo que estejam seguros e atualizados.",
-    },
-    {
-      question: "Como garantem a segurança dos dados?",
-      answer:
-        "Utilizamos criptografia para senhas (Bcrypt), tokens temporários (JWT), HTTPS em todas as comunicações e proteção contra as principais vulnerabilidades da web (OWASP).",
-    },
-    {
-      question: "O sistema aguenta muitos usuários?",
-      answer:
-        "Sim. Projetamos a arquitetura para ser escalável. Se o número de usuários crescer, podemos aumentar a infraestrutura (Scaling) sem precisar refazer o código.",
-    },
-    {
-      question: "Consigo integrar com meu App Mobile?",
-      answer:
-        "Com certeza. Desenvolvemos APIs RESTful ou GraphQL que servem como fonte de dados única tanto para o seu site quanto para aplicativos Android e iOS.",
-    },
-  ];
-
   return (
-    <div className={styles.pageWrapper}>
-      <Header />
-
-      <main>
-        {/* HERO SECTION */}
-        <section className={styles.heroSection}>
-          <div className={styles.container}>
-            {/* Left: Image */}
-            <div className={styles.imageContainer}>
-              <Image
-                src="/CriacaoDeSites/backend.png" // Placeholder - user needs to ensure this image exists
-                alt="Desenvolvimento Backend e APIs"
-                width={500}
-                height={500}
-                className={styles.heroImage}
-                priority
-              />
-            </div>
-
-            {/* Right: Content */}
-            <div className={styles.content}>
-              <h1 className={styles.headline}>BACKEND & API DEVELOPMENT</h1>
-              <h2 className={styles.subHeadline}>
-                A inteligência invisível que torna seu sistema rápido, seguro e
-                escalável.
-              </h2>
-              <p className={styles.description}>
-                Construímos a fundação robusta que seu software precisa. APIs de
-                alta performance, arquitetura de microservices e bancos de dados
-                otimizados para suportar o crescimento do seu negócio.
-              </p>
-
-              <a href="#contato" className={styles.ctaButton}>
-                POTENCIALIZAR MEU SISTEMA <PiArrowUpRightBold />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* INFO SECTION */}
-        <section className={styles.infoSection}>
-          <div className={styles.infoContainer}>
-            {/* Left: Quote Card */}
-            <div className={styles.quoteCard}>
-              <span className={styles.quoteIcon}>“</span>
-              <p className={styles.quoteText}>
-                Um frontend bonito atrai o usuário, mas é um backend sólido que
-                o mantém. Performance e estabilidade não são diferenciais, são
-                requisitos de sobrevivência.
-              </p>
-            </div>
-
-            {/* Right: Detailed Text */}
-            <div className={styles.infoContent}>
-              <p className={styles.infoParagraph}>
-                O desenvolvimento Backend é a engenharia por trás das cortinas.
-                É aqui que processamos pagamentos, protegemos dados sensíveis e
-                garantimos que milhares de usuários possam usar seu sistema
-                simultaneamente sem lentidão.
-              </p>
-              <p className={styles.infoParagraph}>
-                Nossa abordagem foca em código limpo e arquitetura escalável.
-                Utilizamos tecnologias modernas como Node.js e Docker para criar
-                sistemas que não apenas funcionam hoje, mas que estão prontos
-                para evoluir amanhã.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES SECTION */}
-        <section className={styles.featuresSection}>
-          <div className={styles.featuresContainer}>
-            <h2 className={styles.featuresTitle}>
-              ENGENHARIA DE SOFTWARE<span>.</span>
-            </h2>
-
-            <div className={styles.featuresList}>
-              {features.map((feature, index) => {
-                const isOpen = openIndex === index;
-                return (
-                  <div key={index} className={styles.featureWrapper}>
-                    <div
-                      className={`${styles.featureItem} ${
-                        isOpen ? styles.active : ""
-                      }`}
-                      onClick={() => toggleFeature(index)}
-                    >
-                      <span className={styles.featureText}>
-                        {feature.title}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.featureIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.featureDescription} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.descText}>{feature.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* BENEFITS SECTION */}
-        <section className={styles.benefitsSection}>
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
-                <div className={styles.iconWrapper}>
-                  <div className={styles.benefitIcon}>{benefit.icon}</div>
-                </div>
-                <p className={styles.benefitText}>{benefit.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.centeredCtaContainer}>
-            <a href="#contato" className={styles.ctaButton}>
-              FALAR COM UM ENGENHEIRO <PiArrowUpRightBold />
-            </a>
-          </div>
-        </section>
-
-        {/* DIFFERENTIALS SECTION */}
-        <section className={styles.differentialsSection}>
-          <div className={styles.differentialsContainer}>
-            <h2 className={styles.differentialsTitle}>
-              STACK TECNOLÓGICA<span>.</span>
-            </h2>
-
-            <div className={styles.diffGrid}>
-              {differentials.map((diff, index) => (
-                <div key={index} className={styles.diffCard}>
-                  <div className={styles.diffIcon}>{diff.icon}</div>
-                  <h3 className={styles.diffTitle}>{diff.title}</h3>
-                  <p className={styles.diffText}>{diff.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* METHOD SECTION */}
-        <section className={styles.methodSection}>
-          <div className={styles.methodContainer}>
-            <h2 className={styles.methodTitle}>
-              ARQUITETURA & DEPLOY<span>.</span>
-            </h2>
-            <span className={styles.methodSubtitle}>
-              DESENVOLVIMENTO DE ALTO NÍVEL
-            </span>
-
-            <div className={styles.timeline}>
-              {methodSteps.map((step, index) => (
-                <div key={index} className={styles.timelineItem}>
-                  <div className={styles.timelineNumber}>{index + 1}</div>
-                  <div className={styles.timelineContent}>
-                    <h3 className={styles.stepTitle}>{step.title}</h3>
-                    <p className={styles.stepDesc}>{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ SECTION */}
-        <section className={styles.faqSection}>
-          <div className={styles.faqContainer}>
-            <h2 className={styles.faqTitle}>
-              FAQ TÉCNICO<span>.</span>
-            </h2>
-
-            <div className={styles.faqList}>
-              {faqItems.map((item, index) => {
-                const isOpen = openFaqIndex === index;
-                return (
-                  <div key={index} className={styles.faqItem}>
-                    <div
-                      className={styles.faqQuestion}
-                      onClick={() => toggleFaq(index)}
-                    >
-                      <span className={styles.questionText}>
-                        {item.question}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.faqIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.faqAnswer} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.answerText}>{item.answer}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <ServicePage
+      eyebrow="O motor do seu sistema"
+      headline="O backend que faz seu sistema funcionar"
+      subheadline="A parte invisível que guarda seus dados, aplica as regras e aguenta o crescimento — feita com segurança."
+      description="Construo o backend por trás do seu site ou app: banco de dados, login, permissões, pagamento e automações. A engenharia que ninguém vê, mas que segura a operação de pé e pronta para escalar."
+      heroImage={{ src: "/CriacaoDeSites/backend.png", alt: "Desenvolvimento Backend e Sistemas" }}
+      ctaPrimary="Quero um backend sólido"
+      ctaNote="Consultoria gratuita · resposta em até 24h · sem compromisso"
+      trust={trust}
+      quote="O backend é o que o cliente não vê — e é justamente o que decide se o sistema aguenta o dia real de uso."
+      infoParagraphs={[
+        "O backend é o motor invisível: guarda os dados, decide quem pode fazer o quê e processa login, pagamento e pedidos. Construo esse motor para ser rápido, seguro e organizado.",
+        "Penso em escala desde o começo. O sistema nasce preparado para receber mais usuários e novas funções sem precisar ser refeito, com código limpo que qualquer desenvolvedor consegue manter depois.",
+      ]}
+      featuresHeading="O que o backend faz"
+      features={features}
+      benefits={benefits}
+      ctaMid="Quero um orçamento"
+      diffHeading="Diferenciais do backend"
+      differentials={differentials}
+      methodHeading="Da regra ao sistema no ar"
+      methodSubtitle="Engenharia que segura a operação"
+      methodSteps={methodSteps}
+      faqHeading="Dúvidas sobre backend"
+      faqItems={faqItems}
+    />
   );
 }

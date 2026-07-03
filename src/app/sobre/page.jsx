@@ -1,140 +1,204 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { PiDownloadSimpleBold } from "react-icons/pi";
+import Link from "next/link";
+import {
+  PiArrowUpRightBold,
+  PiUserBold,
+  PiBarbellBold,
+  PiTargetBold,
+  PiFlaskBold,
+  PiDownloadSimpleBold,
+} from "react-icons/pi";
+
+const dna = [
+  {
+    icon: <PiUserBold />,
+    title: "Contato direto, do início ao fim",
+    text: "Você fala comigo, não com um gerente de contas nem com um estagiário. A mesma pessoa que entende o seu negócio desenha a interface e programa o sistema — o que mantém tudo coerente, do design ao banco de dados.",
+  },
+  {
+    icon: <PiBarbellBold />,
+    title: "Não desisto do seu problema",
+    text: "Como freelancer, o meu sucesso depende do seu. Se o seu projeto não performa, eu não cresço — então não largo um desafio até resolver, seja um bug difícil ou a performance no limite. We grow together.",
+  },
+  {
+    icon: <PiTargetBold />,
+    title: "Penso antes de programar",
+    text: "Código sem estratégia é só texto colorido. Antes de escrever, analiso a arquitetura, a experiência do usuário e como o projeto vai crescer. Não entrego só o que você pediu — entrego o que o projeto precisa para se destacar.",
+  },
+  {
+    icon: <PiFlaskBold />,
+    title: "Estudo todo dia pela melhor solução",
+    text: "Uso a tecnologia certa, não a da moda. Web Analytics, IA e as stacks mais atuais (Next.js, React 19) fazem parte da rotina, sempre validando o que realmente traz resultado para o seu projeto.",
+  },
+];
+
+const trust = [
+  { value: "Contato direto", label: "sem intermediário" },
+  { value: "2+ anos", label: "de experiência" },
+  { value: "FullStack + UI", label: "engenharia e design" },
+];
+
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export default function AboutPage() {
-  const content = [
-    {
-      title: "SOU PROFISSIONAL",
-      text: "Sou muito mais do que um programador que apenas escreve código ou 'faz telas'. Sou um Engenheiro de Software FullStack que une técnica e visão de negócio. Aqui você não será atendido por um gerente de contas ou repassado para um estagiário: o contato é direto comigo. Ofereço a entrega de uma equipe multidisciplinar concentrada em um profissional sênior, garantindo coerência do design ao banco de dados.",
-      image: "/Sobre/saulo_profile.png",
-      alt: "Profissional focado trabalhando em setup moderno",
-    },
-    {
-      title: "SOU PERSEVERANTE",
-      text: "Meu processo foi lapidado na prática para trazer resultados reais. Como freelancer, o meu sucesso está diretamente atrelado ao seu: se o projeto não performa, eu não cresço. A perseverança está no meu DNA — seja resolvendo um bug complexo ou otimizando a performance da sua aplicação até o limite. Mantenho o lema: We Grow Together!",
-      image: "/Sobre/perseverantes.png",
-      alt: "Homem dançando estilo anos 80 (Meme)",
-    },
-    {
-      title: "SOU ESTRATÉGICO",
-      text: "Código sem estratégia é apenas texto colorido. A execução é um meio para alcançar seu objetivo, e por isso cada linha que digito é acompanhada de planejamento. Analiso a arquitetura, a experiência do usuário (UX) e a escalabilidade futura. Não entrego apenas o que você pede, mas o que o seu projeto realmente precisa para se destacar no mercado.",
-      image: "/Sobre/estrategicos.png",
-      alt: "Maestro regendo com energia",
-    },
-    {
-      title: "SOU CIENTISTA",
-      text: "Web Analytics, Inteligência Artificial e as stacks mais modernas (como Next.js e React 19) fazem parte da minha rotina. O conceito de 'cientista' aqui é literal: estudo todos os dias para validar as melhores tecnologias e estratégias. Meu laboratório está sempre ativo para oferecer as soluções mais 'fresquinhas' e eficientes para o seu projeto. YEAH SCIENCE!",
-      image: "/Sobre/saulo_profile.png",
-      alt: "Jesse Pinkman Breaking Bad - Yeah Science",
-    },
-  ];
+  const reduce = useReducedMotion();
 
   return (
     <div className={styles.pageWrapper}>
       <Header />
 
       <main>
-        {/* INTRO SECTION (Standardized Hero) */}
-        <section className={styles.introSection}>
-          <div className={styles.introContent}>
-            <div className={styles.introTextColumn}>
-              <h1 className={styles.introTitle}>QUEM É SAULO?</h1>
+        {/* HERO */}
+        <section className={styles.heroSection}>
+          <div className={styles.heroGrid} aria-hidden="true" />
+          <div className={styles.heroContent}>
+            <motion.div
+              className={styles.textColumn}
+              variants={reveal}
+              initial="hidden"
+              animate="show"
+            >
+              <span className={styles.eyebrow}>Sobre mim</span>
+              <h1 className={styles.headline}>Quem é o Saulo?</h1>
+
               <div className={styles.introText}>
                 <p>
-                  Sou o Saulo, Desenvolvedor Fullstack com uma base sólida e
-                  diferenciada em UI Design e Jornalismo. Minha trajetória me
-                  permite unir três pilares essenciais: a engenharia de software
-                  para construir sistemas robustos, a sensibilidade de UI para
-                  criar interfaces que os usuários amam, e a habilidade de
-                  comunicação para entender e traduzir necessidades de negócio
-                  em soluções técnicas eficientes.
+                  Sou o Saulo, desenvolvedor FullStack com uma base diferente:
+                  além de programar, venho de{" "}
+                  <span className={styles.highlight}>UI Design</span> e{" "}
+                  <span className={styles.highlight}>Jornalismo</span>. Isso me
+                  deixa unir três coisas que raramente andam juntas — engenharia
+                  para construir sistemas robustos, olhar de design para criar
+                  telas que o usuário gosta de usar e comunicação para entender o
+                  seu negócio e traduzir em solução.
                 </p>
-                <br />
                 <p>
-                  Essa abordagem de ponta a ponta é visível nos projetos que
-                  desenvolvi, incluindo o{" "}
-                  <span className={styles.highlight}>Ai To Love</span>{" "}
-                  (plataforma de relacionamento com IA), uma solução de gestão
-                  completa para{" "}
-                  <span className={styles.highlight}>igrejas evangélicas</span>,
-                  e o aplicativo Android do{" "}
-                  <span className={styles.highlight}>FDMC</span>.
+                  Essa visão de ponta a ponta está nos projetos que construí — de
+                  uma plataforma jurídica com IA (
+                  <span className={styles.highlight}>Social Jurídico</span>) a um
+                  super-app de cidade (
+                  <span className={styles.highlight}>Rota Viva</span>) e ao
+                  aplicativo do <span className={styles.highlight}>FDMC</span> na
+                  Google Play.
                 </p>
-                <br />
                 <p>
-                  Minha transição de carreira foi marcada por uma rápida curva
-                  de aprendizado e pela entrega de resultados concretos desde o
-                  início. Com o objetivo de realocação familiar, estou buscando
-                  ativamente uma posição em{" "}
-                  <strong style={{ color: "#fff" }}>Portugal ou Espanha</strong>{" "}
-                  para 2026.
+                  Trabalhando direto comigo, você tem a entrega de um time
+                  multidisciplinar concentrada em um só profissional: contato
+                  direto, decisões rápidas e coerência do design ao banco de
+                  dados.
                 </p>
               </div>
+
+              <div className={styles.heroActions}>
+                <Link href="/portfolio" className={styles.ctaButton}>
+                  Ver projetos <PiArrowUpRightBold />
+                </Link>
+                <Link href="/contato" className={styles.ctaGhost}>
+                  Falar comigo
+                </Link>
+              </div>
+              <p className={styles.ctaNote}>
+                Resposta em até 24h · você fala direto comigo
+              </p>
+
               <a
                 href="/Curriculo_Saulo.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.downloadBtn}
+                className={styles.cvLink}
               >
-                BAIXAR CURRÍCULO <PiDownloadSimpleBold />
+                <PiDownloadSimpleBold /> Recrutador? Baixe meu currículo (PDF)
               </a>
-            </div>
 
-            <div className={styles.introImageColumn}>
+              <ul className={styles.trustRow}>
+                {trust.map((t) => (
+                  <li key={t.label} className={styles.trustItem}>
+                    <span className={styles.trustValue}>{t.value}</span>
+                    <span className={styles.trustLabel}>{t.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className={styles.imageColumn}
+              initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}
+              animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
               <div className={styles.profileImageWrapper}>
                 <Image
                   src="/Sobre/saulo_profile.png"
-                  alt="Saulo - Fullstack Developer"
+                  alt="Saulo Pavanello, desenvolvedor FullStack"
                   fill
                   className={styles.profileImage}
                   priority
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                  }}
                 />
               </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* DNA */}
+        <section className={styles.dnaSection}>
+          <div className={styles.container}>
+            <div className={styles.sectionHead}>
+              <span className={styles.eyebrowDark}>Como eu trabalho</span>
+              <h2 className={styles.sectionHeading}>
+                Meu DNA<span className={styles.dot}>.</span>
+              </h2>
+              <p className={styles.sectionSub}>
+                O que você pode esperar de quem vai construir o seu projeto.
+              </p>
+            </div>
+
+            <div className={styles.dnaGrid}>
+              {dna.map((item, index) => (
+                <motion.article
+                  key={index}
+                  className={styles.dnaCard}
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: "-60px" }}
+                >
+                  <span className={styles.dnaIcon} aria-hidden="true">
+                    {item.icon}
+                  </span>
+                  <h3 className={styles.dnaTitle}>{item.title}</h3>
+                  <p className={styles.dnaText}>{item.text}</p>
+                </motion.article>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* CONTENT SECTION (Standardized List) */}
-        <section className={styles.contentList}>
-          <div className={styles.container}>
-            <div className={styles.pageTitleWrapper}>
-              <h2 className={styles.pageTitle}>MEU DNA</h2>
-              <p className={styles.pageSubtitle}>
-                de onde vim, para onde vou, do que me alimento?
-              </p>
-            </div>
-
-            {content.map((item, index) => (
-              <div key={index} className={styles.contentBlock}>
-                <div className={styles.textColumn}>
-                  <h3 className={styles.blockTitle}>{item.title}</h3>
-                  <p className={styles.blockText}>{item.text}</p>
-                </div>
-
-                <div className={styles.imageColumn}>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={item.image}
-                      alt={item.alt}
-                      fill
-                      className={styles.blobImage}
-                      sizes="(max-width: 768px) 100vw, 500px"
-                      onError={(e) => {
-                        e.target.style.display = "none";
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* CTA BAND */}
+        <section className={styles.ctaBand}>
+          <div className={styles.ctaBandInner}>
+            <h2 className={styles.ctaBandTitle}>
+              Vamos construir o seu projeto?
+            </h2>
+            <p className={styles.ctaBandText}>
+              Me conte a sua ideia. A primeira conversa é gratuita e sem
+              compromisso.
+            </p>
+            <Link href="/contato" className={styles.ctaButton}>
+              Falar comigo <PiArrowUpRightBold />
+            </Link>
           </div>
         </section>
       </main>

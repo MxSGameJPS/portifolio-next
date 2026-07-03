@@ -14,7 +14,7 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <div className={styles.pageWrapper}>
-      {/* <HomePopup /> */}
+      <HomePopup />
       <Header />
       <main className={styles.main}>
         <Hero />

@@ -1,405 +1,163 @@
 "use client";
 
-import { useState } from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Contact from "../../components/Contact/Contact";
-import styles from "./page.module.css";
-import Image from "next/image";
+import ServicePage from "../_services/ServicePage";
+import { faqItems } from "./data";
 import {
-  PiArrowUpRightBold,
-  PiCaretDownBold,
-  PiAndroidLogoBold,
-  PiDeviceMobileBold,
-  PiStorefrontBold,
-  PiCubeBold,
-  PiRocketLaunchBold,
-  PiLayoutBold,
-  PiWifiHighBold,
   PiCpuBold,
-  PiShieldCheckBold,
-  PiCheckFatBold,
+  PiAndroidLogoBold,
+  PiBellRingingBold,
+  PiLockKeyBold,
+  PiPlugsBold,
+  PiDeviceMobileBold,
 } from "react-icons/pi";
 
+const features = [
+  {
+    title: "Publicado na Google Play",
+    description:
+      "Cuido da conta de desenvolvedor, das regras e do envio para o app entrar na loja sem dor de cabeça com burocracia.",
+  },
+  {
+    title: "Rápido e nativo",
+    description:
+      "React Native entrega a fluidez de um app nativo, sem a sensação de site espremido dentro de um aplicativo.",
+  },
+  {
+    title: "Notificações push",
+    description:
+      "Avise promoções e novidades direto na tela do cliente — o canal com a maior taxa de abertura que existe.",
+  },
+  {
+    title: "Testado em vários aparelhos",
+    description:
+      "O Android tem muitos modelos e tamanhos. Testo para o app funcionar bem tanto no popular quanto no top de linha.",
+  },
+  {
+    title: "Usa recursos do aparelho",
+    description:
+      "Câmera, GPS, digital e mais aproveitados para criar uma experiência que só um app consegue oferecer.",
+  },
+  {
+    title: "Base pronta para iPhone",
+    description:
+      "Mesmo com foco no Android agora, o projeto já deixa o caminho aberto para a versão iOS quando fizer sentido.",
+  },
+];
+
+const benefits = [
+  {
+    icon: <PiAndroidLogoBold />,
+    text: "Onde está a maioria: o Android é o celular da maior parte dos brasileiros. Esteja lá.",
+  },
+  {
+    icon: <PiBellRingingBold />,
+    text: "Canal direto: notificação na tela do cliente, sem depender do algoritmo de rede social.",
+  },
+  {
+    icon: <PiDeviceMobileBold />,
+    text: "Base para iOS também: o React Native deixa o caminho pronto para o iPhone quando quiser.",
+  },
+];
+
+const differentials = [
+  {
+    icon: <PiCpuBold />,
+    title: "React Native + Expo",
+    text: "Base moderna, a mesma de apps como Instagram: rápido de usar e ágil de evoluir.",
+  },
+  {
+    icon: <PiAndroidLogoBold />,
+    title: "Foco em Android",
+    text: "Otimizado para a Google Play e para os aparelhos que o seu público realmente usa.",
+  },
+  {
+    icon: <PiBellRingingBold />,
+    title: "Push nativo",
+    text: "Notificações prontas para reengajar o cliente, sem custo por mensagem enviada.",
+  },
+  {
+    icon: <PiLockKeyBold />,
+    title: "Login seguro",
+    text: "Digital, senha protegida e boas práticas de segurança embutidas no app.",
+  },
+  {
+    icon: <PiPlugsBold />,
+    title: "Integra com seus sistemas",
+    text: "App conectado ao seu banco de dados, ERP e APIs, com a informação sempre atual.",
+  },
+  {
+    icon: <PiDeviceMobileBold />,
+    title: "Um projeto, duas lojas",
+    text: "O mesmo código fica pronto para virar app iOS quando você quiser expandir.",
+  },
+];
+
+const methodSteps = [
+  {
+    title: "Conversa & Escopo",
+    description:
+      "Definimos o que o app precisa fazer, para quem e quais funções entram na primeira versão.",
+  },
+  {
+    title: "Design das telas",
+    description:
+      "Crio telas bonitas e fáceis de usar, seguindo os padrões do Android para parecer natural no aparelho.",
+  },
+  {
+    title: "Desenvolvimento",
+    description:
+      "Programo o app com performance nativa, notificações e as integrações com os seus sistemas.",
+  },
+  {
+    title: "Testes em aparelhos",
+    description:
+      "Testo em diferentes modelos e versões de Android para tudo funcionar antes de ir para a loja.",
+  },
+  {
+    title: "Publicação na Play",
+    description:
+      "Envio o app para a Google Play e ajusto o que a loja pedir até ele ser aprovado e entrar no ar.",
+  },
+  {
+    title: "Acompanhamento",
+    description:
+      "Acompanho as avaliações e lanço atualizações para corrigir pontos e adicionar novidades.",
+  },
+];
+
+const trust = [
+  { value: "Google Play", label: "publicação inclusa" },
+  { value: "React Native", label: "base para iOS também" },
+  { value: "2+ anos", label: "de experiência" },
+];
+
 export default function AppAndroidPage() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const toggleFeature = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
-  const features = [
-    {
-      title: "Desenvolvimento Nativo",
-      description:
-        "Criamos aplicativos utilizando as linguagens oficiais (Kotlin/Java) ou frameworks modernos (React Native) para garantir o máximo desempenho no sistema Android.",
-    },
-    {
-      title: "Material Design 3",
-      description:
-        "Seguimos rigorosamente as diretrizes de design do Google para criar interfaces que parecem 'em casa' no Android, com navegação intuitiva e visual moderno.",
-    },
-    {
-      title: "Compatibilidade Extensa",
-      description:
-        "Garantimos que seu app funcione perfeitamente em uma vasta gama de dispositivos, desde os modelos mais novos até aparelhos mais antigos e populares.",
-    },
-    {
-      title: "Integração com Hardware",
-      description:
-        "Acesso profundo aos recursos do aparelho: Câmera, GPS, Bluetooth, NFC, Biometria e Sensores para criar experiências ricas e funcionais.",
-    },
-    {
-      title: "Publicação na Google Play",
-      description:
-        "Cuidamos de todo o processo burocrático de submissão, desde a configuração da loja, preenchimento de metadados até a aprovação final.",
-    },
-    {
-      title: "Notificações Push",
-      description:
-        "Engaje seus usuários com notificações inteligentes e personalizadas, trazendo-os de volta para o aplicativo no momento certo.",
-    },
-    {
-      title: "Modo Offline",
-      description:
-        "Arquitetura inteligente que permite que as principais funções do app continuem operando mesmo quando o usuário perde a conexão com a internet.",
-    },
-  ];
-
-  const benefits = [
-    {
-      icon: <PiAndroidLogoBold />,
-      text: "Alcance a maior base de usuários mobile do Brasil e do mundo",
-    },
-    {
-      icon: <PiRocketLaunchBold />,
-      text: "Performance otimizada para consumir menos bateria e dados",
-    },
-    {
-      icon: <PiStorefrontBold />,
-      text: "Presença oficial na Google Play Store",
-    },
-  ];
-
-  const differentials = [
-    {
-      icon: <PiCubeBold />,
-      title: "Jetpack Compose",
-      text: "Utilizamos o toolkit moderno do Android para criar UIs nativas de forma mais rápida, com menos bugs e fácil manutenção.",
-    },
-    {
-      icon: <PiWifiHighBold />,
-      title: "Offline-First",
-      text: "Pensamos na falta de internet como cenário padrão, não exceção. Seu app sincroniza dados automaticamente quando a conexão retorna.",
-    },
-    {
-      icon: <PiLayoutBold />,
-      title: "Layout Adaptável",
-      text: "Interfaces que se ajustam fluidamente para telas de diferentes tamanhos, incluindo tablets e dispositivos dobráveis.",
-    },
-    {
-      icon: <PiCpuBold />,
-      title: "Alta Performance",
-      text: "Profiling avançado para garantir que o app não trave, não esquente o aparelho e tenha scroll suave (60fps).",
-    },
-    {
-      icon: <PiShieldCheckBold />,
-      title: "Segurança de Dados",
-      text: "Armazenamento local criptografado e comunicação segura (SSL pinning) para proteger os dados dos seus usuários.",
-    },
-    {
-      icon: <PiCheckFatBold />,
-      title: "Testes Automatizados",
-      text: "Baterias de testes em múltiplos dispositivos reais para garantir que o app não quebre na mão do cliente.",
-    },
-  ];
-
-  const methodSteps = [
-    {
-      title: "Concepção & Escopo",
-      description:
-        "Definimos as funcionalidades chave e o MVP (Produto Mínimo Viável) para lançar rápido e com qualidade.",
-    },
-    {
-      title: "UI/UX Design Mobile",
-      description:
-        "Desenhamos as telas seguindo o Material Design, focando na usabilidade em telas de toque e gestos.",
-    },
-    {
-      title: "Desenvolvimento Android",
-      description:
-        "Codificação do aplicativo utilizando as melhores práticas de arquitetura (MVVM/Clean Architecture).",
-    },
-    {
-      title: "Integração API",
-      description:
-        "Conexão do aplicativo com o servidor (backend) para troca e sincronização de dados.",
-    },
-    {
-      title: "Controle de Qualidade (QA)",
-      description:
-        "Testes rigorosos em diversos modelos de smartphones (Samsung, Motorola, Xiaomi, etc.) para validar compatibilidade.",
-    },
-    {
-      title: "Lançamento na Loja",
-      description:
-        "Preparação dos assets (ícones, screenshots), políticas de privacidade e publicação na Google Play Store.",
-    },
-  ];
-
-  const faqItems = [
-    {
-      question: "Quanto custa criar um app Android?",
-      answer:
-        "O investimento varia conforme a complexidade (número de telas e funções). Apps simples são mais acessíveis, enquanto apps tipo Uber ou iFood exigem maior investimento.",
-    },
-    {
-      question: "Vocês fazem o app para iOS também?",
-      answer:
-        "Sim! Desenvolvemos também para iPhone. Podemos criar nativo para cada plataforma ou usar tecnologias híbridas (React Native) para reduzir custos.",
-    },
-    {
-      question: "Preciso pagar para colocar na Google Play?",
-      answer:
-        "O Google cobra uma taxa única de registro de desenvolvedor (atualmente 25 dólares). Nós te orientamos em como fazer esse pagamento diretamente ao Google.",
-    },
-    {
-      question: "O app vai funcionar em celulares antigos?",
-      answer:
-        "Definimos juntos a versão mínima do Android. Geralmente suportamos versões de até 4-5 anos atrás, cobrindo mais de 95% dos aparelhos em uso.",
-    },
-    {
-      question: "Depois de pronto, eu consigo atualizar o conteúdo?",
-      answer:
-        "Sim. Geralmente criamos um Painel Administrativo Web (Dashboard) onde você pode gerenciar usuários, produtos e conteúdos do app em tempo real.",
-    },
-  ];
-
   return (
-    <div className={styles.pageWrapper}>
-      <Header />
-
-      <main>
-        {/* HERO SECTION */}
-        <section className={styles.heroSection}>
-          <div className={styles.container}>
-            {/* Left: Image */}
-            <div className={styles.imageContainer}>
-              <Image
-                src="/CriacaoDeSites/android-dev.png" // Placeholder
-                alt="Desenvolvimento de Aplicativos Android"
-                width={500}
-                height={500}
-                className={styles.heroImage}
-                priority
-              />
-            </div>
-
-            {/* Right: Content */}
-            <div className={styles.content}>
-              <h1 className={styles.headline}>
-                DESENVOLVIMENTO DE APPS ANDROID
-              </h1>
-              <h2 className={styles.subHeadline}>
-                Coloque sua empresa no bolso de milhões de clientes com um
-                aplicativo Android moderno e potente.
-              </h2>
-              <p className={styles.description}>
-                O sistema operacional mais usado do mundo é o canal ideal para
-                escalar seu negócio. Desenvolvemos aplicativos nativos e
-                performáticos que aproveitam todo o potencial dos smartphones
-                Android, garantindo uma experiência de usuário impecável.
-              </p>
-
-              <a href="#contato" className={styles.ctaButton}>
-                ORÇAR MEU APP ANDROID <PiArrowUpRightBold />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* INFO SECTION */}
-        <section className={styles.infoSection}>
-          <div className={styles.infoContainer}>
-            {/* Left: Quote Card */}
-            <div className={styles.quoteCard}>
-              <span className={styles.quoteIcon}>“</span>
-              <p className={styles.quoteText}>
-                No Brasil, o Android domina o mercado. Ter um aplicativo bem
-                feito para essa plataforma não é apenas um diferencial, é uma
-                necessidade estratégica para atingir a massa.
-              </p>
-            </div>
-
-            {/* Right: Detailed Text */}
-            <div className={styles.infoContent}>
-              <p className={styles.infoParagraph}>
-                Desenvolver para Android exige expertise para lidar com a
-                fragmentação de dispositivos e tamanhos de tela. Nossa equipe é
-                especialista em criar interfaces resilientes que funcionam bem
-                tanto em um Samsung de última geração quanto em um Motorola
-                intermediário.
-              </p>
-              <p className={styles.infoParagraph}>
-                Focamos na estabilidade e na retenção. Um app que fecha sozinho
-                (crash) é desinstalado na hora. Por isso, investimos pesado em
-                arquitetura de software e testes para garantir que seu usuário
-                tenha uma experiência fluida e confiável.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES SECTION */}
-        <section className={styles.featuresSection}>
-          <div className={styles.featuresContainer}>
-            <h2 className={styles.featuresTitle}>
-              RECURSOS E TECNOLOGIA<span>.</span>
-            </h2>
-
-            <div className={styles.featuresList}>
-              {features.map((feature, index) => {
-                const isOpen = openIndex === index;
-                return (
-                  <div key={index} className={styles.featureWrapper}>
-                    <div
-                      className={`${styles.featureItem} ${
-                        isOpen ? styles.active : ""
-                      }`}
-                      onClick={() => toggleFeature(index)}
-                    >
-                      <span className={styles.featureText}>
-                        {feature.title}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.featureIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.featureDescription} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.descText}>{feature.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* BENEFITS SECTION */}
-        <section className={styles.benefitsSection}>
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
-                <div className={styles.iconWrapper}>
-                  <div className={styles.benefitIcon}>{benefit.icon}</div>
-                </div>
-                <p className={styles.benefitText}>{benefit.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.centeredCtaContainer}>
-            <a href="#contato" className={styles.ctaButton}>
-              QUERO MEU APP NA PLAY STORE <PiArrowUpRightBold />
-            </a>
-          </div>
-        </section>
-
-        {/* DIFFERENTIALS SECTION */}
-        <section className={styles.differentialsSection}>
-          <div className={styles.differentialsContainer}>
-            <h2 className={styles.differentialsTitle}>
-              POR QUE NOS ESCOLHER?<span>.</span>
-            </h2>
-
-            <div className={styles.diffGrid}>
-              {differentials.map((diff, index) => (
-                <div key={index} className={styles.diffCard}>
-                  <div className={styles.diffIcon}>{diff.icon}</div>
-                  <h3 className={styles.diffTitle}>{diff.title}</h3>
-                  <p className={styles.diffText}>{diff.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* METHOD SECTION */}
-        <section className={styles.methodSection}>
-          <div className={styles.methodContainer}>
-            <h2 className={styles.methodTitle}>
-              DO CÓDIGO À LOJA<span>.</span>
-            </h2>
-            <span className={styles.methodSubtitle}>O PROCESSO DE CRIAÇÃO</span>
-
-            <div className={styles.timeline}>
-              {methodSteps.map((step, index) => (
-                <div key={index} className={styles.timelineItem}>
-                  <div className={styles.timelineNumber}>{index + 1}</div>
-                  <div className={styles.timelineContent}>
-                    <h3 className={styles.stepTitle}>{step.title}</h3>
-                    <p className={styles.stepDesc}>{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ SECTION */}
-        <section className={styles.faqSection}>
-          <div className={styles.faqContainer}>
-            <h2 className={styles.faqTitle}>
-              PERGUNTAS FREQUENTES<span>.</span>
-            </h2>
-
-            <div className={styles.faqList}>
-              {faqItems.map((item, index) => {
-                const isOpen = openFaqIndex === index;
-                return (
-                  <div key={index} className={styles.faqItem}>
-                    <div
-                      className={styles.faqQuestion}
-                      onClick={() => toggleFaq(index)}
-                    >
-                      <span className={styles.questionText}>
-                        {item.question}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.faqIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.faqAnswer} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.answerText}>{item.answer}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <ServicePage
+      eyebrow="Apps Android"
+      headline="Um app Android para o seu negócio"
+      subheadline="Presença na Google Play com um app rápido, publicado e pronto para falar direto com o cliente."
+      description="Desenvolvo apps Android sob medida e publico na Google Play. App rápido, com notificações, integração com seus sistemas e testado nos vários aparelhos — e, se quiser, o caminho para a versão iPhone já fica pronto."
+      heroImage={{ src: "/CriacaoDeSites/android-dev.png", alt: "Desenvolvimento de Apps Android" }}
+      ctaPrimary="Quero meu app Android"
+      ctaNote="Orçamento gratuito · resposta em até 24h · sem compromisso"
+      trust={trust}
+      quote="O Android é a maioria dos celulares no Brasil. Estar bem na Google Play é estar onde o seu cliente já está."
+      infoParagraphs={[
+        "O Android domina os celulares no Brasil. Um app na Google Play coloca o seu negócio na tela inicial da maior parte dos seus clientes, com um canal direto por notificação.",
+        "Construo com React Native: performance de app nativo e, de quebra, a base pronta para também rodar no iPhone quando fizer sentido. Publico na loja e deixo tudo funcionando, testado nos vários aparelhos Android.",
+      ]}
+      featuresHeading="O que o app tem"
+      features={features}
+      benefits={benefits}
+      ctaMid="Quero um orçamento"
+      diffHeading="Diferenciais do app Android"
+      differentials={differentials}
+      methodHeading="Da ideia à Google Play"
+      methodSubtitle="App Android no ar, sem enrolação"
+      methodSteps={methodSteps}
+      faqHeading="Dúvidas sobre apps Android"
+      faqItems={faqItems}
+    />
   );
 }

@@ -1,402 +1,165 @@
 "use client";
 
-import { useState } from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Contact from "../../components/Contact/Contact";
-import styles from "./page.module.css";
-import Image from "next/image";
+import ServicePage from "../_services/ServicePage";
+import { faqItems } from "./data";
 import {
-  PiArrowUpRightBold,
-  PiCaretDownBold,
   PiMagnifyingGlassBold,
-  PiChartLineUpBold,
-  PiStarBold,
-  PiTrophyBold,
-  PiTargetBold,
+  PiStorefrontBold,
   PiImageBold,
-  PiTextTBold,
-  PiGraphBold,
-  PiGlobeHemisphereWestBold,
-  PiUsersThreeBold,
+  PiTextAaBold,
+  PiChartBarBold,
+  PiRocketLaunchBold,
+  PiDownloadSimpleBold,
+  PiTrendUpBold,
 } from "react-icons/pi";
 
+const features = [
+  {
+    title: "Palavras-chave da loja",
+    description:
+      "Descubro e aplico os termos que o seu público busca, para o app aparecer nas pesquisas certas dentro da loja.",
+  },
+  {
+    title: "Título e descrição que convertem",
+    description:
+      "Texto claro que diz o que o app resolve e convence a instalar, dentro das regras de cada loja.",
+  },
+  {
+    title: "Ícone que se destaca",
+    description:
+      "Ícone pensado para chamar atenção no meio de dezenas de concorrentes na tela de resultados da busca.",
+  },
+  {
+    title: "Prints que vendem",
+    description:
+      "As imagens da ficha organizadas para mostrar o valor do app nos primeiros segundos, que é quando a pessoa decide.",
+  },
+  {
+    title: "Otimização das duas lojas",
+    description:
+      "Ajustes específicos para a App Store e a Google Play, respeitando as regras e o algoritmo de cada uma.",
+  },
+  {
+    title: "Medição e melhoria contínua",
+    description:
+      "Acompanho impressões, downloads e conversão da página para ajustar o que traz mais instalação ao longo do tempo.",
+  },
+];
+
+const benefits = [
+  {
+    icon: <PiMagnifyingGlassBold />,
+    text: "Achado na busca: seu app aparece quando o público procura pelo que ele faz.",
+  },
+  {
+    icon: <PiDownloadSimpleBold />,
+    text: "Mais downloads: a ficha otimizada transforma quem vê em quem instala.",
+  },
+  {
+    icon: <PiTrendUpBold />,
+    text: "Menos dependência de Ads: visibilidade orgânica que reduz o custo de aquisição.",
+  },
+];
+
+const differentials = [
+  {
+    icon: <PiMagnifyingGlassBold />,
+    title: "Pesquisa de palavras-chave",
+    text: "Termos reais que o seu público busca na loja, com base em dado, não em chute.",
+  },
+  {
+    icon: <PiStorefrontBold />,
+    title: "Regras de cada loja",
+    text: "Otimização certa para App Store e Google Play, sem risco de punição por quebrar diretriz.",
+  },
+  {
+    icon: <PiImageBold />,
+    title: "Ícone e prints que convertem",
+    text: "Elementos visuais focados em transformar quem vê a ficha em quem baixa o app.",
+  },
+  {
+    icon: <PiTextAaBold />,
+    title: "Copy da ficha",
+    text: "Título e descrição claros, persuasivos e dentro do limite de caracteres de cada loja.",
+  },
+  {
+    icon: <PiChartBarBold />,
+    title: "Decisão por dado",
+    text: "Impressões, downloads e conversão medidos para melhorar a ficha continuamente.",
+  },
+  {
+    icon: <PiRocketLaunchBold />,
+    title: "Orgânico + lançamento",
+    text: "Uma base de ASO pronta para potencializar campanhas pagas e o lançamento do app.",
+  },
+];
+
+const methodSteps = [
+  {
+    title: "Análise & Concorrência",
+    description:
+      "Estudo o seu app e os concorrentes na loja para entender onde dá para ganhar visibilidade e downloads.",
+  },
+  {
+    title: "Palavras-chave",
+    description:
+      "Pesquiso os termos que o seu público realmente busca e defino em quais vale a pena posicionar o app.",
+  },
+  {
+    title: "Título & Descrição",
+    description:
+      "Escrevo o texto da ficha com as palavras-chave certas, claro e persuasivo, dentro das regras da loja.",
+  },
+  {
+    title: "Ícone & Prints",
+    description:
+      "Ajusto ou oriento o ícone e as imagens da ficha para chamar atenção e mostrar o valor do app.",
+  },
+  {
+    title: "Publicação nas lojas",
+    description:
+      "Aplico as mudanças na App Store e na Google Play, respeitando as diretrizes de cada plataforma.",
+  },
+  {
+    title: "Medição & Ajuste",
+    description:
+      "Acompanho impressões, downloads e conversão e refino os elementos para melhorar o resultado.",
+  },
+];
+
+const trust = [
+  { value: "App Store & Play", label: "as duas lojas" },
+  { value: "Orgânico", label: "menos dependência de Ads" },
+  { value: "2+ anos", label: "de experiência" },
+];
+
 export default function AsoPage() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const toggleFeature = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
-  const features = [
-    {
-      title: "Pesquisa de Palavras-Chave",
-      description:
-        "Identificamos os termos exatos que seu público-alvo utiliza para buscar aplicativos na App Store e Google Play, garantindo que você seja encontrado.",
-    },
-    {
-      title: "Otimização de Título e Subtítulo",
-      description:
-        "Criamos nomes e descrições curtas magnéticas que não só contêm as palavras-chave vitais, mas também convencem o usuário a clicar.",
-    },
-    {
-      title: "Design de Screenshots e Ícone",
-      description:
-        "O visual vende. Produzimos screenshots profissionais, vídeos de preview e ícones otimizados para maximizar a taxa de conversão (instalação).",
-    },
-    {
-      title: "Gestão de Reviews e Ratings",
-      description:
-        "Estratégias para incentivar avaliações positivas (5 estrelas) e gestão de respostas para feedback negativo, melhorando a reputação do app.",
-    },
-    {
-      title: "Análise de Concorrência",
-      description:
-        "Monitoramos o que seus concorrentes estão fazendo, quais keywords eles usam e onde estão falhando, para você sair na frente.",
-    },
-    {
-      title: "Testes A/B",
-      description:
-        "Realizamos experimentos controlados trocando ícones, textos e imagens para descobrir cientificamente qual versão traz mais downloads.",
-    },
-    {
-      title: "Localização (Internacionalização)",
-      description:
-        "Adaptamos seu ASO para diferentes idiomas e culturas, permitindo que seu aplicativo escale globalmente.",
-    },
-  ];
-
-  const benefits = [
-    {
-      icon: <PiMagnifyingGlassBold />,
-      text: "Aumente drasticamente a visibilidade orgânica do seu app",
-    },
-    {
-      icon: <PiChartLineUpBold />,
-      text: "Reduza o Custo por Instalação (CPI) de campanhas pagas",
-    },
-    {
-      icon: <PiTargetBold />,
-      text: "Atraia usuários qualificados que realmente buscam sua solução",
-    },
-  ];
-
-  const differentials = [
-    {
-      icon: <PiTrophyBold />,
-      title: "Foco em ROI",
-      text: "Não buscamos apenas 'rankings por vaidade'. Nosso foco é aumentar o número de downloads qualificados e a receita do app.",
-    },
-    {
-      icon: <PiTextTBold />,
-      title: "Copywriting Persuasivo",
-      text: "Escrevemos descrições que utilizam gatilhos mentais para converter visitantes casuais em usuários ativos.",
-    },
-    {
-      icon: <PiGraphBold />,
-      title: "Data Driven",
-      text: "Utilizamos ferramentas premium de inteligência de mercado para basear cada decisão em dados reais de volume e dificuldade.",
-    },
-    {
-      icon: <PiImageBold />,
-      title: "Design de Conversão",
-      text: "Nossos designers são especialistas em criar assets visuais (telas) otimizados especificamente para as telas pequenas das lojas.",
-    },
-    {
-      icon: <PiGlobeHemisphereWestBold />,
-      title: "Expansão Global",
-      text: "Experiência em posicionar aplicativos em múltiplos mercados e idiomas simultaneamente.",
-    },
-    {
-      icon: <PiUsersThreeBold />,
-      title: "Retenção Focus",
-      text: "Otimizamos não só para o download, mas alinhamos a expectativa para garantir que o usuário não desinstale logo depois.",
-    },
-  ];
-
-  const methodSteps = [
-    {
-      title: "Auditoria Inicial",
-      description:
-        "Analisamos a situação atual do seu app, detectando falhas de indexação e oportunidades imediatas de melhoria.",
-    },
-    {
-      title: "Keyword Map",
-      description:
-        "Criamos um mapa extenso de palavras-chave, priorizando as de alto volume e baixa competição.",
-    },
-    {
-      title: "Otimização On-Metadata",
-      description:
-        "Reescrevemos Título, Subtítulo, Descrição Curta e Longa e campos de Keywords (iOS) com as palavras selecionadas.",
-    },
-    {
-      title: "Otimização Visual",
-      description:
-        "Criação e upload dos novos screenshots e ícone, focando nos benefícios principais do app.",
-    },
-    {
-      title: "Implementação e Lançamento",
-      description:
-        "Publicamos as atualizações nas lojas e acompanhamos a indexação dos novos termos.",
-    },
-    {
-      title: "Monitoramento Mensal",
-      description:
-        "ASO não é algo que se faz uma vez só. Monitoramos os rankings e ajustamos a estratégia continuamente.",
-    },
-  ];
-
-  const faqItems = [
-    {
-      question: "O que é ASO?",
-      answer:
-        "ASO (App Store Optimization) é o 'SEO para Aplicativos'. É o processo de melhorar a visibilidade do seu app nas lojas (Google Play e App Store) para ganhar mais downloads orgânicos (gratuitos).",
-    },
-    {
-      question: "Quanto tempo demora para ver resultados?",
-      answer:
-        "Geralmente, as alterações de texto indexam em 2 a 4 semanas. O impacto visual na conversão pode ser medido quase imediatamente após a atualização.",
-    },
-    {
-      question: "ASO substitui anúncios pagos (Ads)?",
-      answer:
-        "Não, eles se complementam. O ASO reduz o custo dos seus anúncios, pois um app bem otimizado converte melhor o tráfego que vem da publicidade.",
-    },
-    {
-      question: "Serve para jogos também?",
-      answer:
-        "Sim! Para jogos, a otimização visual (ícone e vídeo) é ainda mais crítica e temos estratégias específicas para esse nicho.",
-    },
-    {
-      question: "Vocês garantem a primeira posição?",
-      answer:
-        "Niguém pode garantir posições específicas pois os algoritmos das lojas são secretos e mudam. Garantimos a aplicação das melhores práticas e o aumento significativo da visibilidade.",
-    },
-  ];
-
   return (
-    <div className={styles.pageWrapper}>
-      <Header />
-
-      <main>
-        {/* HERO SECTION */}
-        <section className={styles.heroSection}>
-          <div className={styles.container}>
-            {/* Left: Image */}
-            <div className={styles.imageContainer}>
-              <Image
-                src="/CriacaoDeSites/aso.png" // Placeholder
-                alt="App Store Optimization ASO"
-                width={500}
-                height={500}
-                className={styles.heroImage}
-                priority
-              />
-            </div>
-
-            {/* Right: Content */}
-            <div className={styles.content}>
-              <h1 className={styles.headline}>ASO - APP STORE OPTIMIZATION</h1>
-              <h2 className={styles.subHeadline}>
-                Faça seu aplicativo ser encontrado por milhões de usuários e
-                multiplique seus downloads orgânicos.
-              </h2>
-              <p className={styles.description}>
-                Ter um app incrível não adianta se ninguém o encontra.
-                Utilizamos técnicas avançadas de dados e psicologia para
-                posicionar seu aplicativo no topo das buscas da Google Play e
-                App Store.
-              </p>
-
-              <a href="#contato" className={styles.ctaButton}>
-                QUERO MAIS DOWNLOADS <PiArrowUpRightBold />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* INFO SECTION */}
-        <section className={styles.infoSection}>
-          <div className={styles.infoContainer}>
-            {/* Left: Quote Card */}
-            <div className={styles.quoteCard}>
-              <span className={styles.quoteIcon}>“</span>
-              <p className={styles.quoteText}>
-                65% de todos os downloads de aplicativos vêm de buscas orgânicas
-                nas lojas. Se você não faz ASO, está deixando mais da metade do
-                seu público na mesa para a concorrência.
-              </p>
-            </div>
-
-            {/* Right: Detailed Text */}
-            <div className={styles.infoContent}>
-              <p className={styles.infoParagraph}>
-                O mercado de aplicativos está saturado. Para se destacar, você
-                precisa mais do que sorte; precisa de estratégia. O ASO é a
-                ciência de entender o algoritmo das lojas e o comportamento do
-                usuário para hackear o crescimento do seu app.
-              </p>
-              <p className={styles.infoParagraph}>
-                Nossa metodologia ataca em duas frentes: **Visibilidade** (fazer
-                o app aparecer para as palavras-chave certas) e **Conversão**
-                (convencer quem viu a baixar o app através de visuais
-                impactantes).
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES SECTION */}
-        <section className={styles.featuresSection}>
-          <div className={styles.featuresContainer}>
-            <h2 className={styles.featuresTitle}>
-              COMO OTIMIZAMOS<span>.</span>
-            </h2>
-
-            <div className={styles.featuresList}>
-              {features.map((feature, index) => {
-                const isOpen = openIndex === index;
-                return (
-                  <div key={index} className={styles.featureWrapper}>
-                    <div
-                      className={`${styles.featureItem} ${
-                        isOpen ? styles.active : ""
-                      }`}
-                      onClick={() => toggleFeature(index)}
-                    >
-                      <span className={styles.featureText}>
-                        {feature.title}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.featureIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.featureDescription} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.descText}>{feature.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* BENEFITS SECTION */}
-        <section className={styles.benefitsSection}>
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
-                <div className={styles.iconWrapper}>
-                  <div className={styles.benefitIcon}>{benefit.icon}</div>
-                </div>
-                <p className={styles.benefitText}>{benefit.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.centeredCtaContainer}>
-            <a href="#contato" className={styles.ctaButton}>
-              ALAVANCAR MEUS RANKINGS <PiArrowUpRightBold />
-            </a>
-          </div>
-        </section>
-
-        {/* DIFFERENTIALS SECTION */}
-        <section className={styles.differentialsSection}>
-          <div className={styles.differentialsContainer}>
-            <h2 className={styles.differentialsTitle}>
-              POR QUE INVESTIR EM ASO?<span>.</span>
-            </h2>
-
-            <div className={styles.diffGrid}>
-              {differentials.map((diff, index) => (
-                <div key={index} className={styles.diffCard}>
-                  <div className={styles.diffIcon}>{diff.icon}</div>
-                  <h3 className={styles.diffTitle}>{diff.title}</h3>
-                  <p className={styles.diffText}>{diff.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* METHOD SECTION */}
-        <section className={styles.methodSection}>
-          <div className={styles.methodContainer}>
-            <h2 className={styles.methodTitle}>
-              ESTRATÉGIA DE CRESCIMENTO<span>.</span>
-            </h2>
-            <span className={styles.methodSubtitle}>NOSSA METODOLOGIA</span>
-
-            <div className={styles.timeline}>
-              {methodSteps.map((step, index) => (
-                <div key={index} className={styles.timelineItem}>
-                  <div className={styles.timelineNumber}>{index + 1}</div>
-                  <div className={styles.timelineContent}>
-                    <h3 className={styles.stepTitle}>{step.title}</h3>
-                    <p className={styles.stepDesc}>{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ SECTION */}
-        <section className={styles.faqSection}>
-          <div className={styles.faqContainer}>
-            <h2 className={styles.faqTitle}>
-              PERGUNTAS FREQUENTES<span>.</span>
-            </h2>
-
-            <div className={styles.faqList}>
-              {faqItems.map((item, index) => {
-                const isOpen = openFaqIndex === index;
-                return (
-                  <div key={index} className={styles.faqItem}>
-                    <div
-                      className={styles.faqQuestion}
-                      onClick={() => toggleFaq(index)}
-                    >
-                      <span className={styles.questionText}>
-                        {item.question}
-                      </span>
-                      <PiCaretDownBold
-                        className={`${styles.faqIcon} ${
-                          isOpen ? styles.rotate : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${styles.faqAnswer} ${
-                        isOpen ? styles.open : ""
-                      }`}
-                    >
-                      <p className={styles.answerText}>{item.answer}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <ServicePage
+      eyebrow="SEO das lojas de app"
+      headline="Seu app achado e baixado nas lojas"
+      subheadline="Otimizo sua página na App Store e Google Play para aparecer nas buscas e converter mais downloads — sem depender só de anúncio."
+      description="Faço a otimização (ASO) da ficha do seu app: título, descrição, palavras-chave, ícone e prints. Mais gente encontra seu app na busca da loja e mais visitantes viram download — visibilidade orgânica, sem depender só de mídia paga."
+      heroImage={{ src: "/CriacaoDeSites/aso.png", alt: "ASO: Otimização para App Store e Google Play" }}
+      ctaPrimary="Quero mais downloads"
+      ctaNote="Consultoria gratuita · resposta em até 24h · sem compromisso"
+      trust={trust}
+      quote="App bom que ninguém acha não é baixado. ASO é o que faz a loja mostrar o seu app para quem já está procurando por ele."
+      infoParagraphs={[
+        "ASO é o SEO das lojas: assim como o Google, a App Store e a Google Play têm busca. Otimizo título, descrição e palavras-chave para o seu app aparecer quando alguém procura pelo que ele resolve.",
+        "Não basta aparecer: a pessoa precisa baixar. Trabalho o ícone, os prints e os primeiros segundos da ficha para transformar quem vê em quem instala, e acompanho os números para melhorar com o tempo.",
+      ]}
+      featuresHeading="O que eu otimizo"
+      features={features}
+      benefits={benefits}
+      ctaMid="Quero um orçamento"
+      diffHeading="Diferenciais do ASO"
+      differentials={differentials}
+      methodHeading="Da busca ao download"
+      methodSubtitle="Mais gente achando seu app"
+      methodSteps={methodSteps}
+      faqHeading="Dúvidas sobre ASO"
+      faqItems={faqItems}
+    />
   );
 }

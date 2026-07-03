@@ -1,29 +1,34 @@
+import { meta, faqItems } from "./data";
+import { serviceJsonLd } from "../_services/schema";
+
+const SITE = "https://saulopavanello.com.br";
+
 export const metadata = {
-  title: "Desenvolvimento de Apps iOS (iPhone)",
-  description:
-    "Especialista em desenvolvimento de apps iOS (iPhone/iPad). Soluções nativas em Swift de alta performance para a Apple App Store.",
+  title: meta.title,
+  description: meta.description,
+  alternates: { canonical: meta.path },
   openGraph: {
-    title: "Desenvolvimento de Apps iOS (iPhone) | Saulo Pavanello",
-    description:
-      "Aplicativos iOS premium. Design sofisticado e código robusto para os usuários mais exigentes.",
-    url: "https://saulopavanello.com.br/app-ios",
-    images: ["/CriacaoDeSites/ios-dev.png"],
+    title: `${meta.title} | Saulo Pavanello`,
+    description: meta.description,
+    url: `${SITE}${meta.path}`,
+    images: [meta.image],
   },
 };
 
-export default function IosLayout({ children }: { children: React.ReactNode }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "iOS App Development",
-    provider: {
-      "@type": "Person",
-      name: "Saulo Pavanello",
-    },
-    areaServed: "Brasil",
-    description:
-      "Desenvolvimento de aplicativos móveis nativos para plataforma iOS (Apple).",
-  };
+export default function ServiceLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const jsonLd = serviceJsonLd({
+    path: meta.path,
+    name: meta.name,
+    serviceType: meta.serviceType,
+    image: meta.image,
+    description: meta.description,
+    offers: meta.offers,
+    faqItems,
+  });
 
   return (
     <>

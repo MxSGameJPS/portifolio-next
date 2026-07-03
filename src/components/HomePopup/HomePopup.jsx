@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 import styles from "./HomePopup.module.css";
-import popupImg from "../../assets/popup.png";
+import popupImg from "../../../public/promocaoJulho.png";
 
 export default function HomePopup() {
   const [isVisible, setIsVisible] = useState(false);
@@ -63,7 +63,7 @@ export default function HomePopup() {
           >
             <Image
               src={popupImg}
-              alt="Promoção exclusiva do mês"
+              alt="Promoção de Julho — Página Express profissional por R$ 450"
               className={styles.popupImage}
               priority
               placeholder="blur"

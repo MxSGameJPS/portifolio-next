@@ -247,22 +247,36 @@
           "content": "A lógica de gestão de saldos e créditos é processada no backend através de Server Actions e integração com Stripe Webhooks. Todas as transações são imutáveis, auditáveis e validadas pelo servidor a partir de eventos criptograficamente assinados, garantindo integridade total contra manipulações."
         },
         {
+          "title": "Monitoramento Processual Automatizado (DataJud/CNJ)",
+          "content": "Integração direta com as bases públicas do CNJ (DataJud) e o Diário de Justiça Eletrônico Nacional (DJEN). Advogados cadastram números de processo e passam a receber busca e acompanhamento automatizado de andamentos, com painel dedicado de monitoramento — eliminando a consulta manual em múltiplos tribunais."
+        },
+        {
+          "title": "Videoconferência e Comunicação Interna",
+          "content": "Salas de atendimento por vídeo entre advogado e cliente construídas sobre Jitsi, integradas ao dashboard. Toda a comunicação acontece dentro da plataforma, mantendo o histórico do caso centralizado e sem depender de ferramentas externas."
+        },
+        {
+          "title": "Assinatura Digital e Notificação Extrajudicial",
+          "content": "Geração e assinatura de documentos jurídicos em PDF direto no backend com jsPDF e pdf-lib. O módulo cobre envelopes de assinatura, download seguro de documentos assinados e envio de notificações extrajudiciais a partir de texto, com trilha auditável de cada etapa."
+        },
+        {
           "title": "Infraestrutura Escalável e Modernizada",
-          "content": "Migração de armazenamento Base64 para Supabase Storage, utilizando buckets otimizados com entrega via CDN e URLs assinadas para performance superior. O projeto utiliza uma arquitetura Standalone com suporte a deploy em containers Docker e ambientes isolados, protegida por headers HTTP de segurança como CSP, HSTS e X-Frame-Options."
+          "content": "Migração de armazenamento Base64 para Supabase Storage, utilizando buckets otimizados com entrega via CDN e URLs assinadas para performance superior. O projeto utiliza saída Standalone do Next.js e é protegido por headers HTTP de segurança como CSP, HSTS e X-Frame-Options."
         }
       ],
       "tech_stack": [
-        "Framework: Next.js 16.1.6 (App Router + Standalone)",
-        "Frontend: React 19.2.3",
-        "Estilização: Tailwind CSS 3.4",
-        "Banco de Dados: PostgreSQL (Supabase)",
+        "Framework: Next.js 16.2.9 (App Router + Standalone)",
+        "Frontend: React 19.2.7",
+        "Estilização: CSS Modules",
+        "Banco de Dados: PostgreSQL (Supabase + driver pg)",
         "Autenticação: Supabase SSR Auth",
         "Storage: Supabase Storage (CDN + RLS)",
         "Pagamentos: Stripe API (Webhooks)",
-        "IA: OpenAI (GPT-4o) & Google Gemini (Flash 1.5/2.0)",
+        "IA: OpenAI & Google Gemini (@google/genai)",
+        "Videoconferência: Jitsi (@jitsi/react-sdk)",
+        "Documentos: jsPDF & pdf-lib (assinatura/PDF)",
+        "Processos: Integração DataJud/DJEN (CNJ)",
         "E-mail: Resend API",
-        "Segurança: RBAC, RLS e Security Headers (CSP/HSTS)",
-        "Infraestrutura: Docker Ready & Standalone Deploy"
+        "Segurança: RBAC, RLS e Security Headers (CSP/HSTS)"
       ]
     },
     {
@@ -876,6 +890,102 @@
         "Storage: Supabase Storage (privado)",
         "Segurança: Webhook HMAC-SHA256",
         "Auth: API Key server-to-server"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Rota Viva",
+      "tag": "Web",
+      "category": "Startup / Site de Marca & Captação",
+      "image": "/Projetos/rotaviva.png",
+      "importance": "1",
+      "deploy_link": "https://rotaviva.vercel.app",
+      "repo_link": "https://github.com/MxSGameJPS/rotaviva",
+      "description": "Site de marca e captação da Rota Viva — um super-app multi-cidade que une turismo, comércio local e eventos em um só aplicativo, geolocalizado e sempre vivo. O site apresenta o projeto, o plano de lançamento e a campanha de investimento (crowdfunding), com identidade visual Dia/Noite, gradiente assinatura magenta→laranja e animação em GSAP. Nasceu em Dois Irmãos/RS, com a proposta de ser a primeira 'Cidade Viva' do Brasil.",
+      "sections": [
+        {
+          "title": "Identidade Dia/Noite (Dualidade de Tema)",
+          "content": "A marca vive em dois modos com toggle global (☀/☾): a paleta, o gradiente assinatura e os contrastes se reconfiguram por tema. A preferência persiste em localStorage e um script anti-flash roda no <head>, evitando o piscar de tema no carregamento — tudo controlado por tokens de CSS, sem framework de estilo externo."
+        },
+        {
+          "title": "Movimento com GSAP",
+          "content": "As animações de entrada e de scroll são orquestradas com GSAP e @gsap/react, dando o 'sempre vivo' que a marca comunica. Todo o movimento respeita prefers-reduced-motion, degradando com elegância para quem prefere menos animação, sem perder a leitura do conteúdo."
+        },
+        {
+          "title": "Plano de Lançamento (Funil de Aquisição)",
+          "content": "Uma página dedicada de marketing detalha como o turista descobre e baixa o app antes mesmo de chegar à cidade: canais, cronograma e metas do funil de aquisição. É a tradução de estratégia de go-to-market em conteúdo navegável, pensada para investidores e parceiros entenderem a operação."
+        },
+        {
+          "title": "Captação de Investimento (PIX + Crowdfunding)",
+          "content": "A página de investimento estrutura faixas de apoio — de Apoiador a Marca & Patrocínio — conectadas à campanha de financiamento coletivo na Benfeitoria. Inclui chave PIX, mural de apoiadores e formulário de contato via Web3Forms, com fallback automático para mailto caso a integração esteja indisponível."
+        },
+        {
+          "title": "Brand Book e Voz da Marca",
+          "content": "Um mini brand book público apresenta os fundamentos visuais: dualidade Dia/Noite, gradiente, paleta, tipografia (Space Grotesk + DM Sans) e tom de voz. Serve tanto de vitrine de identidade quanto de guia para futuros parceiros e patrocinadores manterem a consistência da marca."
+        },
+        {
+          "title": "SEO e Performance",
+          "content": "OpenGraph e ícones são gerados dinamicamente pelo Next.js (opengraph-image e icon), com metadados próprios por página para compartilhamento social e indexação. As fontes são otimizadas com next/font, garantindo carregamento rápido e estável em todas as rotas."
+        }
+      ],
+      "tech_stack": [
+        "Framework: Next.js 16.2.9 (App Router)",
+        "Frontend: React 19.2.4",
+        "Estilização: CSS Modules (sem Tailwind, sem TypeScript)",
+        "Animação: GSAP + @gsap/react",
+        "Tipografia: next/font (Space Grotesk + DM Sans)",
+        "Formulário: Web3Forms (fallback mailto)",
+        "Captação: PIX + Benfeitoria (crowdfunding)",
+        "Deploy: Vercel"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Rota Viva App",
+      "tag": "Mobile",
+      "category": "Mobile App / Turismo & Comércio Local (Multi-cidade)",
+      "image": "/Projetos/rotaviva-app.png",
+      "importance": "1",
+      "deploy_link": "",
+      "repo_link": "https://github.com/MxSGameJPS/guiadoisirmaos",
+      "description": "O aplicativo móvel da plataforma Rota Viva: turismo, comércio local, eventos, rotas turísticas, cupons e reservas reunidos em um único app multi-cidade. O usuário escolhe a cidade na abertura e navega por pontos turísticos, comércios e roteiros geolocalizados, com promoções e notificações push em tempo real. Construído em Expo (SDK 54) e React Native, com Supabase como backend e todo o conteúdo gerenciado por painéis web dedicados (superadmin, responsável da cidade e lojista).",
+      "sections": [
+        {
+          "title": "Arquitetura Multi-cidade (Multi-tenant)",
+          "content": "Um único app atende várias cidades: na abertura o usuário seleciona a cidade e todo o conteúdo — comércios, pontos turísticos, eventos e rotas — passa a ser filtrado por ela. A separação multi-tenant é reforçada no backend, permitindo escalar para novas cidades sem publicar um novo aplicativo."
+        },
+        {
+          "title": "Descoberta Geolocalizada",
+          "content": "Com Expo Location e React Native Maps (Google Maps), o app ordena comércios e pontos pelos mais próximos e os posiciona no mapa. A jornada é pensada para o turista em movimento: encontrar o que está por perto, no momento em que precisa, sem fricção."
+        },
+        {
+          "title": "Rotas Turísticas e Áudio dos Pontos",
+          "content": "Roteiros encadeiam pontos turísticos, comércios e eventos em uma sequência navegável, transformando a visita em uma experiência guiada. Cada ponto turístico pode ser ouvido em áudio via expo-speech, agregando acessibilidade e um toque de audioguia à descoberta da cidade."
+        },
+        {
+          "title": "Página do Comércio (Cupons e Reservas)",
+          "content": "Cada comércio tem página própria com cupons, promoções, redes sociais e WhatsApp. Quando o lojista habilita, o botão 'Fazer reserva' abre o WhatsApp e registra a reserva no banco — conectando a descoberta digital à conversão real no estabelecimento físico."
+        },
+        {
+          "title": "Notificações Push Inteligentes",
+          "content": "Via Expo Notifications, o device é registrado com o city_id selecionado (device_tokens) e passa a receber promoções e cupons em tempo real. Para preservar a experiência, o envio é limitado a 1 push por comércio por dia, disparado pelo painel do lojista através da Expo Push API."
+        },
+        {
+          "title": "Backend Seguro (Supabase + RLS)",
+          "content": "O app acessa o Supabase por anon key protegida por Row Level Security: leitura pública e apenas inserts controlados (reservas e device tokens). A gestão de conteúdo fica em painéis web Next.js separados, com papéis distintos para superadmin, cidade e lojista — mantendo o app leve e a operação organizada."
+        }
+      ],
+      "tech_stack": [
+        "Core: React Native 0.81 + Expo SDK 54",
+        "Roteamento: Expo Router v6 (rotas por arquivo)",
+        "Linguagem: TypeScript 5.9",
+        "Backend (BaaS): Supabase (anon key + RLS)",
+        "Mapas: React Native Maps (Google Maps)",
+        "Geolocalização: Expo Location",
+        "Push: Expo Notifications (Expo Push API)",
+        "Áudio/Acessibilidade: Expo Speech",
+        "Animação: Reanimated 4 + Worklets",
+        "UI: Expo Image, Linear Gradient, Vector Icons"
       ]
     }
   ]

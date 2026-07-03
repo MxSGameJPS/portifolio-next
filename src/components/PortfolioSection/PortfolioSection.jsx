@@ -16,9 +16,14 @@ const TABS = [
   { key: "mobile", label: "Mobile", tag: "Mobile" },
 ];
 
-// Flagship projects float to the top of their tab so they land in the featured slot
+// Primary projects take the big featured slot (index 0) of their tab, above any flagship
+const PRIMARY = new Set(["Rota Viva App"]);
+
+// Flagship projects float to the top of their tab so they land near the featured slot
 const FLAGSHIP = new Set([
   "SocialJurídico",
+  "Rota Viva",
+  "Rota Viva App",
   "API Social Jurídico",
   "Vida Leve",
 ]);
@@ -29,6 +34,7 @@ const TECH_KEYWORDS = [
   "React Native",
   "React",
   "Fastify",
+  "GSAP",
   "Supabase",
   "Stripe",
   "OpenAI",
@@ -63,10 +69,10 @@ function getProjects(tag) {
       (p.tag === tag ||
         (tag === "API - BackEnd" && p.tag === "Api - BackEnd")),
   );
-  // flagship first, original order otherwise
-  return [...list].sort(
-    (a, b) => (FLAGSHIP.has(b.name) ? 1 : 0) - (FLAGSHIP.has(a.name) ? 1 : 0),
-  );
+  // rank: primary (featured slot) > flagship > original order
+  const rank = (p) =>
+    (PRIMARY.has(p.name) ? 2 : 0) + (FLAGSHIP.has(p.name) ? 1 : 0);
+  return [...list].sort((a, b) => rank(b) - rank(a));
 }
 
 export default function PortfolioSection() {

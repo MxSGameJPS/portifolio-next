@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 import Contact from "../../../components/Contact/Contact";
@@ -10,58 +11,70 @@ import Link from "next/link";
 import {
   PiGithubLogoBold,
   PiGlobeBold,
-  PiDevicesBold,
-  PiStarBold,
-  PiRocketLaunchBold,
+  PiShieldCheckBold,
+  PiScalesBold,
+  PiRobotBold,
+  PiCurrencyDollarBold,
+  PiCloudBold,
+  PiMagnifyingGlassBold,
+  PiVideoCameraBold,
+  PiFileTextBold,
+  PiGavelBold,
 } from "react-icons/pi";
 import projetosData from "../../../components/PortfolioSection/projetosData.json";
 
+// Distinct icon per section so cards don't all look the same
+const SECTION_ICONS = [
+  PiShieldCheckBold,
+  PiScalesBold,
+  PiRobotBold,
+  PiCurrencyDollarBold,
+  PiMagnifyingGlassBold,
+  PiVideoCameraBold,
+  PiFileTextBold,
+  PiCloudBold,
+  PiGavelBold,
+];
+
+// Split "Label: Value" tech strings into parts (falls back gracefully)
+function splitTech(tech) {
+  const i = tech.indexOf(":");
+  if (i === -1) return { label: null, value: tech };
+  return { label: tech.slice(0, i).trim(), value: tech.slice(i + 1).trim() };
+}
+
 export default function ProjectDetailsPage() {
   const params = useParams();
-  const projectId = params.id; // Get ID from URL
+  const projectId = params.id;
 
-  // Find project
   const project = projetosData.portfolio.find(
-    (p) => p.id.toString() === projectId
+    (p) => p.id.toString() === projectId,
   );
 
   if (!project) {
     return (
-      <div
-        className={styles.pageWrapper}
-        style={{
-          backgroundColor: "#000",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <h1 style={{ color: "white" }}>Projeto não encontrado :(</h1>
-        <Link
-          href="/portfolio"
-          style={{ color: "var(--tech-blue)", marginLeft: "1rem" }}
-        >
-          Voltar
+      <div className={styles.notFound}>
+        <h1>Projeto não encontrado :(</h1>
+        <Link href="/portfolio" className={styles.notFoundLink}>
+          Voltar ao portfólio
         </Link>
       </div>
     );
   }
 
-  // Icons for features logic (optional mapping if we want specific icons per section title)
-  const getSectionIcon = (index) => {
-    if (index === 0) return <PiDevicesBold size={40} color="#00a8e8" />;
-    if (index === 1) return <PiStarBold size={40} color="#00a8e8" />;
-    return <PiRocketLaunchBold size={40} color="#00a8e8" />;
+  const reveal = {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
   };
 
   return (
     <div className={styles.pageWrapper}>
-      {/* Dynamic Fixed Background */}
+      {/* Ambient background */}
       <div className={styles.fixedBackground}>
         {project.image && (
           <Image
             src={project.image}
-            alt="Background"
+            alt=""
             fill
             className={styles.backgroundImage}
             priority
@@ -73,27 +86,22 @@ export default function ProjectDetailsPage() {
       <Header />
 
       <main className={styles.container}>
-        {/* HERO SECTION */}
+        {/* HERO */}
         <section className={styles.projectHero}>
-          {/* Left: Image Card */}
           <div className={styles.heroImageWrapper}>
             <Image
               src={project.image || "/Hero.png"}
               alt={project.name}
               fill
-              style={{ objectFit: "contain", backgroundColor: "#fff" }}
+              className={styles.heroImage}
+              sizes="(max-width: 900px) 100vw, 50vw"
+              priority
             />
           </div>
 
-          {/* Right: Intro Info */}
           <div className={styles.heroContent}>
             <div className={styles.tagsWrapper}>
-              <span
-                className={styles.tag}
-                style={{ background: "#fff", color: "#000" }}
-              >
-                {project.tag}
-              </span>
+              <span className={styles.tagPrimary}>{project.tag}</span>
               <span className={styles.tag}>{project.category}</span>
             </div>
 
@@ -107,7 +115,7 @@ export default function ProjectDetailsPage() {
                   href={project.deploy_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.projectLink}
+                  className={styles.projectLinkPrimary}
                 >
                   <PiGlobeBold /> Acessar Online
                 </a>
@@ -126,43 +134,65 @@ export default function ProjectDetailsPage() {
           </div>
         </section>
 
-        {/* DETAILS SECTIONS (Zig Zag) */}
-        <section className={styles.detailsSection}>
-          {project.sections &&
-            project.sections.map((section, index) => (
-              <div key={index} className={styles.detailBlock}>
-                <div className={styles.textColumn}>
-                  <h2 className={styles.detailTitle}>{section.title}</h2>
-                  <p className={styles.detailText}>{section.content}</p>
-                </div>
+        {/* FEATURE CARDS */}
+        {project.sections && project.sections.length > 0 && (
+          <section className={styles.detailsSection}>
+            <div className={styles.sectionHead}>
+              <span className={styles.eyebrow}>Destaques técnicos</span>
+              <h2 className={styles.sectionHeading}>
+                Como foi construído<span className={styles.dot}>.</span>
+              </h2>
+            </div>
 
-                <div className={styles.visualColumn}>
-                  {/* Visual Placeholder or Icon depending on content */}
-                  <div className={styles.visualWrapper}>
-                    {getSectionIcon(index)}
-                    {/* If we had specific screenshots for each section, we would render them here. 
-                        For now, using icons and glassmorphism card as placeholder */}
-                  </div>
-                </div>
-              </div>
-            ))}
-        </section>
+            <div className={styles.featureGrid}>
+              {project.sections.map((section, index) => {
+                const Icon = SECTION_ICONS[index % SECTION_ICONS.length];
+                return (
+                  <motion.article
+                    key={index}
+                    className={styles.featureCard}
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-60px" }}
+                  >
+                    <span className={styles.featureIcon} aria-hidden="true">
+                      <Icon size={24} />
+                    </span>
+                    <h3 className={styles.featureTitle}>{section.title}</h3>
+                    <p className={styles.featureText}>{section.content}</p>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {/* TECH STACK */}
-        <section className={styles.stackSection}>
-          <h2 className={styles.stackTitle}>TECNOLOGIAS UTILIZADAS</h2>
-          <div className={styles.stackGrid}>
-            {project.tech_stack &&
-              project.tech_stack.map((tech, idx) => (
-                <div key={idx} className={styles.stackItem}>
-                  {tech}
-                </div>
-              ))}
-          </div>
-        </section>
+        {project.tech_stack && project.tech_stack.length > 0 && (
+          <section className={styles.stackSection}>
+            <div className={styles.sectionHead}>
+              <span className={styles.eyebrow}>Stack</span>
+              <h2 className={styles.sectionHeading}>
+                Tecnologias utilizadas<span className={styles.dot}>.</span>
+              </h2>
+            </div>
+
+            <div className={styles.stackGrid}>
+              {project.tech_stack.map((tech, idx) => {
+                const { label, value } = splitTech(tech);
+                return (
+                  <div key={idx} className={styles.stackItem}>
+                    {label && <span className={styles.stackLabel}>{label}</span>}
+                    <span className={styles.stackValue}>{value}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
       </main>
 
-      {/* CONTACT (White Background Wrapper) */}
       <div className={styles.contactWrapper}>
         <Contact />
       </div>
