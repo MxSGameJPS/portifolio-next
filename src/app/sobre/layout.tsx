@@ -4,7 +4,7 @@ const PAGE = `${SITE}/sobre`;
 export const metadata = {
   title: "Sobre",
   description:
-    "Saulo Pavanello: desenvolvedor FullStack com base em UI Design e Jornalismo. Contato direto, visão de negócio e coerência do design ao banco de dados.",
+    "Saulo Pavanello: desenvolvedor FullStack de Dois Irmãos (RS), com base em UI Design e Jornalismo. Contato direto, visão de negócio e coerência do design ao banco de dados.",
   alternates: { canonical: "/sobre" },
   openGraph: {
     title: "Sobre | Saulo Pavanello",

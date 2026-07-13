@@ -72,6 +72,12 @@ export default function ContactPage() {
               compromisso, a resposta chega em até 24h — e você fala direto
               comigo, não com um atendente.
             </p>
+            <p className={styles.introText}>
+              Baseado em Dois Irmãos (RS), atendo presencialmente Novo
+              Hamburgo, São Leopoldo, Sapiranga, Campo Bom, Ivoti, Estância
+              Velha, Sapucaia do Sul e Caxias do Sul — e remoto para todo o
+              Brasil.
+            </p>
 
             <div className={styles.channels}>
               {channels.map((c) => (

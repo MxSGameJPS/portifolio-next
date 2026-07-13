@@ -194,17 +194,32 @@
   }
 }
 
+/* Service area */
+.serviceArea {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+  }
+}
+
 /* Copyright */
 .copyright {
   text-align: center;
   border-top: 1px solid #333;
-  margin-top: 4rem;
+  margin-top: 1.5rem;
   padding-top: 2rem;
   font-size: 0.75rem;
   color: #666;
 
   @media (max-width: 768px) {
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-top: 1rem;
     font-size: 0.6rem;
   }

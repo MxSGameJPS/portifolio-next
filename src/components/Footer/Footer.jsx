@@ -173,6 +173,12 @@ export default function Footer() {
         </div>
       </div>
 
+      <p className={styles.serviceArea}>
+        Atendimento em Dois Irmãos e região: Novo Hamburgo, São Leopoldo,
+        Sapiranga, Campo Bom, Ivoti, Estância Velha, Sapucaia do Sul e Caxias
+        do Sul (RS) — e remoto para todo o Brasil.
+      </p>
+
       <div className={styles.copyright}>
         Desenvolvido por{" "}
         <a href="https://github.com/MxSGameJPS">Saulo Pavanello</a> © 2026.

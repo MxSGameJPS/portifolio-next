@@ -23,7 +23,7 @@ export const metadata = {
     canonical: "./",
   },
   description:
-    "Especialista em Desenvolvimento de Sites, Criação de Apps e Sistemas Web. Transformo ideias em software de alta performance. React, Next.js e Node.js.",
+    "Especialista em Desenvolvimento de Sites, Criação de Apps e Sistemas Web, baseado em Dois Irmãos (RS), atendendo Novo Hamburgo, São Leopoldo, Sapiranga, Campo Bom, Ivoti, Estância Velha, Sapucaia do Sul e Caxias do Sul. React, Next.js e Node.js.",
   applicationName: "Saulo Pavanello",
   category: "technology",
   keywords: [
@@ -106,6 +106,21 @@ export default function RootLayout({ children }) {
     "https://www.instagram.com/saulopavanello",
   ];
 
+  // Service-area business: no public street address, just the base city plus
+  // the cities actively served (Vale do Sinos / Serra Gaúcha, RS).
+  const baseCity = { "@type": "City", name: "Dois Irmãos", addressRegion: "RS", addressCountry: "BR" };
+  const servedCities = [
+    "Dois Irmãos",
+    "Novo Hamburgo",
+    "São Leopoldo",
+    "Sapiranga",
+    "Campo Bom",
+    "Ivoti",
+    "Estância Velha",
+    "Sapucaia do Sul",
+    "Caxias do Sul",
+  ].map((name) => ({ "@type": "City", name, addressRegion: "RS", addressCountry: "BR" }));
+
   // Connected @graph: search engines and AI summarizers resolve the @id links,
   // building one entity model (person + site + service + real reviews).
   const jsonLd = {
@@ -129,6 +144,7 @@ export default function RootLayout({ children }) {
         image: `${SITE}/Hero.png`,
         description:
           "Desenvolvedor FullStack Especialista. Transformo ideias complexas em soluções digitais de alta performance.",
+        homeLocation: baseCity,
       },
       {
         "@type": "WebSite",
@@ -149,7 +165,7 @@ export default function RootLayout({ children }) {
         founder: { "@id": `${SITE}/#person` },
         priceRange: "$$",
         sameAs,
-        areaServed: { "@type": "Country", name: "Brasil" },
+        areaServed: [...servedCities, { "@type": "Country", name: "Brasil" }],
         knowsAbout: [
           "Desenvolvimento Web",
           "Desenvolvimento Mobile",
