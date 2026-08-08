@@ -5,7 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 import styles from "./HomePopup.module.css";
-import popupImg from "../../../public/promocaoJulho.png";
+import promoData1 from "./promoData1";
+import promoData2 from "./promoData2";
+import promoData3 from "./promoData3";
+import promoData4 from "./promoData4";
+
+const popupImg = `data:image/webp;base64,${promoData1}${promoData2}${promoData3}${promoData4}`;
 
 export default function HomePopup() {
   const [isVisible, setIsVisible] = useState(false);
@@ -63,10 +68,12 @@ export default function HomePopup() {
           >
             <Image
               src={popupImg}
-              alt="Promoção de Julho — Página Express profissional por R$ 450"
+              width={600}
+              height={600}
+              alt="Promoção de Agosto — Mês dos Pais — Site profissional por R$ 400"
               className={styles.popupImage}
               priority
-              placeholder="blur"
+              unoptimized
             />
           </Link>
         </div>
