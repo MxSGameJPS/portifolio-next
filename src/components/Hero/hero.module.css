@@ -3,7 +3,7 @@
   width: 100%;
   overflow: hidden;
   background: #f5f1eb;
-  padding-top: 80px;
+  padding-top: 0;
   isolation: isolate;
 }
 
@@ -39,9 +39,9 @@
   z-index: 1;
   display: flex;
   width: 100%;
-  max-width: 1600px;
-  min-height: clamp(690px, calc(100vh - 80px), 880px);
-  margin: 0 auto;
+  max-width: none;
+  min-height: clamp(690px, 100vh, 880px);
+  margin: 0;
 }
 
 .content {
@@ -52,8 +52,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: clamp(4rem, 7vw, 7.5rem) clamp(2.5rem, 4.2vw, 5rem);
-  padding-left: clamp(2rem, 6vw, 7rem);
+  padding: calc(clamp(4rem, 7vw, 7.5rem) + 80px) clamp(2.5rem, 4.2vw, 5rem) clamp(4rem, 7vw, 7.5rem);
+  padding-left: max(
+    clamp(2rem, 6vw, 7rem),
+    calc((100vw - 1600px) / 2 + 7rem)
+  );
 }
 
 .eyebrow {
