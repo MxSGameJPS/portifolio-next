@@ -2,16 +2,26 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { PiArrowUpRightBold, PiWhatsappLogoBold } from "react-icons/pi";
+import { PiArrowRightBold, PiWhatsappLogoBold } from "react-icons/pi";
 import styles from "./hero.module.css";
+import heroData1 from "./heroData1";
+import heroData2 from "./heroData2";
+import heroData3 from "./heroData3";
+import heroData4 from "./heroData4";
+import heroData5 from "./heroData5";
+import heroData6 from "./heroData6";
+import heroData7 from "./heroData7";
+import heroData8 from "./heroData8";
 
 const WHATSAPP_URL =
-  "https://wa.me/5551993392983?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento.";
+  "https://wa.me/5551993392983?text=Ol%C3%A1%2C%20Saulo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20um%20projeto.";
+
+const heroImage = `data:image/webp;base64,${heroData1}${heroData2}${heroData3}${heroData4}${heroData5}${heroData6}${heroData7}${heroData8}`;
 
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.09, delayChildren: 0.08 },
   },
 };
 
@@ -20,11 +30,19 @@ const fadeUp = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
-// Fire a GA / Google Ads event when a CTA is clicked (funnel tracking)
+const imageReveal = {
+  hidden: { opacity: 0, scale: 1.025 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 const trackCta = (label) => {
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag("event", "cta_click", { event_label: label });
@@ -35,8 +53,8 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className={styles.heroSection}>
-      <div className={styles.grid} aria-hidden="true" />
+    <section className={styles.heroSection} aria-labelledby="hero-title">
+      <div className={styles.texture} aria-hidden="true" />
 
       <motion.div
         className={styles.container}
@@ -44,31 +62,30 @@ export default function Hero() {
         initial="hidden"
         animate="show"
       >
-        {/* Left: copy */}
         <div className={styles.content}>
+          <motion.p className={styles.eyebrow} variants={fadeUp}>
+            SAULO PAVANELLO <span>·</span> SOFTWARE ENGINEER
+          </motion.p>
 
-
-          <motion.h1 className={styles.headline} variants={fadeUp}>
-            Um site que <span className={styles.highlight}>converte</span>.
-            <br />
-            Um app que <span className={styles.highlight}>encanta</span>.
+          <motion.h1 id="hero-title" className={styles.headline} variants={fadeUp}>
+            Eu construo software para negócios que querem crescer.
           </motion.h1>
 
           <motion.p className={styles.subHeadline} variants={fadeUp}>
-            Seu crescimento exige tecnologia de alto nível. Transformo sua visão
-            em software que gera resultado de verdade.
+            Desenvolvimento de SaaS, sistemas web, aplicativos, APIs e
+            experiências digitais com foco em resultado real.
           </motion.p>
 
           <motion.div className={styles.ctaGroup} variants={fadeUp}>
             <motion.a
-              href="#contato"
+              href="/portfolio"
               className={styles.ctaPrimary}
-              onClick={() => trackCta("hero_orcamento")}
-              whileHover={reduce ? undefined : { scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              onClick={() => trackCta("hero_ver_projetos")}
+              whileHover={reduce ? undefined : { y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Solicitar orçamento
-              <PiArrowUpRightBold />
+              Ver projetos
+              <PiArrowRightBold aria-hidden="true" />
             </motion.a>
 
             <motion.a
@@ -76,69 +93,47 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaSecondary}
-              onClick={() => trackCta("hero_whatsapp")}
-              whileHover={reduce ? undefined : { scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              onClick={() => trackCta("hero_falar_comigo")}
+              whileHover={reduce ? undefined : { y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <PiWhatsappLogoBold />
-              Chamar no WhatsApp
+              Falar comigo
+              <PiWhatsappLogoBold aria-hidden="true" />
             </motion.a>
           </motion.div>
 
-          <motion.p className={styles.trustLine} variants={fadeUp}>
-            Orçamento sem compromisso · Resposta no mesmo dia
-          </motion.p>
+          <motion.div className={styles.stackLine} variants={fadeUp}>
+            <span>React</span>
+            <i>·</i>
+            <span>Next.js</span>
+            <i>·</i>
+            <span>Node.js</span>
+            <i>·</i>
+            <span>Mobile</span>
+            <i>·</i>
+            <span>IA</span>
+          </motion.div>
         </div>
 
-        {/* Right: mascot stage */}
         <motion.div
           className={styles.stage}
-          variants={fadeUp}
+          variants={reduce ? undefined : imageReveal}
+          initial={reduce ? undefined : "hidden"}
+          animate={reduce ? undefined : "show"}
         >
-          <div className={styles.glow} aria-hidden="true" />
-
-          <motion.div
-            className={styles.mascotWrap}
-            animate={reduce ? undefined : { y: [0, -14, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Image
-              src="/Hero.png"
-              alt="Mascote tech de Saulo Pavanello acenando"
-              width={600}
-              height={600}
-              className={styles.mascot}
-              priority
-              quality={90}
-              fetchPriority="high"
-            />
-          </motion.div>
-
-          <motion.div
-            className={styles.badge}
-            initial={{ opacity: 0, scale: 0.7, rotate: 0 }}
-            animate={{ opacity: 1, scale: 1, rotate: -4 }}
-            transition={{ delay: 0.7, type: "spring", stiffness: 220, damping: 14 }}
-          >
-            CRESCEMOS JUNTOS!
-          </motion.div>
+          <Image
+            src={heroImage}
+            alt="Saulo Pavanello em seu ambiente de trabalho, ao lado de uma estação de desenvolvimento de software"
+            width={1440}
+            height={810}
+            className={styles.portrait}
+            priority
+            fetchPriority="high"
+            unoptimized
+          />
+          <div className={styles.photoShade} aria-hidden="true" />
         </motion.div>
       </motion.div>
-
-      {/* Bottom wave — transitions into the light sections below */}
-      <div className={styles.wave} aria-hidden="true">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z"
-            fill="#ffffff"
-          ></path>
-        </svg>
-      </div>
     </section>
   );
 }
