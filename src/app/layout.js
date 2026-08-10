@@ -74,9 +74,9 @@ export const metadata = {
     siteName: "Saulo Pavanello",
     images: [
       {
-        url: "/api/social-card",
-        width: 1200,
-        height: 630,
+        url: "/ogimage.png",
+        width: 1731,
+        height: 909,
         type: "image/png",
         alt: "Saulo Pavanello — Software Engineer | SaaS, sistemas web, aplicativos e APIs",
       },
@@ -87,7 +87,7 @@ export const metadata = {
     title: "Saulo Pavanello | Software Engineer",
     description:
       "Eu construo software para negócios que querem crescer. SaaS, sistemas web, aplicativos, APIs e experiências digitais.",
-    images: ["/api/social-card"],
+    images: ["/ogimage.png"],
     creator: "@saulopavanello",
   },
 };
@@ -142,7 +142,7 @@ export default function RootLayout({ children }) {
           "System Architecture",
           "SEO",
         ],
-        image: `${SITE}/api/social-card`,
+        image: `${SITE}/ogimage.png`,
         description:
           "Software Engineer focado em SaaS, sistemas web, aplicativos, APIs e produtos digitais de alta performance.",
         homeLocation: baseCity,
@@ -160,7 +160,7 @@ export default function RootLayout({ children }) {
         "@id": `${SITE}/#service`,
         name: "Saulo Pavanello — Desenvolvimento de Software",
         url: SITE,
-        image: `${SITE}/api/social-card`,
+        image: `${SITE}/ogimage.png`,
         description:
           "Desenvolvimento de SaaS, sistemas web, aplicativos mobile, APIs e produtos digitais sob medida.",
         founder: { "@id": `${SITE}/#person` },
