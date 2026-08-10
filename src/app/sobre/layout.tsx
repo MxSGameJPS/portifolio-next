@@ -2,7 +2,9 @@ const SITE = "https://saulopavanello.com.br";
 const PAGE = `${SITE}/sobre`;
 
 export const metadata = {
-  title: "Sobre | Saulo Pavanello — Software Engineer",
+  title: {
+    absolute: "Sobre | Saulo Pavanello — Software Engineer",
+  },
   description:
     "Conheça a trajetória de Saulo Pavanello: Software Engineer, desenvolvedor Full Stack & Mobile e graduando em Engenharia de Software, com bagagem em jornalismo, UI/UX, design e estratégia.",
   alternates: { canonical: "/sobre" },
