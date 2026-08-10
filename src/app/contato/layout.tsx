@@ -2,16 +2,25 @@ const SITE = "https://saulopavanello.com.br";
 const PAGE = `${SITE}/contato`;
 
 export const metadata = {
-  title: "Contato",
+  title: {
+    absolute: "Contato | Saulo Pavanello — Software Engineer",
+  },
   description:
-    "Fale direto com Saulo Pavanello sobre o seu projeto de site, app ou sistema. Atendo Dois Irmãos, Novo Hamburgo, São Leopoldo, Sapiranga e região (RS), com resposta em até 24h.",
+    "Fale diretamente com Saulo Pavanello sobre SaaS, sistemas web, aplicativos, APIs, automações e produtos digitais sob medida.",
   alternates: { canonical: "/contato" },
   openGraph: {
-    title: "Contato | Saulo Pavanello",
+    title: "Contato | Saulo Pavanello — Software Engineer",
     description:
-      "Me conte a sua ideia. Primeira conversa gratuita, sem compromisso, e você fala direto comigo.",
+      "Tem um produto, sistema ou operação digital para construir ou melhorar? Conte o contexto e converse diretamente comigo.",
     url: PAGE,
-    images: ["/Hero.png"],
+    images: ["/ogimage.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contato | Saulo Pavanello — Software Engineer",
+    description:
+      "SaaS, sistemas, aplicativos, APIs e produtos digitais. Converse diretamente comigo sobre o seu projeto.",
+    images: ["/ogimage.png"],
   },
 };
 
@@ -26,6 +35,8 @@ export default function ContatoLayout({
     "@id": `${PAGE}/#contactpage`,
     url: PAGE,
     name: "Contato — Saulo Pavanello",
+    description:
+      "Canal de contato para projetos de software, SaaS, sistemas web, aplicativos, APIs e produtos digitais.",
     about: { "@id": `${SITE}/#person` },
     areaServed: [
       "Dois Irmãos",
@@ -37,7 +48,12 @@ export default function ContatoLayout({
       "Estância Velha",
       "Sapucaia do Sul",
       "Caxias do Sul",
-    ].map((name) => ({ "@type": "City", name, addressRegion: "RS", addressCountry: "BR" })),
+    ].map((name) => ({
+      "@type": "City",
+      name,
+      addressRegion: "RS",
+      addressCountry: "BR",
+    })),
   };
 
   return (
