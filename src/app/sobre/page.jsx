@@ -164,6 +164,7 @@ export default function AboutPage() {
                   src="/Sobre/saulo_profile.png"
                   alt="Saulo Pavanello em retrato profissional"
                   fill
+                  sizes="(max-width: 820px) 100vw, 500px"
                   priority
                   className={styles.profileImage}
                 />
