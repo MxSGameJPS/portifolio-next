@@ -57,6 +57,7 @@
     clamp(2rem, 6vw, 7rem),
     calc((100vw - 1600px) / 2 + 7rem)
   );
+  animation: heroContentLift 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .eyebrow {
@@ -136,6 +137,7 @@
 }
 
 .ctaPrimary:hover {
+  transform: translateY(-2px);
   color: #171717;
   background: #c9973c;
   border-color: #c9973c;
@@ -150,9 +152,15 @@
 }
 
 .ctaSecondary:hover {
+  transform: translateY(-2px);
   color: #9f6d29;
   background: rgba(255, 255, 255, 0.82);
   border-color: rgba(201, 151, 60, 0.58);
+}
+
+.ctaPrimary:active,
+.ctaSecondary:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .ctaPrimary svg,
@@ -211,6 +219,7 @@
   object-fit: cover;
   object-position: 65% center;
   transform: scale(1.01);
+  animation: heroPortraitSettle 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .photoShade {
@@ -221,6 +230,24 @@
   background:
     linear-gradient(180deg, rgba(30, 24, 18, 0.02), rgba(30, 24, 18, 0.07)),
     linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.025));
+}
+
+@keyframes heroContentLift {
+  from {
+    transform: translateY(16px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroPortraitSettle {
+  from {
+    transform: scale(1.025);
+  }
+  to {
+    transform: scale(1.01);
+  }
 }
 
 @media (max-width: 1180px) {
@@ -356,6 +383,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .content,
+  .portrait {
+    animation: none;
+  }
+
   .ctaPrimary,
   .ctaSecondary {
     transition: none;
