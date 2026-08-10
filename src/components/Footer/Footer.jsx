@@ -7,7 +7,6 @@ import {
   FaGithub,
   FaInstagram,
   FaLinkedin,
-  FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa";
 import { PiArrowUpRightBold } from "react-icons/pi";
@@ -148,16 +147,6 @@ export default function Footer() {
           <p className={styles.signature}>Design, código e produto por Saulo Pavanello.</p>
         </div>
       </div>
-
-      <a
-        href="https://wa.me/5551993392983"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.whatsappFloat}
-        aria-label="Falar comigo pelo WhatsApp"
-      >
-        <FaWhatsapp aria-hidden="true" />
-      </a>
     </footer>
   );
 }

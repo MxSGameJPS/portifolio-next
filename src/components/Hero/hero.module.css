@@ -16,7 +16,7 @@
   opacity: 0.8;
   background:
     radial-gradient(circle at 12% 22%, rgba(207, 170, 108, 0.13), transparent 28%),
-    radial-gradient(circle at 72% 72%, rgba(10, 35, 66, 0.055), transparent 34%),
+    radial-gradient(circle at 72% 72%, rgba(201, 151, 60, 0.05), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0));
 }
 
@@ -28,10 +28,10 @@
   width: 410px;
   height: 410px;
   border-radius: 50%;
-  border: 1px solid rgba(10, 35, 66, 0.055);
+  border: 1px solid rgba(84, 68, 48, 0.055);
   box-shadow:
-    0 0 0 42px rgba(10, 35, 66, 0.025),
-    0 0 0 92px rgba(10, 35, 66, 0.018);
+    0 0 0 42px rgba(84, 68, 48, 0.025),
+    0 0 0 92px rgba(84, 68, 48, 0.018);
 }
 
 .container {
@@ -136,9 +136,10 @@
 }
 
 .ctaPrimary:hover {
-  background: #0a2342;
-  border-color: #0a2342;
-  box-shadow: 0 15px 34px rgba(10, 35, 66, 0.2);
+  color: #171717;
+  background: #c9973c;
+  border-color: #c9973c;
+  box-shadow: 0 15px 34px rgba(201, 151, 60, 0.2);
 }
 
 .ctaSecondary {
@@ -149,9 +150,9 @@
 }
 
 .ctaSecondary:hover {
-  color: #0a2342;
+  color: #9f6d29;
   background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(10, 35, 66, 0.52);
+  border-color: rgba(201, 151, 60, 0.58);
 }
 
 .ctaPrimary svg,
@@ -218,7 +219,7 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(10, 18, 24, 0.02), rgba(10, 18, 24, 0.07)),
+    linear-gradient(180deg, rgba(30, 24, 18, 0.02), rgba(30, 24, 18, 0.07)),
     linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.025));
 }
 
