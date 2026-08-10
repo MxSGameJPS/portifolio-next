@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare:hero": "node scripts/generate-hero-image.mjs",
+    "predev": "npm run prepare:hero",
     "dev": "next dev",
+    "prebuild": "npm run prepare:hero",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
