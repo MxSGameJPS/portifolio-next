@@ -13,7 +13,7 @@
   pointer-events: none;
   background:
     radial-gradient(circle at 8% 18%, rgba(201, 151, 60, 0.1), transparent 26%),
-    radial-gradient(circle at 76% 82%, rgba(10, 35, 66, 0.05), transparent 30%);
+    radial-gradient(circle at 76% 82%, rgba(23, 23, 23, 0.04), transparent 30%);
 }
 
 .container {
@@ -204,7 +204,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 58%, rgba(10, 15, 24, 0.16));
+  background: linear-gradient(180deg, transparent 58%, rgba(23, 23, 23, 0.18));
 }
 
 .quoteCard {
@@ -216,7 +216,7 @@
   padding: 2rem 2rem 1.8rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  background: rgba(12, 21, 33, 0.95);
+  background: rgba(23, 23, 23, 0.95);
   color: #fff;
   box-shadow: 0 22px 48px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
@@ -366,8 +366,9 @@
 
 .submitButton:hover {
   transform: translateY(-2px);
-  background: #0a2342;
-  box-shadow: 0 14px 30px rgba(10, 35, 66, 0.16);
+  background: #c9973c;
+  color: #171717;
+  box-shadow: 0 14px 30px rgba(43, 35, 25, 0.14);
 }
 
 @media (max-width: 1080px) {
