@@ -14,23 +14,35 @@ export default function Companies() {
   return (
     <section className={styles.companiesSection} aria-labelledby="companies-title">
       <div className={styles.container}>
-        <p className={styles.eyebrow}>PROJETOS & PARCERIAS</p>
-        <h2 id="companies-title" className={styles.title}>
-          Marcas que já confiaram no meu trabalho.
-        </h2>
+        <div className={styles.headingRow}>
+          <div className={styles.headingCopy}>
+            <p className={styles.eyebrow}>PROJETOS · PRODUTOS · PARCERIAS</p>
+            <h2 id="companies-title" className={styles.title}>
+              Marcas diferentes. O mesmo cuidado com produto.
+            </h2>
+          </div>
 
-        <div className={styles.logoGrid} aria-label="Marcas e projetos atendidos">
-          {companies.map((company) => (
-            <div key={company.name} className={styles.logoItem}>
-              <Image
-                src={company.src}
-                alt={`Logo ${company.name}`}
-                width={180}
-                height={72}
-                className={styles.companyLogo}
-              />
-            </div>
-          ))}
+          <p className={styles.supportingText}>
+            Uma seleção de produtos e empresas que já passaram pelo meu trabalho —
+            da estratégia à experiência e ao código.
+          </p>
+        </div>
+
+        <div className={styles.logoRail} aria-label="Marcas e projetos selecionados">
+          <div className={styles.logoTrack}>
+            {companies.map((company) => (
+              <div key={company.name} className={styles.logoItem} title={company.name}>
+                <Image
+                  src={company.src}
+                  alt={`Logo ${company.name}`}
+                  width={190}
+                  height={78}
+                  sizes="(max-width: 700px) 150px, 170px"
+                  className={styles.companyLogo}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
