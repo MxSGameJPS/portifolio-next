@@ -1,31 +1,12 @@
 import { ImageResponse } from "next/og";
-import heroData1 from "../../../components/Hero/heroData1";
-import heroData2 from "../../../components/Hero/heroData2";
-import heroData3 from "../../../components/Hero/heroData3";
-import heroData4 from "../../../components/Hero/heroData4";
-import heroData5 from "../../../components/Hero/heroData5";
-import heroData6 from "../../../components/Hero/heroData6";
-import heroData7 from "../../../components/Hero/heroData7";
-import heroData8 from "../../../components/Hero/heroData8";
 
 export const runtime = "edge";
 
-const heroBase64 = `${heroData1}${heroData2}${heroData3}${heroData4}${heroData5}${heroData6}${heroData7}${heroData8}`;
+const SITE_URL = "https://www.saulopavanello.com.br";
 
-function base64ToArrayBuffer(base64) {
-  const binary = atob(base64);
-  const bytes = new Uint8Array(binary.length);
-
-  for (let i = 0; i < binary.length; i += 1) {
-    bytes[i] = binary.charCodeAt(i);
-  }
-
-  return bytes.buffer;
-}
-
-export async function GET(request) {
-  const logoUrl = new URL("/Logo/logohorizontal.png", request.url).toString();
-  const heroImage = base64ToArrayBuffer(heroBase64);
+export async function GET() {
+  const portraitUrl = `${SITE_URL}/contact-saulo.png`;
+  const logoUrl = `${SITE_URL}/Logo/logohorizontal.png`;
 
   return new ImageResponse(
     (
@@ -40,19 +21,31 @@ export async function GET(request) {
           color: "#171717",
         }}
       >
-        <img
-          src={heroImage}
-          alt=""
+        <div
           style={{
             position: "absolute",
-            top: 0,
             right: 0,
-            width: "55%",
+            top: 0,
+            width: "52%",
             height: "100%",
-            objectFit: "cover",
-            objectPosition: "65% center",
+            display: "flex",
+            overflow: "hidden",
+            background: "#29241f",
           }}
-        />
+        >
+          <img
+            src={portraitUrl}
+            alt=""
+            width="624"
+            height="630"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "52% center",
+            }}
+          />
+        </div>
 
         <div
           style={{
@@ -60,22 +53,22 @@ export async function GET(request) {
             inset: 0,
             display: "flex",
             background:
-              "linear-gradient(90deg, #f5f1eb 0%, #f5f1eb 43%, rgba(245,241,235,.94) 50%, rgba(245,241,235,.48) 61%, rgba(245,241,235,0) 76%)",
+              "linear-gradient(90deg, #f5f1eb 0%, #f5f1eb 43%, rgba(245,241,235,.96) 49%, rgba(245,241,235,.35) 62%, rgba(245,241,235,0) 73%)",
           }}
         />
 
         <div
           style={{
             position: "absolute",
-            left: "-125px",
-            bottom: "-185px",
-            width: "420px",
-            height: "420px",
+            left: "-145px",
+            bottom: "-220px",
+            width: "450px",
+            height: "450px",
             display: "flex",
-            border: "1px solid rgba(185,130,50,.12)",
+            border: "1px solid rgba(185,130,50,.14)",
             borderRadius: "50%",
             boxShadow:
-              "0 0 0 42px rgba(185,130,50,.035), 0 0 0 88px rgba(185,130,50,.02)",
+              "0 0 0 45px rgba(185,130,50,.035), 0 0 0 92px rgba(185,130,50,.02)",
           }}
         />
 
@@ -83,28 +76,31 @@ export async function GET(request) {
           style={{
             position: "relative",
             zIndex: 2,
-            width: "60%",
-            padding: "42px 0 40px 66px",
+            width: "61%",
+            height: "100%",
+            padding: "38px 0 36px 65px",
             display: "flex",
             flexDirection: "column",
           }}
         >
           <div
             style={{
-              width: "270px",
-              height: "112px",
+              width: "250px",
+              height: "95px",
               display: "flex",
               alignItems: "center",
               overflow: "hidden",
-              marginBottom: "22px",
+              marginBottom: "16px",
             }}
           >
             <img
               src={logoUrl}
               alt="Saulo Pavanello"
+              width="280"
+              height="280"
               style={{
-                width: "300px",
-                height: "300px",
+                width: "280px",
+                height: "280px",
                 objectFit: "contain",
                 transform: "translateX(-12px)",
               }}
@@ -117,9 +113,8 @@ export async function GET(request) {
               color: "#a56f26",
               fontSize: "15px",
               fontWeight: 700,
-              letterSpacing: "3.2px",
-              textTransform: "uppercase",
-              marginBottom: "18px",
+              letterSpacing: "3px",
+              marginBottom: "17px",
             }}
           >
             SAULO PAVANELLO · SOFTWARE ENGINEER
@@ -127,14 +122,14 @@ export async function GET(request) {
 
           <div
             style={{
-              width: "650px",
+              width: "640px",
               display: "flex",
               fontFamily: "serif",
-              fontSize: "57px",
+              fontSize: "55px",
               fontWeight: 500,
-              letterSpacing: "-2.6px",
+              letterSpacing: "-2.4px",
               lineHeight: 0.98,
-              marginBottom: "22px",
+              marginBottom: "20px",
             }}
           >
             Eu construo software para negócios que querem crescer.
@@ -142,21 +137,21 @@ export async function GET(request) {
 
           <div
             style={{
-              width: "88px",
+              width: "86px",
               height: "2px",
               display: "flex",
               background: "#b98232",
-              marginBottom: "20px",
+              marginBottom: "18px",
             }}
           />
 
           <div
             style={{
-              width: "570px",
+              width: "565px",
               display: "flex",
               color: "#4f4b46",
-              fontSize: "19px",
-              lineHeight: 1.45,
+              fontSize: "18px",
+              lineHeight: 1.42,
               marginBottom: "auto",
             }}
           >
@@ -167,27 +162,11 @@ export async function GET(request) {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "11px",
               fontSize: "19px",
-              fontWeight: 650,
+              fontWeight: 700,
               color: "#24211e",
             }}
           >
-            <div
-              style={{
-                width: "28px",
-                height: "28px",
-                border: "2px solid #b98232",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#b98232",
-                fontSize: "17px",
-              }}
-            >
-              ↗
-            </div>
             saulopavanello.com.br
           </div>
         </div>
@@ -197,7 +176,7 @@ export async function GET(request) {
       width: 1200,
       height: 630,
       headers: {
-        "Cache-Control": "public, max-age=86400, s-maxage=31536000, immutable",
+        "Cache-Control": "public, max-age=3600, s-maxage=86400",
       },
     }
   );
