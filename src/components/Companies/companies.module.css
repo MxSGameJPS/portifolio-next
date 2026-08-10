@@ -74,7 +74,7 @@
   height: 54px;
   object-fit: contain;
   filter: grayscale(100%);
-  opacity: 0.58;
+  opacity: 0.88;
   transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
 }
 
