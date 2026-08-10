@@ -11,15 +11,13 @@ import Link from "next/link";
 import data from "./projetosData.json";
 
 const TABS = [
-  { key: "web", label: "Front-End", tag: "Web" },
-  { key: "backend", label: "Back-End", tag: "API - BackEnd" },
+  { key: "web", label: "Web & SaaS", tag: "Web" },
+  { key: "backend", label: "APIs & Backend", tag: "API - BackEnd" },
   { key: "mobile", label: "Mobile", tag: "Mobile" },
 ];
 
-// Primary projects take the big featured slot (index 0) of their tab, above any flagship
 const PRIMARY = new Set(["Rota Viva App"]);
 
-// Flagship projects float to the top of their tab so they land near the featured slot
 const FLAGSHIP = new Set([
   "SocialJurídico",
   "Rota Viva",
@@ -28,7 +26,6 @@ const FLAGSHIP = new Set([
   "Vida Leve",
 ]);
 
-// Short, clean tech chips derived from the verbose tech_stack strings
 const TECH_KEYWORDS = [
   "Next.js",
   "React Native",
@@ -55,7 +52,6 @@ const TECH_KEYWORDS = [
 function pickTech(stack = []) {
   const joined = stack.join(" ");
   const found = TECH_KEYWORDS.filter((k) => joined.includes(k));
-  // avoid "React" duplicating when the stack is actually React Native
   const cleaned = found.includes("React Native")
     ? found.filter((k) => k !== "React")
     : found;
@@ -69,9 +65,10 @@ function getProjects(tag) {
       (p.tag === tag ||
         (tag === "API - BackEnd" && p.tag === "Api - BackEnd")),
   );
-  // rank: primary (featured slot) > flagship > original order
+
   const rank = (p) =>
     (PRIMARY.has(p.name) ? 2 : 0) + (FLAGSHIP.has(p.name) ? 1 : 0);
+
   return [...list].sort((a, b) => rank(b) - rank(a));
 }
 
@@ -86,6 +83,7 @@ export default function PortfolioSection() {
     hidden: {},
     show: { transition: { staggerChildren: 0.08 } },
   };
+
   const item = {
     hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 28 },
     show: {
@@ -97,14 +95,16 @@ export default function PortfolioSection() {
 
   return (
     <section className={styles.section} id="portfolio">
-      <h2 className={styles.title}>
-        Portfólio Diversificado<span className={styles.titleDot}>.</span>
-      </h2>
-      <p className={styles.description}>
-        De plataformas SaaS com IA a APIs de arquitetura enterprise — cada
-        projeto resolve um problema real de negócio, com segurança e
-        performance de produção.
-      </p>
+      <div className={styles.headingWrap}>
+        <span className={styles.eyebrow}>Projetos selecionados</span>
+        <h2 className={styles.title}>
+          Software que saiu do código e virou produto.
+        </h2>
+        <p className={styles.description}>
+          SaaS, sistemas, aplicativos e APIs desenvolvidos para resolver
+          problemas reais de negócio — da ideia à produção.
+        </p>
+      </div>
 
       <div className={styles.tabs} role="tablist" aria-label="Categorias de projetos">
         {TABS.map((t) => (
@@ -144,6 +144,7 @@ export default function PortfolioSection() {
         >
           {displayedProjects.map((project, index) => {
             const featured = index === 0;
+
             return (
               <motion.div
                 key={project.id || index}
@@ -158,13 +159,10 @@ export default function PortfolioSection() {
                     title={project.name}
                     altText={project.name}
                     category={project.category}
+                    description={featured ? project.description : undefined}
                     tech={pickTech(project.tech_stack)}
                     featured={featured}
-                    imageSrc={
-                      project.image && project.image !== ""
-                        ? project.image
-                        : "/Hero.png"
-                    }
+                    imageSrc={project.image || null}
                   />
                 </Link>
               </motion.div>
@@ -174,7 +172,7 @@ export default function PortfolioSection() {
       </AnimatePresence>
 
       <Link href="/portfolio" className={styles.ctaButton}>
-        Veja nosso portfólio completo
+        Ver todos os projetos <span aria-hidden="true">→</span>
       </Link>
     </section>
   );
