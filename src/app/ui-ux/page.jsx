@@ -1,165 +1,68 @@
-"use client";
-
 import ServicePage from "../_services/ServicePage";
 import { faqItems } from "./data";
-import {
-  PiUserFocusBold,
-  PiPenNibBold,
-  PiFlowArrowBold,
-  PiCubeBold,
-  PiDeviceMobileBold,
-  PiCpuBold,
-  PiCursorClickBold,
-  PiPresentationChartBold,
-  PiSparkleBold,
-} from "react-icons/pi";
 
 const features = [
-  {
-    title: "Clareza que reduz desistência",
-    description:
-      "Cada tela com um objetivo claro e o caminho óbvio, para o usuário não travar nem abandonar no meio da tarefa.",
-  },
-  {
-    title: "Visual com a cara da sua marca",
-    description:
-      "Interface bonita e consistente, que passa profissionalismo e confiança em cada tela do seu produto.",
-  },
-  {
-    title: "Protótipo antes de programar",
-    description:
-      "Fluxo navegável no Figma para você testar e validar o caminho antes de gastar com desenvolvimento.",
-  },
-  {
-    title: "Redesign do que já existe",
-    description:
-      "Identifico onde o usuário trava ou desiste no seu produto atual e reorganizo para ficar simples e converter mais.",
-  },
-  {
-    title: "Pensado para o celular",
-    description:
-      "Design mobile-first, com botões no alcance do dedo e navegação fácil na tela pequena, onde a maioria acessa.",
-  },
-  {
-    title: "Acessível para mais gente",
-    description:
-      "Contraste, tamanho de toque e navegação por teclado, para mais pessoas conseguirem usar sem barreira.",
-  },
+  { title: "Arquitetura de informação", description: "Conteúdo, ações e prioridades são organizados para o usuário entender onde está, o que pode fazer e qual é o próximo passo." },
+  { title: "Fluxos e jornadas", description: "Mapeio tarefas e decisões importantes para reduzir passos desnecessários, pontos de dúvida e caminhos sem saída." },
+  { title: "Wireframes e protótipos", description: "Antes do código, a experiência pode ser testada em estruturas de baixa fidelidade e protótipos navegáveis no Figma." },
+  { title: "UI e design system", description: "Tipografia, cor, componentes e estados formam uma linguagem visual consistente que consegue crescer com o produto." },
+  { title: "Responsividade", description: "A interface é pensada para desktop, tablet e celular considerando hierarquia, toque, densidade e comportamento — não apenas redução de largura." },
+  { title: "Redesign orientado ao uso", description: "Produtos existentes podem ser reorganizados a partir dos pontos onde o usuário se perde, hesita ou abandona a tarefa." },
 ];
 
 const benefits = [
-  {
-    icon: <PiCursorClickBold />,
-    text: "Usuário não trava: caminho óbvio até o objetivo, com menos desistência e mais conversão.",
-  },
-  {
-    icon: <PiPresentationChartBold />,
-    text: "Testa antes de gastar: o protótipo valida o fluxo antes do desenvolvimento, evitando retrabalho.",
-  },
-  {
-    icon: <PiSparkleBold />,
-    text: "Marca mais profissional: visual consistente que passa confiança em cada tela.",
-  },
+  { text: "Menos dúvida na interface e mais clareza sobre o próximo passo do usuário." },
+  { text: "Problemas de fluxo podem ser descobertos no protótipo antes de virarem retrabalho caro no código." },
+  { text: "Um sistema visual consistente conecta marca, experiência e desenvolvimento ao longo do produto." },
 ];
 
 const differentials = [
-  {
-    icon: <PiUserFocusBold />,
-    title: "Foco no usuário real",
-    text: "Decisões baseadas em como a pessoa realmente usa, não em achismo de estética.",
-  },
-  {
-    icon: <PiPenNibBold />,
-    title: "Design consistente",
-    text: "Sistema de cores, tipografia e componentes coeso do início ao fim do produto.",
-  },
-  {
-    icon: <PiFlowArrowBold />,
-    title: "Fluxo pensado",
-    text: "O caminho do usuário mapeado para reduzir passos e tirar a fricção do meio do caminho.",
-  },
-  {
-    icon: <PiCubeBold />,
-    title: "Protótipo no Figma",
-    text: "Tela navegável para validar a experiência antes de escrever uma linha de código.",
-  },
-  {
-    icon: <PiDeviceMobileBold />,
-    title: "Mobile-first",
-    text: "Desenhado primeiro para o celular, onde a maior parte dos acessos acontece.",
-  },
-  {
-    icon: <PiCpuBold />,
-    title: "Design que vira código",
-    text: "Faço design e desenvolvimento: a tela sai do Figma fiel na tela real, sem se perder na entrega.",
-  },
+  { title: "UX antes da decoração", text: "O primeiro problema é entender a tarefa e a jornada. Estética entra para reforçar clareza, hierarquia e confiança." },
+  { title: "Design que conhece implementação", text: "Como também desenvolvo, decisões de interface consideram comportamento real de componentes, dados e estados." },
+  { title: "Protótipo como ferramenta", text: "Figma não serve apenas para apresentar tela bonita; serve para testar caminho, conteúdo e interação antes de codificar." },
+  { title: "Componentes que escalam", text: "Patterns reutilizáveis evitam que cada nova tela crie uma linguagem diferente dentro do mesmo produto." },
+  { title: "Mobile com intenção", text: "O que aparece primeiro, o tamanho de toque e a quantidade de informação mudam conforme o contexto de uso." },
+  { title: "Handoff menor", text: "Quando design e desenvolvimento fazem parte da mesma conversa, menos intenção se perde entre o protótipo e a interface final." },
 ];
 
 const methodSteps = [
-  {
-    title: "Entendimento & Usuário",
-    description:
-      "Entendo o objetivo do produto e quem vai usar, para o design resolver um problema real, não só enfeitar.",
-  },
-  {
-    title: "Fluxo & Wireframe",
-    description:
-      "Mapeio o caminho do usuário e monto o rascunho das telas, cuidando da estrutura antes do visual.",
-  },
-  {
-    title: "Protótipo navegável",
-    description:
-      "Transformo os wireframes em um protótipo clicável no Figma para testar a experiência de verdade.",
-  },
-  {
-    title: "UI Visual",
-    description:
-      "Aplico a identidade: cores, tipografia e componentes, criando telas bonitas e consistentes.",
-  },
-  {
-    title: "Validação & Ajustes",
-    description:
-      "Testo o fluxo, ouço o feedback e refino os pontos onde o usuário ainda hesita ou se perde.",
-  },
-  {
-    title: "Entrega (ou Código)",
-    description:
-      "Entrego o design pronto no Figma ou sigo para o desenvolvimento, deixando a tela real fiel ao projeto.",
-  },
-];
-
-const trust = [
-  { value: "UI + UX", label: "forma e função" },
-  { value: "Protótipo", label: "testa antes de codar" },
-  { value: "2+ anos", label: "de experiência" },
+  { title: "Problema e usuário", description: "Entendo o objetivo do produto, quem usa e em que ponto da jornada existe fricção ou oportunidade." },
+  { title: "Fluxo", description: "Mapeio tarefas e decisões antes de definir aparência, reduzindo complexidade estrutural primeiro." },
+  { title: "Wireframe", description: "Organizo hierarquia, conteúdo e ações em uma estrutura rápida de validar e ajustar." },
+  { title: "Protótipo e UI", description: "Transformo a estrutura em uma experiência navegável e aplico a linguagem visual do produto." },
+  { title: "Validação", description: "Reviso estados, responsividade, consistência e pontos onde o usuário ainda pode hesitar." },
+  { title: "Entrega ou implementação", description: "O design pode seguir como especificação para desenvolvimento ou continuar comigo até a interface em produção." },
 ];
 
 export default function UiUxPage() {
   return (
     <ServicePage
-      eyebrow="Design que guia o usuário"
-      headline="Interfaces bonitas que o usuário entende na hora"
-      subheadline="Menos confusão, menos desistência: telas claras que levam o usuário direto ao que ele quer."
-      description="Desenho a interface (UI) e a experiência (UX) do seu site, app ou sistema. Telas bonitas e, principalmente, claras — que reduzem a desistência e fazem o usuário chegar ao objetivo sem esforço. Com protótipo antes de programar."
-      heroImage={{ src: "/CriacaoDeSites/uiuxdesigner.png", alt: "UI/UX Design de Interfaces" }}
-      ctaPrimary="Quero melhorar minha interface"
-      ctaNote="Consultoria gratuita · resposta em até 24h · sem compromisso"
-      trust={trust}
-      quote="Design não é deixar bonito. É deixar óbvio. Quando o usuário não pensa para usar, ele fica — e converte."
+      eyebrow="UI/UX & PRODUTO"
+      headline="Interfaces que deixam o produto mais fácil de entender e usar."
+      subheadline="Fluxo, hierarquia e sistema visual trabalhando juntos antes da primeira linha de código."
+      description="Projeto experiências para sites, sistemas e aplicativos, conectando arquitetura de informação, prototipagem e UI a decisões reais de produto e desenvolvimento."
+      ctaPrimary="Conversar sobre a experiência"
+      quote="Design não é só aparência. É decidir o que o usuário precisa perceber, entender e fazer em cada momento."
       infoParagraphs={[
-        "UX é o caminho: fazer o usuário chegar ao objetivo rápido e sem confusão. UI é a aparência: um visual que comunica e passa confiança. Cuido dos dois para a sua interface funcionar e encantar.",
-        "Antes de programar, entrego um protótipo navegável no Figma para você testar o fluxo e validar o caminho. Assim ajustamos no barato, antes de gastar com desenvolvimento em cima de uma tela confusa.",
+        "Uma interface pode estar visualmente bonita e ainda exigir esforço demais para usar. O trabalho de UX reduz essa carga antes de o refinamento visual entrar em cena.",
+        "Quando fluxo, componentes e estados são validados cedo, o desenvolvimento recebe uma direção mais clara e o produto perde menos tempo corrigindo decisões estruturais depois.",
       ]}
-      featuresHeading="O que eu desenho"
+      featuresHeading="As camadas que transformam requisito em experiência utilizável."
       features={features}
       benefits={benefits}
-      ctaMid="Quero um orçamento"
-      diffHeading="Diferenciais do design"
+      diffHeading="O design é tratado como parte da engenharia do produto."
       differentials={differentials}
-      methodHeading="Da confusão à clareza"
-      methodSubtitle="Interface que funciona e encanta"
+      methodHeading="Da intenção do produto a uma interface pronta para existir no mundo real."
+      methodSubtitle="Estrutura primeiro; refinamento visual depois."
       methodSteps={methodSteps}
-      faqHeading="Dúvidas sobre UI/UX"
+      technologies={["Figma", "Design Systems", "Prototipagem", "Responsive Design", "Acessibilidade", "React", "CSS Modules", "Framer Motion"]}
+      relatedCase={{
+        name: "Social Jurídico",
+        category: "LegalTech · SaaS · Produto",
+        image: "/Projetos/socialjuridico.png",
+        href: "/portfolio/7",
+      }}
+      faqHeading="Pontos que normalmente surgem antes de iniciar um trabalho de UI/UX."
       faqItems={faqItems}
     />
   );
