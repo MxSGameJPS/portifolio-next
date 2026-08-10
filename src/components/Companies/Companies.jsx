@@ -4,7 +4,7 @@ import styles from "./companies.module.css";
 const companies = [
   { name: "AI2Love", src: "/Empresas/AI2Love-logo.svg" },
   { name: "GeekZ", src: "/Empresas/Logos_GeekZ_vertical.png" },
-  { name: "Moises", src: "/Empresas/Moises com fone (1).png" },
+  { name: "MC Contabilidade", src: "/Empresas/Moises com fone (1).png" },
   { name: "Social Jurídico", src: "/Empresas/produtos.png" },
   { name: "Alma Zen", src: "/Empresas/logo.png" },
   { name: "Qfarma", src: "/Empresas/logoq.png" },
