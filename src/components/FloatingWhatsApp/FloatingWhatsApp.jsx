@@ -25,9 +25,7 @@ export default function FloatingWhatsApp() {
       className={styles.fab}
       onClick={trackWhats}
       aria-label="Falar no WhatsApp"
-      initial={{ opacity: 0, scale: 0.6, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ delay: 1.2, type: "spring", stiffness: 220, damping: 16 }}
+      initial={false}
       whileHover={reduce ? undefined : { scale: 1.08 }}
       whileTap={{ scale: 0.94 }}
     >
