@@ -1,164 +1,86 @@
-"use client";
-
 import ServicePage from "../_services/ServicePage";
 import { faqItems } from "./data";
-import {
-  PiCpuBold,
-  PiMagnifyingGlassBold,
-  PiChatCircleTextBold,
-  PiPlugsBold,
-  PiTargetBold,
-  PiCodeBold,
-  PiRocketLaunchBold,
-  PiChartLineUpBold,
-} from "react-icons/pi";
 
 const features = [
   {
-    title: "Um objetivo, zero distração",
-    description:
-      "Sem menu cheio de saídas. Cada bloco empurra o visitante para uma única ação: preencher o formulário, chamar no WhatsApp ou comprar.",
+    title: "Uma oferta, uma ação principal",
+    description: "A página elimina caminhos paralelos e organiza mensagem, prova e CTA em torno do que a campanha precisa gerar: contato, cadastro ou venda.",
   },
   {
-    title: "Feita para anúncio pago",
-    description:
-      "Alinhada ao Google e ao Meta Ads e rápida para carregar, para você não pagar por clique que sai antes mesmo de a página abrir.",
+    title: "Mensagem alinhada ao anúncio",
+    description: "Título, promessa e conteúdo continuam a conversa iniciada no Google, Meta ou outra origem de tráfego, reduzindo a quebra de expectativa depois do clique.",
   },
   {
-    title: "Formulário e WhatsApp",
-    description:
-      "Formulário que cai no seu e-mail ou CRM e botão de WhatsApp direto, para o lead chegar na hora em que o interesse está quente.",
+    title: "Formulário e WhatsApp integrados",
+    description: "O lead pode chegar por formulário, WhatsApp ou integração com CRM e e-mail, sem depender de coleta manual depois da campanha.",
   },
   {
-    title: "Prova que gera confiança",
-    description:
-      "Espaço pensado para depoimento, número e garantia — os elementos que fazem o visitante confiar e dar o próximo passo.",
+    title: "Prova e redução de objeções",
+    description: "Depoimentos, números, perguntas frequentes, diferenciais e garantias entram na ordem certa para diminuir dúvida antes da decisão.",
   },
   {
-    title: "Mede cada lead",
-    description:
-      "Google Analytics e pixel de conversão instalados para você saber o custo por lead e o que realmente traz resultado.",
+    title: "Medição de conversão",
+    description: "Analytics, tags e eventos permitem entender quais canais e ações realmente geram resultado depois do lançamento.",
   },
   {
-    title: "Abre rápido no celular",
-    description:
-      "Imagens leves e código enxuto: a página abre rápido no 4G, onde a maioria dos cliques de anúncio acontece.",
+    title: "Performance no celular",
+    description: "Estrutura enxuta, imagens otimizadas e experiência mobile para reduzir a perda de tráfego entre o clique e a abertura da página.",
   },
 ];
 
 const benefits = [
-  {
-    icon: <PiTargetBold />,
-    text: "Uma página, um objetivo: é isso que faz a taxa de conversão subir.",
-  },
-  {
-    icon: <PiRocketLaunchBold />,
-    text: "Página rápida melhora a nota do anúncio e reduz o custo por clique.",
-  },
-  {
-    icon: <PiChartLineUpBold />,
-    text: "Pixel e Analytics mostram quanto cada lead custou, para investir no que funciona.",
-  },
+  { text: "Uma jornada curta e clara entre o anúncio e a ação que interessa ao negócio." },
+  { text: "Medição preparada para descobrir onde a campanha converte — e onde perde o visitante." },
+  { text: "Página própria, rápida e integrada ao funil sem depender de um construtor pesado." },
 ];
 
 const differentials = [
-  {
-    icon: <PiCpuBold />,
-    title: "Tecnologia rápida",
-    text: "Next.js gera uma página leve e veloz, essencial para não perder o clique que você pagou no anúncio.",
-  },
-  {
-    icon: <PiMagnifyingGlassBold />,
-    title: "Otimizada para busca",
-    text: "Estrutura e SEO on-page para a página também ser encontrada de graça no Google, além do tráfego pago.",
-  },
-  {
-    icon: <PiChatCircleTextBold />,
-    title: "Texto que persuade",
-    text: "Copy pensada para conversão: título, oferta e chamada claros, guiando o visitante até a ação sem enrolação.",
-  },
-  {
-    icon: <PiPlugsBold />,
-    title: "Integra com seu funil",
-    text: "Conecta com CRM, RD Station, e-mail e WhatsApp, para o lead entrar direto no seu processo de vendas.",
-  },
-  {
-    icon: <PiTargetBold />,
-    title: "Pronta para teste A/B",
-    text: "Estrutura que facilita testar título e oferta para melhorar a conversão ao longo da campanha.",
-  },
-  {
-    icon: <PiCodeBold />,
-    title: "Sem construtor caro",
-    text: "Sem mensalidade de construtor de página. Página própria, código seu e carregando mais rápido.",
-  },
+  { title: "Copy e estrutura juntas", text: "A mensagem é organizada ao mesmo tempo em que a jornada visual, para não existir design bonito competindo com a oferta." },
+  { title: "Performance como conversão", text: "Velocidade entra como parte da experiência porque cada segundo extra pode desperdiçar tráfego que já foi pago." },
+  { title: "Mobile primeiro", text: "Hierarquia, formulários e CTAs são tratados pensando no contexto em que grande parte dos cliques de campanha acontece." },
+  { title: "Integração com o funil", text: "CRM, e-mail, WhatsApp e automações podem receber o lead diretamente da página." },
+  { title: "SEO quando faz sentido", text: "Mesmo sendo focada em campanha, a página pode nascer com estrutura semântica e técnica adequada para busca orgânica." },
+  { title: "Base para testar", text: "Componentização facilita evoluir oferta, prova e chamadas sem reconstruir a página a cada aprendizado da campanha." },
 ];
 
 const methodSteps = [
-  {
-    title: "Objetivo & Oferta",
-    description:
-      "Definimos qual é a única ação da página e qual a oferta. É isso que orienta todo o resto: texto, design e prova.",
-  },
-  {
-    title: "Copy & Estrutura",
-    description:
-      "Escrevo o texto de conversão e organizo a ordem dos blocos, do título à chamada final, para conduzir o visitante à ação.",
-  },
-  {
-    title: "Design da página",
-    description:
-      "Crio o visual alinhado à sua marca e ao anúncio, com foco em legibilidade e no botão certo em destaque.",
-  },
-  {
-    title: "Desenvolvimento rápido",
-    description:
-      "Programo a página leve e veloz, responsiva no celular e pronta para aguentar o tráfego da campanha.",
-  },
-  {
-    title: "Medição & Integração",
-    description:
-      "Instalo Analytics e o pixel de conversão e ligo o formulário ao seu e-mail, CRM ou WhatsApp.",
-  },
-  {
-    title: "Lançamento & Otimização",
-    description:
-      "Publico a página e acompanho os números para ajustar título e oferta e melhorar a conversão da campanha.",
-  },
-];
-
-const trust = [
-  { value: "1 objetivo", label: "foco total em conversão" },
-  { value: "Pronta pra Ads", label: "Google & Meta" },
-  { value: "2+ anos", label: "de experiência" },
+  { title: "Objetivo e oferta", description: "Defino a conversão principal, público, origem do tráfego e o que precisa ficar claro antes do visitante agir." },
+  { title: "Mensagem e estrutura", description: "Organizo headline, argumento, prova, objeções e chamadas na sequência que sustenta a decisão." },
+  { title: "Interface", description: "Transformo a estrutura em uma experiência visual coerente com a marca e com a campanha." },
+  { title: "Desenvolvimento", description: "Implemento uma página responsiva e enxuta, priorizando carregamento, acessibilidade e clareza." },
+  { title: "Medição e integrações", description: "Configuro os pontos de captura e conecto a página aos canais e ferramentas definidos no funil." },
+  { title: "Publicação e aprendizado", description: "Coloco no ar e deixo a estrutura pronta para ajustes orientados pelos dados reais da campanha." },
 ];
 
 export default function LandingPagesPage() {
   return (
     <ServicePage
-      eyebrow="Página feita para converter"
-      headline="Uma página que transforma clique em cliente"
-      subheadline="Um só objetivo, zero distração e carregamento rápido — para o seu anúncio virar contato e venda."
-      description="Crio landing pages focadas em conversão: mensagem clara, prova, formulário e WhatsApp, prontas para receber tráfego de Google e Meta Ads. Rápidas, alinhadas ao anúncio e medindo cada lead que entra."
-      heroImage={{ src: "/CriacaoDeSites/landingpage.png", alt: "Criação de Landing Pages de Alta Conversão" }}
-      ctaPrimary="Quero minha landing"
-      ctaNote="Orçamento gratuito · resposta em até 24h · sem compromisso"
-      trust={trust}
-      quote="Página que tenta falar tudo não converte nada. Uma boa landing page tem um objetivo — e remove tudo que atrapalha ele."
+      eyebrow="LANDING PAGES"
+      headline="Uma página construída para transformar atenção em ação."
+      subheadline="Mensagem, performance e jornada trabalhando juntas para dar um próximo passo claro ao visitante."
+      description="Desenvolvo landing pages para campanhas, lançamentos e ofertas específicas, conectando copy, interface, velocidade e medição em uma única experiência."
+      ctaPrimary="Conversar sobre a landing"
+      quote="Quando a página tenta vender tudo ao mesmo tempo, o visitante precisa decidir demais antes de agir."
       infoParagraphs={[
-        "Diferente de um site, a landing page tem uma missão só: fazer o visitante agir. Escrevo a mensagem, organizo a prova e coloco o formulário e o WhatsApp no lugar certo para reduzir a hesitação.",
-        "Ela nasce pronta para anúncio: rápida para não queimar cliques pagos, alinhada ao que a propaganda promete e com pixel e Analytics medindo quanto custa cada lead que entra.",
+        "Landing page é uma ferramenta de campanha. Ela precisa continuar a promessa que trouxe o visitante até ali e remover distrações entre interesse e conversão.",
+        "Por isso, texto, layout, velocidade, formulário e tracking são tratados como partes do mesmo sistema — e não como etapas desconectadas.",
       ]}
-      featuresHeading="O que a página tem"
+      featuresHeading="Os elementos que sustentam uma página de conversão."
       features={features}
       benefits={benefits}
-      ctaMid="Quero um orçamento"
-      diffHeading="Diferenciais da sua landing"
+      diffHeading="Uma landing page própria permite controlar a experiência inteira."
       differentials={differentials}
-      methodHeading="Do clique ao lead"
-      methodSubtitle="Página pronta para a campanha"
+      methodHeading="Da oferta à página pronta para receber tráfego."
+      methodSubtitle="Primeiro clareza; depois design e código."
       methodSteps={methodSteps}
-      faqHeading="Dúvidas sobre landing pages"
+      technologies={["Next.js", "React", "CSS Modules", "Analytics", "Google Tag", "SEO técnico", "Formulários", "Integrações CRM"]}
+      relatedCase={{
+        name: "QFarma Digital",
+        category: "Saúde · Produto Web",
+        image: "/Projetos/qfarma.png",
+        href: "/portfolio/8",
+      }}
+      faqHeading="Perguntas comuns antes de colocar uma landing page em campanha."
       faqItems={faqItems}
     />
   );
