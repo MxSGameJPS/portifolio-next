@@ -20,6 +20,9 @@
 # production
 /build
 
+# generated assets
+/public/hero-saulo.webp
+
 # misc
 .DS_Store
 *.pem
