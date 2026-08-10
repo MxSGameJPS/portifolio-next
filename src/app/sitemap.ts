@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import projetosData from "../components/PortfolioSection/projetosData.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://saulopavanello.com.br";
@@ -41,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { paths: ["/stack", "/contato"], priority: 0.7, changeFrequency: "monthly" },
   ];
 
-  return groups.flatMap((group) =>
+  const staticPages = groups.flatMap((group) =>
     group.paths.map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified: now,
@@ -49,4 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: group.priority,
     })),
   );
+
+  const portfolioCases: MetadataRoute.Sitemap = projetosData.portfolio.map((project) => ({
+    url: `${baseUrl}/portfolio/${project.id}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  return [...staticPages, ...portfolioCases];
 }

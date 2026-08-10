@@ -1,24 +1,29 @@
 :root {
-  /* New Clean Palette */
+  /* Editorial identity */
+  --editorial-cream: #f5f1eb;
+  --editorial-paper: #fffdf9;
+  --editorial-charcoal: #171715;
+  --editorial-text: #171717;
+  --editorial-gold: #c9973c;
+  --editorial-gold-dark: #a56e2c;
+
+  /* Legacy tokens kept for routes that have not been migrated yet */
   --tech-blue: #00a8e8;
   --deep-navy: #0a2342;
   --soft-gold: #cfaa6c;
   --pure-white: #ffffff;
   --cool-grey: #f4f6f8;
   --text-grey: #333f48;
-
-  /* Semantic Mappings */
-  --background: var(--pure-white);
-  --foreground: var(--text-grey);
-
-  --primary: var(--tech-blue);
-  --secondary: var(--deep-navy);
-  --accent: var(--soft-gold);
-  --surface-alt: var(--cool-grey);
-
-  /* Helpers for compatibility if needed */
   --primary-blue: var(--tech-blue);
   --primary-blue-glow: rgba(0, 168, 232, 0.5);
+
+  /* Current semantic mappings */
+  --background: var(--editorial-cream);
+  --foreground: var(--editorial-text);
+  --primary: var(--editorial-charcoal);
+  --secondary: var(--editorial-gold);
+  --accent: var(--editorial-gold);
+  --surface-alt: var(--editorial-paper);
 
   /* Typography */
   --font-heading: var(--font-geist-sans), "Montserrat", sans-serif;

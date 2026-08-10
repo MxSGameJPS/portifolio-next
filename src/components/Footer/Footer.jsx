@@ -111,11 +111,8 @@ export default function Footer() {
               <PiArrowUpRightBold aria-hidden="true" />
             </Link>
 
-            <a
-              href="mailto:saulopavanello@saulopavanello.com.br"
-              className={styles.email}
-            >
-              saulopavanello@saulopavanello.com.br
+            <a href="mailto:contato@saulopavanello.com.br" className={styles.email}>
+              contato@saulopavanello.com.br
             </a>
           </div>
         </div>

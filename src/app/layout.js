@@ -20,21 +20,24 @@ export const metadata = {
     template: "%s | Saulo Pavanello",
   },
   alternates: {
-    canonical: "./",
+    canonical: "/",
   },
   description:
-    "Especialista em Desenvolvimento de Sites, Criação de Apps e Sistemas Web, baseado em Dois Irmãos (RS), atendendo Novo Hamburgo, São Leopoldo, Sapiranga, Campo Bom, Ivoti, Estância Velha, Sapucaia do Sul e Caxias do Sul. React, Next.js e Node.js.",
+    "Software Engineer focado em SaaS, sistemas web, aplicativos mobile, APIs, IA e produtos digitais sob medida. Baseado em Dois Irmãos (RS), com atendimento remoto para todo o Brasil.",
   applicationName: "Saulo Pavanello",
   category: "technology",
   keywords: [
-    "Desenvolvedor FullStack",
+    "Software Engineer",
+    "Engenheiro de Software",
+    "SaaS",
+    "Sistemas Web",
     "React",
     "Next.js",
     "Node.js",
-    "Engenheiro de Software",
-    "Criação de Sites",
-    "Aplicativos Mobile",
-    "Desenvolvimento de Software sob Demanda",
+    "React Native",
+    "APIs",
+    "Inteligência Artificial",
+    "Desenvolvimento de Software sob Medida",
     "Saulo Pavanello",
     "Portfólio",
   ],
@@ -93,7 +96,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0a2342",
+  themeColor: "#f5f1eb",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -103,8 +106,8 @@ export default function RootLayout({ children }) {
   const SITE = "https://saulopavanello.com.br";
   const sameAs = [
     "https://github.com/MxSGameJPS",
-    "https://www.linkedin.com/in/saulo-pavanello",
-    "https://www.instagram.com/saulopavanello",
+    "https://www.linkedin.com/in/saulo-pavanello/",
+    "https://www.instagram.com/saulopavanello.tech/",
   ];
 
   // Service-area business: no public street address, just the base city plus
@@ -132,7 +135,7 @@ export default function RootLayout({ children }) {
         "@id": `${SITE}/#person`,
         name: "Saulo Pavanello",
         url: SITE,
-        jobTitle: "Engenheiro de Software FullStack",
+        jobTitle: "Software Engineer",
         sameAs,
         knowsAbout: [
           "React",
@@ -140,6 +143,7 @@ export default function RootLayout({ children }) {
           "Node.js",
           "React Native",
           "System Architecture",
+          "Artificial Intelligence",
           "SEO",
         ],
         image: `${SITE}/ogimage.png`,
@@ -170,7 +174,9 @@ export default function RootLayout({ children }) {
         knowsAbout: [
           "Desenvolvimento Web",
           "Desenvolvimento Mobile",
-          "Desenvolvimento BackEnd",
+          "Desenvolvimento Backend",
+          "Inteligência Artificial",
+          "UI/UX",
         ],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
@@ -180,27 +186,27 @@ export default function RootLayout({ children }) {
               "@type": "OfferCatalog",
               name: "Desenvolvimento Web",
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Criação de Sites Institucionais" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "SaaS e Sistemas Web" } },
                 { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Pages de Alta Conversão" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "E-Commerce & Lojas Virtuais" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dashboards & Business Intelligence" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "E-commerce e Lojas Virtuais" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dashboards e Portais" } },
               ],
             },
             {
               "@type": "OfferCatalog",
               name: "Desenvolvimento Mobile",
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos Android Nativos" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos iOS Nativos" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos Android" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos iOS" } },
               ],
             },
             {
               "@type": "OfferCatalog",
-              name: "Desenvolvimento BackEnd",
+              name: "Backend, APIs e Integrações",
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "APIs RESTful & GraphQL" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "APIs REST e Integrações" } },
                 { "@type": "Offer", itemOffered: { "@type": "Service", name: "Modelagem e Gestão de Banco de Dados" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Integração de Sistemas e Automação" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Automação e Inteligência Artificial" } },
               ],
             },
           ],
