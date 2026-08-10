@@ -1,116 +1,137 @@
-/* ============ Companies — trust marquee ============ */
 .companiesSection {
-  width: 100%;
-  padding: 4.5rem 0;
-  background-color: var(--pure-white);
-  overflow: hidden;
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  overflow: hidden;
+  padding: clamp(3.25rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4.5rem);
+  background: #fffdf9;
+  border-top: 1px solid rgba(23, 23, 23, 0.06);
+  border-bottom: 1px solid rgba(23, 23, 23, 0.07);
+}
+
+.companiesSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(201, 151, 60, 0.08), transparent 38%);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  color: #a56e2c;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
 }
 
 .title {
-  text-align: center;
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  color: var(--text-grey);
-  margin: 0 0 3rem;
-  font-weight: 600;
-  opacity: 0.7;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  max-width: 430px;
+  margin: 0;
+  color: #171717;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
 }
 
-/* viewport with soft fade on both edges */
-.slider {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 12%,
-    #000 88%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 12%,
-    #000 88%,
-    transparent 100%
-  );
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  border: 1px solid rgba(23, 23, 23, 0.08);
+  background: rgba(255, 255, 255, 0.56);
 }
 
-.slideTrack {
+.logoItem {
+  min-height: 122px;
   display: flex;
   align-items: center;
-  gap: 8rem;
-  width: max-content;
-  animation: scroll 40s linear infinite;
-  padding: 0 4rem;
+  justify-content: center;
+  padding: 1.35rem;
 }
 
-.slideTrack:hover {
-  animation-play-state: paused;
+.logoItem + .logoItem {
+  border-left: 1px solid rgba(23, 23, 23, 0.08);
 }
 
 .companyLogo {
-  height: 56px;
+  display: block;
   width: auto;
+  max-width: 150px;
+  height: 54px;
   object-fit: contain;
   filter: grayscale(100%);
-  opacity: 0.55;
-  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.58;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
 }
 
-.companyLogo:hover {
+.logoItem:hover .companyLogo {
   filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.08);
+  opacity: 0.92;
+  transform: translateY(-2px);
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* track = 4 copies (2 sets of the doubled list); move exactly half for a seamless loop */
-    transform: translateX(-50%);
-  }
-}
-
-/* ============ Responsive ============ */
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .companiesSection {
-    padding: 3rem 0;
+    padding-block: 3.5rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .title {
-    font-size: 0.85rem;
-    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 560px) {
+  .companiesSection {
+    padding: 3.25rem 1rem;
   }
 
-  .slideTrack {
-    gap: 3.5rem;
-    padding: 0 2rem;
+  .eyebrow {
+    font-size: 0.66rem;
+  }
+
+  .title {
+    font-size: clamp(1.85rem, 9vw, 2.45rem);
+  }
+
+  .logoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .logoItem {
+    min-height: 100px;
+  }
+
+  .logoItem + .logoItem {
+    border-left: 0;
+    border-top: 1px solid rgba(23, 23, 23, 0.08);
   }
 
   .companyLogo {
-    height: 34px;
-  }
-
-  .companyLogo:hover {
-    transform: scale(1);
+    height: 46px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slideTrack {
-    animation: none;
-    /* center the static set instead of leaving it left-shifted */
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 3rem;
+  .companyLogo {
+    transition: none;
   }
 }
