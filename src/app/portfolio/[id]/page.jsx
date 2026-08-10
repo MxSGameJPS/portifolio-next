@@ -23,7 +23,6 @@ import {
 } from "react-icons/pi";
 import projetosData from "../../../components/PortfolioSection/projetosData.json";
 
-// Distinct icon per section so cards don't all look the same
 const SECTION_ICONS = [
   PiShieldCheckBold,
   PiScalesBold,
@@ -36,11 +35,15 @@ const SECTION_ICONS = [
   PiGavelBold,
 ];
 
-// Split "Label: Value" tech strings into parts (falls back gracefully)
 function splitTech(tech) {
   const i = tech.indexOf(":");
   if (i === -1) return { label: null, value: tech };
   return { label: tech.slice(0, i).trim(), value: tech.slice(i + 1).trim() };
+}
+
+function getProjectName(project) {
+  if (project.name === "SocialJurídico") return "Social Jurídico";
+  return project.name;
 }
 
 export default function ProjectDetailsPage() {
@@ -62,6 +65,8 @@ export default function ProjectDetailsPage() {
     );
   }
 
+  const projectName = getProjectName(project);
+
   const reveal = {
     hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
@@ -69,7 +74,6 @@ export default function ProjectDetailsPage() {
 
   return (
     <div className={styles.pageWrapper}>
-      {/* Ambient background */}
       <div className={styles.fixedBackground}>
         {project.image && (
           <Image
@@ -86,12 +90,11 @@ export default function ProjectDetailsPage() {
       <Header />
 
       <main className={styles.container}>
-        {/* HERO */}
         <section className={styles.projectHero}>
           <div className={styles.heroImageWrapper}>
             <Image
               src={project.image || "/Hero.png"}
-              alt={project.name}
+              alt={projectName}
               fill
               className={styles.heroImage}
               sizes="(max-width: 900px) 100vw, 50vw"
@@ -105,7 +108,7 @@ export default function ProjectDetailsPage() {
               <span className={styles.tag}>{project.category}</span>
             </div>
 
-            <h1 className={styles.projectTitle}>{project.name}</h1>
+            <h1 className={styles.projectTitle}>{projectName}</h1>
 
             <p className={styles.description}>{project.description}</p>
 
@@ -134,7 +137,6 @@ export default function ProjectDetailsPage() {
           </div>
         </section>
 
-        {/* FEATURE CARDS */}
         {project.sections && project.sections.length > 0 && (
           <section className={styles.detailsSection}>
             <div className={styles.sectionHead}>
@@ -168,7 +170,6 @@ export default function ProjectDetailsPage() {
           </section>
         )}
 
-        {/* TECH STACK */}
         {project.tech_stack && project.tech_stack.length > 0 && (
           <section className={styles.stackSection}>
             <div className={styles.sectionHead}>

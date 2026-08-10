@@ -2,10 +2,11 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: clamp(3.25rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4.5rem);
-  background: #fffdf9;
-  border-top: 1px solid rgba(23, 23, 23, 0.06);
-  border-bottom: 1px solid rgba(23, 23, 23, 0.07);
+  padding: clamp(5rem, 8vw, 8rem) 0;
+  background: #1b1a18;
+  color: #f5f1eb;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .companiesSection::before {
@@ -13,125 +14,216 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 0%, rgba(201, 151, 60, 0.08), transparent 38%);
+  background:
+    radial-gradient(circle at 14% 8%, rgba(201, 151, 60, 0.09), transparent 27%),
+    radial-gradient(circle at 88% 82%, rgba(245, 241, 235, 0.035), transparent 25%);
 }
 
 .container {
   position: relative;
   z-index: 1;
-  width: min(100%, 1180px);
+  width: min(100%, 1260px);
   margin: 0 auto;
+  padding: 0 clamp(1.2rem, 4vw, 4rem);
+}
+
+.introGrid {
   display: grid;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(2.5rem, 6vw, 6rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: end;
 }
 
 .eyebrow {
-  margin: 0 0 0.85rem;
-  color: #a56e2c;
+  margin: 0 0 1rem;
+  color: #d3a650;
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.17em;
 }
 
 .title {
-  max-width: 430px;
+  max-width: 760px;
   margin: 0;
-  color: #171717;
+  color: #f5f1eb;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.9rem, 3vw, 3rem);
+  font-size: clamp(2.8rem, 5vw, 5.4rem);
   font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  letter-spacing: -0.052em;
+  line-height: 0.98;
+  text-wrap: balance;
 }
 
-.logoGrid {
+.introAside {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: stretch;
-  border: 1px solid rgba(23, 23, 23, 0.08);
-  background: rgba(255, 255, 255, 0.56);
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(245, 241, 235, 0.14);
 }
 
-.logoItem {
-  min-height: 122px;
-  display: flex;
+.asideNumber {
+  color: #d3a650;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.introAside p {
+  max-width: 390px;
+  margin: 0;
+  color: rgba(245, 241, 235, 0.58);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.brandIndex {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(2.5rem, 6vw, 6rem);
+  margin-top: clamp(3.5rem, 6vw, 5.5rem);
+  border-bottom: 1px solid rgba(245, 241, 235, 0.13);
+}
+
+.brandRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) minmax(105px, 150px);
+  gap: 1rem;
   align-items: center;
-  justify-content: center;
-  padding: 1.35rem;
+  min-height: 122px;
+  border-top: 1px solid rgba(245, 241, 235, 0.13);
+  transition: background-color 0.25s ease, padding 0.25s ease;
 }
 
-.logoItem + .logoItem {
-  border-left: 1px solid rgba(23, 23, 23, 0.08);
+.brandRow:hover {
+  padding-inline: 0.65rem;
+  background: rgba(201, 151, 60, 0.045);
+}
+
+.brandNumber {
+  color: rgba(211, 166, 80, 0.72);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.brandName {
+  color: rgba(245, 241, 235, 0.86);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  letter-spacing: -0.025em;
+}
+
+.logoWrap {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .companyLogo {
   display: block;
   width: auto;
-  max-width: 150px;
-  height: 54px;
+  max-width: 138px;
+  height: 50px;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.88;
-  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.52;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.logoItem:hover .companyLogo {
-  filter: grayscale(0%);
+.brandRow:hover .companyLogo {
   opacity: 0.92;
-  transform: translateY(-2px);
+  transform: translateX(-3px);
 }
 
-@media (max-width: 820px) {
+@media (max-width: 900px) {
+  .introGrid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .introAside {
+    max-width: 620px;
+  }
+
+  .brandIndex {
+    grid-template-columns: 1fr;
+    border-bottom: 0;
+  }
+
+  .brandRow:last-child {
+    border-bottom: 1px solid rgba(245, 241, 235, 0.13);
+  }
+}
+
+@media (max-width: 620px) {
   .companiesSection {
-    padding-block: 3.5rem;
+    padding: 4.5rem 0;
   }
 
   .container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .title {
-    max-width: 600px;
-  }
-}
-
-@media (max-width: 560px) {
-  .companiesSection {
-    padding: 3.25rem 1rem;
+    padding-inline: 1rem;
   }
 
   .eyebrow {
-    font-size: 0.66rem;
+    font-size: 0.64rem;
+    letter-spacing: 0.13em;
   }
 
   .title {
-    font-size: clamp(1.85rem, 9vw, 2.45rem);
+    font-size: clamp(2.65rem, 12vw, 3.7rem);
   }
 
-  .logoGrid {
-    grid-template-columns: 1fr;
+  .introAside {
+    grid-template-columns: 38px 1fr;
+    gap: 0.85rem;
   }
 
-  .logoItem {
-    min-height: 100px;
+  .asideNumber {
+    font-size: 1.55rem;
   }
 
-  .logoItem + .logoItem {
-    border-left: 0;
-    border-top: 1px solid rgba(23, 23, 23, 0.08);
+  .introAside p {
+    font-size: 0.88rem;
+  }
+
+  .brandIndex {
+    margin-top: 3rem;
+  }
+
+  .brandRow {
+    grid-template-columns: 30px minmax(0, 1fr) 98px;
+    gap: 0.7rem;
+    min-height: 94px;
+  }
+
+  .brandRow:hover {
+    padding-inline: 0;
+    background: transparent;
+  }
+
+  .brandName {
+    font-size: 1.08rem;
   }
 
   .companyLogo {
-    height: 46px;
+    max-width: 96px;
+    height: 38px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brandRow,
   .companyLogo {
     transition: none;
+  }
+
+  .brandRow:hover .companyLogo {
+    transform: none;
   }
 }

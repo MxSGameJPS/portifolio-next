@@ -1,0 +1,24 @@
+.featuredCopySafe {
+  min-width: 0;
+}
+
+.featuredCopySafe .featuredTitleSafe {
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.featuredCopySafe .featuredDescriptionFull {
+  display: block;
+  overflow: visible;
+  -webkit-box-orient: initial;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+@media (max-width: 1180px) and (min-width: 861px) {
+  .featuredCopySafe .featuredTitleSafe {
+    font-size: clamp(2.5rem, 4vw, 3.65rem);
+  }
+}

@@ -9,6 +9,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import projetosData from "../../components/PortfolioSection/projetosData.json";
 import styles from "./page.module.css";
+import fixStyles from "./portfolio-fixes.module.css";
 
 const TECH_KEYWORDS = [
   "Next.js",
@@ -47,6 +48,11 @@ function getProjectGroup(project) {
   return "Web";
 }
 
+function getProjectName(project) {
+  if (project.name === "SocialJurídico") return "Social Jurídico";
+  return project.name;
+}
+
 export default function PortfolioPage() {
   const [filter, setFilter] = useState("Todos");
   const reduceMotion = useReducedMotion();
@@ -54,8 +60,9 @@ export default function PortfolioPage() {
   const projects = projetosData.portfolio;
   const featured =
     projects.find((project) =>
-      project.name.toLowerCase().includes("socialjurídico")
+      project.name.toLowerCase().replaceAll(" ", "").includes("socialjurídico")
     ) || projects[0];
+  const featuredName = getProjectName(featured);
 
   const filteredProjects = projects
     .filter((project) => project.id !== featured.id)
@@ -100,8 +107,8 @@ export default function PortfolioPage() {
 
             <div className={styles.heroFacts} aria-label="Resumo do portfólio">
               <div>
-                <strong>{projects.length}</strong>
-                <span>projetos documentados</span>
+                <strong>202</strong>
+                <span>sites e sistemas criados</span>
               </div>
               <div>
                 <strong>Web · SaaS · Mobile · APIs</strong>
@@ -127,13 +134,13 @@ export default function PortfolioPage() {
             <Link
               href={`/portfolio/${featured.id}`}
               className={styles.featuredCase}
-              aria-label={`Ver case ${featured.name}`}
+              aria-label={`Ver case ${featuredName}`}
             >
               <div className={styles.featuredMedia}>
                 {featured.image ? (
                   <Image
                     src={featured.image}
-                    alt={featured.name}
+                    alt={featuredName}
                     fill
                     sizes="(max-width: 860px) 100vw, 58vw"
                     className={styles.projectImage}
@@ -144,11 +151,15 @@ export default function PortfolioPage() {
                 )}
               </div>
 
-              <div className={styles.featuredCopy}>
+              <div className={`${styles.featuredCopy} ${fixStyles.featuredCopySafe}`}>
                 <div>
                   <p className={styles.caseMeta}>{featured.category}</p>
-                  <h3>{featured.name}</h3>
-                  <p className={styles.caseDescription}>{featured.description}</p>
+                  <h3 className={fixStyles.featuredTitleSafe}>{featuredName}</h3>
+                  <p
+                    className={`${styles.caseDescription} ${fixStyles.featuredDescriptionFull}`}
+                  >
+                    {featured.description}
+                  </p>
                 </div>
 
                 <div>
@@ -212,53 +223,57 @@ export default function PortfolioPage() {
                 animate="show"
                 exit={{ opacity: 0 }}
               >
-                {filteredProjects.map((project) => (
-                  <motion.article
-                    key={project.id}
-                    variants={itemVariants}
-                    className={styles.projectCard}
-                  >
-                    <Link
-                      href={`/portfolio/${project.id}`}
-                      className={styles.projectCardLink}
+                {filteredProjects.map((project) => {
+                  const projectName = getProjectName(project);
+
+                  return (
+                    <motion.article
+                      key={project.id}
+                      variants={itemVariants}
+                      className={styles.projectCard}
                     >
-                      <div className={styles.cardMedia}>
-                        {project.image ? (
-                          <Image
-                            src={project.image}
-                            alt={project.name}
-                            fill
-                            sizes="(max-width: 680px) 100vw, (max-width: 1050px) 50vw, 33vw"
-                            className={styles.projectImage}
-                          />
-                        ) : (
-                          <div className={styles.mediaFallback}>
-                            {String(project.id).padStart(2, "0")}
-                          </div>
-                        )}
-                        <span className={styles.typeBadge}>{getProjectGroup(project)}</span>
-                      </div>
-
-                      <div className={styles.cardBody}>
-                        <p className={styles.cardCategory}>{project.category}</p>
-                        <h3>{project.name}</h3>
-                        <p className={styles.cardDescription}>{project.description}</p>
-
-                        <div className={styles.cardFooter}>
-                          <div className={styles.techListCompact}>
-                            {pickTech(project.tech_stack).map((tech) => (
-                              <span key={tech}>{tech}</span>
-                            ))}
-                          </div>
-                          <PiArrowUpRightBold
-                            className={styles.cardArrow}
-                            aria-hidden="true"
-                          />
+                      <Link
+                        href={`/portfolio/${project.id}`}
+                        className={styles.projectCardLink}
+                      >
+                        <div className={styles.cardMedia}>
+                          {project.image ? (
+                            <Image
+                              src={project.image}
+                              alt={projectName}
+                              fill
+                              sizes="(max-width: 680px) 100vw, (max-width: 1050px) 50vw, 33vw"
+                              className={styles.projectImage}
+                            />
+                          ) : (
+                            <div className={styles.mediaFallback}>
+                              {String(project.id).padStart(2, "0")}
+                            </div>
+                          )}
+                          <span className={styles.typeBadge}>{getProjectGroup(project)}</span>
                         </div>
-                      </div>
-                    </Link>
-                  </motion.article>
-                ))}
+
+                        <div className={styles.cardBody}>
+                          <p className={styles.cardCategory}>{project.category}</p>
+                          <h3>{projectName}</h3>
+                          <p className={styles.cardDescription}>{project.description}</p>
+
+                          <div className={styles.cardFooter}>
+                            <div className={styles.techListCompact}>
+                              {pickTech(project.tech_stack).map((tech) => (
+                                <span key={tech}>{tech}</span>
+                              ))}
+                            </div>
+                            <PiArrowUpRightBold
+                              className={styles.cardArrow}
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.article>
+                  );
+                })}
               </motion.div>
             </AnimatePresence>
 
