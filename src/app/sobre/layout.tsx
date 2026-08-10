@@ -2,16 +2,25 @@ const SITE = "https://saulopavanello.com.br";
 const PAGE = `${SITE}/sobre`;
 
 export const metadata = {
-  title: "Sobre",
+  title: {
+    absolute: "Sobre | Saulo Pavanello — Software Engineer",
+  },
   description:
-    "Saulo Pavanello: desenvolvedor FullStack de Dois Irmãos (RS), com base em UI Design e Jornalismo. Contato direto, visão de negócio e coerência do design ao banco de dados.",
+    "Conheça a trajetória de Saulo Pavanello: Software Engineer, desenvolvedor Full Stack & Mobile e graduando em Engenharia de Software, com bagagem em jornalismo, UI/UX, design e estratégia.",
   alternates: { canonical: "/sobre" },
   openGraph: {
-    title: "Sobre | Saulo Pavanello",
+    title: "Sobre | Saulo Pavanello — Software Engineer",
     description:
-      "Desenvolvedor FullStack que une engenharia, design e comunicação. Você fala direto com quem constrói o seu projeto.",
+      "Tecnologia, produto e negócios fazem parte da mesma conversa. Conheça minha trajetória e a forma como transformo problemas em produtos digitais.",
     url: PAGE,
-    images: ["/Sobre/saulo_profile.png"],
+    images: ["/ogimage.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sobre | Saulo Pavanello — Software Engineer",
+    description:
+      "Tecnologia, produto e negócios fazem parte da mesma conversa.",
+    images: ["/ogimage.png"],
   },
 };
 
@@ -20,13 +29,14 @@ export default function SobreLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // ProfilePage linked to the site-wide Person (#person) declared in the root layout.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     "@id": `${PAGE}/#profilepage`,
     url: PAGE,
     name: "Sobre — Saulo Pavanello",
+    description:
+      "Trajetória profissional, forma de trabalho e experiência de Saulo Pavanello em software, produto, UI/UX e estratégia.",
     mainEntity: { "@id": `${SITE}/#person` },
   };
 
