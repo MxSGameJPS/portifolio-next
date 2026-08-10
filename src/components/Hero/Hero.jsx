@@ -4,19 +4,9 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { PiArrowRightBold, PiWhatsappLogoBold } from "react-icons/pi";
 import styles from "./hero.module.css";
-import heroData1 from "./heroData1";
-import heroData2 from "./heroData2";
-import heroData3 from "./heroData3";
-import heroData4 from "./heroData4";
-import heroData5 from "./heroData5";
-import heroData6 from "./heroData6";
-import heroData7 from "./heroData7";
-import heroData8 from "./heroData8";
 
 const WHATSAPP_URL =
   "https://wa.me/5551993392983?text=Ol%C3%A1%2C%20Saulo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20um%20projeto.";
-
-const heroImage = `data:image/webp;base64,${heroData1}${heroData2}${heroData3}${heroData4}${heroData5}${heroData6}${heroData7}${heroData8}`;
 
 const container = {
   hidden: {},
@@ -122,14 +112,13 @@ export default function Hero() {
           animate={reduce ? undefined : "show"}
         >
           <Image
-            src={heroImage}
+            src="/hero-saulo.webp"
             alt="Saulo Pavanello em seu ambiente de trabalho, ao lado de uma estação de desenvolvimento de software"
             width={1440}
             height={810}
+            sizes="(max-width: 900px) 100vw, 45vw"
             className={styles.portrait}
-            priority
-            fetchPriority="high"
-            unoptimized
+            preload
           />
           <div className={styles.photoShade} aria-hidden="true" />
         </motion.div>
