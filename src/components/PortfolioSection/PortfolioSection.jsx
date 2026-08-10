@@ -131,7 +131,7 @@ export default function PortfolioSection() {
         ))}
       </div>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={activeTab}
           className={styles.grid}
@@ -139,7 +139,7 @@ export default function PortfolioSection() {
           id={`${activeTab}-projects-panel`}
           aria-labelledby={`${activeTab}-tab`}
           variants={container}
-          initial="hidden"
+          initial={false}
           animate="show"
         >
           {displayedProjects.map((project, index) => {
