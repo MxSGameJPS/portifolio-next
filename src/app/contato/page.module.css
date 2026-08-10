@@ -199,6 +199,54 @@
   border-top: 1px solid rgba(23, 23, 23, 0.06);
 }
 
+/* The shared Contact component remains unchanged on the Home. These overrides
+   only apply to the form instance rendered inside /contato. */
+.contactWrapper :global(form) {
+  gap: 0;
+}
+
+.contactWrapper :global(form > div) {
+  gap: 0;
+}
+
+.contactWrapper :global(input),
+.contactWrapper :global(textarea) {
+  border-radius: 0 !important;
+  border-color: rgba(23, 23, 23, 0.13) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.contactWrapper :global(input) {
+  min-height: 60px !important;
+  border-width: 0 0 1px !important;
+}
+
+.contactWrapper :global(textarea) {
+  margin-top: 1rem;
+  min-height: 160px !important;
+  border-width: 1px !important;
+}
+
+.contactWrapper :global(input:focus),
+.contactWrapper :global(textarea:focus) {
+  border-color: #a56e2c !important;
+  background: #fffdf9 !important;
+}
+
+.contactWrapper :global(button[type="submit"]) {
+  min-height: 58px !important;
+  margin-top: 1rem !important;
+  border-radius: 0 !important;
+  background: #171715 !important;
+  box-shadow: none !important;
+}
+
+.contactWrapper :global(button[type="submit"]:hover) {
+  background: #c9973c !important;
+  color: #171715 !important;
+}
+
 @media (max-width: 900px) {
   .heroGrid {
     grid-template-columns: 1fr;
