@@ -1,353 +1,259 @@
-"use client";
-
-import { useId, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { PiArrowUpRightBold, PiCaretDownBold } from "react-icons/pi";
+import { PiArrowUpRightBold } from "react-icons/pi";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Contact from "../../components/Contact/Contact";
 import styles from "./service.module.css";
 
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-// Accessible, height-animated collapsible panel shared by Features and FAQ.
-function Collapsible({ open, id, children, reduce }) {
-  return (
-    <AnimatePresence initial={false}>
-      {open && (
-        <motion.div
-          id={id}
-          role="region"
-          initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-          animate={reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-          exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-          style={{ overflow: "hidden" }}
-        >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
-/**
- * Shared layout for every /service landing page. Pass content via props;
- * structure, motion, accessibility and styling stay identical across routes.
- */
 export default function ServicePage({
   eyebrow,
   headline,
   subheadline,
   description,
-  heroImage,
-  ctaPrimary = "Solicitar consultoria",
-  ctaNote = "Consultoria gratuita · resposta em até 24h · sem compromisso",
+  ctaPrimary = "Conversar sobre o projeto",
   ctaSecondary = { href: "/portfolio", label: "Ver projetos" },
-  trust = [],
   quote,
   infoParagraphs = [],
-  featuresEyebrow = "O que entregamos",
-  featuresHeading,
+  featuresEyebrow = "O QUE EU CONSTRUO",
+  featuresHeading = "Uma solução desenhada para a operação real.",
   features = [],
   benefits = [],
-  ctaMid = "Quero uma proposta",
-  diffEyebrow = "Por que nós",
-  diffHeading,
+  diffEyebrow = "DECISÕES DE PROJETO",
+  diffHeading = "O que muda quando a solução é construída sob medida.",
   differentials = [],
-  methodEyebrow = "Como trabalhamos",
-  methodHeading,
+  methodEyebrow = "PROCESSO",
+  methodHeading = "Da necessidade ao software em produção.",
   methodSubtitle,
   methodSteps = [],
-  faqEyebrow = "Dúvidas frequentes",
-  faqHeading,
+  technologies = [],
+  relatedCase = null,
+  faqEyebrow = "DÚVIDAS FREQUENTES",
+  faqHeading = "Antes de começar, vale alinhar alguns pontos.",
   faqItems = [],
 }) {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-  const reduce = useReducedMotion();
-  const uid = useId();
-
-  const toggleFeature = (i) => setOpenIndex(openIndex === i ? null : i);
-  const toggleFaq = (i) => setOpenFaqIndex(openFaqIndex === i ? null : i);
-
   return (
     <div className={styles.pageWrapper}>
       <Header />
 
       <main>
-        {/* HERO */}
         <section className={styles.heroSection}>
-          <div className={styles.heroGrid} aria-hidden="true" />
-          <div className={styles.container}>
-            <motion.div
-              className={styles.content}
-              variants={reveal}
-              initial="hidden"
-              animate="show"
-            >
-              {eyebrow && <span className={styles.eyebrow}>{eyebrow}</span>}
-              <h1 className={styles.headline}>{headline}</h1>
-              <h2 className={styles.subHeadline}>{subheadline}</h2>
-              <p className={styles.description}>{description}</p>
+          <div className={styles.heroTexture} aria-hidden="true" />
+          <div className={styles.heroContainer}>
+            <p className={styles.eyebrow}>{eyebrow}</p>
 
-              <div className={styles.heroActions}>
-                <a href="#contato" className={styles.ctaButton}>
-                  {ctaPrimary} <PiArrowUpRightBold />
-                </a>
-                {ctaSecondary && (
-                  <Link href={ctaSecondary.href} className={styles.ctaGhost}>
-                    {ctaSecondary.label}
-                  </Link>
-                )}
+            <div className={styles.heroGrid}>
+              <div>
+                <h1 className={styles.headline}>{headline}</h1>
+                {subheadline && <p className={styles.subheadline}>{subheadline}</p>}
               </div>
-              {ctaNote && <p className={styles.ctaNote}>{ctaNote}</p>}
 
-              {trust.length > 0 && (
-                <ul className={styles.trustRow}>
-                  {trust.map((t) => (
-                    <li key={t.label} className={styles.trustItem}>
-                      <span className={styles.trustValue}>{t.value}</span>
-                      <span className={styles.trustLabel}>{t.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </motion.div>
+              <div className={styles.heroAside}>
+                <p>{description}</p>
+                <div className={styles.heroActions}>
+                  <a href="#contato" className={styles.primaryAction}>
+                    {ctaPrimary} <PiArrowUpRightBold aria-hidden="true" />
+                  </a>
+                  {ctaSecondary && (
+                    <Link href={ctaSecondary.href} className={styles.secondaryAction}>
+                      {ctaSecondary.label}
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </div>
 
-            {heroImage && (
-              <motion.div
-                className={styles.imageContainer}
-                initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}
-                animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Image
-                  src={heroImage.src}
-                  alt={heroImage.alt}
-                  width={520}
-                  height={520}
-                  className={styles.heroImage}
-                  priority
-                />
-              </motion.div>
-            )}
+            <div className={styles.heroFacts} aria-label="Como o projeto é conduzido">
+              <div>
+                <strong>Contexto → solução</strong>
+                <span>arquitetura definida a partir do problema</span>
+              </div>
+              <div>
+                <strong>Produto sob medida</strong>
+                <span>sem depender de template genérico</span>
+              </div>
+              <div>
+                <strong>Briefing → produção</strong>
+                <span>uma visão técnica de ponta a ponta</span>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* INFO */}
         {(quote || infoParagraphs.length > 0) && (
-          <section className={styles.infoSection}>
-            <motion.div
-              className={styles.infoContainer}
-              variants={reveal}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-80px" }}
-            >
-              <div className={styles.quoteCard}>
-                <span className={styles.quoteIcon}>&ldquo;</span>
-                <p className={styles.quoteText}>{quote}</p>
-              </div>
+          <section className={styles.contextSection}>
+            <div className={styles.container}>
+              <div className={styles.contextGrid}>
+                <div className={styles.contextLabel}>
+                  <p className={styles.eyebrow}>CONTEXTO</p>
+                  <span>01</span>
+                </div>
 
-              <div className={styles.infoContent}>
-                {infoParagraphs.map((p, i) => (
-                  <p key={i} className={styles.infoParagraph}>
-                    {p}
-                  </p>
-                ))}
+                <div className={styles.contextLead}>
+                  {quote && <h2>{quote}</h2>}
+                </div>
+
+                <div className={styles.contextCopy}>
+                  {infoParagraphs.map((paragraph, index) => (
+                    <p key={`${paragraph}-${index}`}>{paragraph}</p>
+                  ))}
+                </div>
               </div>
-            </motion.div>
+            </div>
           </section>
         )}
 
-        {/* FEATURES */}
         {features.length > 0 && (
           <section className={styles.featuresSection}>
-            <div className={styles.featuresContainer}>
-              <div className={styles.sectionHead}>
-                {featuresEyebrow && (
-                  <span className={styles.eyebrowDark}>{featuresEyebrow}</span>
-                )}
-                <h2 className={styles.sectionHeading}>
-                  {featuresHeading}
-                  <span className={styles.dot}>.</span>
-                </h2>
+            <div className={styles.container}>
+              <div className={styles.sectionHeader}>
+                <p className={styles.eyebrow}>{featuresEyebrow}</p>
+                <h2>{featuresHeading}</h2>
               </div>
 
-              <div className={styles.featuresList}>
-                {features.map((feature, index) => {
-                  const isOpen = openIndex === index;
-                  const panelId = `${uid}-feat-${index}`;
-                  return (
-                    <div key={index} className={styles.featureWrapper}>
-                      <button
-                        type="button"
-                        className={`${styles.featureItem} ${isOpen ? styles.active : ""}`}
-                        onClick={() => toggleFeature(index)}
-                        aria-expanded={isOpen}
-                        aria-controls={panelId}
-                      >
-                        <span className={styles.featureText}>{feature.title}</span>
-                        <PiCaretDownBold
-                          className={`${styles.featureIcon} ${isOpen ? styles.rotate : ""}`}
-                          aria-hidden="true"
-                        />
-                      </button>
-                      <Collapsible open={isOpen} id={panelId} reduce={reduce}>
-                        <p className={styles.descText}>{feature.description}</p>
-                      </Collapsible>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* BENEFITS */}
-        {benefits.length > 0 && (
-          <section className={styles.benefitsSection}>
-            <motion.div
-              className={styles.benefitsGrid}
-              variants={reveal}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-80px" }}
-            >
-              {benefits.map((benefit, index) => (
-                <div key={index} className={styles.benefitCard}>
-                  <div className={styles.iconWrapper}>
-                    <div className={styles.benefitIcon}>{benefit.icon}</div>
-                  </div>
-                  <p className={styles.benefitText}>{benefit.text}</p>
-                </div>
-              ))}
-            </motion.div>
-
-            <div className={styles.centeredCtaContainer}>
-              <a href="#contato" className={styles.ctaButton}>
-                {ctaMid} <PiArrowUpRightBold />
-              </a>
-            </div>
-          </section>
-        )}
-
-        {/* DIFFERENTIALS */}
-        {differentials.length > 0 && (
-          <section className={styles.differentialsSection}>
-            <div className={styles.differentialsContainer}>
-              <div className={styles.sectionHead}>
-                {diffEyebrow && <span className={styles.eyebrow}>{diffEyebrow}</span>}
-                <h2 className={styles.differentialsTitle}>
-                  {diffHeading}
-                  <span className={styles.dot}>.</span>
-                </h2>
-              </div>
-
-              <div className={styles.diffGrid}>
-                {differentials.map((diff, index) => (
-                  <motion.div
-                    key={index}
-                    className={styles.diffCard}
-                    variants={reveal}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-40px" }}
-                  >
-                    <div className={styles.diffIcon}>{diff.icon}</div>
-                    <h3 className={styles.diffTitle}>{diff.title}</h3>
-                    <p className={styles.diffText}>{diff.text}</p>
-                  </motion.div>
+              <div className={styles.featureList}>
+                {features.map((feature, index) => (
+                  <article key={`${feature.title}-${index}`} className={styles.featureItem}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <h3>{feature.title}</h3>
+                    <p>{feature.description}</p>
+                  </article>
                 ))}
               </div>
             </div>
           </section>
         )}
 
-        {/* METHOD */}
-        {methodSteps.length > 0 && (
-          <section className={styles.methodSection}>
-            <div className={styles.methodContainer}>
-              <div className={styles.sectionHead}>
-                {methodEyebrow && <span className={styles.eyebrow}>{methodEyebrow}</span>}
-                <h2 className={styles.methodTitle}>
-                  {methodHeading}
-                  <span className={styles.dot}>.</span>
-                </h2>
-                {methodSubtitle && (
-                  <span className={styles.methodSubtitle}>{methodSubtitle}</span>
-                )}
+        {benefits.length > 0 && (
+          <section className={styles.benefitsSection}>
+            <div className={styles.container}>
+              <p className={styles.eyebrowLight}>O QUE FICA PARA O NEGÓCIO</p>
+              <div className={styles.benefitsGrid}>
+                {benefits.slice(0, 3).map((benefit, index) => (
+                  <article key={`${benefit.text}-${index}`} className={styles.benefitItem}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <p>{benefit.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {differentials.length > 0 && (
+          <section className={styles.differentialsSection}>
+            <div className={styles.container}>
+              <div className={styles.sectionHeaderSplit}>
+                <p className={styles.eyebrow}>{diffEyebrow}</p>
+                <h2>{diffHeading}</h2>
               </div>
 
-              <ol className={styles.timeline}>
+              <div className={styles.differentialsGrid}>
+                {differentials.map((item, index) => (
+                  <article key={`${item.title}-${index}`} className={styles.differentialItem}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {methodSteps.length > 0 && (
+          <section className={styles.methodSection}>
+            <div className={styles.container}>
+              <div className={styles.methodHeader}>
+                <div>
+                  <p className={styles.eyebrowLight}>{methodEyebrow}</p>
+                  <h2>{methodHeading}</h2>
+                </div>
+                {methodSubtitle && <p>{methodSubtitle}</p>}
+              </div>
+
+              <ol className={styles.methodList}>
                 {methodSteps.map((step, index) => (
-                  <motion.li
-                    key={index}
-                    className={styles.timelineItem}
-                    variants={reveal}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-40px" }}
-                  >
-                    <div className={styles.timelineNumber}>{index + 1}</div>
-                    <div className={styles.timelineContent}>
-                      <h3 className={styles.stepTitle}>{step.title}</h3>
-                      <p className={styles.stepDesc}>{step.description}</p>
+                  <li key={`${step.title}-${index}`} className={styles.methodItem}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <div>
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
                     </div>
-                  </motion.li>
+                  </li>
                 ))}
               </ol>
             </div>
           </section>
         )}
 
-        {/* FAQ */}
+        {technologies.length > 0 && (
+          <section className={styles.stackSection}>
+            <div className={styles.container}>
+              <div className={styles.stackGrid}>
+                <div>
+                  <p className={styles.eyebrow}>TECNOLOGIA</p>
+                  <h2>A stack acompanha o produto — não o contrário.</h2>
+                </div>
+                <div className={styles.techList}>
+                  {technologies.map((technology) => (
+                    <span key={technology}>{technology}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {relatedCase && (
+          <section className={styles.caseSection}>
+            <div className={styles.container}>
+              <div className={styles.caseHeader}>
+                <p className={styles.eyebrow}>CASE RELACIONADO</p>
+                <h2>Veja essa competência aplicada em um produto real.</h2>
+              </div>
+
+              <Link href={relatedCase.href} className={styles.caseCard}>
+                <div className={styles.caseMedia}>
+                  <Image
+                    src={relatedCase.image}
+                    alt={`Interface do projeto ${relatedCase.name}`}
+                    fill
+                    sizes="(max-width: 800px) 100vw, 58vw"
+                    className={styles.caseImage}
+                  />
+                </div>
+                <div className={styles.caseCopy}>
+                  <p>{relatedCase.category}</p>
+                  <h3>{relatedCase.name}</h3>
+                  <span>
+                    Ver case completo <PiArrowUpRightBold aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
+            </div>
+          </section>
+        )}
+
         {faqItems.length > 0 && (
           <section className={styles.faqSection}>
-            <div className={styles.faqContainer}>
-              <div className={styles.sectionHead}>
-                {faqEyebrow && <span className={styles.eyebrow}>{faqEyebrow}</span>}
-                <h2 className={styles.faqTitle}>
-                  {faqHeading}
-                  <span className={styles.dot}>.</span>
-                </h2>
+            <div className={styles.container}>
+              <div className={styles.sectionHeaderSplit}>
+                <p className={styles.eyebrow}>{faqEyebrow}</p>
+                <h2>{faqHeading}</h2>
               </div>
 
               <div className={styles.faqList}>
-                {faqItems.map((item, index) => {
-                  const isOpen = openFaqIndex === index;
-                  const panelId = `${uid}-faq-${index}`;
-                  return (
-                    <div key={index} className={styles.faqItem}>
-                      <button
-                        type="button"
-                        className={styles.faqQuestion}
-                        onClick={() => toggleFaq(index)}
-                        aria-expanded={isOpen}
-                        aria-controls={panelId}
-                      >
-                        <span className={styles.questionText}>{item.question}</span>
-                        <PiCaretDownBold
-                          className={`${styles.faqIcon} ${isOpen ? styles.rotate : ""}`}
-                          aria-hidden="true"
-                        />
-                      </button>
-                      <Collapsible open={isOpen} id={panelId} reduce={reduce}>
-                        <p className={styles.answerText}>{item.answer}</p>
-                      </Collapsible>
-                    </div>
-                  );
-                })}
+                {faqItems.map((item, index) => (
+                  <details key={`${item.question}-${index}`} className={styles.faqItem}>
+                    <summary>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <strong>{item.question}</strong>
+                      <i aria-hidden="true">+</i>
+                    </summary>
+                    <p>{item.answer}</p>
+                  </details>
+                ))}
               </div>
             </div>
           </section>
