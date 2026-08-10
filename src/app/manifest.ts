@@ -2,14 +2,14 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Saulo Pavanello — Desenvolvimento de Sites e Apps",
+    name: "Saulo Pavanello — Software Engineer",
     short_name: "Saulo Pavanello",
     description:
-      "Desenvolvimento de sites, aplicativos e sistemas web sob medida com React, Next.js e Node.js.",
+      "SaaS, sistemas web, aplicativos mobile, APIs, IA e produtos digitais sob medida.",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#0a2342",
+    background_color: "#f5f1eb",
+    theme_color: "#f5f1eb",
     lang: "pt-BR",
     categories: ["technology", "business", "developer"],
     icons: [
