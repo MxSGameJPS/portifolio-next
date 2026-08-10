@@ -54,7 +54,6 @@ export default function ContactPage() {
       <Header />
 
       <main>
-        {/* HERO */}
         <section className={styles.heroSection}>
           <div className={styles.heroGrid} aria-hidden="true" />
           <motion.div
@@ -102,9 +101,8 @@ export default function ContactPage() {
           </motion.div>
         </section>
 
-        {/* FORM */}
         <div className={styles.contactWrapper}>
-          <Contact />
+          <Contact mode="form" />
         </div>
       </main>
 
