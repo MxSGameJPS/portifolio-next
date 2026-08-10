@@ -2,16 +2,25 @@ const SITE = "https://saulopavanello.com.br";
 const PAGE = `${SITE}/portfolio`;
 
 export const metadata = {
-  title: "Portfólio",
+  title: {
+    absolute: "Portfólio | Saulo Pavanello — Software Engineer",
+  },
   description:
-    "Portfólio de Saulo Pavanello: sites, e-commerce, aplicativos mobile, APIs e sistemas sob medida. Projetos reais, muitos já no ar, com valor de negócio entregue.",
+    "Cases e produtos desenvolvidos por Saulo Pavanello: SaaS, sistemas web, aplicativos mobile, APIs e integrações construídos da arquitetura ao deploy.",
   alternates: { canonical: "/portfolio" },
   openGraph: {
-    title: "Portfólio | Saulo Pavanello",
+    title: "Portfólio | Saulo Pavanello — Software Engineer",
     description:
-      "Seleção de projetos: web, mobile, APIs e sistemas. Cada um resolve um problema real de negócio.",
+      "Software que saiu do briefing e entrou em operação. Explore cases de SaaS, sistemas, mobile e APIs.",
     url: PAGE,
-    images: ["/Hero.png"],
+    images: ["/ogimage.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfólio | Saulo Pavanello — Software Engineer",
+    description:
+      "Cases de SaaS, sistemas web, aplicativos mobile e APIs construídos da ideia à produção.",
+    images: ["/ogimage.png"],
   },
 };
 
