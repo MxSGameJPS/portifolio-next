@@ -1,104 +1,107 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Contact from "../../components/Contact/Contact";
 import styles from "./page.module.css";
 import {
-  PiEnvelopeSimpleBold,
-  PiWhatsappLogoBold,
-  PiLinkedinLogoBold,
   PiArrowUpRightBold,
+  PiEnvelopeSimpleBold,
+  PiLinkedinLogoBold,
+  PiWhatsappLogoBold,
 } from "react-icons/pi";
 
 const channels = [
   {
-    icon: <PiWhatsappLogoBold />,
+    icon: PiWhatsappLogoBold,
     label: "WhatsApp",
-    value: "Resposta mais rápida",
-    href: "https://wa.me/5551993392983",
+    value: "Conversa direta",
+    href: "https://wa.me/5551993392983?text=Ol%C3%A1%2C%20Saulo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20um%20projeto.",
     external: true,
-    primary: true,
   },
   {
-    icon: <PiEnvelopeSimpleBold />,
+    icon: PiEnvelopeSimpleBold,
     label: "E-mail",
     value: "contato@saulopavanello.com.br",
     href: "mailto:contato@saulopavanello.com.br",
     external: false,
   },
   {
-    icon: <PiLinkedinLogoBold />,
+    icon: PiLinkedinLogoBold,
     label: "LinkedIn",
-    value: "Vamos nos conectar",
-    href: "https://linkedin.com/in/saulopavanello",
+    value: "Conexão profissional",
+    href: "https://www.linkedin.com/in/saulopavanello/",
     external: true,
   },
 ];
 
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 export default function ContactPage() {
-  const reduce = useReducedMotion();
-
   return (
     <div className={styles.pageWrapper}>
       <Header />
 
       <main>
         <section className={styles.heroSection}>
-          <div className={styles.heroGrid} aria-hidden="true" />
-          <motion.div
-            className={styles.heroContent}
-            variants={reveal}
-            initial="hidden"
-            animate="show"
-          >
-            <span className={styles.eyebrow}>Contato</span>
-            <h1 className={styles.headline}>
-              Vamos conversar sobre o seu projeto
-            </h1>
-            <p className={styles.introText}>
-              Me conte a sua ideia. A primeira conversa é gratuita e sem
-              compromisso, a resposta chega em até 24h — e você fala direto
-              comigo, não com um atendente.
-            </p>
-            <p className={styles.introText}>
-              Baseado em Dois Irmãos (RS), atendo presencialmente Novo
-              Hamburgo, São Leopoldo, Sapiranga, Campo Bom, Ivoti, Estância
-              Velha, Sapucaia do Sul e Caxias do Sul — e remoto para todo o
-              Brasil.
-            </p>
+          <div className={styles.heroTexture} aria-hidden="true" />
+          <div className={styles.heroContainer}>
+            <p className={styles.eyebrow}>CONTATO</p>
 
-            <div className={styles.channels}>
-              {channels.map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  target={c.external ? "_blank" : undefined}
-                  rel={c.external ? "noopener noreferrer" : undefined}
-                  className={`${styles.channelCard} ${c.primary ? styles.channelPrimary : ""}`}
-                >
-                  <span className={styles.channelIcon} aria-hidden="true">
-                    {c.icon}
-                  </span>
-                  <span className={styles.channelBody}>
-                    <span className={styles.channelLabel}>{c.label}</span>
-                    <span className={styles.channelValue}>{c.value}</span>
-                  </span>
-                  <PiArrowUpRightBold className={styles.channelArrow} aria-hidden="true" />
-                </a>
-              ))}
+            <div className={styles.heroGrid}>
+              <h1 className={styles.headline}>
+                Se existe um problema para resolver, a conversa começa aqui.
+              </h1>
+
+              <div className={styles.heroAside}>
+                <p>
+                  Me conte o que você precisa construir, melhorar ou colocar em
+                  operação. Eu avalio o contexto com você e ajudo a transformar a
+                  necessidade em um caminho técnico viável.
+                </p>
+                <p>
+                  Você fala diretamente comigo — do primeiro contato às decisões de
+                  produto e desenvolvimento.
+                </p>
+              </div>
             </div>
-          </motion.div>
+
+            <div className={styles.channels} aria-label="Canais de contato">
+              {channels.map((channel) => {
+                const Icon = channel.icon;
+
+                return (
+                  <a
+                    key={channel.label}
+                    href={channel.href}
+                    target={channel.external ? "_blank" : undefined}
+                    rel={channel.external ? "noopener noreferrer" : undefined}
+                    className={styles.channelLink}
+                  >
+                    <span className={styles.channelIcon} aria-hidden="true">
+                      <Icon />
+                    </span>
+                    <span className={styles.channelCopy}>
+                      <small>{channel.label}</small>
+                      <strong>{channel.value}</strong>
+                    </span>
+                    <PiArrowUpRightBold className={styles.channelArrow} aria-hidden="true" />
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className={styles.heroFacts}>
+              <div>
+                <strong>Direto comigo</strong>
+                <span>sem repasse para atendimento comercial</span>
+              </div>
+              <div>
+                <strong>Dois Irmãos · RS</strong>
+                <span>atendimento remoto para todo o Brasil</span>
+              </div>
+              <div>
+                <strong>Novo ou em andamento</strong>
+                <span>produto, sistema, app, API ou operação digital</span>
+              </div>
+            </div>
+          </div>
         </section>
 
         <div className={styles.contactWrapper}>
