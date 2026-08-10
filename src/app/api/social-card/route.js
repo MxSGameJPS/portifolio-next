@@ -10,10 +10,22 @@ import heroData8 from "../../../components/Hero/heroData8";
 
 export const runtime = "edge";
 
-const heroImage = `data:image/webp;base64,${heroData1}${heroData2}${heroData3}${heroData4}${heroData5}${heroData6}${heroData7}${heroData8}`;
+const heroBase64 = `${heroData1}${heroData2}${heroData3}${heroData4}${heroData5}${heroData6}${heroData7}${heroData8}`;
+
+function base64ToArrayBuffer(base64) {
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+
+  for (let i = 0; i < binary.length; i += 1) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+
+  return bytes.buffer;
+}
 
 export async function GET(request) {
   const logoUrl = new URL("/Logo/logohorizontal.png", request.url).toString();
+  const heroImage = base64ToArrayBuffer(heroBase64);
 
   return new ImageResponse(
     (
@@ -117,7 +129,7 @@ export async function GET(request) {
             style={{
               width: "650px",
               display: "flex",
-              fontFamily: "Georgia, serif",
+              fontFamily: "serif",
               fontSize: "57px",
               fontWeight: 500,
               letterSpacing: "-2.6px",
