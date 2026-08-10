@@ -5,7 +5,7 @@ export const runtime = "edge";
 const SITE_URL = "https://www.saulopavanello.com.br";
 
 export async function GET() {
-  const portraitUrl = `${SITE_URL}/contact-saulo.png`;
+  const portraitUrl = `${SITE_URL}/ogimage.png`;
   const logoUrl = `${SITE_URL}/Logo/logohorizontal.png`;
 
   return new ImageResponse(
