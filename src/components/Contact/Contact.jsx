@@ -13,7 +13,6 @@ import {
   PiWhatsappLogoBold,
 } from "react-icons/pi";
 import styles from "./contact.module.css";
-import contactImage from "./contactImageData";
 
 const WHATSAPP_URL =
   "https://wa.me/5551993392983?text=Ol%C3%A1%2C%20Saulo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20um%20projeto.";
@@ -232,7 +231,7 @@ export default function Contact({ mode = "showcase" }) {
         <div className={styles.visualColumn}>
           <div className={styles.photoFrame}>
             <img
-              src={contactImage}
+              src="/contact-saulo.svg"
               alt="Saulo Pavanello em seu ambiente de trabalho"
               className={styles.contactPhoto}
             />
