@@ -4,31 +4,35 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(245, 241, 235, 0.92);
-  border-bottom: 1px solid rgba(23, 23, 23, 0.07);
-  backdrop-filter: blur(14px) saturate(130%);
-  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
   transition:
     background-color 0.25s ease,
     box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    backdrop-filter 0.25s ease;
 }
 
 .scrolled {
-  background: rgba(245, 241, 235, 0.975);
-  border-bottom-color: rgba(23, 23, 23, 0.1);
+  background: rgba(245, 241, 235, 0.94);
+  border-bottom-color: rgba(23, 23, 23, 0.08);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
   box-shadow: 0 12px 34px rgba(30, 24, 18, 0.07);
 }
 
 .container {
   width: 100%;
-  height: 80px;
+  height: 82px;
   margin: 0;
-  padding: 0 clamp(1.25rem, 4vw, 4.75rem);
+  padding: 0 clamp(1rem, 2.1vw, 2.5rem);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 2rem;
+  gap: clamp(1.1rem, 1.8vw, 2rem);
 }
 
 .logoContainer {
@@ -45,7 +49,8 @@
 
 .logo {
   width: auto;
-  height: 52px;
+  height: 92px;
+  max-width: none;
   object-fit: contain;
   filter: none;
 }
@@ -58,7 +63,7 @@
 .nav ul {
   display: flex;
   align-items: center;
-  gap: clamp(1.55rem, 2.2vw, 2.65rem);
+  gap: clamp(1.35rem, 1.85vw, 2.2rem);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -272,31 +277,47 @@
 
 @media (max-width: 1120px) {
   .container {
-    gap: 1.25rem;
+    gap: 1.1rem;
   }
 
   .nav ul {
-    gap: 1.35rem;
+    gap: 1.2rem;
   }
 
   .headerCta {
     padding-inline: 0.95rem;
   }
+
+  .logo {
+    height: 84px;
+  }
 }
 
 @media (max-width: 1024px) {
   .header {
-    background: rgba(245, 241, 235, 0.98);
+    background: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .header.scrolled {
+    background: rgba(245, 241, 235, 0.97);
+    border-bottom-color: rgba(23, 23, 23, 0.08);
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    box-shadow: 0 10px 28px rgba(30, 24, 18, 0.07);
   }
 
   .container {
     display: flex;
     justify-content: space-between;
-    padding-inline: 1.25rem;
+    padding-inline: 1rem;
   }
 
   .logo {
-    height: 47px;
+    height: 80px;
   }
 
   .headerCta {
@@ -424,11 +445,11 @@
 @media (max-width: 560px) {
   .container {
     height: 74px;
-    padding-inline: 1rem;
+    padding-inline: 0.8rem;
   }
 
   .logo {
-    height: 43px;
+    height: 72px;
   }
 
   .mobileToggle {
