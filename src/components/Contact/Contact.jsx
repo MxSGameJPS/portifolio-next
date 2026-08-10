@@ -231,7 +231,7 @@ export default function Contact({ mode = "showcase" }) {
         <div className={styles.visualColumn}>
           <div className={styles.photoFrame}>
             <img
-              src="/contact-saulo.svg"
+              src="/contact-saulo.png"
               alt="Saulo Pavanello em seu ambiente de trabalho"
               className={styles.contactPhoto}
             />
