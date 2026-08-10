@@ -113,10 +113,10 @@ export default function Footer() {
             </Link>
 
             <a
-              href="mailto:contato@saulopavanello.com.br"
+              href="mailto:saulopavanello@saulopavanello.com.br"
               className={styles.email}
             >
-              contato@saulopavanello.com.br
+              saulopavanello@saulopavanello.com.br
             </a>
           </div>
         </div>
