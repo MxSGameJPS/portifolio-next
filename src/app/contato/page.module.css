@@ -1,192 +1,270 @@
-/* ============================================================
-   /contato — hero + shared Contact form. Flat selectors.
-   ============================================================ */
-
 .pageWrapper {
-  background-color: var(--pure-white);
   min-height: 100vh;
-  color: var(--deep-navy);
+  background: #f5f1eb;
+  color: #171717;
 }
 
-/* --- HERO --- */
 .heroSection {
-  background: linear-gradient(120deg, var(--deep-navy) 0%, #003972 100%);
-  color: #fff;
-  padding: 9rem 1.5rem 5rem;
   position: relative;
   overflow: hidden;
+  padding: calc(82px + clamp(4.75rem, 8vw, 8rem)) 0 clamp(4.75rem, 7vw, 6.8rem);
+  background: #f5f1eb;
 }
 
-.heroSection::before {
-  content: "";
-  position: absolute;
-  top: -40%;
-  right: -10%;
-  width: 780px;
-  height: 780px;
-  background: radial-gradient(
-    circle,
-    rgba(0, 168, 232, 0.18) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.heroGrid {
+.heroTexture {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 46px 46px;
-  mask-image: radial-gradient(circle at 60% 30%, #000 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(circle at 60% 30%, #000 0%, transparent 75%);
   pointer-events: none;
+  background:
+    radial-gradient(circle at 11% 16%, rgba(201, 151, 60, 0.12), transparent 28%),
+    radial-gradient(circle at 86% 64%, rgba(70, 55, 39, 0.055), transparent 30%);
 }
 
-.heroContent {
-  max-width: 1000px;
-  margin: 0 auto;
+.heroTexture::after {
+  content: "";
+  position: absolute;
+  right: -130px;
+  top: 84px;
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  border: 1px solid rgba(23, 23, 23, 0.05);
+  box-shadow:
+    0 0 0 48px rgba(23, 23, 23, 0.018),
+    0 0 0 98px rgba(23, 23, 23, 0.012);
+}
+
+.heroContainer {
   position: relative;
-  z-index: 2;
-  text-align: center;
+  z-index: 1;
+  width: min(100%, 1260px);
+  margin: 0 auto;
+  padding-inline: clamp(1.2rem, 4vw, 4rem);
 }
 
 .eyebrow {
-  display: inline-block;
-  font-family: var(--font-heading, sans-serif);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--soft-gold);
-  margin-bottom: 0.8rem;
+  margin: 0;
+  color: #a56e2c;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  align-items: end;
+  margin-top: 1rem;
 }
 
 .headline {
-  font-family: var(--font-heading, sans-serif);
-  font-size: clamp(2.2rem, 4.6vw, 3.4rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin-bottom: 1.25rem;
+  max-width: 920px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 6vw, 6.2rem);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
 }
 
-.introText {
-  font-family: var(--font-body, sans-serif);
-  font-size: 1.08rem;
-  line-height: 1.7;
-  color: #d6e2ee;
-  max-width: 40rem;
-  margin: 0 auto;
+.heroAside {
+  max-width: 520px;
+  padding-top: 1.35rem;
+  border-top: 1px solid rgba(23, 23, 23, 0.12);
 }
 
-/* Channels */
+.heroAside p {
+  margin: 0;
+  color: #625b54;
+  font-size: 0.97rem;
+  line-height: 1.72;
+}
+
+.heroAside p + p {
+  margin-top: 1rem;
+}
+
 .channels {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 2.5rem;
-  text-align: left;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(3.5rem, 6vw, 5.25rem);
+  border-top: 1px solid rgba(23, 23, 23, 0.1);
+  border-bottom: 1px solid rgba(23, 23, 23, 0.1);
 }
 
-.channelCard {
-  display: flex;
-  align-items: center;
+.channelLink {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 22px;
   gap: 0.9rem;
+  align-items: center;
+  min-height: 112px;
   padding: 1.1rem 1.25rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: inherit;
   text-decoration: none;
-  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  transition: background-color 0.2s ease;
 }
 
-.channelCard:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 168, 232, 0.5);
-  background: rgba(0, 168, 232, 0.08);
+.channelLink + .channelLink {
+  border-left: 1px solid rgba(23, 23, 23, 0.1);
 }
 
-.channelPrimary {
-  background: rgba(37, 211, 102, 0.12);
-  border-color: rgba(37, 211, 102, 0.4);
-}
-
-.channelPrimary:hover {
-  background: rgba(37, 211, 102, 0.18);
-  border-color: rgba(37, 211, 102, 0.65);
+.channelLink:hover {
+  background: rgba(255, 255, 255, 0.48);
 }
 
 .channelIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--tech-blue);
+  width: 36px;
+  height: 36px;
+  color: #a56e2c;
   font-size: 1.35rem;
 }
 
-.channelPrimary .channelIcon {
-  color: #25d366;
-}
-
-.channelBody {
+.channelCopy {
   display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
   min-width: 0;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.channelLabel {
-  font-family: var(--font-heading, sans-serif);
-  font-weight: 700;
-  font-size: 1rem;
-  color: #fff;
+.channelCopy small {
+  color: #958c82;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
 }
 
-.channelValue {
-  font-size: 0.82rem;
-  color: #9fb6cc;
+.channelCopy strong {
   overflow: hidden;
+  color: #211e1a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .channelArrow {
-  margin-left: auto;
-  color: #7f97ad;
-  flex-shrink: 0;
+  justify-self: end;
+  color: #a56e2c;
+  transition: transform 0.2s ease;
 }
 
-/* Contact component wrapper */
+.channelLink:hover .channelArrow {
+  transform: translate(3px, -3px);
+}
+
+.heroFacts {
+  display: grid;
+  grid-template-columns: 0.8fr 0.9fr 1.1fr;
+  margin-top: 1.5rem;
+}
+
+.heroFacts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-right: 1.5rem;
+}
+
+.heroFacts > div + div {
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(23, 23, 23, 0.1);
+}
+
+.heroFacts strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.heroFacts span {
+  color: #817970;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
 .contactWrapper {
   position: relative;
+  background: #fffdf9;
+  border-top: 1px solid rgba(23, 23, 23, 0.06);
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  .heroSection {
-    padding: 7rem 1.5rem 3.5rem;
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroAside {
+    max-width: 720px;
   }
 
   .channels {
     grid-template-columns: 1fr;
   }
+
+  .channelLink + .channelLink {
+    border-left: 0;
+    border-top: 1px solid rgba(23, 23, 23, 0.1);
+  }
+
+  .heroFacts {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .heroFacts > div,
+  .heroFacts > div + div {
+    padding: 0;
+    border-left: 0;
+  }
 }
 
-/* --- REDUCED MOTION --- */
+@media (max-width: 640px) {
+  .heroSection {
+    padding-top: calc(74px + 3rem);
+    padding-bottom: 4rem;
+  }
+
+  .heroContainer {
+    padding-inline: 1rem;
+  }
+
+  .headline {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+    line-height: 0.99;
+  }
+
+  .channels {
+    margin-top: 2.75rem;
+  }
+
+  .channelLink {
+    min-height: 96px;
+    padding-inline: 0.7rem;
+  }
+
+  .channelCopy strong {
+    font-size: 1.03rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .channelCard {
+  .channelLink,
+  .channelArrow {
     transition: none;
   }
 
-  .channelCard:hover {
+  .channelLink:hover .channelArrow {
     transform: none;
   }
 }
