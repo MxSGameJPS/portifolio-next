@@ -2,29 +2,33 @@ import { meta, faqItems } from "./data";
 import { serviceJsonLd } from "../_services/schema";
 
 const SITE = "https://saulopavanello.com.br";
+const PAGE = `${SITE}${meta.path}`;
+const TITLE = "Landing Pages | Saulo Pavanello — Software Engineer";
 
 export const metadata = {
-  title: meta.title,
+  title: { absolute: TITLE },
   description: meta.description,
   alternates: { canonical: meta.path },
   openGraph: {
-    title: `${meta.title} | Saulo Pavanello`,
+    title: TITLE,
     description: meta.description,
-    url: `${SITE}${meta.path}`,
-    images: [meta.image],
+    url: PAGE,
+    images: ["/ogimage.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: meta.description,
+    images: ["/ogimage.png"],
   },
 };
 
-export default function ServiceLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ServiceLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = serviceJsonLd({
     path: meta.path,
     name: meta.name,
     serviceType: meta.serviceType,
-    image: meta.image,
+    image: "/ogimage.png",
     description: meta.description,
     offers: meta.offers,
     faqItems,
@@ -32,10 +36,7 @@ export default function ServiceLayout({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {children}
     </>
   );

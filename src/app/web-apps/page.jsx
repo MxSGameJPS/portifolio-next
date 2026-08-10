@@ -1,468 +1,129 @@
-"use client";
-
-import { useId, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Contact from "../../components/Contact/Contact";
-import styles from "./page.module.css";
-import Image from "next/image";
-import Link from "next/link";
+import ServicePage from "../_services/ServicePage";
 import { faqItems } from "./data";
-import {
-  PiArrowUpRightBold,
-  PiCaretDownBold,
-  PiRocketLaunchBold,
-  PiShieldCheckBold,
-  PiCpuBold,
-  PiDatabaseBold,
-  PiLockKeyBold,
-  PiCodeBold,
-  PiPlugsBold,
-  PiCalendarCheckBold,
-} from "react-icons/pi";
 
 const features = [
   {
-    title: "Abre rápido, cliente não desiste",
+    title: "Operação centralizada",
     description:
-      "Páginas leves que carregam rápido no wi-fi e no 4G. Quanto menos o cliente espera, menos ele desiste antes de comprar ou entrar em contato.",
+      "Cadastros, clientes, pedidos, agendamentos, relatórios e permissões podem deixar de viver em planilhas e ferramentas isoladas para funcionar dentro do mesmo fluxo.",
   },
   {
-    title: "Encontrado no Google",
+    title: "Regras de negócio próprias",
     description:
-      "Estrutura preparada para busca: seu negócio aparece quando as pessoas procuram pelo que você faz — sem precisar pagar anúncio para todo clique.",
+      "O sistema acompanha a forma como a empresa realmente trabalha: validações, etapas, cálculos, níveis de acesso e automações definidos para a operação.",
   },
   {
-    title: "Funciona bem no celular",
+    title: "Painéis e áreas autenticadas",
     description:
-      "A maioria acessa pelo telefone. Seu sistema se ajusta a celular, tablet e computador, mantendo a mesma experiência boa em qualquer tela.",
+      "Dashboards, portais de cliente, áreas administrativas e experiências distintas por perfil, com acesso controlado e informação organizada.",
   },
   {
-    title: "Seus dados protegidos (LGPD)",
+    title: "Integrações com o ecossistema existente",
     description:
-      "Proteção contra invasão e vazamento e conformidade com a Lei Geral de Proteção de Dados. Tranquilidade para você e para os seus clientes.",
+      "ERP, CRM, pagamentos, WhatsApp, e-mail e APIs externas podem conversar com o produto para reduzir digitação duplicada e trabalho manual.",
   },
   {
-    title: "Você mesmo gerencia",
+    title: "Dados e segurança desde a arquitetura",
     description:
-      "Painel simples para você mudar conteúdo, preços, produtos e usuários quando quiser — sem depender de programador para cada ajuste.",
+      "Autenticação, autorização, modelagem de dados e políticas de acesso entram no desenho do produto antes do deploy, não como remendo posterior.",
   },
   {
-    title: "Decisões com dados, não achismo",
+    title: "Base preparada para evoluir",
     description:
-      "Integração com Google Analytics para você enxergar o que funciona: de onde vêm os clientes e onde eles desistem, para melhorar com base em número.",
+      "Arquitetura modular e código organizado para novas funcionalidades entrarem sem transformar cada próxima versão em uma reconstrução completa.",
   },
 ];
 
 const benefits = [
-  {
-    icon: <PiCodeBold />,
-    text: "O código é seu: entrego tudo no fim, sem aluguel nem mensalidade de licença.",
-  },
-  {
-    icon: <PiShieldCheckBold />,
-    text: "Dados seguros e LGPD em dia, protegendo você e os seus clientes.",
-  },
-  {
-    icon: <PiRocketLaunchBold />,
-    text: "Pronto para crescer: aguenta mais acesso e novas funções conforme o negócio cresce.",
-  },
+  { text: "Menos processo manual e menos informação espalhada pela operação." },
+  { text: "Uma ferramenta construída em torno da regra do negócio, não do limite de um template." },
+  { text: "Código, dados e infraestrutura preparados para continuar evoluindo depois do lançamento." },
 ];
 
 const differentials = [
   {
-    icon: <PiCpuBold />,
-    title: "Tecnologia atual",
-    text: "Uso Next.js e React, o mesmo padrão de grandes empresas: interface rápida e moderna, sem aquele site lento que trava a cada clique.",
+    title: "Produto antes da tela",
+    text: "O trabalho começa entendendo fluxo, usuário, regra e gargalo. A interface vem depois que o problema está claro.",
   },
   {
-    icon: <PiDatabaseBold />,
-    title: "Feito do zero pra você",
-    text: "Sistema desenhado em cima da sua rotina e das suas regras — não um tema pronto revendido igual para todo mundo.",
+    title: "Front-end e backend na mesma conversa",
+    text: "A experiência que o usuário vê é projetada junto da lógica, dos dados e das integrações que sustentam o sistema.",
   },
   {
-    icon: <PiPlugsBold />,
-    title: "Conecta com o que você usa",
-    text: "Integro com meios de pagamento, WhatsApp, ERP, CRM e outras ferramentas que você já tem, tudo conversando em um lugar só.",
+    title: "Integrações reais",
+    text: "Pagamentos, ERPs, CRMs, serviços de e-mail, IA e APIs entram como parte da arquitetura quando resolvem uma necessidade concreta.",
   },
   {
-    icon: <PiLockKeyBold />,
-    title: "Segurança levada a sério",
-    text: "Login protegido, criptografia e defesa contra ataques. Seus dados e os dos seus clientes ficam blindados.",
+    title: "Acesso e dados controlados",
+    text: "Sessões, permissões e dados sensíveis são tratados no servidor e no banco com separação clara por perfil e responsabilidade.",
   },
   {
-    icon: <PiCalendarCheckBold />,
-    title: "Escopo e prazo claros",
-    text: "Você sabe o que vai receber e quando, combinado antes de começar. Sem 'depois a gente vê' e sem surpresa no meio do caminho.",
+    title: "Deploy faz parte do projeto",
+    text: "Ambiente, domínio, performance, CDN, logs e comportamento em produção fazem parte da entrega técnica.",
   },
   {
-    icon: <PiRocketLaunchBold />,
-    title: "Suporte de verdade",
-    text: "Garantia após o lançamento e um canal direto comigo para dúvidas e ajustes — você fala com quem construiu, não com um robô.",
+    title: "Manutenção pensada desde o início",
+    text: "Componentes reutilizáveis e regras de negócio bem separadas diminuem o custo da próxima funcionalidade.",
   },
 ];
 
 const methodSteps = [
   {
-    title: "Conversa & Entendimento",
-    description:
-      "Começo entendendo seu negócio: onde você perde tempo, o que quer resolver e quem é seu cliente. É daqui que sai o escopo exato do projeto.",
+    title: "Diagnóstico da operação",
+    description: "Mapeio o problema, quem usa, onde há retrabalho e quais decisões o software precisa assumir.",
   },
   {
-    title: "Planejamento & Protótipo",
-    description:
-      "Desenho como o sistema vai funcionar e monto um rascunho navegável das telas, para você validar o caminho antes de eu escrever o código.",
+    title: "Escopo e arquitetura",
+    description: "Defino módulos, dados, integrações, regras de acesso e o caminho técnico mais adequado ao estágio do produto.",
   },
   {
-    title: "Design das telas",
-    description:
-      "Crio as telas com a cara da sua marca: bonitas, organizadas e fáceis de usar, focadas em quem vai clicar do outro lado.",
+    title: "Fluxo e interface",
+    description: "Organizo jornadas e telas para que a operação fique clara antes de concentrar esforço no código.",
   },
   {
     title: "Desenvolvimento",
-    description:
-      "Coloco tudo de pé: a parte visual e a lógica por trás. É aqui que o sistema ganha vida, com atualizações frequentes para você acompanhar.",
+    description: "Front-end, backend, banco e integrações evoluem como partes do mesmo produto, com validação frequente.",
   },
   {
-    title: "Testes",
-    description:
-      "Testo cada função em diferentes aparelhos e situações para garantir que tudo funcione certo antes de qualquer cliente colocar a mão.",
+    title: "Testes e segurança",
+    description: "Valido os fluxos críticos, permissões, dados e comportamento em diferentes dispositivos e situações de erro.",
   },
   {
-    title: "Lançamento",
-    description:
-      "Publico seu sistema no ar em servidor seguro, com domínio e certificado (cadeado), pronto para receber acessos com estabilidade.",
-  },
-  {
-    title: "Acompanhamento",
-    description:
-      "Depois no ar, acompanho o funcionamento e ajusto melhorias com base no uso real e no seu feedback. O trabalho não termina no lançamento.",
+    title: "Deploy e evolução",
+    description: "Coloco o sistema em produção e deixo a base pronta para acompanhar o uso real e as próximas versões.",
   },
 ];
-
-const trust = [
-  { value: "+100", label: "projetos entregues" },
-  { value: "+2 anos", label: "de experiência" },
-  { value: "LGPD", label: "dados seguros" },
-];
-
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-// Accessible, height-animated collapsible panel shared by Features and FAQ.
-function Collapsible({ open, id, children, reduce }) {
-  return (
-    <AnimatePresence initial={false}>
-      {open && (
-        <motion.div
-          id={id}
-          role="region"
-          initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-          animate={reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-          exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-          style={{ overflow: "hidden" }}
-        >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
 
 export default function WebAppsPage() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-  const reduce = useReducedMotion();
-  const uid = useId();
-
-  const toggleFeature = (i) => setOpenIndex(openIndex === i ? null : i);
-  const toggleFaq = (i) => setOpenFaqIndex(openFaqIndex === i ? null : i);
-
   return (
-    <div className={styles.pageWrapper}>
-      <Header />
-
-      <main>
-        {/* HERO */}
-        <section className={styles.heroSection}>
-          <div className={styles.heroGrid} aria-hidden="true" />
-          <div className={styles.container}>
-            <motion.div
-              className={styles.content}
-              variants={reveal}
-              initial="hidden"
-              animate="show"
-            >
-              <span className={styles.eyebrow}>Sistemas & Web Apps sob medida</span>
-              <h1 className={styles.headline}>
-                Um sistema feito sob medida pro seu negócio
-              </h1>
-              <h2 className={styles.subHeadline}>
-                Menos trabalho manual, menos planilha solta e mais controle da
-                sua operação — tudo em um lugar só, no computador e no celular.
-              </h2>
-              <p className={styles.description}>
-                Crio do zero o sistema que sua empresa usa todos os dias:
-                cadastro de clientes, agendamentos, pedidos, relatórios e área
-                de login, integrados em um painel só. Feito para a sua rotina —
-                não um modelo genérico revendido para todo mundo.
-              </p>
-
-              <div className={styles.heroActions}>
-                <a href="#contato" className={styles.ctaButton}>
-                  Solicitar consultoria <PiArrowUpRightBold />
-                </a>
-                <Link href="/portfolio" className={styles.ctaGhost}>
-                  Ver projetos
-                </Link>
-              </div>
-              <p className={styles.ctaNote}>
-                Consultoria gratuita · resposta em até 24h · sem compromisso
-              </p>
-
-              <ul className={styles.trustRow}>
-                {trust.map((t) => (
-                  <li key={t.label} className={styles.trustItem}>
-                    <span className={styles.trustValue}>{t.value}</span>
-                    <span className={styles.trustLabel}>{t.label}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              className={styles.imageContainer}
-              initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}
-              animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Image
-                src="/CriacaoDeSites/hero.png"
-                alt="Desenvolvimento de Sites e Web Apps"
-                width={520}
-                height={520}
-                className={styles.heroImage}
-                priority
-              />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* INFO */}
-        <section className={styles.infoSection}>
-          <motion.div
-            className={styles.infoContainer}
-            variants={reveal}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
-            <div className={styles.quoteCard}>
-              <span className={styles.quoteIcon}>&ldquo;</span>
-              <p className={styles.quoteText}>
-                Você não precisa entender de programação. Precisa de um sistema
-                que resolve o seu problema — e de alguém que explica cada passo
-                em português claro.
-              </p>
-            </div>
-
-            <div className={styles.infoContent}>
-              <p className={styles.infoParagraph}>
-                Vou além de um site: crio a ferramenta que sua empresa usa no
-                dia a dia. Agendamentos, pedidos, cadastro de clientes,
-                relatórios e área de login, tudo junto em um painel acessível de
-                qualquer lugar. Fim da planilha solta e do processo espalhado em
-                vários cantos.
-              </p>
-              <p className={styles.infoParagraph}>
-                Antes de programar, entendo a sua rotina e onde você perde
-                tempo. A partir disso desenho um sistema que elimina o trabalho
-                manual, mantém seus dados seguros e já nasce pronto para crescer
-                junto com o seu movimento — sem precisar refazer tudo depois.
-              </p>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* FEATURES */}
-        <section className={styles.featuresSection}>
-          <div className={styles.featuresContainer}>
-            <div className={styles.sectionHead}>
-              <span className={styles.eyebrowDark}>O que entregamos</span>
-              <h2 className={styles.sectionHeading}>
-                Principais características<span className={styles.dot}>.</span>
-              </h2>
-            </div>
-
-            <div className={styles.featuresList}>
-              {features.map((feature, index) => {
-                const isOpen = openIndex === index;
-                const panelId = `${uid}-feat-${index}`;
-                return (
-                  <div key={index} className={styles.featureWrapper}>
-                    <button
-                      type="button"
-                      className={`${styles.featureItem} ${isOpen ? styles.active : ""}`}
-                      onClick={() => toggleFeature(index)}
-                      aria-expanded={isOpen}
-                      aria-controls={panelId}
-                    >
-                      <span className={styles.featureText}>{feature.title}</span>
-                      <PiCaretDownBold
-                        className={`${styles.featureIcon} ${isOpen ? styles.rotate : ""}`}
-                        aria-hidden="true"
-                      />
-                    </button>
-                    <Collapsible open={isOpen} id={panelId} reduce={reduce}>
-                      <p className={styles.descText}>{feature.description}</p>
-                    </Collapsible>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* BENEFITS */}
-        <section className={styles.benefitsSection}>
-          <motion.div
-            className={styles.benefitsGrid}
-            variants={reveal}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
-            {benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
-                <div className={styles.iconWrapper}>
-                  <div className={styles.benefitIcon}>{benefit.icon}</div>
-                </div>
-                <p className={styles.benefitText}>{benefit.text}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <div className={styles.centeredCtaContainer}>
-            <a href="#contato" className={styles.ctaButton}>
-              Quero uma proposta <PiArrowUpRightBold />
-            </a>
-          </div>
-        </section>
-
-        {/* DIFFERENTIALS */}
-        <section className={styles.differentialsSection}>
-          <div className={styles.differentialsContainer}>
-            <div className={styles.sectionHead}>
-              <span className={styles.eyebrow}>Por que nós</span>
-              <h2 className={styles.differentialsTitle}>
-                Diferenciais dos nossos projetos<span className={styles.dot}>.</span>
-              </h2>
-            </div>
-
-            <div className={styles.diffGrid}>
-              {differentials.map((diff, index) => (
-                <motion.div
-                  key={index}
-                  className={styles.diffCard}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, margin: "-40px" }}
-                >
-                  <div className={styles.diffIcon}>{diff.icon}</div>
-                  <h3 className={styles.diffTitle}>{diff.title}</h3>
-                  <p className={styles.diffText}>{diff.text}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* METHOD */}
-        <section className={styles.methodSection}>
-          <div className={styles.methodContainer}>
-            <div className={styles.sectionHead}>
-              <span className={styles.eyebrow}>Como trabalhamos</span>
-              <h2 className={styles.methodTitle}>
-                Nosso método<span className={styles.dot}>.</span>
-              </h2>
-              <span className={styles.methodSubtitle}>
-                Do primeiro papo ao pós-lançamento
-              </span>
-            </div>
-
-            <ol className={styles.timeline}>
-              {methodSteps.map((step, index) => (
-                <motion.li
-                  key={index}
-                  className={styles.timelineItem}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, margin: "-40px" }}
-                >
-                  <div className={styles.timelineNumber}>{index + 1}</div>
-                  <div className={styles.timelineContent}>
-                    <h3 className={styles.stepTitle}>{step.title}</h3>
-                    <p className={styles.stepDesc}>{step.description}</p>
-                  </div>
-                </motion.li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className={styles.faqSection}>
-          <div className={styles.faqContainer}>
-            <div className={styles.sectionHead}>
-              <span className={styles.eyebrow}>Dúvidas frequentes</span>
-              <h2 className={styles.faqTitle}>
-                FAQ — Web Apps & Sistemas<span className={styles.dot}>.</span>
-              </h2>
-            </div>
-
-            <div className={styles.faqList}>
-              {faqItems.map((item, index) => {
-                const isOpen = openFaqIndex === index;
-                const panelId = `${uid}-faq-${index}`;
-                return (
-                  <div key={index} className={styles.faqItem}>
-                    <button
-                      type="button"
-                      className={styles.faqQuestion}
-                      onClick={() => toggleFaq(index)}
-                      aria-expanded={isOpen}
-                      aria-controls={panelId}
-                    >
-                      <span className={styles.questionText}>{item.question}</span>
-                      <PiCaretDownBold
-                        className={`${styles.faqIcon} ${isOpen ? styles.rotate : ""}`}
-                        aria-hidden="true"
-                      />
-                    </button>
-                    <Collapsible open={isOpen} id={panelId} reduce={reduce}>
-                      <p className={styles.answerText}>{item.answer}</p>
-                    </Collapsible>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <ServicePage
+      eyebrow="WEB APPS & SISTEMAS"
+      headline="Software sob medida para operações que já não cabem em planilhas."
+      subheadline="Sistemas web, SaaS, dashboards e portais construídos em torno da rotina real do negócio."
+      description="Desenvolvo produtos web completos para centralizar processos, automatizar tarefas e conectar dados, usuários e ferramentas em uma única operação digital."
+      ctaPrimary="Conversar sobre o sistema"
+      quote="O melhor sistema não é o que tem mais telas. É o que remove trabalho desnecessário da operação."
+      infoParagraphs={[
+        "Um Web App faz sentido quando o processo já ficou complexo demais para planilha, troca de mensagens ou ferramentas que não conversam entre si. O objetivo é transformar essa fragmentação em um fluxo único e mensurável.",
+        "A solução pode começar pequena e crescer por módulos. O importante é a base nascer coerente com os dados, os perfis de acesso e as integrações que o negócio realmente precisa.",
+      ]}
+      featuresHeading="As partes do produto que podem entrar no mesmo sistema."
+      features={features}
+      benefits={benefits}
+      diffHeading="Engenharia aplicada à rotina, não a um pacote pronto."
+      differentials={differentials}
+      methodHeading="Da operação atual a um sistema que pode evoluir."
+      methodSubtitle="Cada etapa reduz incerteza antes de aumentar complexidade."
+      methodSteps={methodSteps}
+      technologies={["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "Supabase", "APIs REST", "Vercel", "Cloudflare"]}
+      relatedCase={{
+        name: "Social Jurídico",
+        category: "LegalTech · SaaS · IA",
+        image: "/Projetos/socialjuridico.png",
+        href: "/portfolio/7",
+      }}
+      faqHeading="O que normalmente precisa estar claro antes de construir um sistema."
+      faqItems={faqItems}
+    />
   );
 }

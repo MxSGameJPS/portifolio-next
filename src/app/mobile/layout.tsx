@@ -4,52 +4,40 @@ const SITE = "https://saulopavanello.com.br";
 const PAGE = `${SITE}/mobile`;
 
 export const metadata = {
-  title: "Desenvolvimento de Aplicativos Mobile (iOS & Android)",
+  title: { absolute: "Aplicativos Mobile | Saulo Pavanello — Software Engineer" },
   description:
-    "Criação de aplicativos mobile para iPhone e Android com React Native. Apps rápidos, seguros e publicados nas lojas para colocar seu negócio no bolso do cliente.",
+    "Desenvolvimento de aplicativos iOS e Android com React Native e Expo, integrados a APIs, notificações, dados e recursos do dispositivo.",
   alternates: { canonical: "/mobile" },
   openGraph: {
-    title: "Aplicativos Mobile iOS & Android | Saulo Pavanello",
+    title: "Aplicativos Mobile | Saulo Pavanello — Software Engineer",
     description:
-      "Apps nativos e híbridos para iPhone e Android. Do conceito à publicação nas lojas, com notificações, offline e integração com seus sistemas.",
+      "Aplicativos iOS e Android pensados como produto: experiência mobile, backend, notificações e publicação dentro do mesmo projeto.",
     url: PAGE,
-    images: ["/CriacaoDeSites/aplicativosMobile.png"],
+    images: ["/ogimage.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aplicativos Mobile | Saulo Pavanello — Software Engineer",
+    description: "React Native, Expo, iOS e Android conectados à operação e aos dados do negócio.",
+    images: ["/ogimage.png"],
   },
 };
 
-export default function MobileLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  // Connected @graph: the Service links to the site-wide Person (#person) and the
-  // FAQPage mirrors exactly the questions rendered on the page — both eligible for
-  // Google rich results.
+export default function MobileLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
         "@id": `${PAGE}/#service`,
-        name: "Desenvolvimento de Aplicativos Mobile (iOS & Android)",
+        name: "Desenvolvimento de Aplicativos Mobile",
         serviceType: "Mobile App Development",
         url: PAGE,
-        image: `${SITE}/CriacaoDeSites/aplicativosMobile.png`,
-        description:
-          "Desenvolvimento de aplicativos mobile para iPhone e Android com React Native e Expo, do conceito à publicação nas lojas.",
+        image: `${SITE}/ogimage.png`,
+        description: "Desenvolvimento de aplicativos iOS e Android com React Native e Expo.",
         provider: { "@id": `${SITE}/#person` },
         areaServed: { "@type": "Country", name: "Brasil" },
         mainEntityOfPage: PAGE,
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: "Aplicativos Mobile",
-          itemListElement: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos iOS (iPhone)" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos Android" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Apps Híbridos (React Native)" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Publicação na App Store e Google Play" } },
-          ],
-        },
       },
       {
         "@type": "FAQPage",
@@ -65,10 +53,7 @@ export default function MobileLayout({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {children}
     </>
   );

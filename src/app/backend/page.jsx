@@ -1,164 +1,68 @@
-"use client";
-
 import ServicePage from "../_services/ServicePage";
 import { faqItems } from "./data";
-import {
-  PiCpuBold,
-  PiDatabaseBold,
-  PiLockKeyBold,
-  PiPlugsBold,
-  PiFileTextBold,
-  PiGitBranchBold,
-  PiGaugeBold,
-  PiShieldCheckBold,
-} from "react-icons/pi";
 
 const features = [
-  {
-    title: "Guarda e organiza seus dados",
-    description:
-      "Banco de dados bem modelado (PostgreSQL) para a informação ficar íntegra e a consulta ser rápida, mesmo com muito dado acumulado.",
-  },
-  {
-    title: "Login e permissões",
-    description:
-      "Quem entra e o que cada um pode ver e fazer. Controle de acesso por papel, para cada pessoa enxergar apenas o que é dela.",
-  },
-  {
-    title: "Regras do seu negócio",
-    description:
-      "A lógica que torna o seu sistema único — cálculo, fluxo, validação — programada do jeito exato que a sua operação funciona.",
-  },
-  {
-    title: "Automação e processamento",
-    description:
-      "Tarefas rodando em segundo plano: e-mails, relatórios, filas e rotinas agendadas, sem travar a tela do usuário.",
-  },
-  {
-    title: "Segurança de dados",
-    description:
-      "Senha criptografada, validação de entrada e defesa contra ataques comuns para proteger você e os seus clientes.",
-  },
-  {
-    title: "Pronto para escalar",
-    description:
-      "Arquitetura que aguenta o crescimento de uso sem cair e sem exigir reescrever o sistema do zero.",
-  },
+  { title: "Modelagem e persistência de dados", description: "Estruturo entidades, relações, integridade e consultas para que o dado continue confiável quando o volume e a complexidade aumentarem." },
+  { title: "Autenticação e autorização", description: "Login, sessões, papéis e permissões são verificados no servidor para separar claramente quem pode acessar e alterar cada recurso." },
+  { title: "Regras de negócio", description: "Cálculos, estados, validações e fluxos críticos ficam centralizados na camada que sustenta o comportamento do produto." },
+  { title: "APIs e integrações", description: "REST APIs, webhooks e comunicação com serviços externos conectam o produto a pagamentos, ERPs, CRMs, IA e outros sistemas." },
+  { title: "Processamento e automação", description: "Rotinas agendadas, e-mails, documentos, sincronizações e tarefas de processamento podem sair da execução manual." },
+  { title: "Segurança e observabilidade", description: "Validação de entrada, controle de acesso, logs e configuração de infraestrutura ajudam a detectar e limitar falhas antes que virem problema operacional." },
 ];
 
 const benefits = [
-  {
-    icon: <PiDatabaseBold />,
-    text: "Dados seguros e organizados: informação íntegra, protegida e fácil de consultar.",
-  },
-  {
-    icon: <PiLockKeyBold />,
-    text: "Acesso controlado: cada usuário vê só o que pode, com permissões verificadas no servidor.",
-  },
-  {
-    icon: <PiGaugeBold />,
-    text: "Aguenta o crescimento: nasce pronto para mais usuários e mais funções.",
-  },
+  { text: "Dados e regras de negócio centralizados em uma base que pode ser usada por web, mobile e integrações." },
+  { text: "Permissões e validações protegidas no servidor em vez de depender apenas do comportamento da interface." },
+  { text: "Arquitetura preparada para adicionar integrações e funcionalidades sem reescrever o motor do produto." },
 ];
 
 const differentials = [
-  {
-    icon: <PiCpuBold />,
-    title: "Node.js moderno",
-    text: "Backend em Node com Fastify ou Express: leve, rápido e fácil de evoluir com o tempo.",
-  },
-  {
-    icon: <PiDatabaseBold />,
-    title: "Modelagem sólida",
-    text: "Estrutura de banco pensada para performance e integridade, não improvisada no meio do caminho.",
-  },
-  {
-    icon: <PiLockKeyBold />,
-    title: "Segurança por padrão",
-    text: "JWT, criptografia, controle de acesso por papel e validação com Zod desde a primeira linha.",
-  },
-  {
-    icon: <PiPlugsBold />,
-    title: "Integra com tudo",
-    text: "Conversa com meios de pagamento, ERP, CRM e outras APIs sem gambiarra nem retrabalho.",
-  },
-  {
-    icon: <PiFileTextBold />,
-    title: "Código documentado",
-    text: "Organizado e documentado, para a manutenção não depender de uma única pessoa.",
-  },
-  {
-    icon: <PiGitBranchBold />,
-    title: "Preparado para escalar",
-    text: "Serverless, cache e filas para o sistema crescer sem retrabalho e sem cair no pico.",
-  },
+  { title: "Contrato de API claro", text: "Entradas, respostas e erros são pensados para que diferentes interfaces e serviços consigam conversar de forma previsível." },
+  { title: "Banco modelado para a regra", text: "A estrutura de dados nasce da operação e das relações reais, evitando duplicidade e consultas frágeis." },
+  { title: "Segurança por camadas", text: "Autenticação, autorização, validação e políticas de banco se complementam em vez de depender de um único ponto de defesa." },
+  { title: "Webhooks e integrações confiáveis", text: "Eventos externos são validados e processados no backend para evitar que uma chamada do navegador vire fonte de verdade." },
+  { title: "Código que outra pessoa consegue manter", text: "Separação de responsabilidades, documentação e estrutura previsível reduzem dependência de conhecimento implícito." },
+  { title: "Produção considerada desde cedo", text: "Ambiente, deploy, logs, cache e comportamento em falha fazem parte da arquitetura, não de uma etapa isolada no final." },
 ];
 
 const methodSteps = [
-  {
-    title: "Entendimento & Regras",
-    description:
-      "Mapeio como sua operação funciona e quais regras o sistema precisa aplicar. É a base de tudo que vem depois.",
-  },
-  {
-    title: "Modelagem de dados",
-    description:
-      "Desenho a estrutura do banco para a informação ficar íntegra, sem duplicidade e com consulta rápida.",
-  },
-  {
-    title: "Desenvolvimento",
-    description:
-      "Programo as regras de negócio, o login, as permissões e as automações que sustentam o seu produto.",
-  },
-  {
-    title: "Segurança & Testes",
-    description:
-      "Aplico criptografia, controle de acesso e validação, e testo os fluxos críticos com dados inesperados.",
-  },
-  {
-    title: "Documentação",
-    description:
-      "Deixo o código organizado e documentado, para qualquer desenvolvedor dar manutenção depois.",
-  },
-  {
-    title: "Deploy & Monitoramento",
-    description:
-      "Publico em ambiente seguro e acompanho o funcionamento, ajustando performance conforme o uso cresce.",
-  },
-];
-
-const trust = [
-  { value: "Node & PostgreSQL", label: "base sólida" },
-  { value: "Escalável", label: "cresce com você" },
-  { value: "2+ anos", label: "de experiência" },
+  { title: "Regras e fronteiras", description: "Mapeio o que pertence ao backend, quais atores existem e quais dados e decisões precisam ser protegidos." },
+  { title: "Modelo de dados", description: "Estruturo entidades, relações, índices e políticas para sustentar os fluxos principais do produto." },
+  { title: "Contratos e arquitetura", description: "Defino endpoints, serviços, integrações e separação de responsabilidades antes de espalhar lógica pelo código." },
+  { title: "Implementação", description: "Desenvolvo regras, autenticação, automações e APIs com validações consistentes entre as camadas." },
+  { title: "Testes e segurança", description: "Valido fluxos críticos, permissões, payloads inválidos e integrações que podem afetar dados ou dinheiro." },
+  { title: "Deploy e observação", description: "Coloco a camada em produção com configuração adequada e estrutura para acompanhar o comportamento real do sistema." },
 ];
 
 export default function BackendPage() {
   return (
     <ServicePage
-      eyebrow="O motor do seu sistema"
-      headline="O backend que faz seu sistema funcionar"
-      subheadline="A parte invisível que guarda seus dados, aplica as regras e aguenta o crescimento — feita com segurança."
-      description="Construo o backend por trás do seu site ou app: banco de dados, login, permissões, pagamento e automações. A engenharia que ninguém vê, mas que segura a operação de pé e pronta para escalar."
-      heroImage={{ src: "/CriacaoDeSites/backend.png", alt: "Desenvolvimento Backend e Sistemas" }}
-      ctaPrimary="Quero um backend sólido"
-      ctaNote="Consultoria gratuita · resposta em até 24h · sem compromisso"
-      trust={trust}
-      quote="O backend é o que o cliente não vê — e é justamente o que decide se o sistema aguenta o dia real de uso."
+      eyebrow="BACKEND & APIS"
+      headline="A engenharia invisível que mantém o produto confiável."
+      subheadline="Dados, regras de negócio, autenticação e integrações organizados em uma base que pode crescer."
+      description="Desenvolvo backends e APIs para sustentar sistemas web, aplicativos e produtos digitais, conectando banco de dados, permissões, automações e serviços externos."
+      ctaPrimary="Conversar sobre a arquitetura"
+      quote="O backend só parece invisível enquanto está funcionando. Por isso ele precisa ser projetado para o dia real de uso."
       infoParagraphs={[
-        "O backend é o motor invisível: guarda os dados, decide quem pode fazer o quê e processa login, pagamento e pedidos. Construo esse motor para ser rápido, seguro e organizado.",
-        "Penso em escala desde o começo. O sistema nasce preparado para receber mais usuários e novas funções sem precisar ser refeito, com código limpo que qualquer desenvolvedor consegue manter depois.",
+        "É no backend que o produto decide o que é válido, quem pode fazer cada ação e qual dado deve ser considerado verdade. Essa camada precisa ser previsível antes de ser sofisticada.",
+        "Uma arquitetura organizada também facilita integrar novas interfaces, serviços e automações sem duplicar a mesma regra em vários lugares.",
       ]}
-      featuresHeading="O que o backend faz"
+      featuresHeading="As responsabilidades que formam o motor de um produto digital."
       features={features}
       benefits={benefits}
-      ctaMid="Quero um orçamento"
-      diffHeading="Diferenciais do backend"
+      diffHeading="Uma base sólida reduz risco antes de aumentar velocidade."
       differentials={differentials}
-      methodHeading="Da regra ao sistema no ar"
-      methodSubtitle="Engenharia que segura a operação"
+      methodHeading="Da regra de negócio a uma API pronta para produção."
+      methodSubtitle="Dados e segurança entram na arquitetura desde o começo."
       methodSteps={methodSteps}
-      faqHeading="Dúvidas sobre backend"
+      technologies={["Node.js", "Next.js", "Fastify", "Express", "PostgreSQL", "Supabase", "JWT", "Webhooks", "REST APIs", "Docker", "Vercel"]}
+      relatedCase={{
+        name: "FDMC API",
+        category: "Backend · API · Arquitetura",
+        image: "/Projetos/FDMCapi.png",
+        href: "/portfolio/3",
+      }}
+      faqHeading="Questões importantes antes de definir um backend ou uma API."
       faqItems={faqItems}
     />
   );

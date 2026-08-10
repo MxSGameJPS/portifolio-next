@@ -4,52 +4,41 @@ const SITE = "https://saulopavanello.com.br";
 const PAGE = `${SITE}/web-apps`;
 
 export const metadata = {
-  title: "Desenvolvimento de Web Apps & Sistemas",
+  title: { absolute: "Web Apps & Sistemas | Saulo Pavanello — Software Engineer" },
   description:
-    "Criação de Web Apps e Sistemas Personalizados com React, Next.js e Node.js. Soluções escaláveis e de alta performance para o seu negócio.",
+    "Desenvolvimento de sistemas web, SaaS, dashboards e portais sob medida com React, Next.js, Node.js, APIs e PostgreSQL.",
   alternates: { canonical: "/web-apps" },
   openGraph: {
-    title: "Desenvolvimento de Web Apps & Sistemas | Saulo Pavanello",
+    title: "Web Apps & Sistemas | Saulo Pavanello — Software Engineer",
     description:
-      "Transforme processos complexos em softwares inteligentes. Desenvolvimento sob medida para máxima eficiência.",
+      "Software sob medida para centralizar processos, automatizar tarefas e conectar dados, usuários e ferramentas.",
     url: PAGE,
-    images: ["/CriacaoDeSites/hero.png"],
+    images: ["/ogimage.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Web Apps & Sistemas | Saulo Pavanello — Software Engineer",
+    description: "SaaS, sistemas web, dashboards e portais construídos em torno da operação real do negócio.",
+    images: ["/ogimage.png"],
   },
 };
 
-export default function WebAppsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  // Connected @graph: the Service links to the site-wide Person (#person) and the
-  // FAQPage mirrors exactly the questions rendered on the page — both eligible for
-  // Google rich results.
+export default function WebAppsLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
         "@id": `${PAGE}/#service`,
-        name: "Desenvolvimento de Web Apps & Sistemas Personalizados",
+        name: "Desenvolvimento de Web Apps & Sistemas",
         serviceType: "Web Application Development",
         url: PAGE,
-        image: `${SITE}/CriacaoDeSites/hero.png`,
+        image: `${SITE}/ogimage.png`,
         description:
-          "Desenvolvimento de aplicações web complexas, dashboards e sistemas de gestão personalizados com React, Next.js e Node.js.",
+          "Desenvolvimento de sistemas web, SaaS, dashboards e portais sob medida.",
         provider: { "@id": `${SITE}/#person` },
         areaServed: { "@type": "Country", name: "Brasil" },
         mainEntityOfPage: PAGE,
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: "Web Apps & Sistemas",
-          itemListElement: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Sistemas de Gestão Sob Medida" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dashboards & Business Intelligence" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Integração de APIs (ERP/CRM)" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Portais e Áreas de Cliente" } },
-          ],
-        },
       },
       {
         "@type": "FAQPage",
@@ -65,10 +54,7 @@ export default function WebAppsLayout({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {children}
     </>
   );
