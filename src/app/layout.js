@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL("https://saulopavanello.com.br"),
   title: {
-    default: "Desenvolvimento de Sites e Apps",
+    default: "Saulo Pavanello | Software Engineer",
     template: "%s | Saulo Pavanello",
   },
   alternates: {
@@ -68,25 +68,26 @@ export const metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://saulopavanello.com.br",
-    title: "Saulo Pavanello | Engenheiro de Software FullStack",
+    title: "Saulo Pavanello | Software Engineer",
     description:
-      "Transformo desafios de negócio em software de ponta. Especialista em React, React Native e Arquitetura de Sistemas.",
-    siteName: "Saulo Pavanello Portfólio",
+      "Eu construo software para negócios que querem crescer. SaaS, sistemas web, aplicativos, APIs e experiências digitais com foco em resultado real.",
+    siteName: "Saulo Pavanello",
     images: [
       {
-        url: "/Hero.png", // Using the Hero image as default OG Image
+        url: "/api/social-card",
         width: 1200,
         height: 630,
-        alt: "Saulo Pavanello - FullStack Developer",
+        type: "image/png",
+        alt: "Saulo Pavanello — Software Engineer | SaaS, sistemas web, aplicativos e APIs",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saulo Pavanello | Engenheiro de Software FullStack",
+    title: "Saulo Pavanello | Software Engineer",
     description:
-      "Desenvolvedor FullStack focado em React, Next.js e Mobile. Vamos construir o futuro do seu negócio.",
-    images: ["/Hero.png"],
+      "Eu construo software para negócios que querem crescer. SaaS, sistemas web, aplicativos, APIs e experiências digitais.",
+    images: ["/api/social-card"],
     creator: "@saulopavanello",
   },
 };
@@ -141,16 +142,16 @@ export default function RootLayout({ children }) {
           "System Architecture",
           "SEO",
         ],
-        image: `${SITE}/Hero.png`,
+        image: `${SITE}/api/social-card`,
         description:
-          "Desenvolvedor FullStack Especialista. Transformo ideias complexas em soluções digitais de alta performance.",
+          "Software Engineer focado em SaaS, sistemas web, aplicativos, APIs e produtos digitais de alta performance.",
         homeLocation: baseCity,
       },
       {
         "@type": "WebSite",
         "@id": `${SITE}/#website`,
         url: SITE,
-        name: "Saulo Pavanello — Desenvolvimento de Sites e Apps",
+        name: "Saulo Pavanello — Software Engineer",
         inLanguage: "pt-BR",
         publisher: { "@id": `${SITE}/#person` },
       },
@@ -159,9 +160,9 @@ export default function RootLayout({ children }) {
         "@id": `${SITE}/#service`,
         name: "Saulo Pavanello — Desenvolvimento de Software",
         url: SITE,
-        image: `${SITE}/Hero.png`,
+        image: `${SITE}/api/social-card`,
         description:
-          "Desenvolvimento de sites, aplicativos mobile, APIs e sistemas web sob medida com React, Next.js e Node.js.",
+          "Desenvolvimento de SaaS, sistemas web, aplicativos mobile, APIs e produtos digitais sob medida.",
         founder: { "@id": `${SITE}/#person` },
         priceRange: "$$",
         sameAs,
