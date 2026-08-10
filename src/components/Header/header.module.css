@@ -236,15 +236,17 @@
     transform 0.2s ease,
     background-color 0.2s ease,
     border-color 0.2s ease,
+    color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .headerCta:hover,
 .mobileCta:hover {
-  background: #0a2342;
-  border-color: #0a2342;
+  background: #c9973c;
+  border-color: #c9973c;
+  color: #171717;
   transform: translateY(-1px);
-  box-shadow: 0 13px 28px rgba(10, 35, 66, 0.16);
+  box-shadow: 0 13px 28px rgba(201, 151, 60, 0.2);
 }
 
 .mobileCtaItem {
