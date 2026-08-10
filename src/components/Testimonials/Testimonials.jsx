@@ -1,14 +1,11 @@
 "use client";
+
 import { useState, useEffect, useCallback, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { FaArrowLeft, FaArrowRight, FaQuoteLeft } from "react-icons/fa";
 import styles from "./testimonials.module.css";
 import data from "./testimonials.json";
-import Image from "next/image";
-import { FaChevronLeft, FaChevronRight, FaStar, FaQuoteLeft } from "react-icons/fa";
 
 const AUTOPLAY_MS = 6500;
 
@@ -17,7 +14,7 @@ function initials(name = "") {
     .trim()
     .split(/\s+/)
     .slice(0, 2)
-    .map((w) => w[0])
+    .map((word) => word[0])
     .join("")
     .toUpperCase();
 }
@@ -26,6 +23,7 @@ export default function Testimonials() {
   const reduce = useReducedMotion();
   const [[index, direction], setState] = useState([0, 0]);
   const [paused, setPaused] = useState(false);
+  const regionRef = useRef(null);
 
   const count = data.length;
   const active = data[index];
@@ -37,40 +35,43 @@ export default function Testimonials() {
     [count],
   );
 
-  const goTo = (i) => {
-    setState(([prev]) => [i, i > prev ? 1 : -1]);
+  const goTo = (nextIndex) => {
+    setState(([prev]) => [nextIndex, nextIndex > prev ? 1 : -1]);
   };
 
-  // Autoplay — pauses on hover/focus and when reduced motion is requested
   useEffect(() => {
     if (paused || reduce) return;
-    const t = setInterval(() => go(1), AUTOPLAY_MS);
-    return () => clearInterval(t);
+    const timer = setInterval(() => go(1), AUTOPLAY_MS);
+    return () => clearInterval(timer);
   }, [paused, reduce, go]);
 
-  // Keyboard nav within the region
-  const regionRef = useRef(null);
-  const onKeyDown = (e) => {
-    if (e.key === "ArrowLeft") go(-1);
-    if (e.key === "ArrowRight") go(1);
+  const onKeyDown = (event) => {
+    if (event.key === "ArrowLeft") go(-1);
+    if (event.key === "ArrowRight") go(1);
   };
 
   const slideVariants = {
     enter: (dir) =>
-      reduce ? { opacity: 0 } : { opacity: 0, x: dir > 0 ? 60 : -60 },
+      reduce ? { opacity: 0 } : { opacity: 0, x: dir > 0 ? 42 : -42 },
     center: { opacity: 1, x: 0 },
     exit: (dir) =>
-      reduce ? { opacity: 0 } : { opacity: 0, x: dir > 0 ? -60 : 60 },
+      reduce ? { opacity: 0 } : { opacity: 0, x: dir > 0 ? -42 : 42 },
   };
 
   return (
     <section className={styles.section} id="depoimentos">
       <div className={styles.container}>
         <header className={styles.header}>
-          <span className={styles.eyebrow}>Depoimentos</span>
-          <h2 className={styles.title}>
-            O que falam de mim<span className={styles.dot}>.</span>
-          </h2>
+          <div>
+            <span className={styles.eyebrow}>CLIENTES & PARCERIAS</span>
+            <h2 className={styles.title}>
+              O resultado também aparece no que <em>fica depois da entrega.</em>
+            </h2>
+          </div>
+          <p className={styles.intro}>
+            Tecnologia boa resolve o problema. Uma parceria boa deixa confiança,
+            clareza e vontade de construir o próximo passo juntos.
+          </p>
         </header>
 
         <div
@@ -86,14 +87,6 @@ export default function Testimonials() {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
-          <button
-            className={`${styles.navButton} ${styles.navLeft}`}
-            onClick={() => go(-1)}
-            aria-label="Depoimento anterior"
-          >
-            <FaChevronLeft size={18} aria-hidden="true" />
-          </button>
-
           <div className={styles.viewport}>
             <AnimatePresence mode="wait" custom={direction}>
               <motion.figure
@@ -104,88 +97,101 @@ export default function Testimonials() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
                 drag={reduce ? false : "x"}
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.18}
-                onDragEnd={(e, info) => {
+                dragElastic={0.16}
+                onDragEnd={(event, info) => {
                   if (info.offset.x < -80) go(1);
                   else if (info.offset.x > 80) go(-1);
                 }}
               >
-                <FaQuoteLeft className={styles.quoteIcon} aria-hidden="true" />
+                <div className={styles.quotePanel}>
+                  <div className={styles.quoteTopline}>
+                    <span className={styles.caseNumber}>
+                      {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+                    </span>
+                    <FaQuoteLeft className={styles.quoteIcon} aria-hidden="true" />
+                  </div>
 
-                <div className={styles.stars} aria-label="5 de 5 estrelas">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <FaStar key={i} aria-hidden="true" />
-                  ))}
+                  <blockquote className={styles.text}>{active.text}</blockquote>
+
+                  <div className={styles.controls} aria-label="Navegação dos depoimentos">
+                    <button
+                      className={styles.navButton}
+                      onClick={() => go(-1)}
+                      aria-label="Depoimento anterior"
+                    >
+                      <FaArrowLeft aria-hidden="true" />
+                    </button>
+                    <button
+                      className={styles.navButton}
+                      onClick={() => go(1)}
+                      aria-label="Próximo depoimento"
+                    >
+                      <FaArrowRight aria-hidden="true" />
+                    </button>
+                  </div>
                 </div>
 
-                <blockquote className={styles.text}>{active.text}</blockquote>
-
-                <figcaption className={styles.author}>
-                  <span className={styles.avatar} aria-hidden="true">
-                    {initials(active.person)}
-                  </span>
-                  <span className={styles.authorMeta}>
-                    <span className={styles.name}>{active.person}</span>
-                    <span className={styles.role}>
-                      {active.role} · {active.company}
-                    </span>
-                  </span>
-                  <span className={styles.logoWrap}>
+                <figcaption className={styles.authorPanel}>
+                  <div className={styles.companyMark}>
                     <Image
                       src={active.logo}
                       alt={`Logo ${active.company}`}
-                      width={110}
-                      height={44}
+                      width={150}
+                      height={64}
                       className={styles.companyLogo}
                     />
-                  </span>
+                  </div>
+
+                  <div className={styles.authorBlock}>
+                    <span className={styles.avatar} aria-hidden="true">
+                      {initials(active.person)}
+                    </span>
+                    <span className={styles.authorMeta}>
+                      <strong className={styles.name}>{active.person}</strong>
+                      <span className={styles.role}>{active.role}</span>
+                      <span className={styles.company}>{active.company}</span>
+                    </span>
+                  </div>
+
+                  <span className={styles.relationship}>Projeto entregue · parceria construída</span>
                 </figcaption>
               </motion.figure>
             </AnimatePresence>
           </div>
-
-          <button
-            className={`${styles.navButton} ${styles.navRight}`}
-            onClick={() => go(1)}
-            aria-label="Próximo depoimento"
-          >
-            <FaChevronRight size={18} aria-hidden="true" />
-          </button>
         </div>
 
-        {/* Wall of clients — clicking a logo jumps to that testimonial */}
-        <div className={styles.thumbs} role="tablist" aria-label="Selecionar depoimento">
-          {data.map((item, i) => {
-            const isActive = i === index;
-            return (
-              <button
-                key={item.id}
-                className={`${styles.thumb} ${isActive ? styles.thumbActive : ""}`}
-                onClick={() => goTo(i)}
-                role="tab"
-                aria-selected={isActive}
-                aria-label={`Depoimento de ${item.person}, ${item.company}`}
-              >
-                <Image
-                  src={item.logo}
-                  alt=""
-                  width={84}
-                  height={34}
-                  className={styles.thumbLogo}
-                />
-                {isActive && (
-                  <motion.span
-                    layoutId="thumbRing"
-                    className={styles.thumbRing}
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+        <div className={styles.clientIndex}>
+          <span className={styles.indexLabel}>Quem já confiou no meu trabalho</span>
+          <div className={styles.thumbs} role="tablist" aria-label="Selecionar depoimento">
+            {data.map((item, itemIndex) => {
+              const isActive = itemIndex === index;
+              return (
+                <button
+                  key={item.id}
+                  className={`${styles.thumb} ${isActive ? styles.thumbActive : ""}`}
+                  onClick={() => goTo(itemIndex)}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-label={`Depoimento de ${item.person}, ${item.company}`}
+                >
+                  <span className={styles.thumbNumber}>
+                    {String(itemIndex + 1).padStart(2, "0")}
+                  </span>
+                  <Image
+                    src={item.logo}
+                    alt=""
+                    width={92}
+                    height={40}
+                    className={styles.thumbLogo}
                   />
-                )}
-              </button>
-            );
-          })}
+                  <span className={styles.thumbName}>{item.company}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
