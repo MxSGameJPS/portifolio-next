@@ -3,7 +3,7 @@
   overflow: hidden;
   background: #151412;
   color: #f5f1eb;
-  padding: 5.5rem 1.5rem 1.4rem;
+  padding: 4rem 1.5rem 1.25rem;
   font-family: var(--font-body);
 }
 
@@ -13,47 +13,57 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 8% 0%, rgba(201, 151, 60, 0.1), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 28%);
+    radial-gradient(circle at 7% 0%, rgba(201, 151, 60, 0.09), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 24%);
 }
 
 .container {
   position: relative;
   z-index: 1;
-  width: min(100%, 1440px);
+  width: min(100%, 1460px);
   margin: 0 auto;
 }
 
 .topGrid {
   display: grid;
-  grid-template-columns: minmax(300px, 1.5fr) minmax(150px, 0.6fr) minmax(180px, 0.8fr) minmax(260px, 1fr);
-  gap: clamp(2rem, 4vw, 5rem);
+  grid-template-columns:
+    minmax(340px, 1.42fr)
+    minmax(140px, 0.5fr)
+    minmax(180px, 0.68fr)
+    minmax(265px, 0.9fr);
+  gap: clamp(2rem, 3.4vw, 4.25rem);
   align-items: start;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 }
 
 .brandColumn {
-  max-width: 520px;
+  max-width: 455px;
 }
 
 .logoLink {
-  display: inline-flex;
-  margin-bottom: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 255px;
+  height: 88px;
+  margin-bottom: 1.15rem;
+  overflow: hidden;
 }
 
 .logo {
-  width: clamp(190px, 18vw, 250px);
-  height: auto;
+  flex: 0 0 auto;
+  width: 255px;
+  height: 255px;
+  max-width: none;
   object-fit: contain;
-  object-position: left center;
   filter: none;
 }
 
 .eyebrow,
 .groupTitle {
   display: block;
-  margin: 0 0 1rem;
-  font-size: 0.72rem;
+  margin: 0 0 0.8rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -61,33 +71,33 @@
 }
 
 .brandStatement {
-  max-width: 480px;
+  max-width: 420px;
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3vw, 3.35rem);
-  line-height: 1.02;
+  font-size: clamp(2rem, 2.45vw, 2.85rem);
+  line-height: 1.03;
   font-weight: 600;
   letter-spacing: -0.035em;
   color: #f5f1eb;
 }
 
 .brandText {
-  max-width: 500px;
-  margin: 1.4rem 0 0;
-  font-size: 0.95rem;
-  line-height: 1.8;
+  max-width: 430px;
+  margin: 1.1rem 0 0;
+  font-size: 0.91rem;
+  line-height: 1.7;
   color: rgba(245, 241, 235, 0.58);
 }
 
 .linkColumn,
 .contactColumn {
-  padding-top: 0.3rem;
+  padding-top: 0.2rem;
 }
 
 .linkList {
   display: flex;
   flex-direction: column;
-  gap: 0.78rem;
+  gap: 0.68rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -97,7 +107,7 @@
   position: relative;
   display: inline-flex;
   width: fit-content;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: rgba(245, 241, 235, 0.66);
   transition: color 0.2s ease, transform 0.2s ease;
 }
@@ -125,11 +135,11 @@
 }
 
 .contactText {
-  max-width: 290px;
-  margin: 0 0 1.4rem;
+  max-width: 280px;
+  margin: 0 0 1.15rem;
   color: rgba(245, 241, 235, 0.6);
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .cta {
@@ -137,12 +147,12 @@
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  min-height: 48px;
-  padding: 0.82rem 1.15rem;
+  min-height: 46px;
+  padding: 0.78rem 1.1rem;
   background: #f5f1eb;
   border: 1px solid #f5f1eb;
   color: #171717;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
@@ -158,9 +168,9 @@
 .email {
   display: block;
   width: fit-content;
-  margin-top: 1.25rem;
+  margin-top: 1.05rem;
   color: rgba(245, 241, 235, 0.72);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   transition: color 0.2s ease;
 }
 
@@ -173,15 +183,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 1.65rem 0;
+  padding: 1.35rem 0;
   border-top: 1px solid rgba(245, 241, 235, 0.1);
   border-bottom: 1px solid rgba(245, 241, 235, 0.1);
 }
 
 .serviceArea {
   margin: 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.035em;
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
   color: rgba(245, 241, 235, 0.46);
 }
 
@@ -190,20 +200,20 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.75rem;
+  gap: 0.7rem;
 }
 
 .socialLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.42rem;
   color: rgba(245, 241, 235, 0.62);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .socialLink svg {
-  font-size: 1rem;
+  font-size: 0.96rem;
 }
 
 .socialLink:hover {
@@ -216,8 +226,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding-top: 1.35rem;
-  font-size: 0.7rem;
+  padding-top: 1.1rem;
+  font-size: 0.68rem;
   color: rgba(245, 241, 235, 0.34);
 }
 
@@ -255,8 +265,13 @@
 }
 
 @media (max-width: 1100px) {
+  .footer {
+    padding-top: 4.5rem;
+  }
+
   .topGrid {
     grid-template-columns: 1.35fr 0.7fr 0.9fr;
+    gap: 2.5rem;
   }
 
   .contactColumn {
@@ -305,8 +320,14 @@
     max-width: none;
   }
 
+  .logoLink {
+    width: 210px;
+    height: 78px;
+  }
+
   .logo {
-    width: 200px;
+    width: 210px;
+    height: 210px;
   }
 
   .brandStatement {
@@ -352,6 +373,16 @@
 
   .topGrid {
     grid-template-columns: 1fr;
+  }
+
+  .logoLink {
+    width: 190px;
+    height: 72px;
+  }
+
+  .logo {
+    width: 190px;
+    height: 190px;
   }
 
   .linkColumn {
