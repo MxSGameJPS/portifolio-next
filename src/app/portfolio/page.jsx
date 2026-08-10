@@ -91,7 +91,7 @@ export default function PortfolioPage() {
           <div className={styles.heroTexture} aria-hidden="true" />
           <motion.div
             className={styles.heroContent}
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
@@ -214,12 +214,12 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={filter}
                 className={styles.projectsGrid}
                 variants={containerVariants}
-                initial="hidden"
+                initial={false}
                 animate="show"
                 exit={{ opacity: 0 }}
               >
