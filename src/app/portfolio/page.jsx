@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { PiArrowUpRightBold } from "react-icons/pi";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import styles from "./page.module.css";
-import ProjectCard from "../../components/ProjectCard/ProjectCard";
-import { PiArrowUpRightBold } from "react-icons/pi";
 import projetosData from "../../components/PortfolioSection/projetosData.json";
+import styles from "./page.module.css";
 
-// Short, clean tech chips derived from the verbose tech_stack strings
 const TECH_KEYWORDS = [
   "Next.js",
   "React Native",
@@ -30,43 +29,49 @@ const TECH_KEYWORDS = [
   "Expo",
 ];
 
-function pickTech(stack = []) {
+const FILTERS = ["Todos", "SaaS", "Web", "Mobile", "APIs"];
+
+function pickTech(stack = [], limit = 3) {
   const joined = stack.join(" ");
-  const found = TECH_KEYWORDS.filter((k) => joined.includes(k));
+  const found = TECH_KEYWORDS.filter((keyword) => joined.includes(keyword));
   const cleaned = found.includes("React Native")
-    ? found.filter((k) => k !== "React")
+    ? found.filter((keyword) => keyword !== "React")
     : found;
-  return cleaned.slice(0, 3);
+  return cleaned.slice(0, limit);
 }
 
-const TAG_LABELS = {
-  TODOS: "Todos",
-  Web: "Web",
-  Mobile: "Mobile",
-  "API - BackEnd": "APIs & Back-end",
-};
+function getProjectGroup(project) {
+  if (project.tag === "Mobile") return "Mobile";
+  if (project.tag === "API - BackEnd") return "APIs";
+  if ((project.category || "").toLowerCase().includes("saas")) return "SaaS";
+  return "Web";
+}
 
 export default function PortfolioPage() {
-  const [filter, setFilter] = useState("TODOS");
-  const reduce = useReducedMotion();
+  const [filter, setFilter] = useState("Todos");
+  const reduceMotion = useReducedMotion();
 
-  const allTags = ["TODOS", ...new Set(projetosData.portfolio.map((p) => p.tag))];
+  const projects = projetosData.portfolio;
+  const featured =
+    projects.find((project) =>
+      project.name.toLowerCase().includes("socialjurídico")
+    ) || projects[0];
 
-  const filteredProjects =
-    filter === "TODOS"
-      ? projetosData.portfolio
-      : projetosData.portfolio.filter((p) => p.tag === filter);
+  const filteredProjects = projects
+    .filter((project) => project.id !== featured.id)
+    .filter((project) => filter === "Todos" || getProjectGroup(project) === filter);
 
-  const container = {
+  const containerVariants = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.05 } },
+    show: { transition: { staggerChildren: 0.045 } },
   };
-  const item = {
-    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
+
+  const itemVariants = {
+    hidden: reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -75,125 +80,207 @@ export default function PortfolioPage() {
       <Header />
 
       <main>
-        {/* HERO */}
         <section className={styles.heroSection}>
-          <div className={styles.heroGrid} aria-hidden="true" />
+          <div className={styles.heroTexture} aria-hidden="true" />
           <motion.div
             className={styles.heroContent}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className={styles.eyebrow}>Portfólio</span>
+            <p className={styles.eyebrow}>CASES & PRODUTOS</p>
             <h1 className={styles.headline}>
-              Projetos que resolvem problemas reais
+              Software construído para sair do briefing e entrar em operação.
             </h1>
             <p className={styles.introText}>
-              Uma seleção do que já construí — muitos já no ar. Cada projeto aqui
-              é um desafio de negócio resolvido, do design ao banco de dados. Use
-              os filtros para navegar por área.
+              Uma seleção de produtos, sistemas, aplicativos e APIs que já passaram
+              da ideia para o código — e do código para usuários reais. Cada projeto
+              mostra uma combinação diferente de produto, experiência e engenharia.
             </p>
 
-            <ul className={styles.trustRow}>
-              <li className={styles.trustItem}>
-                <span className={styles.trustValue}>
-                  {projetosData.portfolio.length}
-                </span>
-                <span className={styles.trustLabel}>projetos entregues</span>
-              </li>
-              <li className={styles.trustItem}>
-                <span className={styles.trustValue}>Web · Mobile · APIs</span>
-                <span className={styles.trustLabel}>áreas de atuação</span>
-              </li>
-              <li className={styles.trustItem}>
-                <span className={styles.trustValue}>2+ anos</span>
-                <span className={styles.trustLabel}>de experiência</span>
-              </li>
-            </ul>
+            <div className={styles.heroFacts} aria-label="Resumo do portfólio">
+              <div>
+                <strong>{projects.length}</strong>
+                <span>projetos documentados</span>
+              </div>
+              <div>
+                <strong>Web · SaaS · Mobile · APIs</strong>
+                <span>produtos em diferentes frentes</span>
+              </div>
+              <div>
+                <strong>Arquitetura → deploy</strong>
+                <span>visão de ponta a ponta</span>
+              </div>
+            </div>
           </motion.div>
         </section>
 
-        {/* PROJECTS */}
-        <section className={styles.contentList}>
+        <section className={styles.featuredSection}>
           <div className={styles.container}>
-            <div className={styles.sectionHead}>
-              <span className={styles.eyebrowDark}>Projetos recentes</span>
-              <h2 className={styles.sectionHeading}>
-                Explore os trabalhos<span className={styles.dot}>.</span>
+            <div className={styles.sectionIntroGrid}>
+              <p className={styles.eyebrow}>CASE EM DESTAQUE</p>
+              <h2 className={styles.sectionTitle}>
+                Um produto real diz mais do que uma lista de tecnologias.
               </h2>
             </div>
 
-            {/* Filters */}
-            <div className={styles.filterContainer} role="tablist" aria-label="Filtrar projetos">
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  type="button"
-                  className={`${styles.filterButton} ${filter === tag ? styles.active : ""}`}
-                  onClick={() => setFilter(tag)}
-                  role="tab"
-                  aria-selected={filter === tag}
-                >
-                  {filter === tag && (
-                    <motion.span
-                      layoutId="filterPill"
-                      className={styles.filterPill}
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className={styles.filterLabel}>
-                    {TAG_LABELS[tag] || tag}
+            <Link
+              href={`/portfolio/${featured.id}`}
+              className={styles.featuredCase}
+              aria-label={`Ver case ${featured.name}`}
+            >
+              <div className={styles.featuredMedia}>
+                {featured.image ? (
+                  <Image
+                    src={featured.image}
+                    alt={featured.name}
+                    fill
+                    sizes="(max-width: 860px) 100vw, 58vw"
+                    className={styles.projectImage}
+                    priority
+                  />
+                ) : (
+                  <div className={styles.mediaFallback}>SP</div>
+                )}
+              </div>
+
+              <div className={styles.featuredCopy}>
+                <div>
+                  <p className={styles.caseMeta}>{featured.category}</p>
+                  <h3>{featured.name}</h3>
+                  <p className={styles.caseDescription}>{featured.description}</p>
+                </div>
+
+                <div>
+                  <div className={styles.techList}>
+                    {pickTech(featured.tech_stack, 5).map((tech) => (
+                      <span key={tech}>{tech}</span>
+                    ))}
+                  </div>
+                  <span className={styles.caseLink}>
+                    Ver case completo <PiArrowUpRightBold aria-hidden="true" />
                   </span>
-                </button>
-              ))}
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        <section className={styles.librarySection}>
+          <div className={styles.container}>
+            <div className={styles.libraryHeader}>
+              <div>
+                <p className={styles.eyebrow}>BIBLIOTECA DE PROJETOS</p>
+                <h2 className={styles.sectionTitle}>Explore por tipo de produto.</h2>
+              </div>
+
+              <div
+                className={styles.filterContainer}
+                role="tablist"
+                aria-label="Filtrar projetos"
+              >
+                {FILTERS.map((label) => (
+                  <button
+                    key={label}
+                    type="button"
+                    className={`${styles.filterButton} ${
+                      filter === label ? styles.active : ""
+                    }`}
+                    onClick={() => setFilter(label)}
+                    role="tab"
+                    aria-selected={filter === label}
+                  >
+                    {filter === label && (
+                      <motion.span
+                        layoutId="portfolioFilter"
+                        className={styles.filterMarker}
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span>{label}</span>
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Grid */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={filter}
                 className={styles.projectsGrid}
-                variants={container}
+                variants={containerVariants}
                 initial="hidden"
                 animate="show"
+                exit={{ opacity: 0 }}
               >
                 {filteredProjects.map((project) => (
-                  <motion.div key={project.id} variants={item}>
+                  <motion.article
+                    key={project.id}
+                    variants={itemVariants}
+                    className={styles.projectCard}
+                  >
                     <Link
                       href={`/portfolio/${project.id}`}
-                      className={styles.cardLink}
+                      className={styles.projectCardLink}
                     >
-                      <ProjectCard
-                        imageSrc={
-                          project.image && project.image !== ""
-                            ? project.image
-                            : "/Hero.png"
-                        }
-                        title={project.name}
-                        altText={project.name}
-                        category={project.category}
-                        tech={pickTech(project.tech_stack)}
-                      />
+                      <div className={styles.cardMedia}>
+                        {project.image ? (
+                          <Image
+                            src={project.image}
+                            alt={project.name}
+                            fill
+                            sizes="(max-width: 680px) 100vw, (max-width: 1050px) 50vw, 33vw"
+                            className={styles.projectImage}
+                          />
+                        ) : (
+                          <div className={styles.mediaFallback}>
+                            {String(project.id).padStart(2, "0")}
+                          </div>
+                        )}
+                        <span className={styles.typeBadge}>{getProjectGroup(project)}</span>
+                      </div>
+
+                      <div className={styles.cardBody}>
+                        <p className={styles.cardCategory}>{project.category}</p>
+                        <h3>{project.name}</h3>
+                        <p className={styles.cardDescription}>{project.description}</p>
+
+                        <div className={styles.cardFooter}>
+                          <div className={styles.techListCompact}>
+                            {pickTech(project.tech_stack).map((tech) => (
+                              <span key={tech}>{tech}</span>
+                            ))}
+                          </div>
+                          <PiArrowUpRightBold
+                            className={styles.cardArrow}
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
                     </Link>
-                  </motion.div>
+                  </motion.article>
                 ))}
               </motion.div>
             </AnimatePresence>
+
+            {filteredProjects.length === 0 && (
+              <p className={styles.emptyState}>
+                Nenhum projeto desta categoria está publicado aqui ainda.
+              </p>
+            )}
           </div>
         </section>
 
-        {/* CTA BAND */}
-        <section className={styles.ctaBand}>
-          <div className={styles.ctaBandInner}>
-            <h2 className={styles.ctaBandTitle}>
-              O próximo projeto pode ser o seu
-            </h2>
-            <p className={styles.ctaBandText}>
-              Me conte a sua ideia. A primeira conversa é gratuita e sem
-              compromisso.
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaInner}>
+            <p className={styles.eyebrowLight}>PRÓXIMO CASE</p>
+            <h2>O próximo produto pode começar com uma conversa.</h2>
+            <p>
+              Se você tem um problema de negócio, uma operação manual demais ou
+              uma ideia de produto, eu posso ajudar a transformar o contexto em uma
+              solução técnica viável.
             </p>
             <Link href="/contato" className={styles.ctaButton}>
-              Falar comigo <PiArrowUpRightBold />
+              Falar sobre um projeto <PiArrowUpRightBold aria-hidden="true" />
             </Link>
           </div>
         </section>
