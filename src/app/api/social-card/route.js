@@ -2,9 +2,11 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export async function GET(request) {
-  const portraitUrl = new URL("/contact-saulo.png", request.url).toString();
-  const logoUrl = new URL("/Logo/logohorizontal.png", request.url).toString();
+const SITE_URL = "https://www.saulopavanello.com.br";
+
+export async function GET() {
+  const portraitUrl = `${SITE_URL}/contact-saulo.png`;
+  const logoUrl = `${SITE_URL}/Logo/logohorizontal.png`;
 
   return new ImageResponse(
     (
