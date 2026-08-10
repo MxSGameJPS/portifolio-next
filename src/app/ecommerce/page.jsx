@@ -1,166 +1,68 @@
-"use client";
-
 import ServicePage from "../_services/ServicePage";
 import { faqItems } from "./data";
-import {
-  PiCpuBold,
-  PiLockKeyBold,
-  PiPlugsBold,
-  PiChartBarBold,
-  PiCodeBold,
-  PiShoppingCartBold,
-  PiCreditCardBold,
-  PiStorefrontBold,
-  PiDeviceMobileBold,
-} from "react-icons/pi";
 
 const features = [
-  {
-    title: "Checkout rápido, menos carrinho abandonado",
-    description:
-      "Menos etapas até o pagamento. Quanto mais curto o caminho entre escolher e pagar, menos gente desiste na hora de comprar.",
-  },
-  {
-    title: "Pix, cartão e boleto",
-    description:
-      "Integração com Mercado Pago, Stripe ou Pagar.me: o cliente paga do jeito que preferir, com segurança e confirmação automática.",
-  },
-  {
-    title: "Frete calculado automático",
-    description:
-      "Cálculo por CEP com Correios e Melhor Envio direto no carrinho, sem surpresa no valor da entrega no fim da compra.",
-  },
-  {
-    title: "Você gerencia produtos e pedidos",
-    description:
-      "Painel próprio para cadastrar produto, preço e promoção e acompanhar cada pedido, sem depender de programador para mudar nada.",
-  },
-  {
-    title: "Vende bem no celular",
-    description:
-      "A maioria compra pelo telefone. Loja e checkout ajustados para tela pequena, do banner ao botão de pagar.",
-  },
-  {
-    title: "Integra com ERP e marketplaces",
-    description:
-      "Conecto a loja com Bling, nota fiscal e marketplaces para estoque e pedidos ficarem organizados em um lugar só.",
-  },
+  { title: "Catálogo e experiência de compra", description: "Categorias, busca, produto, variações e informações são organizados para reduzir dúvida e deixar o caminho até o carrinho mais direto." },
+  { title: "Carrinho e checkout próprios", description: "Fluxo de compra adaptado às regras da operação, com menos etapas desnecessárias e integração aos meios de pagamento definidos pelo negócio." },
+  { title: "Pix, cartão e confirmação automática", description: "Integrações com provedores de pagamento permitem confirmar transações e atualizar pedidos sem depender de conferência manual." },
+  { title: "Frete e logística", description: "Cálculo por CEP, regras de entrega e integração com serviços logísticos podem entrar no checkout de acordo com a operação real." },
+  { title: "Painel de produtos e pedidos", description: "Cadastro, preço, estoque, promoção e status de pedido ficam disponíveis em uma área administrativa desenhada para a rotina da loja." },
+  { title: "ERP e canais conectados", description: "Bling, marketplaces, serviços fiscais e outros sistemas podem compartilhar estoque e pedidos para reduzir duplicidade operacional." },
 ];
 
 const benefits = [
-  {
-    icon: <PiShoppingCartBold />,
-    text: "Loja sua, sem mensalidade de plataforma nem comissão por venda.",
-  },
-  {
-    icon: <PiCreditCardBold />,
-    text: "Pagamento integrado e seguro: Pix, cartão e boleto prontos no lançamento.",
-  },
-  {
-    icon: <PiDeviceMobileBold />,
-    text: "Feita para vender no celular, onde a maior parte dos clientes compra.",
-  },
+  { text: "Uma loja que pode acompanhar regras comerciais próprias sem ficar limitada ao tema de uma plataforma." },
+  { text: "Checkout, pagamento, estoque e operação conectados dentro da mesma experiência de venda." },
+  { text: "Código e arquitetura que permitem evoluir a loja como produto digital ao longo do tempo." },
 ];
 
 const differentials = [
-  {
-    icon: <PiCpuBold />,
-    title: "Tecnologia atual",
-    text: "React e Next.js: loja que abre na hora. Site lento espanta comprador antes mesmo de ver o produto.",
-  },
-  {
-    icon: <PiLockKeyBold />,
-    title: "Pagamento seguro",
-    text: "Checkout com criptografia e provedores confiáveis. Os dados do cartão nunca passam soltos pela sua loja.",
-  },
-  {
-    icon: <PiStorefrontBold />,
-    title: "Do seu jeito",
-    text: "As regras são as suas: atacado e varejo, cupom, frete grátis acima de um valor. Não é tema pronto revendido.",
-  },
-  {
-    icon: <PiPlugsBold />,
-    title: "Integra com o que você usa",
-    text: "Bling, Mercado Pago, marketplaces e WhatsApp conversando com a loja, sem trabalho manual duplicado.",
-  },
-  {
-    icon: <PiChartBarBold />,
-    title: "Você enxerga as vendas",
-    text: "Relatórios de pedidos e de comportamento para decidir promoção e estoque com base em número, não em achismo.",
-  },
-  {
-    icon: <PiCodeBold />,
-    title: "O código é seu",
-    text: "Entrego a loja completa no fim. Sem aluguel de plataforma e sem ficar refém de mensalidade.",
-  },
+  { title: "Regra comercial sob medida", text: "Atacado, varejo, cupons, faixas de preço, promoções e condições podem acompanhar o modelo real da empresa." },
+  { title: "Performance na vitrine", text: "Imagens, renderização e navegação são tratadas para não transformar catálogo grande em experiência lenta." },
+  { title: "Checkout integrado", text: "Pagamento e pedido conversam diretamente, reduzindo conferência manual e inconsistência de status." },
+  { title: "Operação conectada", text: "ERP, estoque, fiscal, logística e comunicação podem compartilhar o mesmo fluxo conforme a necessidade do negócio." },
+  { title: "Dados para decisão", text: "Eventos e relatórios ajudam a enxergar comportamento de compra, abandono e desempenho das ações comerciais." },
+  { title: "Loja como ativo próprio", text: "A experiência pode ser evoluída sem ficar presa ao limite visual e funcional de um construtor genérico." },
 ];
 
 const methodSteps = [
-  {
-    title: "Conversa & Catálogo",
-    description:
-      "Entendo seus produtos, seu público e suas regras de venda. Organizamos o catálogo e definimos as formas de pagamento e entrega.",
-  },
-  {
-    title: "Design da loja",
-    description:
-      "Crio a vitrine com a cara da sua marca: página de produto, carrinho e checkout pensados para o cliente comprar sem dúvida.",
-  },
-  {
-    title: "Desenvolvimento",
-    description:
-      "Coloco a loja de pé com catálogo, carrinho e painel de gestão, tudo rápido e preparado para o celular.",
-  },
-  {
-    title: "Pagamento & Frete",
-    description:
-      "Integro Pix, cartão e boleto e o cálculo de frete por CEP, com confirmação automática de pagamento e status do pedido.",
-  },
-  {
-    title: "Testes de compra",
-    description:
-      "Simulo compras de verdade em vários aparelhos para garantir que pagamento, frete e pedido funcionem antes de abrir para o público.",
-  },
-  {
-    title: "Lançamento & Acompanhamento",
-    description:
-      "Publico a loja no ar em ambiente seguro e acompanho os primeiros pedidos, ajustando o que for preciso para vender melhor.",
-  },
-];
-
-const trust = [
-  { value: "Pix & Cartão", label: "checkout integrado" },
-  { value: "Sem mensalidade", label: "de plataforma" },
-  { value: "2+ anos", label: "de experiência" },
+  { title: "Modelo de venda", description: "Mapeio catálogo, público, regras comerciais, meios de pagamento, estoque e logística." },
+  { title: "Jornada de compra", description: "Organizo descoberta, produto, carrinho e checkout para reduzir atrito entre intenção e pagamento." },
+  { title: "Arquitetura e integrações", description: "Defino dados, painel, pagamento, frete e conexão com ERP ou serviços externos." },
+  { title: "Desenvolvimento", description: "Construo a vitrine e a operação administrativa como partes do mesmo produto." },
+  { title: "Testes de ponta a ponta", description: "Valido variações, carrinho, pagamento, frete, pedido e comportamento em diferentes telas." },
+  { title: "Lançamento e evolução", description: "Publico a loja e deixo a base preparada para acompanhar catálogo, campanhas e novas regras de negócio." },
 ];
 
 export default function EcommercePage() {
   return (
     <ServicePage
-      eyebrow="Loja virtual sob medida"
-      headline="Uma loja virtual feita para vender"
-      subheadline="Checkout rápido, pagamento fácil e sua loja funcionando no celular — para transformar visita em venda."
-      description="Crio sua loja virtual do zero: catálogo, carrinho, Pix e cartão, cálculo de frete e um painel para você gerenciar produtos e pedidos. Sem mensalidade de plataforma — a loja é sua."
-      heroImage={{ src: "/CriacaoDeSites/ecommerce.png", alt: "Criação de Loja Virtual e E-commerce" }}
-      ctaPrimary="Quero minha loja"
-      ctaNote="Orçamento gratuito · resposta em até 24h · sem compromisso"
-      ctaSecondary={{ href: "/portfolio", label: "Ver projetos" }}
-      trust={trust}
-      quote="Loja bonita não vende sozinha. Vende quem tira o atrito do caminho: achar o produto, confiar e pagar em poucos toques."
+      eyebrow="E-COMMERCE"
+      headline="Uma operação de venda digital construída em torno do seu negócio."
+      subheadline="Da vitrine ao pagamento, com catálogo, checkout, logística e gestão trabalhando como um único produto."
+      description="Desenvolvo lojas virtuais sob medida para operações que precisam controlar a experiência de compra, as regras comerciais e as integrações sem ficar presas a uma plataforma genérica."
+      ctaPrimary="Conversar sobre a loja"
+      quote="E-commerce não termina no botão comprar. A experiência só funciona quando pedido, pagamento, estoque e entrega conversam."
       infoParagraphs={[
-        "Sua loja não é um template alugado. Monto do zero o catálogo, o carrinho e o checkout na sua identidade, com Pix, cartão e boleto integrados e cálculo de frete automático por CEP.",
-        "Você gerencia tudo por um painel simples: cadastra produto, acompanha pedido e controla estoque. E, se quiser, integro com Bling, Mercado Pago e marketplaces para centralizar a operação.",
+        "Uma loja virtual é interface para o cliente e sistema operacional para quem vende. Por isso catálogo, carrinho e checkout precisam nascer conectados ao que acontece depois do pagamento.",
+        "Quando existem regras específicas de atacado, estoque, ERP ou logística, uma arquitetura própria permite que a tecnologia acompanhe a empresa em vez de obrigar a empresa a acompanhar a ferramenta.",
       ]}
-      featuresHeading="O que a sua loja tem"
+      featuresHeading="As peças que conectam experiência de compra e operação."
       features={features}
       benefits={benefits}
-      ctaMid="Quero um orçamento"
-      diffHeading="Diferenciais da sua loja"
+      diffHeading="A loja deixa de ser um tema e passa a funcionar como produto."
       differentials={differentials}
-      methodHeading="Da vitrine à venda"
-      methodSubtitle="Loja pronta para receber o primeiro pedido"
+      methodHeading="Do catálogo à primeira compra processada de ponta a ponta."
+      methodSubtitle="Venda e operação desenhadas dentro do mesmo fluxo."
       methodSteps={methodSteps}
-      faqHeading="Dúvidas sobre e-commerce"
+      technologies={["Next.js", "React", "Node.js", "PostgreSQL", "Mercado Pago", "Stripe", "Bling ERP", "Cloudinary", "APIs de frete"]}
+      relatedCase={{
+        name: "Smile Pet Shop",
+        category: "E-commerce · B2B & B2C",
+        image: "/Projetos/SmilePetShop.png",
+        href: "/portfolio/1",
+      }}
+      faqHeading="O que costuma precisar de definição antes de construir uma loja própria."
       faqItems={faqItems}
     />
   );
