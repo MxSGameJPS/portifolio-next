@@ -1,233 +1,315 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./page.module.css";
 import { PiArrowUpRightBold } from "react-icons/pi";
-import {
-  SiUnity,
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiJavascript,
-  SiHtml5,
-  SiSass,
-  SiTailwindcss,
-  SiExpo,
-  SiAndroid,
-  SiNodedotjs,
-  SiExpress,
-  SiPostgresql,
-  SiGit,
-  SiGithub,
-  SiVercel,
-  SiFigma,
-  SiDocker,
-  SiMongodb,
-} from "react-icons/si";
-import {
-  FaJava,
-  FaMobileAlt,
-  FaServer,
-  FaDatabase,
-  FaTools,
-} from "react-icons/fa";
-import { TbBrandCSharp } from "react-icons/tb";
 
-const content = [
+const capabilities = [
   {
-    title: "Game Dev & Desktop",
-    icon: <SiUnity />,
-    text: "Minha paixão por código começou aqui. Com C# e Unity, desenvolvo experiências interativas e jogos 2D/3D. Também tenho base em Java, o que consolidou um alicerce forte em Orientação a Objetos.",
+    number: "01",
+    title: "Front-end & Product UI",
+    description:
+      "Interfaces de produto que precisam ser rápidas, claras e sustentáveis no longo prazo. Trabalho da arquitetura dos componentes à experiência final, cuidando de renderização, estado, responsividade, acessibilidade e performance.",
+    responsibilities: [
+      "SaaS, dashboards e sistemas web",
+      "SSR, SSG, ISR e Server Components",
+      "Design systems e interfaces responsivas",
+      "Animação e microinterações com propósito",
+    ],
     technologies: [
-      { name: "C#", icon: <TbBrandCSharp /> },
-      { name: "Unity", icon: <SiUnity /> },
-      { name: "Java (Iniciante)", icon: <FaJava /> },
+      "React 19",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "CSS Modules",
+      "Tailwind CSS",
+      "GSAP",
+      "Framer Motion",
     ],
   },
   {
-    title: "Front-end Moderno",
-    icon: <SiReact />,
-    text: "Construo interfaces rápidas, responsivas e acessíveis. Do HTML semântico à complexidade de aplicações SPA com Next.js 16, meu foco é performance e experiência do usuário (UX).",
+    number: "02",
+    title: "Backend & APIs",
+    description:
+      "A camada onde regras de negócio, integrações, autenticação e segurança precisam funcionar sem depender da interface. Estruturo serviços pensando em clareza, manutenção, contratos de API e evolução do produto.",
+    responsibilities: [
+      "APIs REST e integrações externas",
+      "Autenticação, autorização e regras de negócio",
+      "Pagamentos, webhooks e automações",
+      "Comunicação em tempo real",
+    ],
     technologies: [
-      { name: "React.js", icon: <SiReact /> },
-      { name: "Next.js 16", icon: <SiNextdotjs /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
-      { name: "JavaScript (ES6+)", icon: <SiJavascript /> },
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS/SASS", icon: <SiSass /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
+      "Node.js",
+      "Next.js API Routes",
+      "Server Actions",
+      "Fastify",
+      "Express",
+      "REST APIs",
+      "SignalR",
+      "WebSockets",
     ],
   },
   {
-    title: "Mobile Development",
-    icon: <FaMobileAlt />,
-    text: "Levo suas ideias para o bolso do usuário. Com React Native e Expo, crio aplicativos para Android e iOS publicados nas lojas — vários deles já no ar na Google Play.",
+    number: "03",
+    title: "Mobile",
+    description:
+      "Aplicativos que compartilham produto e engenharia com o ecossistema web, mas respeitam a experiência própria do dispositivo. Do fluxo de navegação à publicação, penso o mobile como produto — não como uma versão menor do site.",
+    responsibilities: [
+      "Aplicativos Android e iOS",
+      "Navegação e estado local",
+      "Notificações e recursos do dispositivo",
+      "Build, distribuição e publicação",
+    ],
     technologies: [
-      { name: "React Native", icon: <SiReact /> },
-      { name: "Expo", icon: <SiExpo /> },
-      { name: "Android Deploy", icon: <SiAndroid /> },
+      "React Native",
+      "Expo",
+      "Expo Router",
+      "EAS Build",
+      "AsyncStorage",
+      "Firebase",
+      "Expo Notifications",
     ],
   },
   {
-    title: "Back-end & API",
-    icon: <FaServer />,
-    text: "O motor que faz tudo funcionar. Desenvolvo APIs RESTful robustas e escaláveis, integrando meios de pagamento e cuidando da segurança dos dados.",
+    number: "04",
+    title: "Dados & Infraestrutura",
+    description:
+      "Produto em produção precisa de uma base confiável. Trabalho com modelagem de dados, storage, autenticação, deploy e infraestrutura buscando equilíbrio entre velocidade de entrega, segurança e possibilidade de crescimento.",
+    responsibilities: [
+      "Modelagem e persistência de dados",
+      "Storage, autenticação e políticas de acesso",
+      "Deploy, ambientes e CI/CD",
+      "CDN, segurança de borda e infraestrutura",
+    ],
     technologies: [
-      { name: "Node.js", icon: <SiNodedotjs /> },
-      { name: "Express", icon: <SiExpress /> },
-      { name: "API REST", icon: <FaServer /> },
+      "PostgreSQL",
+      "Supabase",
+      "Neon",
+      "Firebase",
+      "Docker",
+      "Vercel",
+      "Cloudflare",
+      "Git & GitHub",
     ],
   },
   {
-    title: "Banco de Dados",
-    icon: <FaDatabase />,
-    text: "Dados são o novo petróleo. Uso soluções modernas como PostgreSQL e Neon DB (Postgres serverless) para garantir alta disponibilidade e integridade da informação.",
+    number: "05",
+    title: "IA & Automação",
+    description:
+      "Uso Inteligência Artificial como parte de um fluxo de produto, não como enfeite. Integro modelos generativos a funcionalidades reais, com contexto, validação, tratamento de dados e fallback quando a operação exige previsibilidade.",
+    responsibilities: [
+      "Assistentes e recursos generativos",
+      "Geração e transformação de conteúdo",
+      "Fluxos documentais e processamento de PDFs",
+      "Automação de tarefas dentro do produto",
+    ],
     technologies: [
-      { name: "PostgreSQL", icon: <SiPostgresql /> },
-      { name: "MongoDB", icon: <SiMongodb /> },
-      { name: "Neon DB", icon: <FaDatabase /> },
+      "OpenAI",
+      "Google Gemini",
+      "IA Generativa",
+      "Automação",
+      "PDF & Documentos",
+      "Pipelines de conteúdo",
     ],
   },
   {
-    title: "Ferramentas & DevOps",
-    icon: <FaTools />,
-    text: "Um bom artesão precisa de boas ferramentas. Trabalho com versionamento em Git, deploys automatizados na Vercel e prototipagem de alta fidelidade no Figma.",
+    number: "06",
+    title: "Produto, UI/UX & Qualidade",
+    description:
+      "Antes do código existe uma decisão de produto. Minha bagagem em design e UI/UX ajuda a transformar requisito em fluxo, interface e prioridade — e testes, SEO e revisão técnica ajudam a garantir que a entrega sobreviva ao uso real.",
+    responsibilities: [
+      "Arquitetura de informação e prototipagem",
+      "UI/UX e design systems",
+      "Testes de componentes e integrações",
+      "SEO técnico e auditoria de experiência",
+    ],
     technologies: [
-      { name: "Git", icon: <SiGit /> },
-      { name: "GitHub", icon: <SiGithub /> },
-      { name: "Vercel", icon: <SiVercel /> },
-      { name: "Docker", icon: <SiDocker /> },
-      { name: "Figma", icon: <SiFigma /> },
+      "Figma",
+      "Design Systems",
+      "Jest",
+      "React Testing Library",
+      "SEO Técnico",
+      "Lighthouse",
     ],
   },
 ];
 
-const heroIcons = [
-  <SiReact key="react" />,
-  <SiNextdotjs key="next" />,
-  <SiTypescript key="ts" />,
-  <SiNodedotjs key="node" />,
-  <SiUnity key="unity" />,
-  <SiPostgresql key="pg" />,
-];
-
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+const principles = [
+  {
+    number: "01",
+    title: "O problema vem antes da stack.",
+    text: "A tecnologia precisa servir ao produto, à equipe, ao prazo e ao estágio do negócio — não o contrário.",
   },
-};
+  {
+    number: "02",
+    title: "Manutenção também é feature.",
+    text: "Arquitetura simples de entender, componentes reutilizáveis e regras de negócio bem separadas diminuem o custo da próxima versão.",
+  },
+  {
+    number: "03",
+    title: "Segurança começa no desenho.",
+    text: "Autenticação, autorização, dados sensíveis e integrações entram na arquitetura desde o início, não como correção depois do deploy.",
+  },
+  {
+    number: "04",
+    title: "Produção é parte do desenvolvimento.",
+    text: "Deploy, performance, logs, comportamento em falhas e experiência no dispositivo real fazem parte da definição de pronto.",
+  },
+];
 
 export default function StackPage() {
-  const reduce = useReducedMotion();
-
   return (
     <div className={styles.pageWrapper}>
       <Header />
 
       <main>
-        {/* HERO */}
         <section className={styles.heroSection}>
-          <div className={styles.heroGrid} aria-hidden="true" />
-          <div className={styles.heroContent}>
-            <motion.div
-              className={styles.textColumn}
-              variants={reveal}
-              initial="hidden"
-              animate="show"
-            >
-              <span className={styles.eyebrow}>Stack & Tecnologias</span>
-              <h1 className={styles.headline}>As ferramentas que eu domino</h1>
-              <div className={styles.introText}>
+          <div className={styles.heroTexture} aria-hidden="true" />
+          <div className={styles.heroContainer}>
+            <p className={styles.eyebrow}>STACK & ENGENHARIA</p>
+            <div className={styles.heroGrid}>
+              <h1 className={styles.headline}>
+                Tecnologia não é coleção de logos. É decisão de engenharia.
+              </h1>
+              <div className={styles.heroAside}>
                 <p>
-                  A tecnologia muda rápido, e eu acompanho. Minha caixa de
-                  ferramentas reúne stacks modernas e consolidadas no mercado,
-                  para entregar desde um{" "}
-                  <span className={styles.highlight}>MVP rápido</span> até uma{" "}
-                  <span className={styles.highlight}>
-                    aplicação corporativa complexa
-                  </span>
-                  .
+                  Minha stack muda conforme o problema, mas a responsabilidade é a
+                  mesma: transformar uma necessidade de negócio em software que
+                  funciona bem, pode evoluir e chega à produção.
                 </p>
-                <p>
-                  Mas ferramenta é só o meio. O que importa é como combiná-las
-                  para resolver problemas reais de negócio com eficiência,
-                  escalabilidade e manutenção fácil no futuro.
-                </p>
+                <div className={styles.heroActions}>
+                  <Link href="/portfolio" className={styles.primaryAction}>
+                    Ver projetos <PiArrowUpRightBold aria-hidden="true" />
+                  </Link>
+                  <Link href="/contato" className={styles.secondaryAction}>
+                    Falar comigo
+                  </Link>
+                </div>
               </div>
+            </div>
 
-              <div className={styles.heroActions}>
-                <Link href="/portfolio" className={styles.ctaButton}>
-                  Ver projetos <PiArrowUpRightBold />
-                </Link>
-                <Link href="/contato" className={styles.ctaGhost}>
-                  Falar comigo
-                </Link>
+            <div className={styles.heroFacts}>
+              <div>
+                <strong>Web → Mobile → Infra</strong>
+                <span>visão de produto ponta a ponta</span>
               </div>
-            </motion.div>
-
-            <motion.div
-              className={styles.iconCluster}
-              initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.92 }}
-              animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              aria-hidden="true"
-            >
-              {heroIcons.map((icon, i) => (
-                <span key={i} className={styles.floatingIcon}>
-                  {icon}
-                </span>
-              ))}
-            </motion.div>
+              <div>
+                <strong>6 frentes</strong>
+                <span>competências organizadas por responsabilidade</span>
+              </div>
+              <div>
+                <strong>Stack por contexto</strong>
+                <span>ferramenta escolhida pelo problema</span>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* COMPETENCES */}
-        <section className={styles.contentList}>
+        <section className={styles.capabilitiesSection}>
           <div className={styles.container}>
-            <div className={styles.sectionHead}>
-              <span className={styles.eyebrowDark}>Competências técnicas</span>
-              <h2 className={styles.sectionHeading}>
-                O que eu uso para construir<span className={styles.dot}>.</span>
-              </h2>
-              <p className={styles.sectionSub}>
-                Do front-end ao banco de dados, tudo em uma pessoa só.
+            <div className={styles.sectionIntro}>
+              <p className={styles.eyebrow}>COMPETÊNCIAS</p>
+              <h2>O que eu assumo tecnicamente em um produto.</h2>
+              <p>
+                Em vez de separar meu trabalho por bibliotecas, organizo a stack
+                pelas partes do produto pelas quais consigo responder.
               </p>
             </div>
 
-            <div className={styles.stackGrid}>
-              {content.map((item, index) => (
-                <motion.article
-                  key={index}
-                  className={styles.stackCard}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, margin: "-60px" }}
-                >
-                  <span className={styles.cardIcon} aria-hidden="true">
-                    {item.icon}
-                  </span>
-                  <h3 className={styles.cardTitle}>{item.title}</h3>
-                  <p className={styles.cardText}>{item.text}</p>
+            <div className={styles.capabilityList}>
+              {capabilities.map((capability) => (
+                <article key={capability.number} className={styles.capabilityItem}>
+                  <div className={styles.capabilityIndex}>
+                    <span>{capability.number}</span>
+                  </div>
 
-                  <ul className={styles.chipRow}>
-                    {item.technologies.map((tech, techIndex) => (
-                      <li key={techIndex} className={styles.chip}>
-                        <span className={styles.chipIcon} aria-hidden="true">
-                          {tech.icon}
-                        </span>
-                        {tech.name}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.article>
+                  <div className={styles.capabilitySummary}>
+                    <h3>{capability.title}</h3>
+                    <p>{capability.description}</p>
+                  </div>
+
+                  <div className={styles.capabilityDetails}>
+                    <div>
+                      <p className={styles.detailLabel}>RESPONSABILIDADES</p>
+                      <ul className={styles.responsibilityList}>
+                        {capability.responsibilities.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <p className={styles.detailLabel}>FERRAMENTAS</p>
+                      <div className={styles.techList}>
+                        {capability.technologies.map((technology) => (
+                          <span key={technology}>{technology}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.principlesSection}>
+          <div className={styles.container}>
+            <div className={styles.principlesHeader}>
+              <p className={styles.eyebrowLight}>COMO EU ESCOLHO</p>
+              <h2>Ferramenta boa é a que continua fazendo sentido depois do lançamento.</h2>
+            </div>
+
+            <div className={styles.principlesGrid}>
+              {principles.map((principle) => (
+                <article key={principle.number} className={styles.principleItem}>
+                  <span>{principle.number}</span>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.backgroundSection}>
+          <div className={styles.container}>
+            <div className={styles.backgroundGrid}>
+              <div>
+                <p className={styles.eyebrow}>BAGAGEM TÉCNICA</p>
+                <h2>Nem tudo que eu sei precisa ser o centro da minha oferta.</h2>
+              </div>
+              <div className={styles.backgroundCopy}>
+                <p>
+                  Também tenho experiência com C#, Unity e fundamentos de Java.
+                  Essa base continua útil para raciocínio orientado a objetos,
+                  arquitetura e projetos interativos, mas hoje meu trabalho comercial
+                  está concentrado em produtos web, mobile, backend, IA e sistemas sob
+                  medida.
+                </p>
+                <Link href="/sobre" className={styles.textLink}>
+                  Conhecer minha trajetória <PiArrowUpRightBold aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaInner}>
+            <p className={styles.eyebrowLight}>DA STACK AO PRODUTO</p>
+            <h2>O valor não está na tecnologia isolada. Está no que ela permite construir.</h2>
+            <p>
+              Veja como essas decisões aparecem em produtos reais ou me conte o que
+              você precisa colocar em operação.
+            </p>
+            <div className={styles.ctaActions}>
+              <Link href="/portfolio" className={styles.ctaPrimary}>
+                Explorar cases <PiArrowUpRightBold aria-hidden="true" />
+              </Link>
+              <Link href="/contato" className={styles.ctaSecondary}>
+                Vamos conversar
+              </Link>
             </div>
           </div>
         </section>
