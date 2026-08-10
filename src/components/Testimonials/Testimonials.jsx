@@ -88,13 +88,13 @@ export default function Testimonials() {
           onBlur={() => setPaused(false)}
         >
           <div className={styles.viewport}>
-            <AnimatePresence mode="wait" custom={direction}>
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.figure
                 key={active.id}
                 className={styles.card}
                 custom={direction}
                 variants={slideVariants}
-                initial="enter"
+                initial={false}
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}

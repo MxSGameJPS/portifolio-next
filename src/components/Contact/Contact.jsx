@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   PiArrowRightBold,
   PiArrowUpRightBold,
@@ -230,9 +231,11 @@ export default function Contact({ mode = "showcase" }) {
 
         <div className={styles.visualColumn}>
           <div className={styles.photoFrame}>
-            <img
+            <Image
               src="/contact-saulo.png"
               alt="Saulo Pavanello em seu ambiente de trabalho"
+              fill
+              sizes="(max-width: 820px) 100vw, 55vw"
               className={styles.contactPhoto}
             />
           </div>

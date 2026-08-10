@@ -93,7 +93,7 @@ export default function Solutions() {
                         id={`group-${category.id}`}
                         className={styles.itemList}
                         role="list"
-                        initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                        initial={false}
                         animate={reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }}
                         exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
                         transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
@@ -130,12 +130,12 @@ export default function Solutions() {
           </div>
 
           <div className={styles.contentPanel} role="tabpanel" id="solution-content-panel">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               {selectedItem && (
                 <motion.div
                   key={selectedItem.title}
                   variants={panelContainer}
-                  initial="hidden"
+                  initial={false}
                   animate="show"
                   exit={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
                   className={styles.panelInner}

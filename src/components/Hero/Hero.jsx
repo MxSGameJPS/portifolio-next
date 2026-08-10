@@ -59,7 +59,7 @@ export default function Hero() {
       <motion.div
         className={styles.container}
         variants={container}
-        initial="hidden"
+        initial={false}
         animate="show"
       >
         <div className={styles.content}>
@@ -118,7 +118,7 @@ export default function Hero() {
         <motion.div
           className={styles.stage}
           variants={reduce ? undefined : imageReveal}
-          initial={reduce ? undefined : "hidden"}
+          initial={false}
           animate={reduce ? undefined : "show"}
         >
           <Image

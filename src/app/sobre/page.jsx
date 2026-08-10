@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -95,8 +95,6 @@ const reveal = {
 };
 
 export default function AboutPage() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <div className={styles.pageWrapper}>
       <Header />
@@ -108,7 +106,7 @@ export default function AboutPage() {
             <motion.div
               className={styles.heroCopy}
               variants={reveal}
-              initial="hidden"
+              initial={false}
               animate="show"
             >
               <p className={styles.eyebrow}>SAULO PAVANELLO · SOFTWARE ENGINEER</p>
@@ -155,7 +153,7 @@ export default function AboutPage() {
 
             <motion.div
               className={styles.heroVisual}
-              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -217,7 +215,7 @@ export default function AboutPage() {
                   key={item.title}
                   className={styles.timelineItem}
                   variants={reveal}
-                  initial="hidden"
+                  initial={false}
                   whileInView="show"
                   viewport={{ once: true, margin: "-60px" }}
                 >
@@ -252,7 +250,7 @@ export default function AboutPage() {
                   key={item.number}
                   className={styles.processCard}
                   variants={reveal}
-                  initial="hidden"
+                  initial={false}
                   whileInView="show"
                   viewport={{ once: true, margin: "-50px" }}
                 >
