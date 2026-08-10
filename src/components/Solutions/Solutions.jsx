@@ -1,16 +1,11 @@
 "use client";
 import { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import styles from "./solutions.module.css";
 import data from "./solutions.json";
 import { FaChevronDown } from "react-icons/fa";
 import { PiCheckBold, PiArrowUpRightBold } from "react-icons/pi";
 
-// Tracks intent when a visitor asks for a specific solution
 function trackSolutionCta(label) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
   window.gtag("event", "cta_click", {
@@ -21,38 +16,28 @@ function trackSolutionCta(label) {
 
 export default function Solutions() {
   const reduce = useReducedMotion();
-
-  // Which category accordion is expanded (one open at a time)
-  const [expandedCategory, setExpandedCategory] = useState("web");
-
-  // Which item is shown in the right-hand content panel
-  const [selectedItem, setSelectedItem] = useState(() => {
-    const category = data.find((c) => c.id === "web");
-    return category?.items?.[0] || null;
-  });
+  const initialCategory = data[0];
+  const [expandedCategory, setExpandedCategory] = useState(initialCategory?.id);
+  const [selectedItem, setSelectedItem] = useState(initialCategory?.items?.[0] || null);
 
   const toggleCategory = (id) => {
-    if (expandedCategory === id) return; // single-accordion: clicking open does nothing
+    if (expandedCategory === id) return;
     setExpandedCategory(id);
     const category = data.find((c) => c.id === id);
-    if (category && category.items.length > 0) {
-      setSelectedItem(category.items[0]);
-    }
+    if (category?.items?.length) setSelectedItem(category.items[0]);
   };
 
-  const handleItemClick = (item) => setSelectedItem(item);
-
-  // Stagger the feature rows as the panel swaps in
   const panelContainer = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.05, delayChildren: 0.08 } },
+    show: { transition: { staggerChildren: 0.05, delayChildren: 0.06 } },
   };
+
   const panelItem = {
     hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 14 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -60,18 +45,18 @@ export default function Solutions() {
     <section className={styles.section} id="solucoes">
       <div className={styles.container}>
         <header className={styles.header}>
-          <span className={styles.eyebrow}>O que entregamos</span>
+          <span className={styles.eyebrow}>Como posso ajudar</span>
           <h2 className={styles.mainTitle}>
-            Soluções sob medida<span className={styles.dot}>.</span>
+            Do problema ao software<br />
+            <em>pronto para operar.</em>
           </h2>
           <p className={styles.subtitle}>
-            Escolha uma frente e veja exatamente como resolvo o problema — do
-            protótipo ao deploy em produção.
+            Desenvolvo soluções digitais de ponta a ponta — da estratégia e
+            arquitetura ao deploy e evolução do produto.
           </p>
         </header>
 
         <div className={styles.layout}>
-          {/* MENU ESQUERDO — rail de categorias */}
           <div
             className={styles.menuContainer}
             role="tablist"
@@ -90,17 +75,14 @@ export default function Solutions() {
                     aria-expanded={isOpen}
                     aria-controls={`group-${category.id}`}
                   >
-                    <span className={styles.categoryNumber}>
-                      {category.number}
-                    </span>
-                    <span className={styles.categoryTitle}>
-                      {category.title}
+                    <span className={styles.categoryNumber}>{category.number}</span>
+                    <span className={styles.categoryCopy}>
+                      <strong className={styles.categoryTitle}>{category.title}</strong>
+                      <span className={styles.categorySummary}>{category.summary}</span>
                     </span>
                     <FaChevronDown
-                      className={`${styles.arrowIcon} ${
-                        isOpen ? styles.rotated : ""
-                      }`}
-                      size={13}
+                      className={`${styles.arrowIcon} ${isOpen ? styles.rotated : ""}`}
+                      size={12}
                       aria-hidden="true"
                     />
                   </button>
@@ -112,26 +94,17 @@ export default function Solutions() {
                         className={styles.itemList}
                         role="list"
                         initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                        animate={
-                          reduce
-                            ? { opacity: 1 }
-                            : { height: "auto", opacity: 1 }
-                        }
+                        animate={reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }}
                         exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
                       >
-                        {category.items.map((item, index) => {
+                        {category.items.map((item) => {
                           const active = selectedItem === item;
                           return (
-                            <li key={index} role="presentation">
+                            <li key={item.title}>
                               <button
-                                className={`${styles.itemButton} ${
-                                  active ? styles.activeItem : ""
-                                }`}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleItemClick(item);
-                                }}
+                                className={`${styles.itemButton} ${active ? styles.activeItem : ""}`}
+                                onClick={() => setSelectedItem(item)}
                                 role="tab"
                                 aria-selected={active}
                                 aria-controls="solution-content-panel"
@@ -140,11 +113,7 @@ export default function Solutions() {
                                   <motion.span
                                     layoutId="solIndicator"
                                     className={styles.itemIndicator}
-                                    transition={{
-                                      type: "spring",
-                                      stiffness: 420,
-                                      damping: 32,
-                                    }}
+                                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
                                   />
                                 )}
                                 {item.name}
@@ -160,12 +129,7 @@ export default function Solutions() {
             })}
           </div>
 
-          {/* CONTEÚDO DIREITO — painel animado */}
-          <div
-            className={styles.contentPanel}
-            role="tabpanel"
-            id="solution-content-panel"
-          >
+          <div className={styles.contentPanel} role="tabpanel" id="solution-content-panel">
             <AnimatePresence mode="wait">
               {selectedItem && (
                 <motion.div
@@ -174,31 +138,27 @@ export default function Solutions() {
                   initial="hidden"
                   animate="show"
                   exit={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
+                  className={styles.panelInner}
                 >
+                  <motion.span variants={panelItem} className={styles.panelEyebrow}>
+                    Solução selecionada
+                  </motion.span>
+
                   <motion.h3 variants={panelItem} className={styles.contentTitle}>
                     {selectedItem.title}
                   </motion.h3>
 
                   <motion.p variants={panelItem} className={styles.quote}>
-                    <span className={styles.quoteMark} aria-hidden="true">
-                      &ldquo;
-                    </span>
-                    {selectedItem.quote.replace(/[“”"]/g, "")}
+                    {selectedItem.quote}
                   </motion.p>
 
-                  <motion.p
-                    variants={panelItem}
-                    className={styles.description}
-                  >
+                  <motion.p variants={panelItem} className={styles.description}>
                     {selectedItem.description}
                   </motion.p>
 
-                  <motion.div
-                    variants={panelItem}
-                    className={styles.featureList}
-                  >
-                    {selectedItem.features.map((feature, idx) => (
-                      <div key={idx} className={styles.featureItem}>
+                  <motion.div variants={panelItem} className={styles.featureList}>
+                    {selectedItem.features.map((feature) => (
+                      <div key={feature} className={styles.featureItem}>
                         <span className={styles.featureCheck} aria-hidden="true">
                           <PiCheckBold size={12} />
                         </span>
@@ -213,7 +173,7 @@ export default function Solutions() {
                     className={styles.ctaButton}
                     onClick={() => trackSolutionCta(selectedItem.title)}
                   >
-                    Quero esta solução
+                    Conversar sobre o projeto
                     <PiArrowUpRightBold size={16} aria-hidden="true" />
                   </motion.a>
                 </motion.div>

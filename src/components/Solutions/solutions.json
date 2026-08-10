@@ -1,158 +1,88 @@
 [
   {
-    "id": "web",
+    "id": "products",
     "number": "01",
-    "title": "Desenvolvimento Web",
+    "title": "Produtos & SaaS",
+    "summary": "Plataformas completas, MVPs e produtos digitais prontos para operar e crescer.",
     "items": [
       {
-        "name": "Prototipação",
-        "title": "Prototipação de Interfaces (UI/UX)",
-        "quote": "“Validando ideias antes de escrever a primeira linha de código.”",
-        "description": "Transformamos conceitos abstratos em modelos visuais tangíveis. Através de wireframes e protótipos de alta fidelidade, desenhamos a jornada do usuário perfeita, garantindo que o produto final seja não apenas funcional, mas intuitivo e alinhado com a identidade da sua marca antes mesmo do desenvolvimento começar.",
+        "name": "SaaS sob medida",
+        "title": "Produtos SaaS sob medida",
+        "quote": "Transforme uma ideia em um produto digital pronto para operar, vender e evoluir.",
+        "description": "Estruturo produtos SaaS de ponta a ponta, conectando estratégia, arquitetura, experiência do usuário, regras de negócio, integrações e deploy. O objetivo é entregar um produto utilizável de verdade, preparado para receber clientes, dados e novas funcionalidades.",
         "features": [
-          "Wireframes de baixa e alta fidelidade",
-          "Fluxogramas de navegação (User Flow)",
-          "Design Systems escaláveis",
-          "Testes de usabilidade preliminares"
+          "Arquitetura de produto e definição de MVP",
+          "Autenticação, permissões e áreas privadas",
+          "Pagamentos, assinaturas e integrações",
+          "Deploy, monitoramento e evolução contínua"
         ]
       },
       {
-        "name": "Criação de Sites",
-        "title": "Criação de Sites Institucionais",
-        "quote": "“Sites que convertem visitantes em clientes e escalam seu negócio.”",
-        "description": "Projetamos sites exclusivos, ágeis e seguros, alinhados à jornada de compra e otimizados para SEO. Nossa equipe sênior conduz todo o processo — da arquitetura UX ao deployment — com metodologia ágil, garantindo evolução contínua e presença digital marcante.",
+        "name": "MVP & validação",
+        "title": "MVP para validar uma oportunidade",
+        "quote": "Coloque a ideia na mão de usuários reais antes de investir na complexidade final.",
+        "description": "Desenvolvo MVPs com escopo controlado e foco no fluxo principal do negócio. A prioridade é validar proposta de valor, operação e experiência sem transformar a primeira versão em um projeto excessivamente caro ou demorado.",
         "features": [
-          "Design Responsivo e Mobile-First",
-          "Otimização SEO Técnica (Google Core Vitals)",
-          "Performance de carregamento ultra-rápida",
-          "Painel administrativo gerenciável"
+          "Priorização do fluxo essencial",
+          "Protótipo funcional e interface responsiva",
+          "Arquitetura preparada para evolução",
+          "Métricas e pontos de validação"
         ]
       },
       {
-        "name": "E-Commerce Personalizado",
-        "title": "E-Commerce & Lojas Virtuais",
-        "quote": "“Sua vitrine digital aberta para o mundo, 24 horas por dia.”",
-        "description": "Desenvolvemos plataformas de vendas robustas, seguras e focadas em conversão. Integramos gateways de pagamento, cálculo de frete e gestão de estoque em uma interface fluida que guia o cliente do 'Desejo' ao 'Checkout' sem atritos.",
+        "name": "Sistemas de operação",
+        "title": "Sistemas internos e plataformas de operação",
+        "quote": "Quando planilhas e processos manuais começam a limitar o negócio, o software precisa assumir o trabalho.",
+        "description": "Crio sistemas para centralizar operações, usuários, atendimentos, documentos, métricas e fluxos internos. A solução é desenhada em torno do processo real da empresa, e não de um template genérico.",
         "features": [
-          "Checkout transparente e seguro",
-          "Integração com ERPs e Gateways",
-          "Gestão de estoque e pedidos",
-          "Recuperação de carrinho abandonado"
-        ]
-      },
-      {
-        "name": "Landing Pages",
-        "title": "Landing Pages de Alta Conversão",
-        "quote": "“Foco total em resultados: uma página, um objetivo, conversão máxima.”",
-        "description": "Páginas estrategicamente desenhadas para campanhas de marketing. Utilizamos copy persuasiva e design direcionado para capturar leads ou vender produtos específicos, eliminando distrações e maximizando o retorno sobre o investimento (ROI).",
-        "features": [
-          "Copywriting persuasivo (AIDA)",
-          "Testes A/B nativos",
-          "Integração com Pixels de rastreamento",
-          "Formulários otimizados para Lead"
-        ]
-      },
-      {
-        "name": "Portais",
-        "title": "Portais Corporativos e de Conteúdo",
-        "quote": "“Centralizando informação e cultura organizacional em um só lugar.”",
-        "description": "Estruturas complexas para grandes volumes de conteúdo. Criamos portais de notícias, intranets corporativas e hubs de conhecimento que organizam a informação de forma acessível e segura, com níveis de permissão granulares.",
-        "features": [
-          "Gestão de conteúdo avançada (CMS)",
-          "Controle de acesso por níveis (ACL)",
-          "Busca indexada e inteligente",
-          "Áreas restritas para membros"
-        ]
-      },
-      {
-        "name": "Dashboards",
-        "title": "Dashboards & Business Intelligence",
-        "quote": "“Transforme dados brutos em decisões estratégicas visuais.”",
-        "description": "Painéis administrativos que traduzem métricas complexas em gráficos intuitivos. Oferecemos uma visão macro e micro do seu negócio em tempo real, permitindo que gestores tomem decisões baseadas em dados e não em suposições.",
-        "features": [
-          "Visualização de dados em tempo real",
-          "Relatórios exportáveis (PDF/Excel)",
-          "Filtros dinâmicos e customizáveis",
-          "Alertas e KPIs monitorados"
-        ]
-      },
-      {
-        "name": "Redes Sociais",
-        "title": "Integração e Gestão Social",
-        "quote": "“Conectando sua plataforma ao pulso das redes sociais.”",
-        "description": "Não apenas botões de compartilhar. Criamos integrações profundas com APIs de redes sociais para login social, feed em tempo real, auto-publicação e análise de engajamento, unificando sua presença digital.",
-        "features": [
-          "Login Social (Google, Facebook, LinkedIn)",
-          "Feeds automatizados (Instagram/Twitter)",
-          "Botões de compartilhamento inteligente",
-          "Open Graph Tags otimizadas"
+          "Dashboards e painéis administrativos",
+          "Perfis, permissões e trilhas de auditoria",
+          "Fluxos personalizados de negócio",
+          "Relatórios, notificações e automações"
         ]
       }
     ]
   },
   {
-    "id": "mobile",
+    "id": "web",
     "number": "02",
-    "title": "Desenvolvimento Mobile/Android/IOS",
+    "title": "Sistemas Web",
+    "summary": "Sites, portais, dashboards, e-commerce e experiências digitais de alta performance.",
     "items": [
       {
-        "name": "Prototipação",
-        "title": "Prototipação Mobile App",
-        "quote": "“A experiência do usuário na palma da mão, antes do código.”",
-        "description": "Criação de fluxos de navegação nativos e interações toques específicos para dispositivos móveis. Validamos a ergonomia e a facilidade de uso em telas pequenas, garantindo que o app seja natural para o usuário Android ou iOS.",
+        "name": "Sites profissionais",
+        "title": "Sites institucionais que posicionam e convertem",
+        "quote": "Seu site precisa explicar valor, transmitir confiança e conduzir o visitante para uma ação.",
+        "description": "Desenvolvo sites profissionais com atenção a posicionamento, responsividade, SEO técnico, performance e conversão. Cada projeto é construído para representar o negócio com clareza e funcionar bem em qualquer tela.",
         "features": [
-          "Design system mobile (Material/Cupertino)",
-          "Fluxos de gestos e micro-interações",
-          "Testes em dispositivos reais",
-          "Mapeamento de jornada mobile"
+          "Design responsivo e experiência mobile-first",
+          "SEO técnico e estrutura semântica",
+          "Performance e Core Web Vitals",
+          "Integrações, formulários e analytics"
         ]
       },
       {
-        "name": "Criação de APP Android",
-        "title": "Desenvolvimento Nativo Android",
-        "quote": "“Alcance a maior base de usuários do mundo com performance nativa.”",
-        "description": "Desenvolvemos aplicativos otimizados para o ecossistema Android. Utilizando as melhores práticas do Google, garantimos compatibilidade com a vasta gama de dispositivos, focando em performance, baixo consumo de bateria e integração profunda com o sistema.",
+        "name": "E-commerce",
+        "title": "E-commerce e operações de venda online",
+        "quote": "Uma loja digital precisa vender, integrar a operação e reduzir atrito do catálogo ao pagamento.",
+        "description": "Construo experiências de comércio eletrônico com catálogo, checkout, pagamentos e integrações operacionais. Quando necessário, conecto o front-end a ERP, estoque, logística, CRM e serviços externos.",
         "features": [
-          "Kotlin / Java / React Native",
-          "Integração com Hardware (Câmera, GPS)",
-          "Notificações Push inteligentes",
-          "Suporte a múltiplas resoluções"
+          "Catálogo, carrinho e checkout",
+          "Gateways de pagamento",
+          "Integração com ERP e estoque",
+          "Painel de pedidos e operação"
         ]
       },
       {
-        "name": "Criação de APP IOS",
-        "title": "Desenvolvimento Nativo iOS",
-        "quote": "“Elegância e fluidez para o ecossistema Apple.”",
-        "description": "Apps construídos seguindo rigorosamente as Human Interface Guidelines da Apple. Entregamos experiências premium com animações suaves, segurança robusta e integração perfeita com iPhone, garantindo a aprovação na App Store.",
+        "name": "Portais & dashboards",
+        "title": "Portais, áreas privadas e dashboards",
+        "quote": "Informação útil precisa estar organizada, acessível e pronta para gerar decisão.",
+        "description": "Desenvolvo portais de conteúdo, áreas autenticadas, painéis administrativos e dashboards para centralizar dados e operações em uma interface clara e segura.",
         "features": [
-          "Swift / React Native",
-          "Segurança e biometria (FaceID)",
-          "Animações fluidas (60fps)",
-          "Conformidade rigorosa App Store"
-        ]
-      },
-      {
-        "name": "Criação de APP para TV Android/TV Box",
-        "title": "Apps para Android TV e TV Box",
-        "quote": "“Sua marca na tela grande da sala de estar.”",
-        "description": "Experiências imersivas desenhadas para controle remoto e grandes polegadas. Desenvolvemos interfaces 'leanback' otimizadas para consumo de mídia, streaming e catálogos interativos em Smart TVs.",
-        "features": [
-          "Navegação por controle remoto (D-Pad)",
-          "Players de vídeo otimizados",
-          "UI adaptada para longas distâncias",
-          "Performance em hardware limitado"
-        ]
-      },
-      {
-        "name": "Postagem em Lojas",
-        "title": "Publicação e ASO (App Store Optimization)",
-        "quote": "“Do código ao download: cuidamos da burocracia para você.”",
-        "description": "Gerenciamos todo o processo de submissão na Google Play, Apple App Store, LG TV Store, Samsung TV Store, Amazon Fire TV Store. Cuidamos dos certificados, capturas de tela, descrições otimizadas para busca (ASO) e conformidade com as políticas de cada loja.",
-        "features": [
-          "Criação de Screenshots e Banners",
-          "Gestão de Certificados Digitais",
-          "Otimização de palavras-chave (ASO)",
-          "Resolução de pendências de revisão"
+          "Áreas autenticadas e controle de acesso",
+          "CMS e gestão de conteúdo",
+          "Indicadores, filtros e relatórios",
+          "Experiências responsivas e escaláveis"
         ]
       }
     ]
@@ -160,66 +90,107 @@
   {
     "id": "backend",
     "number": "03",
-    "title": "Desenvolvimento BackEnd",
+    "title": "APIs & Integrações",
+    "summary": "Backend, bancos de dados e integrações para fazer sistemas conversarem com segurança.",
     "items": [
       {
-        "name": "Desenvolvimento de Banco de Dados",
-        "title": "Modelagem e Gestão de Dados",
-        "quote": "“A infraestrutura sólida que sustenta todo o seu negócio.”",
-        "description": "Arquitetamos bancos de dados relacionais (SQL) e não-relacionais (NoSQL) escaláveis e seguros. Focamos em integridade, normalização e otimização de queries para garantir que seus dados estejam sempre consistentes e acessíveis em milissegundos.",
+        "name": "APIs & backend",
+        "title": "APIs e backend para aplicações reais",
+        "quote": "Uma boa interface depende de uma camada de dados previsível, segura e bem estruturada.",
+        "description": "Desenvolvo APIs e backends para aplicações web, mobile e integrações entre sistemas, com autenticação, regras de negócio, documentação e preocupação com segurança e manutenção.",
         "features": [
-          "Modelagem ER e Normalização",
-          "PostgreSQL / MySQL / MongoDB",
-          "Otimização de Queries e Indexação",
-          "Rotinas de Backup e Redundância"
+          "APIs REST e serviços Node.js",
+          "Autenticação e autorização",
+          "Documentação e versionamento",
+          "Validação, logs e tratamento de erros"
         ]
       },
       {
-        "name": "Criação de Api",
-        "title": "Desenvolvimento de APIs RESTful & GraphQL",
-        "quote": "“Conectando sistemas com eficiência, segurança e padronização.”",
-        "description": "Construímos o cérebro da sua aplicação. APIs robustas, documentadas e versionadas que servem como ponte entre seu front-end, app mobile e parceiros externos, garantindo troca de dados rápida e segura.",
+        "name": "Banco de dados",
+        "title": "Modelagem e arquitetura de dados",
+        "quote": "Dados bem modelados reduzem complexidade hoje e evitam gargalos amanhã.",
+        "description": "Estruturo bancos relacionais e não relacionais de acordo com as regras do produto, priorizando integridade, consultas eficientes, segurança e facilidade de evolução.",
         "features": [
-          "Arquitetura RESTful e GraphQL",
-          "Documentação Swagger/OpenAPI",
-          "Rate Limiting e Cache",
-          "Versionamento de endpoints"
+          "PostgreSQL, Supabase e MongoDB",
+          "Modelagem de entidades e relacionamentos",
+          "Índices e otimização de consultas",
+          "Migrações, políticas e rotinas de backup"
         ]
       },
       {
-        "name": "Integração com Terceiros",
-        "title": "Integração de Sistemas Externos",
-        "quote": "“Faça seus softwares conversarem entre si.”",
-        "description": "Conectamos sua aplicação aos principais serviços do mercado. Seja processamento de pagamentos, emissão de notas fiscais, CRMs ou ferramentas de marketing, criamos pontes seguras para automatizar seu fluxo de trabalho.",
+        "name": "Integrações",
+        "title": "Integração entre sistemas e serviços externos",
+        "quote": "Quando ferramentas deixam de conversar, pessoas acabam fazendo o trabalho manualmente.",
+        "description": "Conecto aplicações a serviços de pagamento, ERPs, CRMs, autenticação, armazenamento, comunicação e outras APIs, criando fluxos confiáveis e reduzindo tarefas repetitivas.",
         "features": [
-          "Gateways (Stripe, Mercado Pago)",
-          "ERPs e CRMs (Salesforce, Bling)",
-          "APIs de Logística e Frete",
-          "Webhooks e Eventos Real-time"
+          "Webhooks e eventos",
+          "Pagamentos e serviços financeiros",
+          "ERPs, CRMs e serviços externos",
+          "Sincronização e tratamento de falhas"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mobile",
+    "number": "04",
+    "title": "Aplicativos Mobile",
+    "summary": "Apps Android e iOS integrados ao seu produto, operação e infraestrutura.",
+    "items": [
+      {
+        "name": "Apps Android & iOS",
+        "title": "Aplicativos para Android e iOS",
+        "quote": "Leve o produto para o dispositivo que o cliente já usa durante todo o dia.",
+        "description": "Desenvolvo aplicativos móveis com foco em experiência, integração com backend e comportamento consistente entre plataformas. A arquitetura pode compartilhar código sem perder a experiência esperada em Android e iOS.",
+        "features": [
+          "React Native e Expo",
+          "Autenticação e dados em tempo real",
+          "Câmera, localização e recursos do dispositivo",
+          "Build e distribuição para lojas"
         ]
       },
       {
-        "name": "Automação e DevOps",
-        "title": "Automação de Infraestrutura e Processos",
-        "quote": "“Eficiência é eliminar tarefas manuais e repetitivas.”",
-        "description": "Implementamos rotinas automáticas e pipelines de CI/CD para garantir que seu código chegue à produção com segurança e rapidez. Configuramos servidores, containers e scripts que trabalham enquanto você dorme.",
+        "name": "PWA & experiência mobile",
+        "title": "PWA e experiências web instaláveis",
+        "quote": "Nem todo produto precisa começar pelas lojas de aplicativos para entregar uma experiência mobile forte.",
+        "description": "Quando faz sentido para o negócio, estruturo aplicações web progressivas que funcionam bem no celular, podem ser instaladas e reutilizam a mesma base do produto web.",
         "features": [
-          "Pipelines CI/CD (GitHub Actions)",
-          "Containerização (Docker)",
-          "Cron Jobs e Tarefas Agendadas",
-          "Monitoramento e Logs"
+          "Interface mobile-first",
+          "Instalação como aplicativo",
+          "Cache e estratégias offline quando aplicável",
+          "Integração com notificações e recursos web"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ai",
+    "number": "05",
+    "title": "IA & Automação",
+    "summary": "IA aplicada a fluxos reais para reduzir trabalho manual e ampliar a capacidade da operação.",
+    "items": [
+      {
+        "name": "IA aplicada ao produto",
+        "title": "Inteligência Artificial integrada ao seu software",
+        "quote": "IA gera valor quando está conectada a uma tarefa real, aos dados certos e a uma experiência bem desenhada.",
+        "description": "Integro modelos de IA a produtos e sistemas para gerar conteúdo, apoiar decisões, classificar informações, resumir documentos, conversar com usuários ou automatizar etapas específicas da operação.",
+        "features": [
+          "Integração com modelos de linguagem",
+          "Prompts, contexto e fluxos estruturados",
+          "Processamento de texto e documentos",
+          "Controles de uso, fallback e observabilidade"
         ]
       },
       {
-        "name": "Segurança da Informação",
-        "title": "Segurança e Proteção de Dados",
-        "quote": "“Blindando sua aplicação contra ameaças digitais.”",
-        "description": "Segurança não é feature, é premissa. Implementamos camadas de proteção robustas, criptografia de ponta a ponta e protocolos de autenticação modernos para proteger os dados sensíveis dos seus usuários e evitar vulnerabilidades.",
+        "name": "Automação de processos",
+        "title": "Automação de tarefas e fluxos operacionais",
+        "quote": "Se uma tarefa é repetitiva, previsível e consome horas da equipe, ela é candidata a automação.",
+        "description": "Crio rotinas e integrações para mover dados, disparar ações, gerar documentos, atualizar sistemas e executar tarefas recorrentes com menos intervenção manual.",
         "features": [
-          "Autenticação OAuth2 / JWT",
-          "Proteção contra OWASP Top 10",
-          "Criptografia de dados sensíveis",
-          "Audioria e Logs de acesso"
+          "Jobs e tarefas agendadas",
+          "Integração entre APIs e bancos de dados",
+          "Geração e processamento de documentos",
+          "Monitoramento e tratamento de exceções"
         ]
       }
     ]
