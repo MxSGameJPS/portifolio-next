@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { FaArrowLeft, FaArrowRight, FaQuoteLeft } from "react-icons/fa";
 import styles from "./testimonials.module.css";
 import data from "./testimonials.json";
 
 const AUTOPLAY_MS = 6500;
+const SWIPE_THRESHOLD = 80;
 
 function initials(name = "") {
   return name
@@ -20,42 +20,51 @@ function initials(name = "") {
 }
 
 export default function Testimonials() {
-  const reduce = useReducedMotion();
-  const [[index, direction], setState] = useState([0, 0]);
+  const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const regionRef = useRef(null);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const pointerStartX = useRef(null);
 
   const count = data.length;
   const active = data[index];
 
   const go = useCallback(
-    (dir) => {
-      setState(([prev]) => [(prev + dir + count) % count, dir]);
+    (direction) => {
+      setIndex((previous) => (previous + direction + count) % count);
     },
     [count],
   );
 
-  const goTo = (nextIndex) => {
-    setState(([prev]) => [nextIndex, nextIndex > prev ? 1 : -1]);
-  };
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReduceMotion(media.matches);
+    sync();
+    media.addEventListener?.("change", sync);
+    return () => media.removeEventListener?.("change", sync);
+  }, []);
 
   useEffect(() => {
-    if (paused || reduce) return;
+    if (paused || reduceMotion) return;
     const timer = setInterval(() => go(1), AUTOPLAY_MS);
     return () => clearInterval(timer);
-  }, [paused, reduce, go]);
+  }, [paused, reduceMotion, go]);
 
   const onKeyDown = (event) => {
     if (event.key === "ArrowLeft") go(-1);
     if (event.key === "ArrowRight") go(1);
   };
 
-  const slideVariants = {
-    enter: (dir) =>
-      reduce ? { opacity: 0 } : { opacity: 0, x: dir > 0 ? 42 : -42 },
-    center: { opacity: 1, x: 0 },
-    exit: (dir) =>
-      reduce ? { opacity: 0 } : { opacity: 0, x: dir > 0 ? -42 : 42 },
+  const onPointerDown = (event) => {
+    pointerStartX.current = event.clientX;
+  };
+
+  const onPointerUp = (event) => {
+    if (pointerStartX.current === null) return;
+    const delta = event.clientX - pointerStartX.current;
+    pointerStartX.current = null;
+
+    if (delta <= -SWIPE_THRESHOLD) go(1);
+    if (delta >= SWIPE_THRESHOLD) go(-1);
   };
 
   return (
@@ -76,7 +85,6 @@ export default function Testimonials() {
 
         <div
           className={styles.stage}
-          ref={regionRef}
           role="group"
           aria-roledescription="carrossel"
           aria-label="Depoimentos de clientes"
@@ -87,79 +95,75 @@ export default function Testimonials() {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
-          <div className={styles.viewport}>
-            <AnimatePresence mode="wait" custom={direction} initial={false}>
-              <motion.figure
-                key={active.id}
-                className={styles.card}
-                custom={direction}
-                variants={slideVariants}
-                initial={false}
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                drag={reduce ? false : "x"}
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.16}
-                onDragEnd={(event, info) => {
-                  if (info.offset.x < -80) go(1);
-                  else if (info.offset.x > 80) go(-1);
-                }}
-              >
-                <div className={styles.quotePanel}>
-                  <div className={styles.quoteTopline}>
-                    <span className={styles.caseNumber}>
-                      {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
-                    </span>
-                    <FaQuoteLeft className={styles.quoteIcon} aria-hidden="true" />
-                  </div>
-
-                  <blockquote className={styles.text}>{active.text}</blockquote>
-
-                  <div className={styles.controls} aria-label="Navegação dos depoimentos">
-                    <button
-                      className={styles.navButton}
-                      onClick={() => go(-1)}
-                      aria-label="Depoimento anterior"
-                    >
-                      <FaArrowLeft aria-hidden="true" />
-                    </button>
-                    <button
-                      className={styles.navButton}
-                      onClick={() => go(1)}
-                      aria-label="Próximo depoimento"
-                    >
-                      <FaArrowRight aria-hidden="true" />
-                    </button>
-                  </div>
+          <div className={styles.viewport} aria-live="polite">
+            <figure
+              key={active.id}
+              className={styles.card}
+              onPointerDown={onPointerDown}
+              onPointerUp={onPointerUp}
+              onPointerCancel={() => {
+                pointerStartX.current = null;
+              }}
+            >
+              <div className={styles.quotePanel}>
+                <div className={styles.quoteTopline}>
+                  <span className={styles.caseNumber}>
+                    {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+                  </span>
+                  <FaQuoteLeft className={styles.quoteIcon} aria-hidden="true" />
                 </div>
 
-                <figcaption className={styles.authorPanel}>
-                  <div className={styles.companyMark}>
-                    <Image
-                      src={active.logo}
-                      alt={`Logo ${active.company}`}
-                      width={150}
-                      height={64}
-                      className={styles.companyLogo}
-                    />
-                  </div>
+                <blockquote className={styles.text}>{active.text}</blockquote>
 
-                  <div className={styles.authorBlock}>
-                    <span className={styles.avatar} aria-hidden="true">
-                      {initials(active.person)}
-                    </span>
-                    <span className={styles.authorMeta}>
-                      <strong className={styles.name}>{active.person}</strong>
-                      <span className={styles.role}>{active.role}</span>
-                      <span className={styles.company}>{active.company}</span>
-                    </span>
-                  </div>
+                <div className={styles.controls} aria-label="Navegação dos depoimentos">
+                  <button
+                    type="button"
+                    className={styles.navButton}
+                    onClick={() => go(-1)}
+                    aria-label="Depoimento anterior"
+                  >
+                    <FaArrowLeft aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.navButton}
+                    onClick={() => go(1)}
+                    aria-label="Próximo depoimento"
+                  >
+                    <FaArrowRight aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
 
-                  <span className={styles.relationship}>Projeto entregue · parceria construída</span>
-                </figcaption>
-              </motion.figure>
-            </AnimatePresence>
+              <figcaption className={styles.authorPanel}>
+                <div className={styles.companyMark}>
+                  <Image
+                    src={active.logo}
+                    alt={`Logo ${active.company}`}
+                    width={150}
+                    height={64}
+                    sizes="150px"
+                    quality={60}
+                    className={styles.companyLogo}
+                  />
+                </div>
+
+                <div className={styles.authorBlock}>
+                  <span className={styles.avatar} aria-hidden="true">
+                    {initials(active.person)}
+                  </span>
+                  <span className={styles.authorMeta}>
+                    <strong className={styles.name}>{active.person}</strong>
+                    <span className={styles.role}>{active.role}</span>
+                    <span className={styles.company}>{active.company}</span>
+                  </span>
+                </div>
+
+                <span className={styles.relationship}>
+                  Projeto entregue · parceria construída
+                </span>
+              </figcaption>
+            </figure>
           </div>
         </div>
 
@@ -171,8 +175,9 @@ export default function Testimonials() {
               return (
                 <button
                   key={item.id}
+                  type="button"
                   className={`${styles.thumb} ${isActive ? styles.thumbActive : ""}`}
-                  onClick={() => goTo(itemIndex)}
+                  onClick={() => setIndex(itemIndex)}
                   role="tab"
                   aria-selected={isActive}
                   aria-label={`Depoimento de ${item.person}, ${item.company}`}
@@ -185,6 +190,8 @@ export default function Testimonials() {
                     alt=""
                     width={92}
                     height={40}
+                    sizes="92px"
+                    quality={60}
                     className={styles.thumbLogo}
                   />
                   <span className={styles.thumbName}>{item.company}</span>
