@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import projetosData from "../components/PortfolioSection/projetosData.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://saulopavanello.com.br";
+  const baseUrl = "https://www.saulopavanello.com.br";
 
   const staticPaths = [
     "",
