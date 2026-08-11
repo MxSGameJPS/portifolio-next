@@ -1,6 +1,6 @@
 "use client";
+
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import styles from "./solutions.module.css";
 import data from "./solutions.json";
 import { FaChevronDown } from "react-icons/fa";
@@ -15,7 +15,6 @@ function trackSolutionCta(label) {
 }
 
 export default function Solutions() {
-  const reduce = useReducedMotion();
   const initialCategory = data[0];
   const [expandedCategory, setExpandedCategory] = useState(initialCategory?.id);
   const [selectedItem, setSelectedItem] = useState(initialCategory?.items?.[0] || null);
@@ -23,22 +22,8 @@ export default function Solutions() {
   const toggleCategory = (id) => {
     if (expandedCategory === id) return;
     setExpandedCategory(id);
-    const category = data.find((c) => c.id === id);
+    const category = data.find((item) => item.id === id);
     if (category?.items?.length) setSelectedItem(category.items[0]);
-  };
-
-  const panelContainer = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.05, delayChildren: 0.06 } },
-  };
-
-  const panelItem = {
-    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 14 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
-    },
   };
 
   return (
@@ -57,17 +42,14 @@ export default function Solutions() {
         </header>
 
         <div className={styles.layout}>
-          <div
-            className={styles.menuContainer}
-            role="tablist"
-            aria-orientation="vertical"
-            aria-label="Categorias de soluções"
-          >
+          <div className={styles.menuContainer} aria-label="Categorias de soluções">
             {data.map((category) => {
               const isOpen = expandedCategory === category.id;
+
               return (
                 <div key={category.id} className={styles.categoryGroup}>
                   <button
+                    type="button"
                     className={`${styles.categoryHeader} ${
                       isOpen ? styles.categoryHeaderActive : ""
                     }`}
@@ -87,98 +69,79 @@ export default function Solutions() {
                     />
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.ul
-                        id={`group-${category.id}`}
-                        className={styles.itemList}
-                        role="list"
-                        initial={false}
-                        animate={reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-                        exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        {category.items.map((item) => {
-                          const active = selectedItem === item;
-                          return (
-                            <li key={item.title}>
-                              <button
-                                className={`${styles.itemButton} ${active ? styles.activeItem : ""}`}
-                                onClick={() => setSelectedItem(item)}
-                                role="tab"
-                                aria-selected={active}
-                                aria-controls="solution-content-panel"
-                              >
-                                {active && (
-                                  <motion.span
-                                    layoutId="solIndicator"
-                                    className={styles.itemIndicator}
-                                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
-                                  />
-                                )}
-                                {item.name}
-                              </button>
-                            </li>
-                          );
-                        })}
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
+                  <ul
+                    id={`group-${category.id}`}
+                    className={styles.itemList}
+                    hidden={!isOpen}
+                  >
+                    {category.items.map((item) => {
+                      const active = selectedItem === item;
+
+                      return (
+                        <li key={item.title}>
+                          <button
+                            type="button"
+                            className={`${styles.itemButton} ${
+                              active ? styles.activeItem : ""
+                            }`}
+                            onClick={() => setSelectedItem(item)}
+                            aria-pressed={active}
+                          >
+                            {active && (
+                              <span className={styles.itemIndicator} aria-hidden="true" />
+                            )}
+                            {item.name}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
               );
             })}
           </div>
 
-          <div className={styles.contentPanel} role="tabpanel" id="solution-content-panel">
-            <AnimatePresence mode="wait" initial={false}>
-              {selectedItem && (
-                <motion.div
-                  key={selectedItem.title}
-                  variants={panelContainer}
-                  initial={false}
-                  animate="show"
-                  exit={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
-                  className={styles.panelInner}
+          <div
+            className={styles.contentPanel}
+            role="region"
+            aria-live="polite"
+            aria-label={
+              selectedItem
+                ? `Detalhes da solução ${selectedItem.name}`
+                : "Detalhes da solução"
+            }
+          >
+            {selectedItem && (
+              <div className={styles.panelInner} key={selectedItem.title}>
+                <span className={styles.panelEyebrow}>Solução selecionada</span>
+
+                <h3 className={styles.contentTitle}>{selectedItem.title}</h3>
+
+                <p className={styles.quote}>{selectedItem.quote}</p>
+
+                <p className={styles.description}>{selectedItem.description}</p>
+
+                <div className={styles.featureList}>
+                  {selectedItem.features.map((feature) => (
+                    <div key={feature} className={styles.featureItem}>
+                      <span className={styles.featureCheck} aria-hidden="true">
+                        <PiCheckBold size={12} />
+                      </span>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+
+                <a
+                  href="#contato"
+                  className={styles.ctaButton}
+                  onClick={() => trackSolutionCta(selectedItem.title)}
                 >
-                  <motion.span variants={panelItem} className={styles.panelEyebrow}>
-                    Solução selecionada
-                  </motion.span>
-
-                  <motion.h3 variants={panelItem} className={styles.contentTitle}>
-                    {selectedItem.title}
-                  </motion.h3>
-
-                  <motion.p variants={panelItem} className={styles.quote}>
-                    {selectedItem.quote}
-                  </motion.p>
-
-                  <motion.p variants={panelItem} className={styles.description}>
-                    {selectedItem.description}
-                  </motion.p>
-
-                  <motion.div variants={panelItem} className={styles.featureList}>
-                    {selectedItem.features.map((feature) => (
-                      <div key={feature} className={styles.featureItem}>
-                        <span className={styles.featureCheck} aria-hidden="true">
-                          <PiCheckBold size={12} />
-                        </span>
-                        {feature}
-                      </div>
-                    ))}
-                  </motion.div>
-
-                  <motion.a
-                    variants={panelItem}
-                    href="#contato"
-                    className={styles.ctaButton}
-                    onClick={() => trackSolutionCta(selectedItem.title)}
-                  >
-                    Conversar sobre o projeto
-                    <PiArrowUpRightBold size={16} aria-hidden="true" />
-                  </motion.a>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  Conversar sobre o projeto
+                  <PiArrowUpRightBold size={16} aria-hidden="true" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
