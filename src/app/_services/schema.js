@@ -1,7 +1,7 @@
 // Builds a connected @graph (Service linked to the site-wide Person + FAQPage)
 // for every service landing page. Keeps structured data identical across routes.
 
-const SITE = "https://saulopavanello.com.br";
+const SITE = "https://www.saulopavanello.com.br";
 
 export function serviceJsonLd({
   path,
