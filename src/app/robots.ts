@@ -2,13 +2,11 @@ import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   const allowAll = { allow: "/", disallow: ["/admin", "/private"] };
+  const host = "https://www.saulopavanello.com.br";
 
   return {
     rules: [
-      // Classic search + general crawlers
       { userAgent: "*", ...allowAll },
-      // AI answer engines — explicitly allowed so the site can be cited in
-      // ChatGPT Search, Perplexity, Gemini Overviews and Claude answers.
       { userAgent: "GPTBot", ...allowAll },
       { userAgent: "OAI-SearchBot", ...allowAll },
       { userAgent: "ChatGPT-User", ...allowAll },
@@ -19,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Claude-Web", ...allowAll },
       { userAgent: "Applebot-Extended", ...allowAll },
     ],
-    sitemap: "https://saulopavanello.com.br/sitemap.xml",
-    host: "https://saulopavanello.com.br",
+    sitemap: `${host}/sitemap.xml`,
+    host,
   };
 }
