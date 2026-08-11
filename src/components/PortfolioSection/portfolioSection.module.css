@@ -19,7 +19,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #b27a18;
+  color: #8a5c1b;
 }
 
 .title {
@@ -71,6 +71,11 @@
   color: #171717;
 }
 
+.tabButton:focus-visible {
+  outline: 2px solid #8a5c1b;
+  outline-offset: 3px;
+}
+
 .activeTab {
   color: #171717;
   background: #fffaf2;
@@ -83,7 +88,7 @@
   bottom: 0.25rem;
   height: 2px;
   border-radius: 2px;
-  background: #b27a18;
+  background: #8a5c1b;
 }
 
 /* ---------- Grid ---------- */
@@ -93,6 +98,7 @@
   gap: 1.5rem;
   max-width: 1320px;
   margin: 0 auto 3.25rem;
+  animation: portfolioGridIn 0.24s ease both;
 }
 
 .featuredItem {
@@ -135,6 +141,17 @@
 
 .ctaButton:hover span {
   transform: translateX(3px);
+}
+
+@keyframes portfolioGridIn {
+  from {
+    opacity: 0.9;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ============ Responsive ============ */
@@ -190,5 +207,11 @@
   .ctaButton {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid {
+    animation: none;
   }
 }
