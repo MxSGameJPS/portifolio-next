@@ -63,7 +63,7 @@ export default function Hero() {
 
         <div className={styles.stage}>
           <Image
-            src="/hero-saulo.webp"
+            src="/hero-saulo.png"
             alt="Saulo Pavanello em seu ambiente de trabalho, ao lado de uma estação de desenvolvimento de software"
             width={1440}
             height={810}
