@@ -1,10 +1,6 @@
 "use client";
+
 import { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useReducedMotion,
-} from "framer-motion";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import styles from "./portfolioSection.module.css";
 import Link from "next/link";
@@ -51,47 +47,33 @@ const TECH_KEYWORDS = [
 
 function pickTech(stack = []) {
   const joined = stack.join(" ");
-  const found = TECH_KEYWORDS.filter((k) => joined.includes(k));
+  const found = TECH_KEYWORDS.filter((keyword) => joined.includes(keyword));
   const cleaned = found.includes("React Native")
-    ? found.filter((k) => k !== "React")
+    ? found.filter((keyword) => keyword !== "React")
     : found;
   return cleaned.slice(0, 4);
 }
 
 function getProjects(tag) {
   const list = data.portfolio.filter(
-    (p) =>
-      p.importance === "1" &&
-      (p.tag === tag ||
-        (tag === "API - BackEnd" && p.tag === "Api - BackEnd")),
+    (project) =>
+      project.importance === "1" &&
+      (project.tag === tag ||
+        (tag === "API - BackEnd" && project.tag === "Api - BackEnd")),
   );
 
-  const rank = (p) =>
-    (PRIMARY.has(p.name) ? 2 : 0) + (FLAGSHIP.has(p.name) ? 1 : 0);
+  const rank = (project) =>
+    (PRIMARY.has(project.name) ? 2 : 0) +
+    (FLAGSHIP.has(project.name) ? 1 : 0);
 
   return [...list].sort((a, b) => rank(b) - rank(a));
 }
 
 export default function PortfolioSection() {
   const [activeTab, setActiveTab] = useState("web");
-  const reduce = useReducedMotion();
 
-  const activeMeta = TABS.find((t) => t.key === activeTab);
+  const activeMeta = TABS.find((tab) => tab.key === activeTab);
   const displayedProjects = getProjects(activeMeta.tag);
-
-  const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.08 } },
-  };
-
-  const item = {
-    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 28 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-    },
-  };
 
   return (
     <section className={styles.section} id="portfolio">
@@ -107,69 +89,57 @@ export default function PortfolioSection() {
       </div>
 
       <div className={styles.tabs} role="tablist" aria-label="Categorias de projetos">
-        {TABS.map((t) => (
-          <button
-            key={t.key}
-            className={`${styles.tabButton} ${
-              activeTab === t.key ? styles.activeTab : ""
-            }`}
-            onClick={() => setActiveTab(t.key)}
-            role="tab"
-            aria-selected={activeTab === t.key}
-            aria-controls={`${t.key}-projects-panel`}
-            id={`${t.key}-tab`}
-          >
-            {t.label}
-            {activeTab === t.key && (
-              <motion.span
-                layoutId="tabUnderline"
-                className={styles.tabUnderline}
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-              />
-            )}
-          </button>
-        ))}
+        {TABS.map((tab) => {
+          const active = activeTab === tab.key;
+
+          return (
+            <button
+              key={tab.key}
+              type="button"
+              className={`${styles.tabButton} ${active ? styles.activeTab : ""}`}
+              onClick={() => setActiveTab(tab.key)}
+              role="tab"
+              aria-selected={active}
+              aria-controls="portfolio-projects-panel"
+              id={`${tab.key}-tab`}
+            >
+              {tab.label}
+              {active && <span className={styles.tabUnderline} aria-hidden="true" />}
+            </button>
+          );
+        })}
       </div>
 
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={activeTab}
-          className={styles.grid}
-          role="tabpanel"
-          id={`${activeTab}-projects-panel`}
-          aria-labelledby={`${activeTab}-tab`}
-          variants={container}
-          initial={false}
-          animate="show"
-        >
-          {displayedProjects.map((project, index) => {
-            const featured = index === 0;
+      <div
+        key={activeTab}
+        className={styles.grid}
+        role="tabpanel"
+        id="portfolio-projects-panel"
+        aria-labelledby={`${activeTab}-tab`}
+      >
+        {displayedProjects.map((project, index) => {
+          const featured = index === 0;
 
-            return (
-              <motion.div
-                key={project.id || index}
-                variants={item}
-                className={featured ? styles.featuredItem : undefined}
-              >
-                <Link
-                  href={`/portfolio/${project.id}`}
-                  className={styles.cardLink}
-                >
-                  <ProjectCard
-                    title={project.name}
-                    altText={project.name}
-                    category={project.category}
-                    description={featured ? project.description : undefined}
-                    tech={pickTech(project.tech_stack)}
-                    featured={featured}
-                    imageSrc={project.image || null}
-                  />
-                </Link>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </AnimatePresence>
+          return (
+            <div
+              key={project.id || index}
+              className={featured ? styles.featuredItem : undefined}
+            >
+              <Link href={`/portfolio/${project.id}`} className={styles.cardLink}>
+                <ProjectCard
+                  title={project.name}
+                  altText={project.name}
+                  category={project.category}
+                  description={featured ? project.description : undefined}
+                  tech={pickTech(project.tech_stack)}
+                  featured={featured}
+                  imageSrc={project.image || null}
+                />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
 
       <Link href="/portfolio" className={styles.ctaButton}>
         Ver todos os projetos <span aria-hidden="true">→</span>

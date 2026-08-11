@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   images: {
-    qualities: [100, 90, 75],
+    qualities: [100, 90, 75, 60],
   },
   async headers() {
     return [

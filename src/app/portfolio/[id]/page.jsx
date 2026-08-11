@@ -12,7 +12,7 @@ import Footer from "../../../components/Footer/Footer";
 import projetosData from "../../../components/PortfolioSection/projetosData.json";
 import styles from "./page.module.css";
 
-const SITE = "https://saulopavanello.com.br";
+const SITE = "https://www.saulopavanello.com.br";
 
 function getProjectName(project) {
   if (project.name === "SocialJurídico") return "Social Jurídico";
@@ -177,7 +177,8 @@ export default async function ProjectDetailsPage({ params }) {
                   src={project.image}
                   alt={`Interface do projeto ${projectName}`}
                   fill
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="(max-width: 760px) 100vw, 1260px"
                   className={styles.heroImage}
                 />

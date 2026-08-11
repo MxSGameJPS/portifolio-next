@@ -69,7 +69,8 @@ export default function Hero() {
             height={810}
             sizes="(max-width: 900px) 100vw, 45vw"
             className={styles.portrait}
-            preload
+            loading="eager"
+            fetchPriority="high"
           />
           <div className={styles.photoShade} aria-hidden="true" />
         </div>

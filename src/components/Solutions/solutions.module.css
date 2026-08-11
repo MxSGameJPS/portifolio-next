@@ -26,11 +26,15 @@
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #b48a43;
 }
 
 .eyebrow {
   margin-bottom: 1rem;
+  color: #8a5c1b;
+}
+
+.panelEyebrow {
+  color: #d3a650;
 }
 
 .mainTitle {
@@ -45,7 +49,7 @@
 
 .mainTitle em {
   font-weight: 400;
-  color: #8e6b33;
+  color: #765522;
 }
 
 .subtitle {
@@ -91,13 +95,13 @@
 }
 
 .categoryHeader:hover {
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
 .categoryHeader:focus-visible,
 .itemButton:focus-visible,
 .ctaButton:focus-visible {
-  outline: 2px solid #b48a43;
+  outline: 2px solid #8a5c1b;
   outline-offset: 4px;
 }
 
@@ -111,7 +115,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #b48a43;
+  color: #8a5c1b;
 }
 
 .categoryCopy {
@@ -132,12 +136,12 @@
   max-width: 29rem;
   font-size: 0.83rem;
   line-height: 1.5;
-  color: #777269;
+  color: #716c63;
 }
 
 .arrowIcon {
   margin-top: 0.2rem;
-  color: #8e6b33;
+  color: #765522;
   transition: transform 0.28s ease;
 }
 
@@ -162,7 +166,7 @@
   border: 0;
   border-radius: 0;
   background: transparent;
-  color: #716c63;
+  color: #655f56;
   text-align: left;
   font-family: var(--font-body);
   font-size: 0.92rem;
@@ -187,7 +191,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b48a43;
+  background: #8a5c1b;
   transform: translateY(-50%);
 }
 
@@ -227,6 +231,7 @@
 .panelInner {
   position: relative;
   z-index: 1;
+  animation: solutionPanelIn 0.28s ease both;
 }
 
 .panelEyebrow {
@@ -320,6 +325,17 @@
   color: #e5c58e;
 }
 
+@keyframes solutionPanelIn {
+  from {
+    opacity: 0.88;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 920px) {
   .section {
     padding: 5.5rem 1.25rem;
@@ -396,8 +412,10 @@
   .categoryHeader,
   .itemButton,
   .arrowIcon,
-  .ctaButton {
+  .ctaButton,
+  .panelInner {
     transition: none;
+    animation: none;
   }
 
   .itemButton:hover,

@@ -3,6 +3,8 @@ import "./globals.css";
 import { SimpleAnalytics } from "@simpleanalytics/next";
 import Script from "next/script";
 
+const SITE = "https://www.saulopavanello.com.br";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://saulopavanello.com.br"),
+  metadataBase: new URL(SITE),
   title: {
     default: "Saulo Pavanello | Software Engineer",
     template: "%s | Saulo Pavanello",
@@ -41,7 +43,7 @@ export const metadata = {
     "Saulo Pavanello",
     "Portfólio",
   ],
-  authors: [{ name: "Saulo Pavanello", url: "https://saulopavanello.com.br" }],
+  authors: [{ name: "Saulo Pavanello", url: SITE }],
   creator: "Saulo Pavanello",
   publisher: "Saulo Pavanello",
   formatDetection: { telephone: false, email: false, address: false },
@@ -70,7 +72,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://saulopavanello.com.br",
+    url: SITE,
     title: "Saulo Pavanello | Software Engineer",
     description:
       "Eu construo software para negócios que querem crescer. SaaS, sistemas web, aplicativos, APIs e experiências digitais com foco em resultado real.",
@@ -103,16 +105,18 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  const SITE = "https://saulopavanello.com.br";
   const sameAs = [
     "https://github.com/MxSGameJPS",
     "https://www.linkedin.com/in/saulo-pavanello/",
     "https://www.instagram.com/saulopavanello.tech/",
   ];
 
-  // Service-area business: no public street address, just the base city plus
-  // the cities actively served (Vale do Sinos / Serra Gaúcha, RS).
-  const baseCity = { "@type": "City", name: "Dois Irmãos", addressRegion: "RS", addressCountry: "BR" };
+  const baseCity = {
+    "@type": "City",
+    name: "Dois Irmãos",
+    addressRegion: "RS",
+    addressCountry: "BR",
+  };
   const servedCities = [
     "Dois Irmãos",
     "Novo Hamburgo",
@@ -123,10 +127,13 @@ export default function RootLayout({ children }) {
     "Estância Velha",
     "Sapucaia do Sul",
     "Caxias do Sul",
-  ].map((name) => ({ "@type": "City", name, addressRegion: "RS", addressCountry: "BR" }));
+  ].map((name) => ({
+    "@type": "City",
+    name,
+    addressRegion: "RS",
+    addressCountry: "BR",
+  }));
 
-  // Connected @graph: search engines and AI summarizers resolve the @id links,
-  // building one entity model (person + site + service + real reviews).
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -186,27 +193,66 @@ export default function RootLayout({ children }) {
               "@type": "OfferCatalog",
               name: "Desenvolvimento Web",
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "SaaS e Sistemas Web" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Pages de Alta Conversão" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "E-commerce e Lojas Virtuais" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dashboards e Portais" } },
+                {
+                  "@type": "Offer",
+                  itemOffered: { "@type": "Service", name: "SaaS e Sistemas Web" },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Landing Pages de Alta Conversão",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "E-commerce e Lojas Virtuais",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: { "@type": "Service", name: "Dashboards e Portais" },
+                },
               ],
             },
             {
               "@type": "OfferCatalog",
               name: "Desenvolvimento Mobile",
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos Android" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aplicativos iOS" } },
+                {
+                  "@type": "Offer",
+                  itemOffered: { "@type": "Service", name: "Aplicativos Android" },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: { "@type": "Service", name: "Aplicativos iOS" },
+                },
               ],
             },
             {
               "@type": "OfferCatalog",
               name: "Backend, APIs e Integrações",
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "APIs REST e Integrações" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Modelagem e Gestão de Banco de Dados" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Automação e Inteligência Artificial" } },
+                {
+                  "@type": "Offer",
+                  itemOffered: { "@type": "Service", name: "APIs REST e Integrações" },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Modelagem e Gestão de Banco de Dados",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Automação e Inteligência Artificial",
+                  },
+                },
               ],
             },
           ],
@@ -219,22 +265,19 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://scripts.simpleanalyticscdn.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://scripts.simpleanalyticscdn.com" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <SimpleAnalytics />
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17926381242"
+          strategy="lazyOnload"
         />
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'AW-17926381242');
           `}
         </Script>
