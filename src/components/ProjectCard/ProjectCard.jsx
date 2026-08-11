@@ -11,6 +11,10 @@ export default function ProjectCard({
   tech = [],
   featured = false,
 }) {
+  const responsiveSizes = featured
+    ? "(max-width: 768px) 100vw, 1200px"
+    : "(max-width: 768px) 100vw, 50vw";
+
   return (
     <article className={`${styles.card} ${featured ? styles.featured : ""}`}>
       {imageSrc ? (
@@ -18,7 +22,8 @@ export default function ProjectCard({
           src={imageSrc}
           alt={altText || title}
           fill
-          sizes={featured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+          sizes={responsiveSizes}
+          quality={60}
           className={styles.image}
         />
       ) : (
@@ -39,9 +44,9 @@ export default function ProjectCard({
 
         {tech.length > 0 && (
           <ul className={styles.techRow}>
-            {tech.map((t) => (
-              <li key={t} className={styles.chip}>
-                {t}
+            {tech.map((technology) => (
+              <li key={technology} className={styles.chip}>
+                {technology}
               </li>
             ))}
           </ul>
