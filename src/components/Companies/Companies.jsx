@@ -2,12 +2,42 @@ import Image from "next/image";
 import styles from "./companies.module.css";
 
 const companies = [
-  { name: "AI2Love", src: "/Empresas/AI2Love-logo.svg" },
-  { name: "GeekZ", src: "/Empresas/Logos_GeekZ_vertical.png" },
-  { name: "MC Contabilidade", src: "/Empresas/Moises com fone (1).png" },
-  { name: "Social Jurídico", src: "/Empresas/produtos.png" },
-  { name: "Alma Zen", src: "/Empresas/logo.png" },
-  { name: "Qfarma", src: "/Empresas/logoq.png" },
+  {
+    name: "AI2Love",
+    src: "/Empresas/AI2Love-logo.svg",
+    sizes: "(max-width: 620px) 90px, 110px",
+    quality: 75,
+  },
+  {
+    name: "GeekZ",
+    src: "/Empresas/Logos_GeekZ_vertical.png",
+    sizes: "(max-width: 620px) 48px, 58px",
+    quality: 60,
+  },
+  {
+    name: "MC Contabilidade",
+    src: "/Empresas/Moises com fone (1).png",
+    sizes: "(max-width: 620px) 46px, 54px",
+    quality: 60,
+  },
+  {
+    name: "Social Jurídico",
+    src: "/Empresas/produtos.png",
+    sizes: "(max-width: 620px) 46px, 54px",
+    quality: 60,
+  },
+  {
+    name: "Alma Zen",
+    src: "/Empresas/logo.png",
+    sizes: "(max-width: 620px) 46px, 54px",
+    quality: 60,
+  },
+  {
+    name: "Qfarma",
+    src: "/Empresas/logoq.png",
+    sizes: "(max-width: 620px) 92px, 138px",
+    quality: 60,
+  },
 ];
 
 export default function Companies() {
@@ -44,7 +74,8 @@ export default function Companies() {
                   alt={`Logo ${company.name}`}
                   width={180}
                   height={70}
-                  sizes="(max-width: 700px) 110px, 140px"
+                  sizes={company.sizes}
+                  quality={company.quality}
                   className={styles.companyLogo}
                 />
               </div>
