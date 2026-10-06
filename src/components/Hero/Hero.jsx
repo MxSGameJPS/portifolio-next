@@ -18,12 +18,12 @@ export default function Hero() {
           </p>
 
           <h1 id="hero-title" className={styles.headline}>
-            Eu construo software para negócios que querem crescer.
+            Sites, sistemas e aplicativos para negócios que querem crescer.
           </h1>
 
           <p className={styles.subHeadline}>
-            Desenvolvimento de SaaS, sistemas web, aplicativos, APIs e
-            experiências digitais com foco em resultado real.
+            Engenharia de software sob medida, de sites profissionais a sistemas e
+            aplicativos. Baseado em Dois Irmãos — RS, com atendimento em todo o Brasil.
           </p>
 
           <div className={styles.ctaGroup}>
