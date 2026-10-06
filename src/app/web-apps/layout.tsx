@@ -4,12 +4,12 @@ const SITE = "https://www.saulopavanello.com.br";
 const PAGE = `${SITE}/web-apps`;
 
 export const metadata = {
-  title: { absolute: "Web Apps & Sistemas | Saulo Pavanello — Software Engineer" },
+  title: { absolute: "Sistemas Empresariais & Web Apps | Saulo Pavanello" },
   description:
-    "Desenvolvimento de sistemas web, SaaS, dashboards e portais sob medida com React, Next.js, Node.js, APIs e PostgreSQL.",
+    "Desenvolvimento de sistemas empresariais, sistemas web, SaaS, dashboards e portais sob medida. Baseado em Dois Irmãos — RS, com atendimento em todo o Brasil.",
   alternates: { canonical: "/web-apps" },
   openGraph: {
-    title: "Web Apps & Sistemas | Saulo Pavanello — Software Engineer",
+    title: "Sistemas Empresariais & Web Apps | Saulo Pavanello",
     description:
       "Software sob medida para centralizar processos, automatizar tarefas e conectar dados, usuários e ferramentas.",
     url: PAGE,
@@ -17,7 +17,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Apps & Sistemas | Saulo Pavanello — Software Engineer",
+    title: "Sistemas Empresariais & Web Apps | Saulo Pavanello",
     description: "SaaS, sistemas web, dashboards e portais construídos em torno da operação real do negócio.",
     images: ["/ogimage.png"],
   },
@@ -37,7 +37,20 @@ export default function WebAppsLayout({ children }: { children: React.ReactNode 
         description:
           "Desenvolvimento de sistemas web, SaaS, dashboards e portais sob medida.",
         provider: { "@id": `${SITE}/#person` },
-        areaServed: { "@type": "Country", name: "Brasil" },
+        areaServed: [
+          "Dois Irmãos",
+          "Ivoti",
+          "Novo Hamburgo",
+          "Estância Velha",
+          "Sapiranga",
+          "Campo Bom",
+          "São Leopoldo",
+        ].map((name) => ({
+          "@type": "City",
+          name,
+          addressRegion: "RS",
+          addressCountry: "BR",
+        })).concat({ "@type": "Country", name: "Brasil" }),
         mainEntityOfPage: PAGE,
       },
       {
