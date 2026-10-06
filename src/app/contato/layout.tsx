@@ -1,4 +1,4 @@
-const SITE = "https://saulopavanello.com.br";
+const SITE = "https://www.saulopavanello.com.br";
 const PAGE = `${SITE}/contato`;
 
 export const metadata = {
