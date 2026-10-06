@@ -19,8 +19,4 @@ const nextConfig = {
   },
 };
 
-import withSimpleAnalytics from "@simpleanalytics/next/plugin";
-
-export default withSimpleAnalytics(nextConfig, {
-  hostname: "saulopavanello.com.br",
-});
+export default nextConfig;
