@@ -277,7 +277,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-C3S18WNB4S"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17926381242"
           strategy="afterInteractive"
         />
         <Script id="google-analytics">
@@ -285,7 +285,7 @@ export default function RootLayout({ children }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-C3S18WNB4S');
+            gtag('config', 'AW-17926381242');
           `}
         </Script>
 
