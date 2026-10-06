@@ -1,7 +1,7 @@
 import { meta, faqItems } from "./data";
 import { serviceJsonLd } from "../_services/schema";
 
-const SITE = "https://saulopavanello.com.br";
+const SITE = "https://www.saulopavanello.com.br";
 const PAGE = `${SITE}${meta.path}`;
 const TITLE = "E-commerce | Saulo Pavanello — Software Engineer";
 
