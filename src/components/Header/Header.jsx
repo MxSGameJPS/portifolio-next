@@ -41,12 +41,13 @@ export default function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
         <div className={styles.logoContainer}>
-          <Link href="/" onClick={closeMenu} aria-label="Ir para a página inicial">
+          <Link prefetch={false} href="/" onClick={closeMenu} aria-label="Ir para a página inicial">
             <Image
               src="/Logo/logohorizontal.png"
               alt="Saulo Pavanello"
               width={280}
               height={150}
+              sizes="172px"
               className={styles.logo}
               priority
             />
@@ -67,29 +68,29 @@ export default function Header() {
               <div className={`${styles.dropdown} ${styles.megaMenu}`}>
                 <div>
                   <h4 className={styles.dropdownTitle}>Desenvolvimento</h4>
-                  <Link href="/criacao-de-sites" className={styles.dropdownLink} onClick={closeMenu}>
+                  <Link prefetch={false} href="/criacao-de-sites" className={styles.dropdownLink} onClick={closeMenu}>
                     Criação de Sites
                   </Link>
-                  <Link href="/web-apps" className={styles.dropdownLink} onClick={closeMenu}>
+                  <Link prefetch={false} href="/web-apps" className={styles.dropdownLink} onClick={closeMenu}>
                     Sistemas Empresariais
                   </Link>
-                  <Link href="/mobile" className={styles.dropdownLink} onClick={closeMenu}>
+                  <Link prefetch={false} href="/mobile" className={styles.dropdownLink} onClick={closeMenu}>
                     Aplicativos Mobile
                   </Link>
-                  <Link href="/landing-pages" className={styles.dropdownLink} onClick={closeMenu}>
+                  <Link prefetch={false} href="/landing-pages" className={styles.dropdownLink} onClick={closeMenu}>
                     Landing Pages
                   </Link>
-                  <Link href="/ecommerce" className={styles.dropdownLink} onClick={closeMenu}>
+                  <Link prefetch={false} href="/ecommerce" className={styles.dropdownLink} onClick={closeMenu}>
                     E-commerce
                   </Link>
-                  <Link href="/backend" className={styles.dropdownLink} onClick={closeMenu}>
+                  <Link prefetch={false} href="/backend" className={styles.dropdownLink} onClick={closeMenu}>
                     Backend
                   </Link>
                 </div>
 
                 <div>
                   <h4 className={styles.dropdownTitle}>Design & Estratégia</h4>
-                  <Link href="/ui-ux" className={styles.dropdownLink} onClick={closeMenu}>
+                  <Link prefetch={false} href="/ui-ux" className={styles.dropdownLink} onClick={closeMenu}>
                     UI/UX Design
                   </Link>
                 </div>
@@ -97,7 +98,7 @@ export default function Header() {
             </li>
 
             <li className={styles.navItem}>
-              <Link href="/portfolio" className={styles.navLink} onClick={closeMenu}>
+              <Link prefetch={false} href="/portfolio" className={styles.navLink} onClick={closeMenu}>
                 <span>Portfólio</span>
               </Link>
             </li>
@@ -109,23 +110,23 @@ export default function Header() {
               </div>
 
               <div className={styles.dropdown}>
-                <Link href="/sobre" className={styles.dropdownLink} onClick={closeMenu}>
+                <Link prefetch={false} href="/sobre" className={styles.dropdownLink} onClick={closeMenu}>
                   Quem sou eu
                 </Link>
-                <Link href="/stack" className={styles.dropdownLink} onClick={closeMenu}>
+                <Link prefetch={false} href="/stack" className={styles.dropdownLink} onClick={closeMenu}>
                   Minha Stack
                 </Link>
               </div>
             </li>
 
             <li className={styles.navItem}>
-              <Link href="/contato" className={styles.navLink} onClick={closeMenu}>
+              <Link prefetch={false} href="/contato" className={styles.navLink} onClick={closeMenu}>
                 <span>Contato</span>
               </Link>
             </li>
 
             <li className={styles.mobileCtaItem}>
-              <Link href="/contato" className={styles.mobileCta} onClick={closeMenu}>
+              <Link prefetch={false} href="/contato" className={styles.mobileCta} onClick={closeMenu}>
                 Vamos conversar <span aria-hidden="true">↗</span>
               </Link>
             </li>
@@ -133,7 +134,7 @@ export default function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <Link href="/contato" className={styles.headerCta}>
+          <Link prefetch={false} href="/contato" className={styles.headerCta}>
             Vamos conversar <span aria-hidden="true">↗</span>
           </Link>
 

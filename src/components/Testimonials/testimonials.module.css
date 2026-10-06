@@ -24,7 +24,7 @@
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: #a8772f;
+  color: #805923;
 }
 
 .title {
@@ -98,7 +98,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: #8d867d;
+  color: #70685f;
 }
 
 .quoteIcon {
@@ -226,7 +226,7 @@
   font-size: 0.67rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(245, 241, 235, 0.42);
+  color: rgba(245, 241, 235, 0.65);
 }
 
 .clientIndex {
@@ -242,7 +242,7 @@
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: #8b847c;
+  color: #70685f;
 }
 
 .thumbs {
@@ -263,7 +263,7 @@
   border-right: 1px solid rgba(23, 23, 23, 0.1);
   background: transparent;
   text-align: left;
-  color: #777068;
+  color: #686057;
   cursor: pointer;
   transition: background-color 0.22s ease, color 0.22s ease;
 }
@@ -299,7 +299,7 @@
   padding-top: 0.12rem;
   font-size: 0.62rem;
   letter-spacing: 0.12em;
-  color: #a09991;
+  color: #70685f;
 }
 
 .thumbLogo {

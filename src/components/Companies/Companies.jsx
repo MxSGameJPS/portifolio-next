@@ -34,9 +34,10 @@ const companies = [
   },
   {
     name: "Qfarma",
-    src: "/Empresas/logoq.png",
+    src: "/Empresas/logoq.webp",
     sizes: "(max-width: 620px) 92px, 138px",
     quality: 60,
+    unoptimized: true,
   },
 ];
 
@@ -76,6 +77,7 @@ export default function Companies() {
                   height={70}
                   sizes={company.sizes}
                   quality={company.quality}
+                  unoptimized={company.unoptimized}
                   className={styles.companyLogo}
                 />
               </div>

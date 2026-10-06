@@ -59,7 +59,7 @@ export default function LocalPresence() {
 
         <nav className={styles.serviceLinks} aria-label="Serviços de desenvolvimento">
           {services.map((service) => (
-            <Link key={service.href} href={service.href} className={styles.serviceLink}>
+            <Link prefetch={false} key={service.href} href={service.href} className={styles.serviceLink}>
               <span>{service.label}</span>
               <PiArrowUpRightBold aria-hidden="true" />
             </Link>

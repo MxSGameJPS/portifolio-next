@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./footer.module.css";
@@ -55,7 +53,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.topGrid}>
           <div className={styles.brandColumn}>
-            <Link href="/" className={styles.logoLink} aria-label="Saulo Pavanello - início">
+            <Link prefetch={false} href="/" className={styles.logoLink} aria-label="Saulo Pavanello - início">
               <Image
                 src="/Logo/logohorizontal.png"
                 alt="Saulo Pavanello"
@@ -80,7 +78,7 @@ export default function Footer() {
             <ul className={styles.linkList}>
               {navigationLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className={styles.linkItem}>
+                  <Link prefetch={false} href={item.href} className={styles.linkItem}>
                     {item.label}
                   </Link>
                 </li>
@@ -93,7 +91,7 @@ export default function Footer() {
             <ul className={styles.linkList}>
               {solutionLinks.map((item) => (
                 <li key={`${item.href}-${item.label}`}>
-                  <Link href={item.href} className={styles.linkItem}>
+                  <Link prefetch={false} href={item.href} className={styles.linkItem}>
                     {item.label}
                   </Link>
                 </li>
@@ -106,7 +104,7 @@ export default function Footer() {
             <p className={styles.contactText}>
               Me conte o que você precisa construir. Eu respondo pessoalmente.
             </p>
-            <Link href="/contato" className={styles.cta}>
+            <Link prefetch={false} href="/contato" className={styles.cta}>
               Vamos conversar
               <PiArrowUpRightBold aria-hidden="true" />
             </Link>

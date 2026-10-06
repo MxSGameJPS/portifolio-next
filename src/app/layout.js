@@ -278,7 +278,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17926381242"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script id="google-analytics">
           {`
