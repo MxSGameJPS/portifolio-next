@@ -1,6 +1,6 @@
 import { faqItems } from "./data";
 
-const SITE = "https://saulopavanello.com.br";
+const SITE = "https://www.saulopavanello.com.br";
 const PAGE = `${SITE}/web-apps`;
 
 export const metadata = {
