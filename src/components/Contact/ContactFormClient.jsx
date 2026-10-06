@@ -64,7 +64,7 @@ export default function ContactFormClient() {
             <input
               type="hidden"
               name="_next"
-              value="https://saulopavanello.com.br?success=true"
+              value="https://www.saulopavanello.com.br?success=true"
             />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_subject" value="Novo Lead do Portfólio!" />
