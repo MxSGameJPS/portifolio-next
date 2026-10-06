@@ -5,6 +5,7 @@ import Companies from "../components/Companies/Companies";
 import PortfolioSection from "../components/PortfolioSection/PortfolioSection";
 import Solutions from "../components/Solutions/Solutions";
 import Testimonials from "../components/Testimonials/Testimonials";
+import LocalPresence from "../components/LocalPresence/LocalPresence";
 import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
@@ -24,6 +25,9 @@ export default function Home() {
         </ScrollReveal>
         <ScrollReveal>
           <Solutions />
+        </ScrollReveal>
+        <ScrollReveal>
+          <LocalPresence />
         </ScrollReveal>
         <ScrollReveal>
           <Testimonials />

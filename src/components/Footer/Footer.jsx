@@ -19,8 +19,8 @@ const navigationLinks = [
 ];
 
 const solutionLinks = [
-  { label: "Produtos & SaaS", href: "/web-apps" },
-  { label: "Sistemas Web", href: "/web-apps" },
+  { label: "Criação de Sites", href: "/criacao-de-sites" },
+  { label: "Sistemas Empresariais", href: "/web-apps" },
   { label: "APIs & Integrações", href: "/backend" },
   { label: "Aplicativos Mobile", href: "/mobile" },
   { label: "UI/UX & Estratégia", href: "/ui-ux" },

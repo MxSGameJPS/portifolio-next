@@ -67,8 +67,11 @@ export default function Header() {
               <div className={`${styles.dropdown} ${styles.megaMenu}`}>
                 <div>
                   <h4 className={styles.dropdownTitle}>Desenvolvimento</h4>
+                  <Link href="/criacao-de-sites" className={styles.dropdownLink} onClick={closeMenu}>
+                    Criação de Sites
+                  </Link>
                   <Link href="/web-apps" className={styles.dropdownLink} onClick={closeMenu}>
-                    Web Apps & Sistemas
+                    Sistemas Empresariais
                   </Link>
                   <Link href="/mobile" className={styles.dropdownLink} onClick={closeMenu}>
                     Aplicativos Mobile

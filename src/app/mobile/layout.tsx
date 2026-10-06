@@ -1,6 +1,6 @@
 import { faqItems } from "./data";
 
-const SITE = "https://saulopavanello.com.br";
+const SITE = "https://www.saulopavanello.com.br";
 const PAGE = `${SITE}/mobile`;
 
 export const metadata = {
@@ -36,7 +36,23 @@ export default function MobileLayout({ children }: { children: React.ReactNode }
         image: `${SITE}/ogimage.png`,
         description: "Desenvolvimento de aplicativos iOS e Android com React Native e Expo.",
         provider: { "@id": `${SITE}/#person` },
-        areaServed: { "@type": "Country", name: "Brasil" },
+        areaServed: [
+          { "@type": "Country", name: "Brasil" },
+          ...[
+            "Dois Irmãos",
+            "Ivoti",
+            "Novo Hamburgo",
+            "Estância Velha",
+            "Sapiranga",
+            "Campo Bom",
+            "São Leopoldo",
+          ].map((name) => ({
+            "@type": "City",
+            name,
+            addressRegion: "RS",
+            addressCountry: "BR",
+          })),
+        ],
         mainEntityOfPage: PAGE,
       },
       {

@@ -3,13 +3,15 @@ import { serviceJsonLd } from "../_services/schema";
 
 const SITE = "https://www.saulopavanello.com.br";
 const PAGE = `${SITE}${meta.path}`;
-const TITLE = "Landing Pages | Saulo Pavanello — Software Engineer";
+const TITLE = "Criação de Sites Profissionais | Saulo Pavanello";
 
 export const metadata = {
   title: { absolute: TITLE },
   description: meta.description,
   alternates: { canonical: meta.path },
   openGraph: {
+    type: "website",
+    locale: "pt_BR",
     title: TITLE,
     description: meta.description,
     url: PAGE,
@@ -23,12 +25,12 @@ export const metadata = {
   },
 };
 
-export default function ServiceLayout({ children }: { children: React.ReactNode }) {
+export default function CriacaoDeSitesLayout({ children }) {
   const jsonLd = serviceJsonLd({
     path: meta.path,
     name: meta.name,
     serviceType: meta.serviceType,
-    image: "/ogimage.png",
+    image: meta.image,
     description: meta.description,
     offers: meta.offers,
     faqItems,
@@ -36,7 +38,10 @@ export default function ServiceLayout({ children }: { children: React.ReactNode 
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {children}
     </>
   );

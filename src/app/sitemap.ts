@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/portfolio",
     "/sobre",
+    "/criacao-de-sites",
     "/web-apps",
     "/landing-pages",
     "/ecommerce",

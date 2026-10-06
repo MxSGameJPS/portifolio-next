@@ -1,4 +1,4 @@
-const SITE = "https://saulopavanello.com.br";
+const SITE = "https://www.saulopavanello.com.br";
 const PAGE = `${SITE}/sobre`;
 
 export const metadata = {
@@ -6,12 +6,12 @@ export const metadata = {
     absolute: "Sobre | Saulo Pavanello — Software Engineer",
   },
   description:
-    "Conheça a trajetória de Saulo Pavanello: Software Engineer, desenvolvedor Full Stack & Mobile e graduando em Engenharia de Software, com bagagem em jornalismo, UI/UX, design e estratégia.",
+    "Conheça Saulo Pavanello, Engenheiro de Software em Dois Irmãos — RS. Desenvolvimento de sites, sistemas e aplicativos para empresas da região e de todo o Brasil.",
   alternates: { canonical: "/sobre" },
   openGraph: {
     title: "Sobre | Saulo Pavanello — Software Engineer",
     description:
-      "Tecnologia, produto e negócios fazem parte da mesma conversa. Conheça minha trajetória e a forma como transformo problemas em produtos digitais.",
+      "Engenheiro de Software baseado em Dois Irmãos — RS, com atendimento a empresas do Vale dos Sinos e de todo o Brasil.",
     url: PAGE,
     images: ["/ogimage.png"],
   },
