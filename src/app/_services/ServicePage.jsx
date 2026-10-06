@@ -31,13 +31,32 @@ export default function ServicePage({
   faqEyebrow = "DÚVIDAS FREQUENTES",
   faqHeading = "Antes de começar, vale alinhar alguns pontos.",
   faqItems = [],
+  heroVariant = "default",
+  heroFacts = [
+    {
+      title: "Contexto → solução",
+      text: "arquitetura definida a partir do problema",
+    },
+    {
+      title: "Produto sob medida",
+      text: "sem depender de template genérico",
+    },
+    {
+      title: "Briefing → produção",
+      text: "uma visão técnica de ponta a ponta",
+    },
+  ],
 }) {
   return (
     <div className={styles.pageWrapper}>
       <Header />
 
       <main>
-        <section className={styles.heroSection}>
+        <section
+          className={`${styles.heroSection} ${
+            heroVariant === "compact" ? styles.heroSectionCompact : ""
+          }`}
+        >
           <div className={styles.heroTexture} aria-hidden="true" />
           <div className={styles.heroContainer}>
             <p className={styles.eyebrow}>{eyebrow}</p>
@@ -63,19 +82,13 @@ export default function ServicePage({
               </div>
             </div>
 
-            <div className={styles.heroFacts} aria-label="Como o projeto é conduzido">
-              <div>
-                <strong>Contexto → solução</strong>
-                <span>arquitetura definida a partir do problema</span>
-              </div>
-              <div>
-                <strong>Produto sob medida</strong>
-                <span>sem depender de template genérico</span>
-              </div>
-              <div>
-                <strong>Briefing → produção</strong>
-                <span>uma visão técnica de ponta a ponta</span>
-              </div>
+            <div className={styles.heroFacts} aria-label="Destaques do serviço">
+              {heroFacts.map((fact) => (
+                <div key={fact.title}>
+                  <strong>{fact.title}</strong>
+                  <span>{fact.text}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
