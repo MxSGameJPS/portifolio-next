@@ -3,6 +3,16 @@ const nextConfig = {
   images: {
     qualities: [100, 90, 75, 60],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "saulopavanello.com.br" }],
+        destination: "https://www.saulopavanello.com.br/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
