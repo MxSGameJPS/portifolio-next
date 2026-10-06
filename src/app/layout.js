@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SimpleAnalytics } from "@simpleanalytics/next";
 import Script from "next/script";
 
 const SITE = "https://www.saulopavanello.com.br";
@@ -18,17 +17,22 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Saulo Pavanello | Software Engineer",
+    default: "Criação de Sites, Sistemas e Aplicativos | Saulo Pavanello",
     template: "%s | Saulo Pavanello",
   },
   alternates: {
     canonical: "/",
   },
   description:
-    "Software Engineer focado em SaaS, sistemas web, aplicativos mobile, APIs, IA e produtos digitais sob medida. Baseado em Dois Irmãos (RS), com atendimento remoto para todo o Brasil.",
+    "Criação de sites profissionais, sistemas empresariais, lojas virtuais e aplicativos sob medida. Engenheiro de Software em Dois Irmãos (RS), com atendimento para todo o Brasil.",
   applicationName: "Saulo Pavanello",
   category: "technology",
   keywords: [
+    "Criação de Sites",
+    "Criação de Sites em Dois Irmãos",
+    "Desenvolvimento de Sites",
+    "Sistemas Empresariais",
+    "Desenvolvimento de Aplicativos",
     "Software Engineer",
     "Engenheiro de Software",
     "SaaS",
@@ -73,9 +77,9 @@ export const metadata = {
     type: "website",
     locale: "pt_BR",
     url: SITE,
-    title: "Saulo Pavanello | Software Engineer",
+    title: "Criação de Sites, Sistemas e Aplicativos | Saulo Pavanello",
     description:
-      "Eu construo software para negócios que querem crescer. SaaS, sistemas web, aplicativos, APIs e experiências digitais com foco em resultado real.",
+      "Sites, sistemas, lojas virtuais e aplicativos sob medida para empresas. Baseado em Dois Irmãos (RS), com atendimento em todo o Brasil.",
     siteName: "Saulo Pavanello",
     images: [
       {
@@ -83,7 +87,7 @@ export const metadata = {
         width: 1731,
         height: 909,
         type: "image/png",
-        alt: "Saulo Pavanello — Software Engineer | SaaS, sistemas web, aplicativos e APIs",
+        alt: "Saulo Pavanello — criação de sites, sistemas e aplicativos",
       },
     ],
   },
@@ -91,7 +95,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Saulo Pavanello | Software Engineer",
     description:
-      "Eu construo software para negócios que querem crescer. SaaS, sistemas web, aplicativos, APIs e experiências digitais.",
+      "Criação de sites, sistemas empresariais, lojas virtuais e aplicativos. Atendimento em Dois Irmãos, região e todo o Brasil.",
     images: ["/ogimage.png"],
     creator: "@saulopavanello",
   },
@@ -173,7 +177,7 @@ export default function RootLayout({ children }) {
         url: SITE,
         image: `${SITE}/ogimage.png`,
         description:
-          "Desenvolvimento de SaaS, sistemas web, aplicativos mobile, APIs e produtos digitais sob medida.",
+          "Criação de sites, sistemas empresariais, lojas virtuais, aplicativos mobile, APIs e produtos digitais sob medida.",
         founder: { "@id": `${SITE}/#person` },
         priceRange: "$$",
         sameAs,
@@ -193,6 +197,10 @@ export default function RootLayout({ children }) {
               "@type": "OfferCatalog",
               name: "Desenvolvimento Web",
               itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: { "@type": "Service", name: "Criação de Sites Profissionais" },
+                },
                 {
                   "@type": "Offer",
                   itemOffered: { "@type": "Service", name: "SaaS e Sistemas Web" },
@@ -268,9 +276,8 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <SimpleAnalytics />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17926381242"
+          src="https://www.googletagmanager.com/gtag/js?id=G-C3S18WNB4S"
           strategy="lazyOnload"
         />
         <Script id="google-analytics">
@@ -278,7 +285,7 @@ export default function RootLayout({ children }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-17926381242');
+            gtag('config', 'G-C3S18WNB4S');
           `}
         </Script>
 
