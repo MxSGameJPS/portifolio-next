@@ -93,7 +93,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saulo Pavanello | Software Engineer",
+    title: "Criação de Sites, Sistemas e Aplicativos | Saulo Pavanello",
     description:
       "Criação de sites, sistemas empresariais, lojas virtuais e aplicativos. Atendimento em Dois Irmãos, região e todo o Brasil.",
     images: ["/ogimage.png"],
