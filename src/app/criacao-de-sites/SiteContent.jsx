@@ -213,14 +213,16 @@ export default function SiteContent() {
       >
         <div className={`${styles.container} ${styles.partnershipGrid}`}>
           <div className={styles.portrait}>
-            <Image
-              src="/contact-saulo.png"
-              alt="Saulo Pavanello em seu ambiente de trabalho"
-              fill
-              sizes="(max-width: 760px) 100vw, 420px"
-              quality={60}
-              className={styles.portraitImage}
-            />
+            <div className={styles.portraitCrop}>
+              <Image
+                src="/contact-saulo.png"
+                alt="Saulo Pavanello em seu ambiente de trabalho"
+                fill
+                sizes="(max-width: 760px) 100vw, 420px"
+                quality={60}
+                className={styles.portraitImage}
+              />
+            </div>
             <span>SAULO PAVANELLO · SOFTWARE ENGINEER</span>
           </div>
           <div className={styles.partnershipCopy}>
