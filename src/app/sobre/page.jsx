@@ -115,9 +115,11 @@ export default function AboutPage() {
               </h1>
               <p className={styles.heroLead}>
                 Sou desenvolvedor Full Stack & Mobile e graduando em Engenharia de
-                Software. Antes do código, minha trajetória passou por jornalismo,
-                design, UI/UX e estratégia — experiências que hoje influenciam a
-                forma como eu transformo problemas de negócio em produtos digitais.
+                Software, baseado em Dois Irmãos, Rio Grande do Sul. Atendo empresas
+                de todo o Brasil e também negócios do Vale dos Sinos e região. Antes
+                do código, minha trajetória passou por jornalismo, design, UI/UX e
+                estratégia — experiências que hoje influenciam a forma como eu
+                transformo problemas de negócio em produtos digitais.
               </p>
 
               <div className={styles.heroActions}>
@@ -145,8 +147,8 @@ export default function AboutPage() {
                   <span>atuação desde jan. 2025</span>
                 </div>
                 <div>
-                  <strong>Produto + UI/UX</strong>
-                  <span>visão além do código</span>
+                  <strong>Dois Irmãos · RS</strong>
+                  <span>atendimento local e em todo o Brasil</span>
                 </div>
               </div>
             </motion.div>
@@ -195,6 +197,12 @@ export default function AboutPage() {
                 ou endpoints. Penso em fluxo, arquitetura, operação, experiência,
                 manutenção e no que precisa acontecer para aquele software continuar
                 fazendo sentido depois do lançamento.
+              </p>
+              <p>
+                Trabalho a partir de Dois Irmãos — RS, com atendimento próximo a
+                empresas de Ivoti, Novo Hamburgo, Estância Velha, Sapiranga, Campo
+                Bom, São Leopoldo e demais cidades do Vale dos Sinos. Para o restante
+                do Brasil, briefing, acompanhamento e entrega acontecem de forma remota.
               </p>
             </div>
           </div>
