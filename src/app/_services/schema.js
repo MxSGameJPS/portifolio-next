@@ -25,7 +25,20 @@ export function serviceJsonLd({
         image: `${SITE}${image}`,
         description,
         provider: { "@id": `${SITE}/#person` },
-        areaServed: { "@type": "Country", name: "Brasil" },
+        areaServed: [
+          "Dois Irmãos",
+          "Ivoti",
+          "Novo Hamburgo",
+          "Estância Velha",
+          "Sapiranga",
+          "Campo Bom",
+          "São Leopoldo",
+        ].map((name) => ({
+          "@type": "City",
+          name,
+          addressRegion: "RS",
+          addressCountry: "BR",
+        })).concat({ "@type": "Country", name: "Brasil" }),
         mainEntityOfPage: PAGE,
         hasOfferCatalog: {
           "@type": "OfferCatalog",
