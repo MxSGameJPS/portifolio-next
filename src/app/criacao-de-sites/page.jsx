@@ -110,10 +110,25 @@ export default function CriacaoDeSitesPage() {
   return (
     <ServicePage
       eyebrow="CRIAÇÃO DE SITES"
-      headline="Sites profissionais para empresas que precisam ser encontradas, entendidas e lembradas."
+      heroVariant="compact"
+      headline="Sites profissionais para empresas que querem ser encontradas."
       subheadline="Presença digital própria, rápida e preparada para transformar visitas em contatos."
       description="Desenvolvo sites institucionais e empresariais sob medida, com responsividade, SEO técnico, integração com WhatsApp, publicação e painel administrativo quando necessário. Trabalho a partir de Dois Irmãos — RS e atendo empresas de todo o Brasil."
       ctaPrimary="Quero criar meu site"
+      heroFacts={[
+        {
+          title: "SEO técnico",
+          text: "estrutura preparada para busca e crescimento orgânico",
+        },
+        {
+          title: "Painel opcional",
+          text: "autonomia para atualizar textos e imagens quando necessário",
+        },
+        {
+          title: "Dois Irmãos · Brasil",
+          text: "atendimento local na região e remoto para todo o país",
+        },
+      ]}
       quote="Um bom site não existe apenas para estar online. Ele precisa explicar o negócio e facilitar a próxima decisão do cliente."
       infoParagraphs={[
         "Para muitas empresas, o primeiro contato ainda acontece pelo Google, por indicação ou por uma rede social. O site funciona como o lugar em que essas pessoas conseguem validar a empresa, entender serviços, ver projetos e entrar em contato.",
