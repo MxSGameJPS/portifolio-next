@@ -36,7 +36,20 @@ export default function MobileLayout({ children }: { children: React.ReactNode }
         image: `${SITE}/ogimage.png`,
         description: "Desenvolvimento de aplicativos iOS e Android com React Native e Expo.",
         provider: { "@id": `${SITE}/#person` },
-        areaServed: { "@type": "Country", name: "Brasil" },
+        areaServed: [
+          "Dois Irmãos",
+          "Ivoti",
+          "Novo Hamburgo",
+          "Estância Velha",
+          "Sapiranga",
+          "Campo Bom",
+          "São Leopoldo",
+        ].map((name) => ({
+          "@type": "City",
+          name,
+          addressRegion: "RS",
+          addressCountry: "BR",
+        })).concat({ "@type": "Country", name: "Brasil" }),
         mainEntityOfPage: PAGE,
       },
       {
