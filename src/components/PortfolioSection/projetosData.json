@@ -889,81 +889,130 @@
     },
     {
       "id": 28,
-      "name": "Confeitaria Renascer",
+      "name": "Confeitaria Renascer — Delivery, ERP e PDV",
       "tag": "Web",
-      "category": "Sistema para confeitaria / Gestão comercial",
+      "category": "Padarias / Delivery, comandas, caixa e integração de hardware",
       "image": null,
       "importance": "1",
       "deploy_link": "https://confeitariarenascer.vercel.app/",
-      "description": "Aplicação web para a Confeitaria Renascer, com foco em operação comercial, organização do catálogo de produtos e fluxo de vendas. Projeto desenvolvido para apoiar as rotinas de uma confeitaria com uma experiência adaptada ao negócio.",
+      "description": "Um ecossistema digital para a Renascer Padaria e Confeitaria que reúne delivery, cardápio digital, pedidos, mesas, comandas e operação interna de caixa em uma plataforma. O projeto enfrenta um problema recorrente das padarias: informações espalhadas entre atendimento, produção, pesagem e sistemas legados. O objetivo é reduzir retrabalho, melhorar o controle operacional e conectar a venda online à rotina do estabelecimento.",
       "sections": [
         {
-          "title": "Produto pensado para a operação",
-          "content": "A solução é orientada às necessidades práticas de uma confeitaria, com organização dos itens comercializados e recursos voltados ao atendimento e ao registro de vendas."
+          "title": "A dor: pedidos, atendimento e caixa desconectados",
+          "content": "Em uma padaria, delivery, balcão, mesas e venda por peso geram fluxos diferentes. Sem centralização, a equipe precisa repetir lançamentos, consultar sistemas separados e reconciliar pedidos no fechamento. O Renascer foi estruturado para aproximar essas operações numa mesma plataforma."
         },
         {
-          "title": "Fluxo de trabalho e experiência",
-          "content": "Interface de uso comercial que prioriza clareza das informações e agilidade na rotina de operação."
+          "title": "Delivery, cardápio e acompanhamento de pedidos",
+          "content": "O cliente encontra produtos no catálogo digital, monta seu pedido e segue o fluxo de compra. A operação possui interfaces de atendimento e delivery, estados de pedido e alertas para auxiliar o processamento. Há rotas para rastreamento de pedidos e configurações de entrega."
+        },
+        {
+          "title": "Comandas, mesas e PDV web",
+          "content": "O sistema possui rotinas de mesas, comandas, caixa e vendas: abertura e atendimento, lançamento de itens, controle de status e fechamento. O caixa web foi concebido para não depender obrigatoriamente de um aplicativo desktop, favorecendo continuidade operacional."
+        },
+        {
+          "title": "Pesagem de produtos por quilograma",
+          "content": "O ecossistema contempla produtos vendidos por peso e um aplicativo Renascer Pesagem em Electron. A arquitetura prevê que a balança informe peso e produto à API e que o servidor determine preço e registro em comanda. O aplicativo já possui modo diagnóstico de portas seriais; a leitura integrada definitiva depende da homologação com o equipamento Filizola real."
+        },
+        {
+          "title": "Renascer Bridge: ligação com o GeMaster",
+          "content": "Uma aplicação Windows em Electron consulta comandas e pedidos de delivery por códigos como C105 e DV..., recuperando os itens e os códigos mapeados no GeMaster. Isso permite preparar uma transição gradual sem substituir de imediato o caixa legado. A consulta e prévia estão documentadas; a injeção automática no GeMaster ainda não está homologada."
+        },
+        {
+          "title": "Gestão administrativa e rastreabilidade",
+          "content": "Painéis de administração e operação contemplam produtos, categorias, funcionários, permissões, fornecedores, financeiro inicial, auditoria e integrações. A solução utiliza Supabase/PostgreSQL, regras no backend e atualizações via Realtime. Estoque avançado, multiunidade plena e emissão fiscal estão descritos como evolução planejada, não como módulos concluídos."
         }
       ],
       "tech_stack": [
-        "Aplicação web",
-        "Gestão de produtos e vendas"
-      ]
+        "Framework: Next.js 16 / React 19",
+        "Linguagem: JavaScript / CSS Modules",
+        "Backend: Next.js Route Handlers",
+        "Banco de dados: Supabase / PostgreSQL",
+        "Atualizações: Supabase Realtime",
+        "Aplicação móvel web: PWA",
+        "Integração Windows: Electron / Vite / React",
+        "Hardware: SerialPort (pesagem em homologação)",
+        "Integração legado: Renascer Bridge / GeMaster"
+      ],
+      "repo_link": "https://github.com/MxSGameJPS/confeitariarenascer"
     },
     {
       "id": 29,
-      "name": "Rudiscar",
+      "name": "Rudiscar — Revenda de Veículos",
       "tag": "Web",
-      "category": "Site para revenda de veículos / Catálogo automotivo",
+      "category": "Revenda automotiva / Vitrine digital e gestão de estoque",
       "image": null,
       "importance": "1",
       "deploy_link": "https://rudiscar.vercel.app/",
-      "description": "Site voltado à apresentação e comercialização de veículos seminovos da Rudiscar, com destaque para o estoque, informações dos automóveis e oportunidades de contato com a revenda. Conteúdo direcionado exclusivamente à venda de veículos.",
+      "description": "Site de revenda de veículos seminovos acompanhado de painel administrativo para manter o catálogo atualizado. A solução busca resolver duas dores comerciais: a dificuldade de apresentar o estoque de forma profissional na internet e a dependência de atendimento manual para informar os detalhes básicos de cada veículo. O visitante pode explorar os automóveis e entrar em contato com a revenda por WhatsApp.",
       "sections": [
         {
-          "title": "Vitrine digital para a revenda",
-          "content": "Experiência organizada para apresentar os veículos disponíveis, permitindo que visitantes conheçam o estoque e os detalhes de cada automóvel."
+          "title": "A dor: estoque pouco visível e atendimento repetitivo",
+          "content": "Sem uma vitrine digital organizada, potenciais compradores dependem de publicações avulsas e mensagens para descobrir modelo, versão, ano, preço e características. A Rudiscar centraliza essas informações em uma experiência pensada especificamente para a comercialização de veículos."
         },
         {
-          "title": "Foco em conversão e atendimento",
-          "content": "Estrutura orientada a facilitar o contato entre interessados e a revenda, com comunicação específica para o setor automotivo."
+          "title": "Catálogo de automóveis com informações relevantes",
+          "content": "A estrutura dos veículos contempla nome, versão, ano, quilometragem, combustível, câmbio, preço, categoria e imagem. O catálogo ajuda o interessado a avaliar opções antes do contato com a equipe comercial."
+        },
+        {
+          "title": "Contato comercial integrado",
+          "content": "A aplicação disponibiliza canais de WhatsApp, telefone e localização da revenda. Os links de WhatsApp podem incluir uma mensagem contextualizada, facilitando o início da conversa sobre um veículo."
+        },
+        {
+          "title": "Painel administrativo e persistência",
+          "content": "O repositório contém uma área de login, dashboard administrativo, serviços de gestão de veículos e integração com Supabase. Essa separação permite administrar o catálogo sem alterar diretamente o código de cada anúncio."
         }
       ],
       "tech_stack": [
-        "Aplicação web",
-        "Catálogo de veículos",
-        "Gestão de conteúdo"
-      ]
+        "Frontend: React / Vite",
+        "Linguagem: TypeScript",
+        "Banco de dados: Supabase",
+        "Administração: Dashboard com autenticação",
+        "Integração comercial: WhatsApp",
+        "Catálogo: Dados estruturados dos veículos"
+      ],
+      "repo_link": "https://github.com/MxSGameJPS/rudiscar"
     },
     {
       "id": 30,
-      "name": "Comanda",
+      "name": "Comanda — Gestão de Restaurantes",
       "tag": "Web",
-      "category": "Sistema de comandas / Restaurantes / PWA",
+      "category": "Restaurantes / Pedidos por QR Code, produção e caixa",
       "image": null,
       "importance": "1",
       "deploy_link": "https://comanda-smoky.vercel.app/",
-      "description": "Sistema de comandas digitais para estabelecimentos de alimentação, com pedidos por QR Code nas mesas e acompanhamento por áreas operacionais como cozinha, copa e caixa. Solução projetada para simplificar o atendimento e organizar pedidos.",
+      "description": "Sistema web progressivo de comandas digitais para restaurantes. Conecta pedido do cliente, atuação do garçom, cozinha, copa e caixa em um fluxo compartilhado. Resolve a dor dos pedidos anotados e retransmitidos manualmente, que podem provocar esquecimentos, demora e divergências no fechamento das mesas.",
       "sections": [
         {
-          "title": "Pedidos diretamente da mesa",
-          "content": "Fluxo pensado para leitura de QR Code por mesa e envio de pedidos pelo próprio celular do cliente."
+          "title": "A dor: comunicação fragmentada entre salão, preparo e caixa",
+          "content": "Quando pedidos circulam por papel ou mensagens informais, a cozinha pode perder itens, a copa recebe solicitações fora de ordem e o caixa precisa conferir lançamentos manualmente. O Comanda organiza o atendimento por mesas, pedidos, itens e responsáveis."
         },
         {
-          "title": "Operação integrada",
-          "content": "Organização do atendimento com áreas específicas para preparo, acompanhamento dos pedidos e fechamento de contas."
+          "title": "Cardápio por QR Code na mesa",
+          "content": "O cliente acessa o cardápio por um código específico da mesa, informa seus dados de atendimento, escolhe produtos e adiciona observações. O modelo reduz a necessidade de intermediar cada escolha pelo garçom."
         },
         {
-          "title": "Gestão para o estabelecimento",
-          "content": "Administração de mesas e produtos para adaptar a operação às necessidades do restaurante."
+          "title": "Garçom, cozinha e copa em interfaces próprias",
+          "content": "O garçom possui painel para se vincular ao atendimento e lançar itens. Cozinha e copa contam com painéis separados para acompanhar os itens destinados a cada estação, melhorando o direcionamento de preparação."
+        },
+        {
+          "title": "Fechamento de mesa, pagamentos e comprovantes",
+          "content": "O caixa recebe a comanda com os itens do atendimento, conduz o registro de pagamento e o encerramento da mesa. O repositório também inclui componentes de recibo e controle de cancelamentos, preservando rastreabilidade de alterações."
+        },
+        {
+          "title": "Administração e arquitetura operacional",
+          "content": "Há telas para configuração, produtos, mesas, equipe, auditoria e visão administrativa. A aplicação usa Next.js, componentes com CSS Modules, rotas API e estrutura de banco Supabase. Integrações Realtime e rotinas de segurança devem ser avaliadas segundo o estado efetivo da instalação; a existência de uma rota ou componente não significa homologação de todo o fluxo."
         }
       ],
       "tech_stack": [
-        "Aplicação web progressiva (PWA)",
-        "Pedidos por QR Code",
-        "Gestão de mesas e produtos"
-      ]
+        "Framework: Next.js / React",
+        "Linguagem: JavaScript / CSS Modules",
+        "Experiência: PWA / QR Code por mesa",
+        "Backend: Next.js Route Handlers",
+        "Banco de dados: Supabase / PostgreSQL",
+        "Módulos: Cliente, Garçom, Cozinha, Copa, Caixa e Administração",
+        "Governança: Controle de itens cancelados e auditoria"
+      ],
+      "repo_link": "https://github.com/MxSGameJPS/comanda"
     }
   ]
 }
