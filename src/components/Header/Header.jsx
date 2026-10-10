@@ -98,6 +98,10 @@ export default function Header() {
             </li>
 
             <li className={styles.navItem}>
+              <Link prefetch={false} href="/previas" className={styles.navLink} onClick={closeMenu}><span>Prévias</span></Link>
+            </li>
+
+            <li className={styles.navItem}>
               <Link prefetch={false} href="/portfolio" className={styles.navLink} onClick={closeMenu}>
                 <span>Portfólio</span>
               </Link>
