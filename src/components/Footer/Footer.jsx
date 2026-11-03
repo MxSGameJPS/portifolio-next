@@ -24,6 +24,38 @@ const solutionLinks = [
   { label: "UI/UX & Estratégia", href: "/ui-ux" },
 ];
 
+const additionalServiceGroups = [
+  {
+    title: "Web & negócios",
+    links: [
+      { label: "Landing Pages", href: "/landing-pages" },
+      { label: "Lojas virtuais", href: "/ecommerce" },
+      { label: "Portais e área do cliente", href: "/portais" },
+      { label: "Dashboards e relatórios", href: "/dashboards" },
+      { label: "Redes sociais", href: "/redes-sociais" },
+    ],
+  },
+  {
+    title: "Aplicativos",
+    links: [
+      { label: "Apps Android", href: "/app-android" },
+      { label: "Apps iOS", href: "/app-ios" },
+      { label: "Apps para TV", href: "/app-tv" },
+      { label: "Otimização nas lojas (ASO)", href: "/app-store-optimization" },
+    ],
+  },
+  {
+    title: "Dados & infraestrutura",
+    links: [
+      { label: "Desenvolvimento de APIs", href: "/api-development" },
+      { label: "Banco de dados", href: "/database" },
+      { label: "Integração de sistemas", href: "/integrations" },
+      { label: "Deploy e infraestrutura", href: "/devops" },
+      { label: "Segurança de sistemas", href: "/security" },
+    ],
+  },
+];
+
 const socialLinks = [
   {
     label: "LinkedIn",
@@ -114,6 +146,29 @@ export default function Footer() {
             </a>
           </div>
         </div>
+
+        <nav className={styles.serviceDirectory} aria-label="Mais serviços de desenvolvimento">
+          <div className={styles.serviceDirectoryIntro}>
+            <h2>Explore outras especialidades</h2>
+            <p>Encontre soluções específicas para cada etapa do seu negócio.</p>
+          </div>
+          <div className={styles.serviceDirectoryGrid}>
+            {additionalServiceGroups.map((group) => (
+              <div key={group.title}>
+                <h3 className={styles.serviceDirectoryTitle}>{group.title}</h3>
+                <ul className={styles.serviceDirectoryLinks}>
+                  {group.links.map((item) => (
+                    <li key={item.href}>
+                      <Link prefetch={false} href={item.href} className={styles.serviceDirectoryLink}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </nav>
 
         <div className={styles.middleRow}>
           <p className={styles.serviceArea}>
