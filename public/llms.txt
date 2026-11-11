@@ -1,0 +1,68 @@
+# Saulo Pavanello — Engenharia de Software
+
+> Saulo Pavanello é Engenheiro de Software baseado em Dois Irmãos (RS, Vale dos Sinos, Brasil). Desenvolve sob medida sites profissionais, sistemas empresariais e SaaS, lojas virtuais, aplicativos Android e iOS, APIs, integrações e automações com IA. Atende diretamente, sem intermediários, empresas da região (Dois Irmãos, Ivoti, Novo Hamburgo, Estância Velha, Sapiranga, Campo Bom, São Leopoldo) e clientes de todo o Brasil de forma remota, do briefing ao deploy em produção.
+
+Principais tecnologias: React, Next.js, Node.js, TypeScript, React Native/Expo, Supabase, PostgreSQL, Tailwind, Stripe.
+Contato: WhatsApp, e-mail ou reunião por vídeo pela página de contato.
+
+## Sobre
+
+- [Sobre Saulo Pavanello](https://www.saulopavanello.com.br/sobre): Quem é, trajetória e forma de trabalho como Engenheiro de Software em Dois Irmãos — RS.
+- [Stack & Engenharia](https://www.saulopavanello.com.br/stack): Tecnologias organizadas por área — front-end, backend e APIs, mobile, dados, infraestrutura, IA, UI/UX e qualidade.
+- [Contato](https://www.saulopavanello.com.br/contato): Falar diretamente sobre sites, SaaS, sistemas, aplicativos, APIs e automações.
+
+## Serviços — Web
+
+- [Criação de Sites Profissionais](https://www.saulopavanello.com.br/criacao-de-sites): Sites institucionais e empresariais com SEO técnico, painel de atualização, WhatsApp, hospedagem e suporte.
+- [Landing Pages](https://www.saulopavanello.com.br/landing-pages): Páginas focadas em conversão para Google e Meta Ads, com formulário, WhatsApp e medição de leads.
+- [E-commerce](https://www.saulopavanello.com.br/ecommerce): Loja virtual sob medida com Pix, cartão, boleto, cálculo de frete e painel próprio, sem mensalidade de plataforma.
+- [Sistemas Empresariais & Web Apps](https://www.saulopavanello.com.br/web-apps): Sistemas web, SaaS, dashboards e portais sob medida para operações que não cabem mais em planilhas.
+- [Portais Web & Área do Cliente](https://www.saulopavanello.com.br/portais): Portal do cliente, intranet e portais de conteúdo com login seguro e permissões por perfil.
+- [Dashboards & Painéis de Gestão (BI)](https://www.saulopavanello.com.br/dashboards): Vendas, metas e custos em gráficos atualizados em tempo real, integrados às fontes de dados.
+- [UI/UX & Produto](https://www.saulopavanello.com.br/ui-ux): Design de interface e experiência do usuário com protótipo navegável antes do desenvolvimento.
+
+## Serviços — Aplicativos
+
+- [Aplicativos Mobile](https://www.saulopavanello.com.br/mobile): Apps iOS e Android com React Native e Expo, integrados a APIs, notificações e recursos do dispositivo.
+- [Apps Android](https://www.saulopavanello.com.br/app-android): Desenvolvimento e publicação na Google Play, testado em vários aparelhos.
+- [Apps iOS (iPhone)](https://www.saulopavanello.com.br/app-ios): Desenvolvimento e publicação na App Store com Face ID e notificações, sem o cliente precisar de Mac.
+- [Apps para Smart TV](https://www.saulopavanello.com.br/app-tv): Apps para Android TV e Apple TV, incluindo streaming com catálogo, player e login.
+- [ASO — App Store Optimization](https://www.saulopavanello.com.br/app-store-optimization): Otimização de título, descrição, palavras-chave, ícone e prints na App Store e Google Play.
+
+## Serviços — Backend, Dados e Infraestrutura
+
+- [Desenvolvimento de APIs & Integrações](https://www.saulopavanello.com.br/api-development): APIs REST e GraphQL e integração com ERP, CRM e meios de pagamento.
+- [Backend](https://www.saulopavanello.com.br/backend): Banco de dados, login, permissões, regras de negócio e automações com segurança e escalabilidade.
+- [Integração de Sistemas & Automação](https://www.saulopavanello.com.br/integrations): Conexão entre pagamento, ERP, CRM, WhatsApp e planilhas para reduzir trabalho manual.
+- [Banco de Dados](https://www.saulopavanello.com.br/database): Modelagem, otimização, migração e backup com PostgreSQL e opções serverless.
+- [DevOps](https://www.saulopavanello.com.br/devops): Deploy, hospedagem, CI/CD, SSL, monitoramento, backup e escalabilidade.
+- [Segurança de Aplicações & Dados](https://www.saulopavanello.com.br/security): Auditoria de segurança, login seguro, controle de acesso e adequação à LGPD.
+- [Redes Sociais & Conteúdo](https://www.saulopavanello.com.br/redes-sociais): Identidade visual para redes, modelos de post, página de links e integração com o site.
+
+## Portfólio (cases reais)
+
+- [Portfólio completo](https://www.saulopavanello.com.br/portfolio): SaaS, sistemas web, apps mobile, APIs e integrações construídos da arquitetura ao deploy.
+- [Social Jurídico](https://www.saulopavanello.com.br/portfolio/7): Plataforma LegalTech que conecta clientes e advogados com IA generativa, com foco em LGPD e escalabilidade.
+- [API Social Jurídico](https://www.saulopavanello.com.br/portfolio/24): API processual que integra DataJud e DJEN (CNJ) para consulta pública de processos por OAB e CPF/CNPJ.
+- [Validação OAB (KYC Jurídico)](https://www.saulopavanello.com.br/portfolio/25): Verificação automática de identidade e registro na OAB que substitui um fluxo manual de cerca de 5 dias.
+- [Confeitaria Renascer — Delivery, ERP e PDV](https://www.saulopavanello.com.br/portfolio/28): Delivery, cardápio digital, comandas, mesas e caixa integrados para padaria e confeitaria.
+- [Comanda — Gestão de Restaurantes](https://www.saulopavanello.com.br/portfolio/30): Comandas digitais por QR Code conectando cliente, garçom, cozinha, copa e caixa.
+- [Rudiscar — Revenda de Veículos](https://www.saulopavanello.com.br/portfolio/29): Vitrine de seminovos com painel administrativo de estoque.
+- [Smile Pet Shop — E-commerce](https://www.saulopavanello.com.br/portfolio/1): E-commerce sob medida para pet shop, com [API própria](https://www.saulopavanello.com.br/portfolio/22).
+- [Rota Viva](https://www.saulopavanello.com.br/portfolio/26): Site de marca de um super-app multi-cidade de turismo, comércio local e eventos; [app móvel](https://www.saulopavanello.com.br/portfolio/27).
+- [Ai2Love](https://www.saulopavanello.com.br/portfolio/2): Plataforma de relacionamento virtual com IA conversacional.
+- [ClinicaMedica Admin Web](https://www.saulopavanello.com.br/portfolio/10): Painel de gestão de médicos, agendamentos, pacientes e financeiro; [app do paciente](https://www.saulopavanello.com.br/portfolio/9).
+- [QFarma Digital](https://www.saulopavanello.com.br/portfolio/8): Portal de saúde para farmácia de serviços.
+- [NextPath](https://www.saulopavanello.com.br/portfolio/17): Plataforma educacional gamificada de tecnologias web com desafios e ranking.
+- [Slim Shape (Web)](https://www.saulopavanello.com.br/portfolio/21): Dashboard de monitoramento de saúde; [API serverless](https://www.saulopavanello.com.br/portfolio/20).
+
+## Optional
+
+- [Prévias de sites](https://www.saulopavanello.com.br/previas): Demonstrações conceituais por segmento. Projetos ilustrativos, não necessariamente contratados pelos estabelecimentos apresentados.
+- [Freela Control](https://www.saulopavanello.com.br/portfolio/18): Gestão de clientes, projetos e fluxo de caixa para freelancers.
+- [Lume](https://www.saulopavanello.com.br/portfolio/11): Organizador pessoal gamificado com XP, níveis e streaks.
+- [Fokus App](https://www.saulopavanello.com.br/portfolio/16): Produtividade com técnica Pomodoro e curadoria de músicas.
+- [Vida Leve](https://www.saulopavanello.com.br/portfolio/5): App de acompanhamento de rotina saudável.
+- [Retrospectiva Dev](https://www.saulopavanello.com.br/portfolio/19): Transforma commits do GitHub em stories visuais.
+- [Confeitaria API Service](https://www.saulopavanello.com.br/portfolio/13): API de catálogo, pedidos e clientes para e-commerce de confeitaria.
+- [Barbearia](https://www.saulopavanello.com.br/portfolio/6), [Espaço Zen](https://www.saulopavanello.com.br/portfolio/12), [Alma Zen Spa](https://www.saulopavanello.com.br/portfolio/15), [Lughs Word](https://www.saulopavanello.com.br/portfolio/23): Landing pages e sites de marca.
